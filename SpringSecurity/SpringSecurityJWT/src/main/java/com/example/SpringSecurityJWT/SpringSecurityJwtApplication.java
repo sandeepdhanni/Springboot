@@ -1,7 +1,7 @@
 package com.example.SpringSecurityJWT;
 
 import com.example.SpringSecurityJWT.entity.UserInfo;
-import com.example.SpringSecurityJWT.repository.UserInfoRepository;
+import com.example.SpringSecurityJWT.repository.UserRepo;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class SpringSecurityJwtApplication {
 
 	@Autowired
-	private UserInfoRepository repository;
+	private UserRepo repository;
 
 
 	@PostConstruct
