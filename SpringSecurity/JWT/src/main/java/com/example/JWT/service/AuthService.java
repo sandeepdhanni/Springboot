@@ -1,4 +1,4 @@
-package service;
+package com.example.JWT.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -6,10 +6,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import entity.User;
-import exceptionhandling.UserExists;
-import model.SignUp;
-import repo.UserRepository;
+import com.example.JWT.entity.User;
+import com.example.JWT.exceptionhandling.UserExists;
+import com.example.JWT.model.SignUp;
+import com.example.JWT.repo.UserRepository;
 
 
 

@@ -1,4 +1,4 @@
-package exceptionhandling;
+package com.example.JWT.exceptionhandling;
 
 public class UserExists extends Exception {
 	

@@ -1,4 +1,4 @@
-package entity;
+package com.example.JWT.entity;
 
 import java.util.Collection;
 
@@ -12,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +20,8 @@ import lombok.Setter;
 @Table(name="USER_DETAILS")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Builder
 public class User implements UserDetails {
 
@@ -30,7 +30,7 @@ public class User implements UserDetails {
 	int id;
 	String name;
 	String password;
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub

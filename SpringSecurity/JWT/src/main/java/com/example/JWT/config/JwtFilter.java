@@ -1,4 +1,4 @@
-package config;
+package com.example.JWT.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,7 +15,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.JwtService;
+import com.example.JWT.service.JwtService;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter{
@@ -39,10 +39,10 @@ public class JwtFilter extends OncePerRequestFilter{
 				authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(authToken);
 			}
-			
+
 		}
 			filterChain.doFilter(request, response);
 	}
-	
+
 
 }
