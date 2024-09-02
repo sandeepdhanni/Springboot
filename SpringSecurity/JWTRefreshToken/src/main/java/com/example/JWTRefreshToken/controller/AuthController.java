@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
 
 
 @RestController
@@ -35,10 +36,11 @@ public class AuthController {
     public ResponseEntity<User> signup(@RequestBody SignUp request) throws Exception {
         return ResponseEntity.ok(service.saveUser(request));
     }
+
     @PostMapping("/signin")
-    public ResponseEntity<String> login(@RequestBody SignUp request) {
-        User user = service.authenticate(request);
-        return ResponseEntity.ok(jwtService.genrateToken(user));
+    public ResponseEntity<Map<String, String>> login(@RequestBody SignUp request) {
+        Map<String, String> tokens = service.authenticate(request);
+        return ResponseEntity.ok(tokens);
     }
 
 

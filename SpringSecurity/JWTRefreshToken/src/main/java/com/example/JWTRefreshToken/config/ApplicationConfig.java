@@ -35,6 +35,7 @@ public class ApplicationConfig {
         return userName -> repository.findByName(userName)
                 .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
     }
+
     @Bean
     BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
