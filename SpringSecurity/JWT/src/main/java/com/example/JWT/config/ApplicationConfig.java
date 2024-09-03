@@ -30,6 +30,8 @@ public class ApplicationConfig {
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
+
+
     @Bean
     UserDetailsService userDetailsService() {
         return userName -> repository.findByName(userName)
