@@ -36,12 +36,14 @@ import java.util.List;
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setHeader("Content-Disposition", "attachment; filename=employees.xlsx");
 
+            // Fetch the list of employees
             List<Employee> employees = employeeService.getAllEmployees();
-            Workbook workbook = excelGenerator.generateExcel(employees);
 
+            // Using the response's output stream to pass to the Excel generator method
             ServletOutputStream outputStream = response.getOutputStream();
-            workbook.write(outputStream);
-            workbook.close();
+            excelGenerator.generateExcel(employees, outputStream);
+
+            // Close the output stream
             outputStream.close();
         }
 
@@ -51,11 +53,8 @@ import java.util.List;
             response.setHeader("Content-Disposition", "attachment; filename=employees.pdf");
 
             List<Employee> employees = employeeService.getAllEmployees();
-            Document document = pdfGenerator.generatePDF(employees);
-
-            PdfWriter.getInstance(document, response.getOutputStream());
-            document.open();
-            document.close();
+            // Use the output stream to write the PDF to the response
+            pdfGenerator.generatePDF(employees, response.getOutputStream());
         }
     }
 

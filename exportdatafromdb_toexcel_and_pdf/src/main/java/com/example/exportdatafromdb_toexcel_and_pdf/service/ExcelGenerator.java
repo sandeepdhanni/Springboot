@@ -8,33 +8,52 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 @Service
 public class ExcelGenerator {
 
-    public Workbook generateExcel(List<Employee> employees) {
+    public void generateExcel(List<Employee> employees, OutputStream outputStream) throws IOException {
+        // Create a workbook
         Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("Employees");
+        // Create a sheet
+        Sheet sheet = workbook.createSheet("Employee Details");
 
+        // Create a header row
         Row headerRow = sheet.createRow(0);
-        String[] columns = {"ID", "Name", "Department", "Salary"};
+        headerRow.createCell(0).setCellValue("ID");
+        headerRow.createCell(1).setCellValue("Name");
+        headerRow.createCell(2).setCellValue("Department");
+        headerRow.createCell(3).setCellValue("Salary");
 
-        for (int i = 0; i < columns.length; i++) {
-            Cell cell = headerRow.createCell(i);
-            cell.setCellValue(columns[i]);
+        // Check if the employees list is not empty
+        if (employees != null && !employees.isEmpty()) {
+            // Loop through the employees and add them to the rows
+            int rowNum = 1;  // Start from the second row
+            for (Employee employee : employees) {
+                Row row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(employee.getId());
+                row.createCell(1).setCellValue(employee.getName());
+                row.createCell(2).setCellValue(employee.getDepartment());
+                row.createCell(3).setCellValue(employee.getSalary());
+            }
+        } else {
+            // If there are no employees, add a message in the first row
+            Row row = sheet.createRow(1);
+            row.createCell(0).setCellValue("No employee data available.");
         }
 
-        int rowNum = 1;
-        for (Employee employee : employees) {
-            Row row = sheet.createRow(rowNum++);
-
-            row.createCell(0).setCellValue(employee.getId());
-            row.createCell(1).setCellValue(employee.getName());
-            row.createCell(2).setCellValue(employee.getDepartment());
-            row.createCell(3).setCellValue(employee.getSalary());
+        // Adjust column width for readability
+        for (int i = 0; i < 4; i++) {
+            sheet.autoSizeColumn(i);
         }
 
-        return workbook;
+        // Write the output to the OutputStream
+        workbook.write(outputStream);
+
+        // Close the workbook
+        workbook.close();
     }
 }
