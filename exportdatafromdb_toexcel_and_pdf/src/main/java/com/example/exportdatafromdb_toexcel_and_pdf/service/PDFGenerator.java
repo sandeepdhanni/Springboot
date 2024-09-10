@@ -19,13 +19,13 @@ public class PDFGenerator {
         Document document = new Document();
         PdfWriter.getInstance(document, outputStream);
 
-        // Open the document
+        // open the document
         document.open();
 
-        // Add Title
+        // add Title
         document.add(new Paragraph("Employee Details"));
 
-        // Adds a new line after the title
+        // adds a new line after the title
         document.add(new Paragraph(" "));  // This creates a blank line
 
         //this will create a table with 3 columns (for ID, Name,Department and salary)
@@ -35,9 +35,9 @@ public class PDFGenerator {
         table.addCell("Department");
         table.addCell("Salary");
 
-        // Check if the employees list is not empty
+        // check if the employees list is not empty
         if (employees != null && !employees.isEmpty()) {
-            // Loop through the employees and add them to the table
+            // loop through the employees and add them to the table
             for (Employee employee : employees) {
                 table.addCell(String.valueOf(employee.getId()));
                 table.addCell(employee.getName());
