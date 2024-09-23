@@ -4,68 +4,115 @@ import axios from 'axios';
 
 const EmployeeDashboard = () => {
     const [employees, setEmployees] = useState([]);
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [department, setDepartment] = useState('');
     const [id, setId] = useState(null);
 
     useEffect(() => {
         fetchEmployees();
     }, []);
 
+    // Fetch employees with JWT token
     const fetchEmployees = async () => {
-        // Replace with your API endpoint
-        const response = await axios.get('http://localhost:2001/api/employees');
-        setEmployees(response.data);
+        const token = localStorage.getItem('token');
+        try {
+            const response = await axios.get('http://localhost:2001/api/employees', {
+                headers: {
+                    Authorization: `Bearer ${token}` // Include JWT token
+                }
+            });
+            setEmployees(response.data);
+        } catch (error) {
+            console.error('Error fetching employees:', error);
+            if (error.response.status === 401) {
+                alert('Unauthorized. Please log in again.');
+            }
+        }
     };
 
     const handleAddOrUpdate = async () => {
-        const employeeData = { name, email };
-        if (id) {
-            await axios.put(`http://localhost:2001/api/employees/${id}`, employeeData);
-        } else {
-            await axios.post('http://localhost:2001/api/employees', employeeData);
+        const token = localStorage.getItem('token');
+        const employeeData = { firstName, lastName, email, department };
+        
+        try {
+            if (id) {
+                await axios.put(`http://localhost:2001/api/employees/${id}`, employeeData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+            } else {
+                await axios.post('http://localhost:2001/api/employees', employeeData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+            }
+            fetchEmployees();
+            resetForm();
+        } catch (error) {
+            console.error('Error saving employee:', error);
         }
-        fetchEmployees();
-        resetForm();
     };
 
     const handleEdit = (employee) => {
         setId(employee.id);
-        setName(employee.name);
+        setFirstName(employee.firstName);
+        setLastName(employee.lastName);
         setEmail(employee.email);
+        setDepartment(employee.department);
     };
 
     const handleDelete = async (employeeId) => {
-        await axios.delete(`http://localhost:2001/api/employees/${employeeId}`);
-        fetchEmployees();
+        const token = localStorage.getItem('token');
+        try {
+            await axios.delete(`http://localhost:2001/api/employees/${employeeId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            fetchEmployees();
+        } catch (error) {
+            console.error('Error deleting employee:', error);
+        }
     };
 
     const resetForm = () => {
         setId(null);
-        setName('');
+        setFirstName('');
+        setLastName('');
         setEmail('');
+        setDepartment('');
     };
 
     return (
         <Container>
             <h2>Employee Dashboard</h2>
-            <TextField label="Name" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
+            <TextField label="First Name" variant="outlined" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <TextField label="Last Name" variant="outlined" value={lastName} onChange={(e) => setLastName(e.target.value)} />
             <TextField label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <TextField label="Department" variant="outlined" value={department} onChange={(e) => setDepartment(e.target.value)} />
             <Button onClick={handleAddOrUpdate} variant="contained" color="primary">Add/Update</Button>
             <TableContainer>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
+                            <TableCell>First Name</TableCell>
+                            <TableCell>Last Name</TableCell>
                             <TableCell>Email</TableCell>
+                            <TableCell>Department</TableCell>
                             <TableCell>Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {employees.map((employee) => (
                             <TableRow key={employee.id}>
-                                <TableCell>{employee.name}</TableCell>
+                                <TableCell>{employee.firstName}</TableCell>
+                                <TableCell>{employee.lastName}</TableCell>
                                 <TableCell>{employee.email}</TableCell>
+                                <TableCell>{employee.department}</TableCell>
                                 <TableCell>
                                     <Button onClick={() => handleEdit(employee)}>Edit</Button>
                                     <Button onClick={() => handleDelete(employee.id)}>Delete</Button>

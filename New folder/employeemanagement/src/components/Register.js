@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
-        // Handle registration logic here (e.g., API call)
-        navigate('/login');
+        try {
+            await axios.post('http://localhost:2001/auth/signup', { email, password });
+            
+            // Redirect to the login page after successful registration
+            navigate('/login');
+        } catch (error) {
+            console.error('Registration failed:', error);
+            alert('Registration failed');
+        }
     };
 
     return (
@@ -22,7 +30,6 @@ const Register = () => {
                 <TextField label="Password" type="password" variant="outlined" fullWidth margin="normal"
                     value={password} onChange={(e) => setPassword(e.target.value)} />
                 <Button type="submit" variant="contained" color="primary">Register</Button>
-                <Button type="submit" variant="contained" color="primary">Login</Button>
             </form>
         </Container>
     );

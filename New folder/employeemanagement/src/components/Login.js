@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        // Handle login logic here (e.g., API call)
-        navigate('/dashboard');
+        try {
+            const response = await axios.post('http://localhost:2001/auth/login', { email, password });
+            const { token } = response.data;
+
+            localStorage.setItem('token', token);
+            
+            navigate('/dashboard');
+        } catch (error) {
+            console.error('Login failed:', error);
+            alert('Login failed. Please check your credentials.');
+        }
     };
 
     return (
@@ -22,7 +32,6 @@ const Login = () => {
                 <TextField label="Password" type="password" variant="outlined" fullWidth margin="normal"
                     value={password} onChange={(e) => setPassword(e.target.value)} />
                 <Button type="submit" variant="contained" color="primary">Login</Button>
-                <Button type="submit" variant="contained" color="primary">Register</Button>
             </form>
         </Container>
     );
