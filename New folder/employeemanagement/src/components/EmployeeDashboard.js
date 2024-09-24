@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, TextField, Container } from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeDashboard = () => {
     const [employees, setEmployees] = useState([]);
@@ -9,6 +10,9 @@ const EmployeeDashboard = () => {
     const [email, setEmail] = useState('');
     const [department, setDepartment] = useState('');
     const [id, setId] = useState(null);
+
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         fetchEmployees();
@@ -79,6 +83,12 @@ const EmployeeDashboard = () => {
         }
     };
 
+     // Clear token and redirect to login
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    };
+
     const resetForm = () => {
         setId(null);
         setFirstName('');
@@ -90,6 +100,9 @@ const EmployeeDashboard = () => {
     return (
         <Container>
             <h2>Employee Dashboard</h2>
+            <Button onClick={handleLogout} variant="contained" color="secondary" style={{ marginBottom: '20px' }}>
+                Logout
+            </Button>
             <TextField label="First Name" variant="outlined" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <TextField label="Last Name" variant="outlined" value={lastName} onChange={(e) => setLastName(e.target.value)} />
             <TextField label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />

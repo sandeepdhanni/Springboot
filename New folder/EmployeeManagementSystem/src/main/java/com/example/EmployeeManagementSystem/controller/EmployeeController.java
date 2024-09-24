@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@CrossOrigin("*")
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/api/employees")
 @Tag(name = "Employee Management", description = "Employee Management APIs")

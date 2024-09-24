@@ -29,8 +29,16 @@ const Register = () => {
                     value={email} onChange={(e) => setEmail(e.target.value)} />
                 <TextField label="Password" type="password" variant="outlined" fullWidth margin="normal"
                     value={password} onChange={(e) => setPassword(e.target.value)} />
+                    
                 <Button type="submit" variant="contained" color="primary">Register</Button>
             </form>
+            <Button 
+                variant="contained" 
+                color="secondary" 
+                onClick={() => navigate('/login')} 
+                style={{ marginTop: '20px' }}>
+                Login
+            </Button>
         </Container>
     );
 };
