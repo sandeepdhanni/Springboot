@@ -21,11 +21,12 @@ import io.jsonwebtoken.security.Keys;
 public class JWTService {
 
     String signatureKey = "f3ef4f303d10f3dff46420489545aad6e5c3dc2435731b92be9ca975baa6b393";
-    int expiration = 1000*60*3;//3 minutes
+    int expiration = 1000*60*30;//30 minutes
 
     public String genrateToken(UserDetails userDetails) {
         return genrateToken(new HashMap<>(),userDetails);
     }
+
 
     public String genrateToken(Map<String,Object> extraClaims, UserDetails userDetails) {
 

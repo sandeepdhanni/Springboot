@@ -53,16 +53,40 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+
   const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:2001/auth/login', { username, password });
-      localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
-    } catch (error) {
-      alert('Login failed. Please check your credentials.');
-    }
-  };
+            e.preventDefault();
+            try {
+              console.log("Sending login request with:", { username, password });
+        
+              const response = await axios.post("http://localhost:2001/auth/login", {
+                username,
+                password,
+              });
+        
+              console.log("Login response:", response);
+              const token  = response.data;
+              console.log(token);
+        
+              localStorage.setItem("token", token);
+        
+              navigate("/dashboard");
+            } catch (error) {
+              console.error("Login failed:", error);
+              alert("Login failed. Please check your credentials.");
+            }
+        };
+
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post('http://localhost:2001/auth/login', { username, password });
+  //     localStorage.setItem('token', response.data.token);
+  //     navigate('/dashboard');
+  //   } catch (error) {
+  //     alert('Login failed. Please check your credentials.');
+  //   }
+  // };
 
   return (
     <div className="container">

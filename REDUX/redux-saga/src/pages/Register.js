@@ -42,6 +42,8 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+
   const [role, setRole] = useState('');
   const navigate = useNavigate();
 
@@ -65,6 +67,13 @@ const Register = () => {
           placeholder="FirstName" 
           value={firstname} 
           onChange={(e) => setFirstname(e.target.value)} 
+        />
+        <input 
+          type="text" 
+          className="input-field" 
+          placeholder="LastName" 
+          value={lastname} 
+          onChange={(e) => setLastname(e.target.value)} 
         />
         <input 
           type="text" 
