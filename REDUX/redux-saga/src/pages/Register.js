@@ -41,13 +41,14 @@ import '../styles/styles.css'; // Import the CSS file
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [firstname, setFirstname] = useState('');
   const [role, setRole] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:2001/auth/signup', { username, password, role });
+      await axios.post('http://localhost:2001/auth/signup', { username, password, role, firstname });
       navigate('/login');
     } catch (error) {
       alert('Registration failed. Please try again.');
@@ -58,6 +59,13 @@ const Register = () => {
     <div className="container">
       <form className="form" onSubmit={handleRegister}>
         <h2 className="form-title">Register</h2>
+        <input 
+          type="text" 
+          className="input-field" 
+          placeholder="FirstName" 
+          value={firstname} 
+          onChange={(e) => setFirstname(e.target.value)} 
+        />
         <input 
           type="text" 
           className="input-field" 

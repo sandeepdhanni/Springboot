@@ -6,11 +6,13 @@ import Register from "./pages/Register";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import { Route, Routes } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
+import Navbar from "./pages/Navbar";
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
