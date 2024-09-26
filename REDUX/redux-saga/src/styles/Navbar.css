@@ -1,0 +1,27 @@
+.navbar-list {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-item {
+    position: relative;
+  }
+  
+  .navbar-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s;
+  }
+  
+  .navbar-link:hover {
+    color: #ffcc00;
+  }
+  
+  .active {
+    font-weight: bold;
+    border-bottom: 2px solid #ffcc00;
+  }
