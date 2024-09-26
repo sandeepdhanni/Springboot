@@ -34,11 +34,27 @@ body, html {
   background-color: #0056b3;
   border-radius: 4px;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .nav-link:hover {
   background-color: #003d7a;
 }
+
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.logout-btn:hover {
+  background-color: #0056b3;
+  border-radius: 4px;
+}
+
 
 /* Form Styles */
 .container {

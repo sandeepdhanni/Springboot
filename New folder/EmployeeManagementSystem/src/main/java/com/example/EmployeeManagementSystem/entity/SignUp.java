@@ -1,6 +1,5 @@
 package com.example.EmployeeManagementSystem.entity;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,15 +9,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity
 public class SignUp {
 
 
-    String firstname;
-    String lastname;
-    String email;
-    String username;
-    String password;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String username;
+    private String password;
     private String role;
 
 
