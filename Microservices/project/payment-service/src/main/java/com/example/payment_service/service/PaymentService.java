@@ -23,4 +23,8 @@ public class PaymentService {
     public String paymentProcessing(){
         return new Random().nextBoolean()?"success":"false";
     }
+
+    public Payment findPaymentHistroyByOrderId(int orderId) {
+        return repository.findByOrderId(orderId);
+    }
 }
