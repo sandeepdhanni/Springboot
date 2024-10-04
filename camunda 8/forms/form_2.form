@@ -1,0 +1,27 @@
+{
+  "components": [
+    {
+      "label": "Enter your name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_13q6vwk",
+        "columns": null
+      },
+      "id": "Field_0p16tg7",
+      "key": "name",
+      "description": "please enter your name",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form2",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}

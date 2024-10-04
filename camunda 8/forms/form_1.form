@@ -1,0 +1,41 @@
+{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "male",
+          "value": "male"
+        },
+        {
+          "label": "female",
+          "value": "female"
+        },
+        {
+          "label": "others",
+          "value": "others"
+        }
+      ],
+      "label": "Checkbox group",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_05go3ng",
+        "columns": null
+      },
+      "id": "Field_1ahmca7",
+      "key": "type",
+      "validate": {
+        "required": true
+      },
+      "disabled": false
+    }
+  ],
+  "type": "default",
+  "id": "Form1",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}

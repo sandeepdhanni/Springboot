@@ -1,0 +1,29 @@
+{
+  "components": [
+    {
+      "subtype": "date",
+      "dateLabel": "Enter the Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0cgxm29",
+        "columns": null
+      },
+      "id": "Field_02kyu84",
+      "key": "date",
+      "description": "Please enter your date",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form3",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}
