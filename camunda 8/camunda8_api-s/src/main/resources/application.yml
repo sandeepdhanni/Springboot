@@ -1,0 +1,17 @@
+
+server:
+  port: 8088
+
+spring:
+  application:
+    name: camunda8_api-s
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: narendra
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
