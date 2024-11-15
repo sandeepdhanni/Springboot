@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_10ow67w" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.25.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="HelpRohitEscape" name="Help Rohit Escape" isExecutable="true" camunda:historyTimeToLive="60">
+    <bpmn:startEvent id="StartEvent_1" name="rohit need to escape from france">
+      <bpmn:outgoing>Flow_07oorr0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_07oorr0" sourceRef="StartEvent_1" targetRef="Activity_1c6xvlc" />
+    <bpmn:sequenceFlow id="Flow_1vz6xci" sourceRef="Activity_1c6xvlc" targetRef="Activity_11g2wg2" />
+    <bpmn:endEvent id="Event_0gvuwl5" name="rohit is safe">
+      <bpmn:incoming>Flow_1he0qhg</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0yy8v3w" sourceRef="Activity_11g2wg2" targetRef="Activity_0dlpoff" />
+    <bpmn:userTask id="Activity_1c6xvlc" name="prepare for departsure" camunda:formRef="maker" camunda:formRefBinding="deployment">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_07oorr0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vz6xci</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1he0qhg" sourceRef="Activity_0dlpoff" targetRef="Event_0gvuwl5" />
+    <bpmn:userTask id="Activity_11g2wg2" name="get help from sandeep" camunda:formRef="checker" camunda:formRefBinding="deployment">
+      <bpmn:incoming>Flow_1vz6xci</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yy8v3w</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0dlpoff" name="serve time overseas">
+      <bpmn:incoming>Flow_0yy8v3w</bpmn:incoming>
+      <bpmn:outgoing>Flow_1he0qhg</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="HelpRohitEscape">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="166" y="142" width="62" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0gvuwl5_di" bpmnElement="Event_0gvuwl5">
+        <dc:Bounds x="772" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="762" y="142" width="57" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0v20has_di" bpmnElement="Activity_1c6xvlc">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qv4vxb_di" bpmnElement="Activity_11g2wg2">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_152z1lx_di" bpmnElement="Activity_0dlpoff">
+        <dc:Bounds x="600" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_07oorr0_di" bpmnElement="Flow_07oorr0">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vz6xci_di" bpmnElement="Flow_1vz6xci">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yy8v3w_di" bpmnElement="Flow_0yy8v3w">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="600" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1he0qhg_di" bpmnElement="Flow_1he0qhg">
+        <di:waypoint x="700" y="117" />
+        <di:waypoint x="772" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_11782ae" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.25.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="Process_1jn1p59" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="name" label="name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0uz1n23</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1usbhbp" messageRef="Message_0h068o2" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0uz1n23" sourceRef="StartEvent_1" targetRef="Activity_022nakx" />
+    <bpmn:sequenceFlow id="Flow_0ges9rk" sourceRef="Activity_022nakx" targetRef="utask1" />
+    <bpmn:sequenceFlow id="Flow_1bacvp3" sourceRef="utask1" targetRef="Activity_0isbz8j" />
+    <bpmn:sequenceFlow id="Flow_0tpbru4" sourceRef="Activity_0isbz8j" targetRef="utask2" />
+    <bpmn:endEvent id="Event_18udcd8">
+      <bpmn:incoming>Flow_00yhvu5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_00yhvu5" sourceRef="utask2" targetRef="Event_18udcd8" />
+    <bpmn:serviceTask id="Activity_022nakx" name="stask1">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">http:localhost:2000/getconnector/${name}</camunda:inputParameter>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:outputParameter name="namelength">${response}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0uz1n23</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ges9rk</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="utask1" name="utask1">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="namelength" label="namelength" type="string" />
+          <camunda:formField id="num1" label="num1" type="long" />
+          <camunda:formField id="num2" label="num2" type="long" />
+          <camunda:formField id="num3" label="num3" type="long" />
+          <camunda:formField id="num4" label="num4" type="long" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ges9rk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bacvp3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0isbz8j" name="stask2">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">http://localhost:2000/postconnector</camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="payload">${"num1:"${num1},
+"num2:"${num2},
+"num3:"${num3},
+"num4:"${num4}
+}</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application-json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:outputParameter name="countOutput">${response}</camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1bacvp3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tpbru4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="utask2" name="utask2">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="countOutput" label="countOutput" type="long" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tpbru4</bpmn:incoming>
+      <bpmn:outgoing>Flow_00yhvu5</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:message id="Message_0h068o2" name="msg-s-2" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1jn1p59">
+      <bpmndi:BPMNShape id="Event_07bxd7j_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18udcd8_di" bpmnElement="Event_18udcd8">
+        <dc:Bounds x="912" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cyoyhx_di" bpmnElement="Activity_022nakx">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qt8dhs_di" bpmnElement="utask1">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0g5bgds_di" bpmnElement="Activity_0isbz8j">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0c2m8tx_di" bpmnElement="utask2">
+        <dc:Bounds x="750" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0uz1n23_di" bpmnElement="Flow_0uz1n23">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ges9rk_di" bpmnElement="Flow_0ges9rk">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bacvp3_di" bpmnElement="Flow_1bacvp3">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tpbru4_di" bpmnElement="Flow_0tpbru4">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="750" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00yhvu5_di" bpmnElement="Flow_00yhvu5">
+        <di:waypoint x="850" y="117" />
+        <di:waypoint x="912" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

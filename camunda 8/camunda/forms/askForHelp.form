@@ -1,0 +1,56 @@
+{
+  "components": [
+    {
+      "label": "Write Request For Help",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0bufpdm",
+        "columns": null
+      },
+      "id": "Field_179ddfy",
+      "key": "helpNote",
+      "description": "say something convincing to get help",
+      "validate": {
+        "pattern": "^.\"please.\"$"
+      }
+    },
+    {
+      "label": "Book To pack",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1v7rqoe",
+        "columns": null
+      },
+      "id": "Field_1uhxqao",
+      "key": "book",
+      "description": "what book would you like to bring",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Who Can Help?",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_10psyfy",
+        "columns": null
+      },
+      "id": "Field_1exkyil",
+      "key": "help",
+      "description": "who do u want to ask for help?",
+      "validate": {
+        "required": true,
+        "pattern": "Rohit|India"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "checker",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.25.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

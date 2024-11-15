@@ -1,0 +1,42 @@
+{
+  "components": [
+    {
+      "label": "Book To pack",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1v7rqoe",
+        "columns": null
+      },
+      "id": "Field_1uhxqao",
+      "key": "book",
+      "description": "what book would you like to bring",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Who Can Help?",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_10psyfy",
+        "columns": null
+      },
+      "id": "Field_1exkyil",
+      "key": "help",
+      "description": "who do u want to ask for help?",
+      "validate": {
+        "required": true,
+        "pattern": "sandeep|India"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "maker",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.25.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

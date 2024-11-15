@@ -1,0 +1,3 @@
+com\example\workflow\Application.class
+com\example\workflow\LoggerDelegate.class
+com\example\workflow\CheckWeatherDelgate.class
