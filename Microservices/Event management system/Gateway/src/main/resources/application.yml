@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+
+        - id: event-service
+          uri: lb://EVENT-SERVICE
+          predicates:
+            - Path=/events/**
+
+        - id: ticket-service
+          uri: lb://TICKET-SERVICE
+          predicates:
+            - Path=/tickets/**
+
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/payments/**
+
+        - id: notification-service
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+            - Path=/notifications/**
+
+      default-filters:
+        - AddRequestHeader=Cache-Control, no-cache
+        - AddResponseHeader=Content-Type, application/json
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
