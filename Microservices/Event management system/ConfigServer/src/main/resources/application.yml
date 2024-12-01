@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          #search-locations: file:///C:/config
+          search-locations: file:///C:\Users\Sreenivas Bandaru\Desktop\Springboot\Microservices\StudentMicroservice\config-server
