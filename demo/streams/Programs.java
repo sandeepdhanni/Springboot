@@ -30,19 +30,20 @@ public class Programs {
         list1.add("sam");
         for(String s:list1){
             if(s.startsWith("s")){
-                System.out.println(s);
+                System.out.println("Starting with s are : " +s);
             }
         }
-        list1.stream().filter(t->t.startsWith("d")).forEach(t->System.out.println(t));
+        list1.stream().filter(t->t.startsWith("d")).forEach(t->System.out.println("conditional check: "+t));
 
 
 
+        //this is how u iterate over a map using streams
         Map<Integer,String> map1=new HashMap<>();
         map1.put(1,"sun");
         map1.put(2,"joe");
         map1.put(3,"sam");
         map1.put(4,"jess");
-        map1.forEach((k,v)->System.out.println(k+":"+v));
+        map1.forEach((k,v)->System.out.println("iterate over a map : "+k+":"+v));
 
 
 
@@ -55,7 +56,7 @@ public class Programs {
         list.add("dhanni");
         list.add("john");
          list.add("sam");
-//using conditional statements
+         //using conditional statements
          for(String s:list){
              System.out.println(s);
          }
@@ -99,8 +100,14 @@ public class Programs {
 
         //program to find the occurances of each character in a string
         String input="sandepdhanni";
-      //  String[] result = input.split("");//this will convert string to string array
-//        System.out.println(Arrays.toString(result));
+        String[] result = input.split("");//this will convert string to string array
+        System.out.println(Arrays.toString(result));
+
+
+
+        //in how many ways can we create a object- using new or enum or using clone()
+
+
 
 
     }
