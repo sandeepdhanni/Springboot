@@ -1,0 +1,75 @@
+statement that TypeScript is a superset of JavaScript, but it's not like it is adding more features
+
+to JavaScript. No, it doesn't give you more of callbacks. It doesn't give you more of arrow
+function. It just allows you to write JavaScript in a much precise manner so that your code
+
+faces a lot less error in the runtime. If there is any error, it is already being displayed to you
+
+while writing the code at the kind of when you're just typing them out in the your favorite editor,
+
+maybe VS code or something. That is where we want to just catch those error and find that we
+
+shouldn't be doing something like that. So that is all your TypeScript. It is not going to give you
+
+
+
+
+
+
+
+statement what TypeScript does for you. The simple idea behind the TypeScript is static checking.
+
+That's the only job. And yes, that's the only one job that TypeScript has got for you.
+
+The static checking is something which is present in many languages, especially the languages such as
+
+Java or maybe even GoLang. A lot of languages are built in with the static checking. And what does
+
+the static checking means that whenever you're writing the code, the parser of the language or the
+
+entire syntax of the language is constantly being analyzed by the IDE's. But not in the case ofJavaScript. Whatever you write is just okay for the JavaScript. And when the code executes in the
+
+browser or in the engine like node environment or anything done, then only the errors of JavaScript
+
+are being thrown at your face. And at that time, you just say, ah, that's wrong. And you need to
+rerun the code itself. But it would be really a great help if there is a static checker which
+
+checks my code as I try to write it. For example, I'm trying to access an object which is not yet
+
+defined. If something can analyze my code and can give me a hint that that object doesn't exist
+
+in the object properties, then obviously it's much more easier for me. 
+TypeScript is just for static checking. It just analyze your code and help you to understand that
+
+you might be running into a potential error without even running the code and getting the errors
+at the runtime itself. That's all it does. So I hope you understand that. The whole job of the
+TypeScript is simply to analyze the code. That's it. That's all it does
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

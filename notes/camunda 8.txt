@@ -1,0 +1,23 @@
+
+Camunda 8 is the latest version of Camunda, an open-source workflow and decision automation platform. 
+
+Improved Architecture: Camunda 8 introduces a more modular and flexible architecture, making it easier to integrate with other systems and scale.
+Cloud-Native: Designed for cloud environments, Camunda 8 supports containerization and serverless deployment.
+
+difference between camunda 7 and camunda 8:
+Integration
+REST API (Camunda 7): Camunda 7 provides a REST API for integration.
+Improved REST API and Connectors (Camunda 8): Camunda 8 enhances the REST API and adds more connectors for easier integration.
+Security
+Basic Authentication (Camunda 7): Camunda 7 offers basic authentication mechanisms.
+Enhanced Security (Camunda 8): Camunda 8 strengthens security with improved authentication, authorization, and encryption.
+Deployment
+Traditional Deployment (Camunda 7): Camunda 7 typically deploys on traditional application servers or containers.
+Cloud-Native Deployment (Camunda 8): Camunda 8 supports cloud-native deployment on Kubernetes, Docker, and serverless environments.
+Architecture
+Camunda 7:
+Monolithic architecture.
+Built around a single, vertically scalable process engine
+Camunda 8:
+Microservices-based architecture 
+Uses Zeebe as its core engine, which is designed for distributed systems.

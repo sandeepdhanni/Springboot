@@ -1,0 +1,109 @@
+
+
+      Camunda api Assign and unAssign task process
+
+
+1)  For calling restapi we need restTemplate/webclient/feignclient
+
+ for that i use webclien dependency
+
+  <!-- https://mvnrepository.com/artifact/org.springframework/spring-webflux -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+			<version>6.1.11</version>
+		</dependency>
+2)  Create one config class and create bean 
+
+ 
+@Configuration
+public class WebclientConfig {
+
+    @Bean
+    public WebClient webClient() {
+        return WebClient.builder()
+                .baseUrl("https://jfk-1.tasklist.camunda.io/c4765f54-b30c-4eba-b09f-2914741db450/v1")
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + "eyJhbGciOiJSUzI1NiIsIn" +
+                        "R5cCI6IkpXVCIsImtpZCI6IlFVVXdPVFpDUTBVM01qZEVRME0wTkRFelJrUkJORFk0T0RZeE1FRT" +
+                        "BSa1pFUlVWRVF6bERNZyJ9.eyJodHRwczovL2NhbXVuZGEuY29tL2NsdXN0ZXJJZCI6ImM0NzY1Zj" +
+                        "U0LWIzMGMtNGViYS1iMDlmLTI5MTQ3NDFkYjQ1MCIsImh0dHBzOi8vY2FtdW5kYS5jb20vb3JnSW" +
+                        "QiOiJlMDAzODY2Mi0yNmI2LTQyNTgtOWFjMy01N2IxNTY3YmJkYWMiLCJodHRwczovL2NhbXVuZ" +
+                        "GEuY29tL2NsaWVudElkIjoiN0prZWVDcDRsOTNlOE0uSW1iMUVnYTBVc1pnMVlscHciLCJpc3" +
+                        "MiOiJodHRwczovL3dlYmxvZ2luLmNsb3VkLmNhbXVuZGEuaW8vIiwic3ViIjoibXdvOTB0MnI" +
+                        "zMTYwN3ozNkJOSDY5dFdGS0JYNTVqMVdAY2xpZW50cyIsImF1ZCI6InRhc2tsaXN0LmNhbXV" +
+                        "uZGEuaW8iLCJpYXQiOjE3MjkwODM0MjcsImV4cCI6MTcyOTE2OTgyNywic2NvcGUiOiJjNDc" +
+                        "2NWY1NC1iMzBjLTRlYmEtYjA5Zi0yOTE0NzQxZGI0NTAiLCJndHkiOiJjbGllbnQtY3JlZG" +
+                        "VudGlhbHMiLCJhenAiOiJtd285MHQycjMxNjA3ejM2Qk5INjl0V0ZLQlg1NWoxVyJ9." +
+                        "jovcI7jjW1sPCvQhlRBv0qaVfY9DDkEU6tWBBTIFO1RhapRx8CEtqn_hMwz_AWZZmGQAH" +
+                        "_pely3eq2Mb_4HKgfAfNj8skMGUHU0pTwLcRL3L-47OURC2mvRBQZrdcrEUidzauWSjs" +
+                        "pBEVsvFZrrsHPZumIfKnxmpISb-4RFqN8TZPJcnUKIlU-nw-bDkmj46Hhf7T8WF3pXwnOvl" +
+                        "FhPVu6ossOJAjV11LIx_53qEgm-1YIcrs3CuzmiZMEoyl1s_FGzWf_mDAOOrqYmPwxuG9c" +
+                        "8xhkkM8ADPQ81UsHbwE5VPfO0SRMVTKnruBMPtP2VHKShMHU3l1qEqj1hsv5Ensw")
+                .build();
+
+    }
+}
+
+3)Create one model class AssignTask
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class AssignTask {
+
+     public String assignee;
+     public Boolean allowOverrideAssignment;
+
+}
+4)Create one service class 
+
+private final WebClient webClient;
+    public AuditRequestService(WebClient webClient) {
+        this.webClient = webClient;
+    }
+
+  public Object getAssignTask(AssignTask assignTask)
+     {
+         Object claimed = webClient.patch()
+
+                 .uri("/tasks/6755399441234580/assign")
+                 .body(Mono.just(assignTask), assignTask.getClass())
+                 .retrieve()
+                 .bodyToMono(Object.class)
+                 .block();
+         return claimed;
+     }
+5) Create one controller 
+
+@RestController
+@RequestMapping("/auditRequest")
+public class AuditRequestCamundaController {
+
+    @Autowired
+    AuditRequestService auditRequestService;
+
+    @PostMapping("/completeTask")
+    public String completeTask(@RequestBody CompleteTaskModel completeTask){
+        return auditRequestService.completeTask(completeTask);
+    }
+
+    @PostMapping("/assignTask")
+    public Object assignTask(@RequestBody AssignTask assignTask){
+        return auditRequestService.getAssignTask(assignTask);
+    }
+
+}
+6)  Test api through postman
+
+ Url :-  http://localhost:8086/auditRequest/assignTask
+ body :-
+ {
+    "assignee":"narendrapallaki@gmail.com",
+    "allowOverrideAssignment":true
+ }
+
+Note :-  if it is security added means add jwt token (bear token)
+
+Than test it.

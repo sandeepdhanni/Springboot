@@ -1,0 +1,117 @@
+redux :
+Redux is a state managing library used in JavaScript apps. It simply manages the state of your application or in 
+other words, it is used to manage the data of the application. It is used with a library like React.
+ It makes easier to manage state and data.it can be userd with any other framework like angular,vue.....
+it prevents props drilling..
+
+
+eg: suppose if we have multiple div say like 10 div and if i want to pass any info to the last div then the info 
+should go through all the divs...so what redux will do is it will create a global store where it will store all 
+the state in that store...and if any point of time anybody needs informations then they can reach out directly 
+to the store..Redux stores all the application’s state in a single object, making it easy to access, update, 
+and debug.
+
+
+
+why use redux:
+when we are creating an application and we have to pass props from one component to another or pass same data to 
+another props then we again have to pass data through the props which creates a wishless cycle which is called 
+as pop drilling..
+
+
+react-redux:
+react-redux is a library that provides bindings to use react and redux together in an application..
+
+
+redux-toolkit:
+Redux Toolkit, also known as RTK, is a package that helps developers write Redux logic more efficiently.
+
+
+slice:
+
+A slice represents a specific piece of the Redux state and contains the reducer logic, action creators,
+and initial state for that part of the state.To create a slice we need to use createSlice function....
+
+
+
+
+
+
+Building Parts of redux: 
+ 
+
+Action
+Reducer
+Store
+
+Actions:
+ Actions are a plain JavaScript object that contains information. Actions are the only source of 
+information for the store. actions are the only way to interact with the store.. Actions have a type field 
+that tells what kind of action to perform and all other fields contain information or data. And there is 
+one other term called Action Creators, these are the function that creates actions. So actions are the 
+information (Objects) and action creator are functions that return these actions object.
+Example: The easiest example we can take try is To-do. So we will create two action creators one for adding 
+a task in to-do and for removing.
+
+
+Store: 
+It contains the state of the components which need to be passed to other components.store is used to hold 
+the state of your application...  allows access to the state using getState().. allows state to be updated 
+using dispatch(action) ...registers listeners using susbribe(listener)...handles unregistering of listeners
+through the functions returned by susbribe(listener)...for creating the store we use configureStore method. 
+
+
+Reducers:
+The reducers in react-redux are the pure functions that contain the operations that need to be performed on 
+the state.These functions accept the initial state of the state being used and the action type. function that
+accepts the state and action as arguments and returns the next state of the application... It updates 
+the state and responds with the new state. This updated state is sent back to the view components of the 
+react to make the necessary changes. A reducer must contain the action type.the job of the reducer is to 
+update the things.reducer is just anm object..
+
+(previousstate,action)=>new state
+
+
+
+useSelector:
+useSlector is the guy who can directly talk to the store..if anyone asks the information they don't talk to the store instead they
+call the useSelector hook so that they selectively ask the store what inrformation does it need..
+
+
+useDispatch:
+whenever you want to update some information in the store..we can do it with reducers but we cannot call reducers directly because
+it will break the flow..in that case we use this hook...this hook tells the reducer to update the store..
+
+
+
+Reducers are pure functions that handle actions and update the state.
+Receive the current state and an action.
+Return a new state based on the action.
+
+
+three principles of redux are:
+the global state of your application is stored as an object inside a single store..
+
+the only way to change the state is to dispatch an action,an object that describes what happened..
+
+to specify how the state tree is updated based on actions, you write pure reducers...
+
+
+
+middlewares: 
+In Redux, middlewares are functions that intercept and modify actions before they reach the reducer. 
+They sit between the action dispatch and the reducer, allowing you to perform additional logic, modify 
+actions, or even cancel actions.
+const exampleMiddleware = store => next => action => {
+  // middleware logic here
+};
+store provides access to dispatch and getState.
+next is a function to pass the action to the next middleware (or reducer if it's the last middleware).
+action is the action being dispatched.
+
+
+
+
+
+
+

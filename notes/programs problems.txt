@@ -1,0 +1,483 @@
+
+Here are some more questions related to arrays and loops in Java:
+1. Print every second element from an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print every second element.
+2. Print the sum of every third element in an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the sum of every third element.
+3. Print the elements of an array in reverse order
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements in reverse order.
+4. Find the maximum and minimum elements in an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the maximum and minimum elements.
+5. Swap adjacent elements in an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, swap adjacent elements.
+6. Print the elements of an array that are greater than the previous element
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements that are greater than the previous element.
+7. Find the index of the first occurrence of a given element in an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the index of the first occurrence of a given element.
+8. Print the elements of an array that are multiples of 3
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements that are multiples of 3.
+9. Find the sum of the elements of an array that are greater than a given threshold
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the sum of the elements that are greater than a given threshold.
+10. Print the elements of an array in a zigzag pattern
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements in a zigzag pattern.
+Let me know if you need help with any of these questions!
+i need more questions
+Here are some more questions related to arrays and loops in Java:
+11. Find the maximum sum of a subarray within an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the maximum sum of a subarray.
+12. Print the elements of an array that are palindromes
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements that are palindromes.
+13. Find the longest increasing subsequence in an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the longest increasing subsequence.
+14. Print the elements of an array that are prime numbers
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements that are prime numbers.
+15. Find the maximum difference between two elements in an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the maximum difference between two elements.
+16. Print the elements of an array in a circular fashion
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements in a circular fashion.
+17. Find the number of occurrences of a given element in an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the number of occurrences of a given element.
+18. Print the elements of an array that are power of 2
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements that are power of 2.
+19. Find the minimum number of operations to sort an array
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, find the minimum number of operations to sort the array.
+20. Print the elements of an array in a spiral pattern
+Given an array arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, print the elements in a spiral pattern.
+Let me know if you need help with any of these questions!
+can u provide questions on string also just like arrays problem which u provided
+Here are some string-related questions in Java:
+1. Reverse a string
+Given a string str = "hello", write a program to reverse the string.
+2. Find the length of a string without using the length() method
+Given a string str = "hello", write a program to find the length of the string without using the length() method.
+3. Check if a string is a palindrome
+Given a string str = "madam", write a program to check if the string is a palindrome.
+4. Find the maximum frequency of a character in a string
+Given a string str = "hello", write a program to find the maximum frequency of a character in the string.
+5. Replace all occurrences of a character in a string
+Given a string str = "hello", write a program to replace all occurrences of a character (e.g., 'l' with 'x').
+6. Find the substring of a string
+Given a string str = "hello world", write a program to find the substring "world".
+7. Check if two strings are anagrams
+Given two strings str1 = "listen" and str2 = "silent", write a program to check if they are anagrams.
+8. Find the first non-repeating character in a string
+Given a string str = "hello", write a program to find the first non-repeating character.
+9. Check if a string contains only digits
+Given a string str = "12345", write a program to check if the string contains only digits.
+10. Find the maximum length of a substring with no repeating characters
+Given a string str = "abcabcbb", write a program to find the maximum length of a substring with no repeating characters.
+11. Check if a string is a subsequence of another string
+Given two strings str1 = "abc" and str2 = "ahbgdc", write a program to check if str1 is a subsequence of str2.
+12. Find the minimum number of operations to make two strings equal
+Given two strings str1 = "abc" and str2 = "abcd", write a program to find the minimum number of operations (insertions, deletions, substitutions) to make str1 equal to str2.
+13. Check if a string is a valid palindrome with at most one edit
+Given a string str = "abccba", write a program to check if the string is a valid palindrome with at most one edit.
+14. Find the longest common prefix of two strings
+Given two strings str1 = "hello" and str2 = "hello world", write a program to find the longest common prefix.
+15. Check if a string contains only uppercase letters
+Given a string str = "HELLO", write a program to check if the string contains only uppercase letters.
+16. Find the maximum length of a substring with all vowels
+Given a string str = "aeiou", write a program to find the maximum length of a substring with all vowels.
+17. Check if a string is a valid email address
+Given a string str = "example@example.com", write a program to check if the string is a valid email address.
+18. Find the minimum number of operations to make a string a palindrome
+Given a string str = "abcba", write a program to find the minimum number of operations (insertions, deletions, substitutions) to make the string a palindrome.
+19. Check if a string contains only hexadecimal digits
+Given a string str = "123abc", write a program to check if the string contains only hexadecimal digits.
+20. Find the longest common suffix of two strings
+Given two strings str1 = "hello" and str2 = "worldo", write a program to find the longest common suffix.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.Comparator;
+
+class Subjects {
+private int telugu;
+private int hindi;
+private int english;
+private int science;
+private int maths;
+
+public Subjects(int telugu, int hindi, int english, int science, int maths) {
+this.telugu = telugu;
+this.hindi = hindi;
+this.english = english;
+this.science = science;
+this.maths = maths;
+}
+
+public int getTelugu() {
+return telugu;
+}
+
+public int getHindi() {
+return hindi;
+}
+
+public int getEnglish() {
+return english;
+}
+
+public int getScience() {
+return science;
+}
+
+public int getMaths() {
+return maths;
+}
+}
+
+class Student {
+private String name;
+private int age;
+private Subjects subjects;
+
+public Student(String name, int age, Subjects subjects) {
+this.name = name;
+this.age = age;
+this.subjects = subjects;
+}
+
+public String getName() {
+return name;
+}
+
+public int getAge() {
+return age;
+}
+
+public Subjects getSubjects() {
+return subjects;
+}
+
+public double getPercentage() {
+int totalMarks = 500;
+int scoredMarks = subjects.getTelugu() + subjects.getHindi() + subjects.getEnglish() + subjects.getScience() + subjects.getMaths();
+return (double) scoredMarks / totalMarks * 100;
+}
+
+@Override
+public String toString() {
+return "Student{" +
+"name='" + name + '\'' +
+", age=" + age +
+", subjects=" + subjects +
+'}';
+}
+}
+
+public class First {
+public static void main(String[] args) {
+List<Student> students = new ArrayList<>();
+
+students.add(new Student("Ramu", 25, new Subjects(56, 67, 89, 67, 78)));
+students.add(new Student("Ramu", 25, new Subjects(98, 78, 89, 67, 78)));
+students.add(new Student("Raju", 27, new Subjects(56, 40, 89, 56, 78)));
+students.add(new Student("Ravi", 28, new Subjects(89, 67, 89, 67, 78)));
+
+Set<String> seen = new HashSet<>();
+List<Student> filteredStudents = students.stream()
+.filter(student -> student.getPercentage() > 70)
+.filter(student -> seen.add(student.getName() + student.getAge()))
+.sorted(Comparator.comparingInt(Student::getAge)) // Sorting by age
+.collect(Collectors.toList());
+
+filteredStudents.forEach(System.out::println);
+}
+} can u provide question on streams using the above code
+Here are some questions on Streams using the above code:
+1. Find all students with a percentage greater than 70
+Use the filter() method to find all students with a percentage greater than 70.
+2. Find the student with the highest percentage
+Use the max() method to find the student with the highest percentage.
+3. Find all students with a percentage greater than 70 and age less than 27
+Use the filter() method to find all students with a percentage greater than 70 and age less than 27.
+4. Sort the students by their percentage in descending order
+Use the sorted() method to sort the students by their percentage in descending order.
+5. Find the average percentage of all students
+Use the mapToDouble() and average() methods to find the average percentage of all students.
+6. Find the student with the highest percentage in each age group
+Use the groupingBy() and max() methods to find the student with the highest percentage in each age group.
+7. Find all students with a percentage greater than 70 and name starting with "R"
+Use the filter() method to find all students with a percentage greater than 70 and name starting with "R".
+8. Sort the students by their age and then by their percentage
+Use the sorted() method to sort the students by their age and then by their percentage.
+9. Find the student with the lowest percentage
+Use the min() method to find the student with the lowest percentage.
+10. Find all students with a percentage greater than 70 and at least one subject score greater than 80
+Use the filter() method to find all students with a percentage greater than 70 and at least one subject score greater than 80.
+Let me know if you need help with any of these questions!
+Here are the answers to the questions:
+1. Find all students with a percentage greater than 70
+Java
+List<Student> studentsWithHighPercentage = students.stream()
+        .filter(student -> student.getPercentage() > 70)
+        .collect(Collectors.toList());
+2. Find the student with the highest percentage
+Java
+Student studentWithHighestPercentage = students.stream()
+        .max(Comparator.comparingDouble(Student::getPercentage))
+        .orElse(null);
+3. Find all students with a percentage greater than 70 and age less than 27
+Java
+List<Student> studentsWithHighPercentageAndAgeLessThan27 = students.stream()
+        .filter(student -> student.getPercentage() > 70 && student.getAge() < 27)
+        .collect(Collectors.toList());
+4. Sort the students by their percentage in descending order
+Java
+List<Student> studentsSortedByPercentage = students.stream()
+        .sorted(Comparator.comparingDouble(Student::getPercentage).reversed())
+        .collect(Collectors.toList());
+5. Find the average percentage of all students
+Java
+double averagePercentage = students.stream()
+        .mapToDouble(Student::getPercentage)
+        .average()
+        .orElse(0);
+6. Find the student with the highest percentage in each age group
+Java
+Map<Integer, Student> studentWithHighestPercentageInEachAgeGroup = students.stream()
+        .collect(Collectors.groupingBy(Student::getAge, Collectors.maxBy(Comparator.comparingDouble(Student::getPercentage))));
+7. Find all students with a percentage greater than 70 and name starting with "R"
+Java
+List<Student> studentsWithHighPercentageAndNameStartingWithR = students.stream()
+        .filter(student -> student.getPercentage() > 70 && student.getName().startsWith("R"))
+        .collect(Collectors.toList());
+8. Sort the students by their age and then by their percentage
+Java
+List<Student> studentsSortedByAgeAndPercentage = students.stream()
+        .sorted(Comparator.comparingInt(Student::getAge).thenComparingDouble(Student::getPercentage))
+        .collect(Collectors.toList());
+9. Find the student with the lowest percentage
+Java
+Student studentWithLowestPercentage = students.stream()
+        .min(Comparator.comparingDouble(Student::getPercentage))
+        .orElse(null);
+
+10. Find all students with a percentage greater than 70 and at least one subject score greater than 80
+Java
+List<Student> studentsWithHighPercentageAndSubjectScoreGreaterThan80 = students.stream()
+        .filter(student -> student.get
+
+
+
+11. Find the average percentage of students in each age group
+Java
+Map<Integer, Double> averagePercentageInEachAgeGroup = students.stream()
+        .collect(Collectors.groupingBy(Student::getAge, Collectors.averagingDouble(Student::getPercentage)));
+12. Find the student with the highest percentage in each subject
+Java
+Map<String, Student> studentWithHighestPercentageInEachSubject = students.stream()
+        .collect(Collectors.groupingBy(student -> {
+            if (student.getSubjects().getTelugu() >= student.getSubjects().getHindi() && student.getSubjects().getTelugu() >= student.getSubjects().getEnglish() && student.getSubjects().getTelugu() >= student.getSubjects().getScience() && student.getSubjects().getTelugu() >= student.getSubjects().getMaths()) {
+                return "Telugu";
+            } else if (student.getSubjects().getHindi() >= student.getSubjects().getEnglish() && student.getSubjects().getHindi() >= student.getSubjects().getScience() && student.getSubjects().getHindi() >= student.getSubjects().getMaths()) {
+                return "Hindi";
+            } else if (student.getSubjects().getEnglish() >= student.getSubjects().getScience() && student.getSubjects().getEnglish() >= student.getSubjects().getMaths()) {
+                return "English";
+            } else if (student.getSubjects().getScience() >= student.getSubjects().getMaths()) {
+                return "Science";
+            } else {
+                return "Maths";
+            }
+        }, Collectors.maxBy(Comparator.comparingDouble(Student::getPercentage))));
+13. Find all students with a percentage greater than 70 and at least one subject score greater than 90
+Java
+List<Student> studentsWithHighPercentageAndSubjectScoreGreaterThan90 = students.stream()
+        .filter(student -> student.getPercentage() > 70 && (student.getSubjects().getTelugu() > 90 || student.getSubjects().getHindi() > 90 || student.getSubjects().getEnglish() > 90 || student.getSubjects().getScience() > 90 || student.getSubjects().getMaths() > 90))
+        .collect(Collectors.toList());
+14. Sort the students by their percentage in ascending order
+Java
+List<Student> studentsSortedByPercentageAscending = students.stream()
+        .sorted(Comparator.comparingDouble(Student::getPercentage))
+        .collect(Collectors.toList());
+
+15. Find the student with the lowest percentage in each age group
+Java
+Map<Integer, Student> studentWithLowestPercentageInEachAgeGroup = students.stream()
+        .collect(Collectors.groupingBy(Student::getAge, Collectors.minBy(Comparator.comparingDouble(Student::getPercentage))));
+16. Find all students with a percentage greater than 70 and name starting with "R" or "S"
+Java
+List<Student> studentsWithHighPercentageAndNameStartingWithRorS = students.stream()
+        .filter(student -> student.getPercentage() > 70 && (student.getName().startsWith("R") || student.getName().startsWith("S")))
+        .collect(Collectors.toList());
+17. Find the average percentage of students with a percentage greater than 70
+Java
+double averagePercentageOfStudentsWithHighPercentage = students.stream()
+        .filter(student -> student.getPercentage() > 70)
+        .mapToDouble(Student::getPercentage)
+        .average()
+        .orElse(0);
+18. Find the student with the highest percentage in each subject and age group
+Java
+Map<String, Map<Integer, Student>> studentWithHighestPercentageInEachSubjectAndAgeGroup = students.stream()
+        .collect(Collectors.groupingBy(student -> {
+            if (student.getSubjects().getTelugu() >= student.getSubjects().getHindi() && student.getSubjects().getTelugu() >= student.getSubjects().getEnglish() && student.getSubjects().getTelugu() >= student.getSubjects().getScience() && student.getSubjects().getTelugu() >= student.getSubjects().getMaths()) {
+                return "Telugu";
+            } else if (student.getSubjects().getHindi() >= student.getSubjects().getEnglish() && student.getSubjects().getHindi() >= student.getSubjects().getScience() && student.getSubjects().getHindi() >= student.getSubjects().getMaths()) {
+                return "Hindi";
+            } else if (student.getSubjects().getEnglish() >= student.getSubjects().getScience() && student.getSubjects().getEnglish() >= student.getSubjects().getMaths()) {
+                return "English";
+            } else if (student.getSubjects().getScience() >= student.getSubjects().getMaths()) {
+                return "Science";
+            } else {
+                return "Maths";
+            }
+        }, Collectors.groupingBy(Student::getAge, Collectors.maxBy(Comparator.comparingDouble(Student::getPercentage)))));
+19. Find all students with a percentage greater than 70 and at least one subject score greater than 95
+Java
+List<Student> studentsWithHighPercentageAndSubjectScoreGreaterThan95 = students.stream()
+        .filter(student -> student.getPercentage() > 70 && (student.getSubjects().getTelugu() > 95 || student.getSubjects().getHindi() > 95 || student.getSubjects().getEnglish() > 95 || student.getSubjects().getScience() > 95 || student.getSubjects().getMaths() > 95))
+        .collect(Collectors.toList());
+20. Sort the students by their age and then by their percentage in descending order
+Java
+List<Student> studentsSortedByAgeAndPercentageDescending = students.stream()
+        .sorted(Comparator.comparingInt(Student::getAge).thenComparingDouble(Student::getPercentage).reversed())
+        .collect(Collectors.toList());
+
+
+
+21. Find the student with the highest percentage in each subject and return a map of subject to student
+Java
+Map<String, Student> studentWithHighestPercentageInEachSubject = students.stream()
+        .collect(Collectors.groupingBy(student -> {
+            if (student.getSubjects().getTelugu() >= student.getSubjects().getHindi() && student.getSubjects().getTelugu() >= student.getSubjects().getEnglish() && student.getSubjects().getTelugu() >= student.getSubjects().getScience() && student.getSubjects().getTelugu() >= student.getSubjects().getMaths()) {
+                return "Telugu";
+            } else if (student.getSubjects().getHindi() >= student.getSubjects().getEnglish() && student.getSubjects().getHindi() >= student.getSubjects().getScience() && student.getSubjects().getHindi() >= student.getSubjects().getMaths()) {
+                return "Hindi";
+            } else if (student.getSubjects().getEnglish() >= student.getSubjects().getScience() && student.getSubjects().getEnglish() >= student.getSubjects().getMaths()) {
+                return "English";
+            } else if (student.getSubjects().getScience() >= student.getSubjects().getMaths()) {
+                return "Science";
+            } else {
+                return "Maths";
+            }
+        }, Collectors.maxBy(Comparator.comparingDouble(Student::getPercentage))));
+
+22. Find all students with a percentage greater than 70 and return a list of their names
+Java
+List<String> namesOfStudentsWithHighPercentage = students.stream()
+        .filter(student -> student.getPercentage() > 70)
+        .map(Student::getName)
+        .collect(Collectors.toList());
+
+23. Find the average percentage of students in each age group and return a map of age to average percentage
+Java
+Map<Integer, Double> averagePercentageInEachAgeGroup = students.stream()
+        .collect(Collectors.groupingBy(Student::getAge, Collectors.averagingDouble(Student::getPercentage)));
+24. Find the student with the lowest percentage in each subject and return a map of subject to student
+Java
+Map<String, Student> studentWithLowestPercentageInEachSubject = students.stream()
+        .collect(Collectors.groupingBy(student -> {
+            if (student.getSubjects().getTelugu() <= student.getSubjects().getHindi() && student.getSubjects().getTelugu() <= student.getSubjects().getEnglish() && student.getSubjects().getTelugu() <= student.getSubjects().getScience() && student.getSubjects().getTelugu() <= student.getSubjects().getMaths()) {
+                return "Telugu";
+            } else if (student.getSubjects().getHindi() <= student.getSubjects().getEnglish() && student.getSubjects().getHindi() <= student.getSubjects().getScience() && student.getSubjects().getHindi() <= student.getSubjects().getMaths()) {
+                return "Hindi";
+            } else if (student.getSubjects().getEnglish() <= student.getSubjects().getScience() && student.getSubjects().getEnglish() <= student.getSubjects().getMaths()) {
+                return "English";
+            } else if (student.getSubjects().getScience() <= student.getSubjects().getMaths()) {
+                return "Science";
+            } else {
+                return "Maths";
+            }
+        }, Collectors.minBy(Comparator.comparingDouble(Student::getPercentage))));
+25. Find all students with a percentage greater than 70 and at least one subject score greater than 90 and return a list of their names
+Java
+List<String> namesOfStudentsWithHighPercentageAndSubjectScoreGreaterThan90 = students.stream()
+        .filter(student -> student.getPercentage() > 70 && (student.getSubjects().getTelugu() > 90 || student.getSubjects().getHindi() > 90 || student.getSubjects().getEnglish() > 90 || student.getSubjects().getScience() > 90 || student.getSubjects().getMaths() > 90))
+        .map(Student::getName)
+        .collect(Collectors.toList());
+26. Find the student with the highest percentage in each age group and return a map of age to student
+Java
+Map<Integer, Student> studentWithHighestPercentageInEachAgeGroup = students.stream()
+        .collect(Collectors.groupingBy(Student::getAge, Collectors.maxBy(Comparator.comparingDouble(Student::getPercentage))));
+27. Find all students with a percentage greater than 70 and return a list of their ages
+Java
+List<Integer> agesOfStudentsWithHighPercentage = students.stream()
+        .filter(student -> student.getPercentage() > 70)
+        .map(Student::getAge)
+        .collect(Collectors.toList());
+28. Find the average percentage of students in each subject and return a map of subject to average percentage
+Java
+Map<String, Double> averagePercentageInEachSubject = students.stream()
+        .collect(Collectors.groupingBy(student -> {
+            if (student.getSubjects().getTelugu() >= student.getSubjects().getHindi() && student.getSubjects().getTelugu() >= student.getSubjects().getEnglish() && student.getSubjects().getTelugu() >= student.getSubjects().getScience() && student.getSubjects().getTelugu() >= student.getSubjects().getMaths()) {
+                return "Telugu";
+            } else if (student.getSubjects().getHindi() >= student.getSubjects().getEnglish() && student.getSubjects().getHindi() >= student.getSubjects().getScience() && student.getSubjects().getHindi() >= student.getSubjects().getMaths()) {
+                return "Hindi";
+            } else if (student.getSubjects().getEnglish() >= student.getSubjects().getScience() && student.getSubjects().getEnglish() >= student.getSubjects().getMaths()) {
+                return "English";
+            } else if (student.getSubjects().getScience() >= student.getSubjects().getMaths()) {
+                return "Science";
+            } else {
+                return "Maths";
+            }
+        }, Collectors.averagingDouble(Student::getPercentage)));
+29. Find the student with the lowest percentage in each age group and return a map of age to student
+Java
+Map<Integer, Student> studentWithLowestPercentageInEachAgeGroup = students.stream()
+        .collect(Collectors.groupingBy(Student::getAge, Collectors.minBy(Comparator.comparingDouble(Student::getPercentage))));
+
+
+30. Find all students with a percentage greater than 70 and at least one subject score greater than 95 and return a list of their names
+
+List<String> namesOfStudentsWithHighPercentageAndSubjectScoreGreaterThan95 = students.stream()
+        .filter(student -> student.getPercentage() > 70 && (student.getSubjects().getTelugu() > 95 || student.getSubjects().getHindi() > 95 || student.getSubjects().getEnglish() > 95 || student.getSubjects().getScience() > 95 || student.getSubjects().getMaths() > 95))
+        .map(Student::getName)
+        .collect(Collectors.toList());
+31. Find the average percentage of students in each subject and return a map of subject to average percentage, excluding students with a percentage less than 50
+Java
+Map<String, Double> averagePercentageInEachSubjectExcludingLowScores = students.stream()
+        .filter(student -> student.getPercentage() >= 50)
+        .collect(Collectors.groupingBy(student -> {
+            if (student.getSubjects().getTelugu() >= student.getSubjects().getHindi() && student.getSubjects().getTelugu() >= student.getSubjects().getEnglish() && student.getSubjects().getTelugu() >= student.getSubjects().getScience() && student.getSubjects().getTelugu() >= student.getSubjects().getMaths()) {
+                return "Telugu";
+            } else if (student.getSubjects().getHindi() >= student.getSubjects().getEnglish() && student.getSubjects().getHindi() >= student.getSubjects().getScience() && student.getSubjects().getHindi() >= student.getSubjects().getMaths()) {
+                return "Hindi";
+            } else if (student.getSubjects().getEnglish() >= student.getSubjects().getScience() && student.getSubjects().getEnglish() >= student.getSubjects().getMaths()) {
+                return "English";
+            } else if (student.getSubjects().getScience() >= student.getSubjects().getMaths()) {
+                return "Science";
+            } else {
+                return "Maths";
+            }
+        }, Collectors.averagingDouble(Student::getPercentage)));
+32. Find all students with a percentage greater than 70 and return a list of their ages, excluding students with a age less than 18
+Java
+List<Integer> agesOfStudentsWithHighPercentageAndAgeGreaterThan18 = students.stream()
+        .filter(student -> student.getPercentage() > 70 && student.getAge() >= 18)
+        .map(Student::getAge)
+        .collect(Collectors.toList());
+33. Find the student with the highest percentage in each age group and return a map of age to student, excluding students with a percentage less than 50
+Java
+Map<Integer, Student> studentWithHighestPercentageInEachAgeGroupExcludingLowScores = students.stream()
+        .filter(student -> student.getPercentage() >= 50)
+        .collect(Collectors.groupingBy(Student::getAge, Collectors.maxBy(Comparator.comparingDouble(Student::getPercentage))));
+34. Find all students with a percentage greater than 70 and at least one subject score greater than 90 and return a list of their names, excluding students with a age less than 18
+Java
+List<String> namesOfStudentsWithHighPercentageAndSubjectScoreGreaterThan90AndAgeGreaterThan18 = students.stream()
+        .filter(student -> student.getPercentage() > 70 && (student.getSubjects().getTelugu() > 90 || student.getSubjects().getHindi() > 90 || student.getSubjects().getEnglish() > 90 || student.getSubjects().getScience() > 90 || student.getSubjects().getMaths() > 90) && student.getAge() >= 18)
+        .map(Student::getName)
+        .collect(Collectors.toList());
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

@@ -1,0 +1,877 @@
+		                         	MICRO-SERVICES
+		                     =============================================
+MicroServices
+======================
+
+-->microservices are modern approach in software where by application code devided in small, managable pieces,independent to others.
+-->microservices are small small services they work together 
+-->microservices are loosely coupled ->( meaning that changes to one service should not affect the other services )
+-->it is distributed environment =>not all application code at one place (based on modules(buiseness logic) devided diff applications)
+
+
+Monolith Archetecture
+===========================
+-->Single and large Code Base    => whole code application available at one place
+-->Single Stack                  =>every modules in the application developed by one progarmming language(like java)
+-->tightly coupled               =>all modules are tightly coupled each other
+-->it is centalized environment  =>all application available at one place
+-->one time deployement for entire project=> means in the application if single modules got any issue then project not deployed 
+
+
+MicroServices Communication
+====================================
+-->one micro service communicates with another microservice
+-->there are ways for micro service communication
+1)Synchronous 
+2)Asyncronous
+
+
+1)Synchronous 
+-----------------
+-->it means ,if one micro-service send request to another micro-service 
+-->in this, sending micro-service waits for the second micro-service response(blocking)
+-->RestTemplate,FeinClient are default follows Synchronous
+
+ex:
+-----
+phone call 
+-->we waited untill another person giving the response
+
+2)Asyncronous
+---------------
+-->it means ,if one micro-service send request to another micro-service 
+-->sending microservice will not wait for the second micro service for the response(non-blocking)
+-->RabbitMQ,Kafka are the example  ,Webclient follows Asynchronous
+
+ex:
+-----
+chatting(in whatsapp,etc..)
+-->sending person put the message and not wait or stop his work for the response
+
+
+Micro-service Architecture Components
+=======================================================
+
+Note = for architecture diagram search in google spring microservices(https://spring.io/microservices) then you will get official and in that diagram you will find
+1)ServiceRegistry
+2)Api-gateway
+3)ConfigServer
+4)Circuit breaker
+5)message borker
+6)Distrubuted tracing(zipkin)
+
+1.service-regstry(EUREKA)
+<========================>
+-->for communication of micro-services network location is required(servername,portnumber,ect..)
+-->instead of hardcoding the n/w location use eurka server 
+-->euraka server is a service registry and discovery server 
+-->when the micro-services running/startup they registed in the euraka server itself then euraka know his n/w location
+-->so through this eureka server micro-services communicate each other
+
+
+Eureka-Server creation
+<------------------------------>
+
+1)go to Spring initializr(create one normal spring boot application with below dependencies)
+
+2)create a project add dependencies
+-------------------------------------------
+eureka server,config client(this is for config server)
+
+3)in the main class(annotated with @SpringBootApplication) add  @EnableEurekaServer
+     ==>@EnableEurekaServer used for enabling eureka server 
+
+4)in application.yml file  
+--------------------------------
+spring:
+  application:
+    name: service-registry
+server:
+  port: 8761   #default port of eureka(good practice to use this port for eureka server)
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false  #->these two are used for ,actually eureka server also one micro-servive so this should not as act like client to eureka server
+
+
+
+5)start the application and hit http://localhost:8761 in the browser then you will get eureka dash board
+
+
+
+
+
+2.Api gateway
+<============>
+-->api gateway acts like gate for microservices
+-->means every request go through this gateway only
+-->every request come to api-gateway first  and then it will route correspondent micro-service
+-->Api Gateway simplifies complexity of client & microservices communication
+-->api-wateway is responsile to route the request to correspondent micro-service
+
+How to Implement Api-gateway
+<------------------------------------>
+1)create normal springboot application with below dependencies
+
+2)add dependencies
+--------------------------------------
+gateway,config client(this is for config server),eureka discovery client(for eureka server)
+
+3)add below propeties
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka  #this is register this micro in the eureka server
+
+##this means when the user click movie-info url with using api gateway port number then api-gateways routes correspondent micro-service
+##then user/cleint no need to remember microservices portnums's  and servers's
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: movie-catalog-service
+            uri: http://localhost:8091  or uri: lb://MOVIE-CATALOG-SERVICE   ->this second one bcz we registered the micro in eureka so api-gateway uses eureka for route
+            predicates:
+              - Path=/movie-info/**
+          - id: movie-streaming-service
+            uri: http://localhost:8092
+            predicates:
+              - Path=/movie-stream/**
+
+  application:
+    name: api-gateway
+
+
+3.ConfigServer
+<=============>
+--> Actually a multiple micro-servives are developed in the micro-service based application
+-->each micro-service is a application
+-->so each application needs configurations
+-->in ConfigServer means all the micro-services confifgurations are maintained here only
+-->it is a centralized configurations maintainer
+-->if i want change any particular micro-service configurations then no need to go that particular micro-service in configServer we can easily change
+
+
+
+How to implement configserver
+<--------------------------------------->
+1)create normal spring boot project along with below dependencies
+
+depedencies
+-------------------
+1.confi server
+2.eureka discovery cleint   ->this is for register this also in the eureka server
+
+
+2)yml file(properties)
+--------------------
+server:
+  port: 8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-location: C:\\config  # -->this means we given configurations in the location
+  profiles:
+    active: native
+
+apply below in yml (for which micro-service you want to give config-secer)
+---------------------------------------------------------------------------------
+
+spring:
+  config:
+    import: "optional:configserver:http://localhost:8888"  #--->means from this micro-service properties there like that
+
+
+
+
+4.Circuit breaker
+<=====================>
+-->circuit breaker means 
+-->while micro-services communicating each other if the called micro-service(server) is unable to give response or stopped 
+-->then this calling micro-service (client) either need to wait for the response or handle that situation
+-->here handling that situation we use circuit breaker
+-->in our project we used resilience4j for circuit breaker
+
+
+(if server micro-service)unable to respond then instead of giving 503 error provide meaning relavent response==>simply means
+
+Circuit Breaker has three states:
+------------------------------------------------------
+ Closed, Open, and Half_Open
+
+Closed
+-------
+-->Closed is the initial state of circuit breaker. When microservices run and interact smoothly, circuit breaker is Closed.
+(when micro-services comunication is fine then circuit-breaker is on CLOSED state)
+
+
+Open
+---------
+-->when called micro(server) not giving response (may be timeout or down) that means failed(503 error came)
+-->actually we configured in propertied or yml =>if requests failes 50% then open the circuit breaker
+  -->we provide threshold value (like total 4 req ,if 50% req's means 2 req failed then circuit breaker turned into OPEN)
+
+
+
+HalfOpen
+----------
+-->actually in micro-service based applications dwoning server adfter some time working fine is common
+  -->not all the time micro-service down
+-->so,we also configure is after some time circuitbreaker turned into HALF-BREAKER
+  -->HALF-BREAKER means it checks/allows limited requests 
+  -->if the that limnited request working fine then circuit breaker turned into CLOSE 
+  -->if that limited requests are not working fine then  circuit breaker turned again into OPEN
+
+#below for circuit-breaker yml/properties
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      doctor-service:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 4  #means after 4 call fail req's circuite breaker tuned on
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s #menas after 5sec circuit breaker tuned into HalfClosed
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+
+
+1.add dependencies
+-----------------------------
+<dependency>
+<groupId>io.github.resilience4j</groupId>
+<artifactId>resilience4j-spring-boot3</artifactId>
+<version>2.2.0</version>
+</dependency>
+
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+Note:-actuator here for to see circuitbreaker status(health of apllication
+
+2.use @circuitbreaker annotation and fallbackmethod 
+-------------------------------------------------------------
+Like below:-
+
+    @Override
+    @CircuitBreaker(name = "doctor-service", fallbackMethod = "circuitBreakerHandler")
+    public Patient getPatient(long patientId) {
+
+        Patient patientDetails = openFeign_interface.getPatientDetails(patientId);
+        log.info("This is doctor-service service getpateint" + patientDetails);
+        return patientDetails;
+    }
+
+   /*this is will trigger when server unable to give response ,here i passed null's instead of error*/
+    public Patient circuitBreakerHandler(long patientId, Throwable e) {
+        log.info("This circuitBreakerHandler");
+
+        Patient patient = new Patient();
+        patient.setId(0);
+        patient.setName(null);
+        patient.setContact(null);
+        patient.setDetails(null);
+        return patient;
+
+    }
+Note=fallbackmethod(circuitBreakerHandler())must have return type of what the end point method have return type(in this example Patient is the return type of both)
+
+3.yml file /properties
+-------------------------------
+spring:
+  application:
+    name: movie-streaming-service
+
+server:
+  port: 8098
+ # port: 0  #dynamically port giving/take at running time (its good pratice)
+
+#below for actuators(we used used in circuit-breaker time)
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+#below for circuit-breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      movie-stream:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 4 #means after 4 call fail req's circuite breaker tuned on
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s #menas after 5sec circuit breaker tuned into HalfClosed
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+
+logging:
+  level:
+    org.springframework.cloud.netflix.eureka: DEBUG
+    org.springframework.cloud.client.loadbalancer: DEBUG
+
+#without this properties also its registering bcz of @EnableDiscoveryClient annotation we used
+#if multiple eureka micro's vaialable then we need to give this properties ,bcz ambiguity will come
+#eureka:
+#  client:
+#    server-url:
+#      defaultZone: http://localhost:8761/eureka
+
+#the below 4 lines for zipkin tracing pupose
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0
+---
+
+
+
+5.Message borker(not practiced)
+<===================>
+-->apache kafka is a message broker
+-->for communication of micro-service this message broker used
+
+ex:zomato app
+------------------
+-->first order request came to one micro-service 
+-->that micro-service intimate to kafka like hey order req came from clinet
+-->then after payment micro-service handles payment process 
+-->then payment handled micro-service intimate to kafka like either payment =sucess or payment=failure
+-->based on kafka message success failure remaing will continue ,etc...
+
+
+
+
+6.Distributed tracing with mico-meter and zipkin
+==================================================
+-->distributed tracing means trace the request life-cycle
+-->we trace how request traversing through variuos micro-services
+-->where req started from to where it's going ,like that,and we can identify in which micro req waited/spent more time,and we can find any bottlenecks ,etc...
+
+below used for distributed tracing
+1.Micrometer ->used for genarate tracing
+2.Zipkin     ->used for view the tracing
+
+
+step-bystep
+------------------------
+1.add dependecies
+2.install zipkin
+3.rest api calls & view tracing info
+
+
+
+1.dependencies 
+----------------------
+-->spring-boot-starter-actuator      =>it gives features for monitor and maintain our-application
+-->micro-meter-tracing-bridge-brave  =>maintain tracing info
+-->zipkin-reporter-brave             =>used send data of tracing which stored above dependency 
+
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-tracing-bridge-brave</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>io.zipkin.reporter2</groupId>
+    <artifactId>zipkin-reporter-brave</artifactId>    
+</dependency>
+
+
+yml file
+--------------------
+management:
+   tracing:
+     sampling:
+       probability: 1.0
+
+
+Note= give above dependecies and yml in every micro-service what ever you used(api-gateway,service-registry,doctor-consultation,patient-registration)
+
+
+2.install zipkin
+--------------------------
+-->search in google zipkin download(https://zipkin.io/pages/quickstart.html)
+-->if you are using java 17b or above then we can download zipkin by using java
+
+quickstart(left side nav bar)
+     |
+   java
+     |
+latest release(click this)
+     |
+it downloaded jar file(open cmd where zipkin jar downloaded folder like downloads)
+     |
+java -jar zipkin-server-3.4.1-exec.jar   ( use this command(here java -jar zipkin_name.jar)  -->for to start zipkin we have to execute this to see tracing
+     |
+it will give url ( http://127.0.0.1:9411/) -->execute this in the browser 
+
+     
+
+Note= to see tracing then evry time need to execute zipkin jar file in cmd then it will give url then run the rest-api's and in the browser zipkin click run the query 
+      then yo will find tracing
+---
+
+
+
+Micro-service communication using
+1.RestTemplate
+2.FeignClient
+3.WebClient
+==========================================================
+
+1.RestTemplate
+<==========================>
+-->RestTemplate is a class by  using this we can make two or more micro-services communicate each other
+-->it  is snchronous
+-->it follow Thread-for-request model(for every req thread created)
+-->it comes eith spring-boot-starter-web dependency
+
+How to use RestTemplate
+=================================
+1.create any package (like config) in that create classs->create bean for the RestTemplate
+2.use the bean where we need to call another micro-service
+
+
+
+Methods in RestTemplate
+--------------------------------
+1.getForEntity()   => executes a GET request and returns an object of ResponseEntity class,  that contains both the status code and the resource as an object.
+
+2.getForObject()   => similar to getForEntity(), but returns the resource object directly.
+
+3.postForObject()  => creates a new resource using HTTP POST method and returns an entity.
+
+4.postForLocation()  => creates a new resource using the HTTP POST method and returns the location of the newly created resource.
+
+5.delete(url)        => deletes the resource at the specified URL.
+
+6.put(url, request)  =>PUTs the given request object to the URL.
+
+
+
+Note=
+
+-->RestTemplate and FegnClient follows Thread-for-request model  means
+      ==>When you make an HTTP request using RestTemplate or FeignClient, a thread is created (or borrowed from a thread pool) to handle that request.
+
+-->disadvantage of RestTemplate and FeignClient
+    ==>If your application has to handle many concurrent HTTP requests, it will need many threads, 
+          each waiting for a response. This can lead to high memory usage and performance degradation
+
+-->how webclient works
+   ==>webclient folows event-driven model 
+   ==>after we make Http Request then thread initialises the request, means preparing the HTTP request object and sending it over the network.
+   ==>then in the webclient the thread is freed up .the thread will not wait for the response,the request responsibility takes WebClient's reactive framework
+   ==>the thread do other tasks
+   ==>the threads which are availble ,the event loop creates a task "waiting for response" added in queue
+   ==>the event loop continuely checks incoming events,that means if the requested request got reponse then immediatelty event loop hand-overs the response to avaialble 
+	thread in the task queue
+
+ex:-
+<------------>
+
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+
+
+@Configuration
+/* This class is for configuration of RestTemplate class */
+
+public class RestTemplateConfig {
+
+    /* RestTemplate is a class which allow us to make micro-services communicate each other*/
+
+    @LoadBalanced
+    @Bean
+    public RestTemplate rest(){
+        return new RestTemplate();
+    }
+}
+
+3.use where we require(call another miro's)
+
+ex:-
+<------------>
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Component
+@Slf4j
+/* This class is for call movie-catlog-g-service for this USed RestTemplate*/
+public class CallMovieCatalogInfo {
+
+    /* path os movie-catalog-service*/
+    public static final String movieCatalogInfoUrl = "http://api-gateway";  //gate-way used here that's why it navige gate-way then gate-way routes correspondent micro
+									    //we can give direct that micro service name (or) hardcoding n/w location of micro also instead od api-gateway(but gd practice to give api-gateway)
+    /*RestTemplate*/
+    public final RestTemplate restTemplate;
+
+    public CallMovieCatalogInfo(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+
+    /* This method calls movie-catalog-service micro and get path of the movie for display*/
+    public String getMoviePath(long movieId) {
+
+        var res = restTemplate.getForEntity(movieCatalogInfoUrl + "/movie-info/getPath/{id}", String.class, movieId);
+        log.info("--->getMoviePath is executed and bring path<---" + res.getBody());
+        return res.getBody();
+    }
+
+
+ 
+}
+
+
+
+below controller uses above method 
+<---------------------------------------->
+package com.mvstream.controller;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
+@RestController
+@Slf4j
+@RequestMapping("/movie-stream")
+
+public class MovieStreamingController {
+
+    /* Main directory of the video*/
+    public static final String VIDEO_DIRECTORY = "C:\\Users\\Sreenivas Bandaru\\Documents\\Microservices\\";
+
+    public final CallMovieCatalogInfo callMovieCatalogInfo;
+    public MovieStreamingController(CallMovieCatalogInfo callMovieCatalogInfo) {
+        this.callMovieCatalogInfo = callMovieCatalogInfo;
+    }
+
+
+    /* for diplay or play video in the output */
+    @GetMapping("/movie/{path}")
+    public ResponseEntity<InputStreamResource> streamVideo(@PathVariable String path) throws FileNotFoundException {
+        log.info("-->streamVideo method executed<--");
+
+        File file = new File(VIDEO_DIRECTORY + path);
+        if (file.exists()) {
+            InputStreamResource inputStreamResource = new InputStreamResource(new FileInputStream(file));
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType("video/mp4"))
+                    .body(inputStreamResource);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    /* for diplay or play video in the output */
+    @GetMapping("/movieWithId/{id}")
+    public ResponseEntity<InputStreamResource> streamVideoWithId(@PathVariable long id) throws FileNotFoundException {
+        log.info("{MovieId is {}--->"+id);
+        String moviePath = callMovieCatalogInfo.getMoviePath(id);
+        log.info("Path Is--->{}"+moviePath);
+        /* this calls above method along with passing video path */
+        return streamVideo(moviePath);
+
+
+    }
+
+}
+
+---
+
+
+
+
+2.OpenFeign
+=======================
+-->it is also like RestTemplate and Webcleint
+-->used for make micro-services communicate each other
+-->by default it is synchronous 
+-->it follows thred-per-request model
+
+how to use openfeign
+-----------------------------
+
+-->1.add dependecny  and Add @EnableFeignClients annoatation in the main class(annotated with @SpringBootApplication)
+
+	<dependency>
+	   <groupId>org.springframework.cloud</groupId>
+	   <artifactId>spring-cloud-starter-openfeign</artifactId>
+	</dependency>
+
+ 
+-->2.create an interface with @FeignClient annotation
+	
+	like :-
+
+	  @FeignClient("patient-registration-service") -->need to mention which micro-service you want send the request or if you use api-gate-way provovide api-gateway application name
+	  public interface Feignclient_Interaface
+	  {
+
+	  }
+
+-->3.add method declaration in the interface and annotated with  to which req your sending(patient-registration-service controller which end point your sending add whole end point url)
+	
+	like:-
+
+	 @FeignClient("patient-registration-service") -->need to mention which micro-service you want send the request
+	  public interface Feignclient_Interaface
+	  {
+		@GetMapping("/patient/get-patient-by-id/{id}")
+		public Patient getPatient(@PathVariable("id") long patientId);   -->create dto package->create class Patient(copy Patient in patient-registration-service service fields into this dto Patient class)
+	  }
+	  
+
+4.call the method of interface in  the where patient details .
+ 	
+	ex:- here i called in the controller where DoctorConsulatation saved time and i just printed the Patient details came from patient-registration-service micro
+
+	@Autowired
+	private OpenFeign_interface  openFeign_interface;
+
+	/* save DoctorConsultation */
+	@PostMapping("/save-DoctorConsultation")
+	public ResponseEntity<DoctorConsultation> saveDoctorConsultation(
+			@RequestBody DoctorConsultation doctorConsultation) {
+		
+		//called the method in  the interface(OpenFeign_interface) for fetching details from another micro
+		Patient patientDetails = openFeign_interface.getPatientDetails(doctorConsultation.getPatientId());
+		System.out.println(patientDetails);
+
+		DoctorConsultation DoctorConsultation1 = doctorConsultationService.saveConsultation(doctorConsultation);
+
+		if (DoctorConsultation1 != null) {
+
+			return new ResponseEntity<>(DoctorConsultation1, HttpStatus.CREATED);
+		} else {
+		
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+	}
+
+---
+
+
+3.WebClient
+====================
+
+-->it  is also like RestTemplate
+-->but it is both Synchronous and Asynchronous 
+
+
+
+-->how webclient works
+   ==>webclient folows event-driven model 
+   ==>after we make Http Request then thread initialises the request, means preparing the HTTP request object and sending it over the network.
+   ==>then in the webclient the thread is freed up .the thread will not wait for the response,the request responsibility takes WebClient's reactive framework
+   ==>the thread do other tasks
+   ==>the threads which are availble ,the event loop create task "waiting for response" added in queue
+   ==>the event loop continuely checks incoming events,that means if the requested request got reponse then immediatelty event loop hand-overs the response to avaialble 
+	thread in the task queue
+
+
+
+
+1.add webflux dependency
+
+ <!-- for webclient use-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+
+2.create package->create class->create bean for webclient
+
+package com.mvstream.config;
+
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Configuration
+
+
+public class RestTemplateConfig {
+
+ //the below is for WebClient
+    
+    @Bean
+    @LoadBalanced
+    WebClient.Builder createLoadBalancedBuilder() { return WebClient.builder(); }
+
+    @Bean
+    WebClient client(WebClient.Builder builder) { return builder.build(); }
+     
+}
+
+3.call another micro-service using above bean
+
+
+package com.mvstream.controller;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Component
+@Slf4j
+/* This class is for call movie-catlog-g-service for this USed WebClient*/
+public class CallMovieCatalogInfo {
+
+    /* path os movie-catalog-service*/
+    public static final String movieCatalogInfoUrl = "http://api-gateway";
+
+
+
+    /* the below is for WebClient */
+
+    public final WebClient webClient;
+
+    public CallMovieCatalogInfo(WebClient webClient) {
+        this.webClient = webClient;
+    }
+
+    public String getMoviePath(long movieId) {
+
+       return webClient.get()
+                .uri(movieCatalogInfoUrl + "/movie-info/getPath/{id}", movieId)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+
+    }
+
+}
+
+
+below controller uses above method 
+<---------------------------------------->
+package com.mvstream.controller;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
+@RestController
+@Slf4j
+@RequestMapping("/movie-stream")
+
+public class MovieStreamingController {
+
+    /* Main directory of the video*/
+    public static final String VIDEO_DIRECTORY = "C:\\Users\\Sreenivas Bandaru\\Documents\\Microservices\\";
+
+    public final CallMovieCatalogInfo callMovieCatalogInfo;
+    public MovieStreamingController(CallMovieCatalogInfo callMovieCatalogInfo) {
+        this.callMovieCatalogInfo = callMovieCatalogInfo;
+    }
+
+
+    /* for diplay or play video in the output */
+    @GetMapping("/movie/{path}")
+    public ResponseEntity<InputStreamResource> streamVideo(@PathVariable String path) throws FileNotFoundException {
+        log.info("-->streamVideo method executed<--");
+
+        File file = new File(VIDEO_DIRECTORY + path);
+        if (file.exists()) {
+            InputStreamResource inputStreamResource = new InputStreamResource(new FileInputStream(file));
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType("video/mp4"))
+                    .body(inputStreamResource);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    /* for diplay or play video in the output */
+    @GetMapping("/movieWithId/{id}")
+    public ResponseEntity<InputStreamResource> streamVideoWithId(@PathVariable long id) throws FileNotFoundException {
+        log.info("{MovieId is {}--->"+id);
+        String moviePath = callMovieCatalogInfo.getMoviePath(id);
+        log.info("Path Is--->{}"+moviePath);
+        /* this calls above method along with passing video path */
+        return streamVideo(moviePath);
+
+
+    }
+
+}
+
+---
+
+
+
+
+
+
+
+
+
+
+

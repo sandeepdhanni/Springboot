@@ -1,0 +1,2988 @@
+React:
+react is a javascript library.it is used for creating user interfaces or rich user interfaces.it is 
+a component based application
+
+in the package.json file u can see the react version,react-dom version,react-scripts and web-vitals 
+which are used for tracking the application or to check the performance of the application..
+
+
+to create a new react application use npx create react-app projectname;
+
+
+
+jsx(javascript xml):
+it is an extention to the javascript language syntax.it is used to write the xml code for elements and 
+components...jsx tags have tag names,attribute and children..jsx is not necessary to write react applications
+we can write react application without jsx also.  the main important point is jsx makes your code simpler 
+and elegant...
+
+
+component:
+ 
+it is the part of the user interface..they are reusable and nested inside the other components..
+React components can be categorized into two main types: functional components and class components.
+
+ Functional Components
+Functional components are simple JavaScript functions that accept props as an argument and return
+ a React element or jsx. 
+
+
+ Class Components
+Class components are ES6 classes that extend from React.Component and must include a render method 
+that returns a React element. They can hold and manage their own state and have access to lifecycle
+methods.Class components have their own state and can manage it using this.state and setState().
+ Class components have lifecycle methods like componentDidMount() and componentWillUnmount() that 
+can be used to perform actions at specific points in the component's life cycle.Class components 
+can use this keyword to access props and state, making debugging easier.
+
+
+
+stateless component:
+A stateless component, also known as a functional component, is a fundamental concept in React 
+that represents a UI element without any internal state management.
+
+
+virtual dom in react:
+it makes the copy of the dom and make changes which are made... It is a lightweight copy of the
+ actual DOM, which allows React to perform efficient updates and rendering.
+
+
+in the index.html u can see the react and react dom imports...react is the core fundational library.
+react dom is the implementation in web
+
+
+
+
+props in react:
+
+Props (short for "properties") are a fundamental concept in React that allow you to pass data
+from one component to another, typically from a parent component to a child component.Props 
+are read-only attributes that are passed from a parent component to
+ a child component.in props functional components can be accessed with props and in class component
+can be accesseed by this.props..
+Immutable: Once set, they cannot be changed by the child component.
+Passed Down: Data flows from parent to child, not the other way around.
+Used for Configuration: Props allow components to be reusable by passing different values.
+Functional and Class Components: Can be used in both types of components.
+
+
+
+Babel:
+Babel is a JavaScript compiler that is widely used in the React ecosystem. Its primary purpose is
+ to transform modern JavaScript code (including JSX syntax) into a version of JavaScript that can run
+ in older browsers
+
+
+
+state:
+
+ It's an object that stores the component's dynamic data, and when the state changes, the component 
+re-renders to reflect those changes.
+state is a inbuild object of react component...in state components the data is private as it is not 
+accessible to other component and if we want to send the data we have to use props and send it..
+state are managed or changed within the component.
+in state variables are declared in the function boby. once the variables are declared it can be changed..
+in state functional component state is not used as it is stateless but if we want to use it we have to
+use usestate hook and in class component it uses this.state...
+to use state inside the class component we have to use this.state and to use it in functional component 
+we have to use useState hook
+
+in state we should not modify it directly instead make use of setstate..when u modify the state directly 
+react will not render the component..
+
+
+setstate method is used for altering or rendering the state of a component....the setState method has 2 
+parameters one is an object and second is the clallback function which will be an arrow function.. 
+code is executed after the state has been updated?place the cod ein the callback which is the second argument.
+
+when u have to update the state based on previous state then pass the function as an argument instead of
+regular object
+
+4 ways to bind the event handlers:
+binding in rendered  - it is best not to use because of performance implication
+binding with arrow function - it is similar to 1st approach but this is the easiest way to pass parameters
+binding with class constructor -  this is the best option
+class properties as arrow function 
+
+
+
+conditional rendering:
+
+adding if else in jsx is not possible because jsx is a syntacic for function calls and object construction.
+either use if-else or short circuit operator approach
+
+
+
+lifecycle methods in react:
+
+that is methods that are called when a component is rerendered because of changes in props and states.there are 
+5 methods.they are :
+
+getderivedstatefromprops(props,state) - this is a static method which takes 2 parameters which are props and state
+and return either null or object that contains the updated state of the component..this method is called
+ everytime when a component is re-rendered
+
+
+shouldcomponentupdate(nextprops,nextstate)- this receives updated state and detects if the component should render
+or not..by default all the component are re-rendered whenever a props receives or state changes..
+
+
+render() -this methods reads this.state and this.props and returns the jsx whixh contains the ui..
+
+
+
+getsnapshotbeforeupdate(props,state)- this method calls previus props and state and is called right before it 
+changes from the virtual dom and are to be reflected in the actual dom
+
+
+componentdidupdate(prevprops,prepsstate,snapshot) - it is called after the render is finished..
+
+
+
+
+hooks:
+
+hooks allows u to use react features without having to write a class...
+eg: state of a component....previously we can use state only within class components.but with hooks we can 
+use without class components..
+hooks don't work on inside class components..it simplifies the code by reducing the need for class components,
+making it easier to share stateful logic between components..hooks make the code more readable,reusable and 
+testable...
+
+
+
+Client Side Routing
+In traditional websites, the browser requests a document from a web server, downloads and evaluates CSS and 
+JavaScript assets, and renders the HTML sent from the server. When the user clicks a link, it starts the 
+process all over again for a new page.
+Client side routing allows your app to update the URL from a link click without making another request for 
+another document from the server.
+
+
+
+reconcilation:
+React Reconciliation is the process through which React updates the Browser DOM. It makes the DOM updates 
+faster in React. It updates the virtual DOM first and then uses the diffing algorithm to make efficient
+and optimized updates in the Real DOM.
+
+
+React router:
+
+React Router is a standard library for routing in React. It enables the navigation among views of various
+ components in a React Application.
+
+Components of React Router
+BrowserRouter :
+ Uses the HTML5 history API to keep your UI in sync with the URL.
+
+Routes and Route
+Routes: A container for all your route definitions.
+Route: this is used to specify the component to render when the url matches the defined path.. 
+Defines a single route with a path and the component to render.it takes 2 main props which are :
+Path: the url pattern to match 
+element: the react component to render..
+
+Link and NavLink
+Link: Creates navigational links in your application.IT ALLOWS US TO NAVIGATE BETWEEN pages without reloading 
+the application..
+NavLink: Similar to Link but provides additional styling attributes when the link is active.
+
+
+
+Types of router:
+browserRouter:
+it is a high level react router component that wraps the entire application.basically it allows us 
+to implements navigation in react..
+
+Routes:
+it helps in rendering a single route exclusively by wrapping multiple route components within it..
+
+
+lazy loading : 
+it is a design pattern that allows us to load only specific components in the application to reduce the initial
+loa dtime...
+
+
+
+
+
+
+
+
+
+React hooks :
+
+React Hooks are functions that allow you to "hook into" React's state and lifecycle features directly from functional components.
+
+useState: Manage State
+useState accepts an initial state and returns two values:
+
+The current state.
+A function or state setter function that updates the state.
+useState allows you to add state to functional components. It returns an array with the current state value and a function to update it.
+in classes,state is always an object..but in usestate hook state does'nt have to be object...
+when the new state has to depend on prev state then you can pass the function to the setter function..
+when dealing with arrays always make sure to spread your state variables and then call the setter function
+
+
+
+
+useEffect: Side Effects
+
+useEffect is used to perform side effects such as fetching data, setting up subscriptions, or manually updating the DOM.
+
+useeffect runs after every render...useeffect is placed inside the component..you can easily assess the component state and props 
+without writing any additional code..
+
+
+
+
+
+
+useReducer:
+useReducer is a React Hook that lets you add a reducer to your component.
+const [state, dispatch] = useReducer(reducer, initialArg, init?)
+useReducer returns an array with exactly two items:
+The current state of this state variable, initially set to the initial state you provided.
+The dispatch function that lets you change it in response to interaction.
+To update what’s on the screen, call dispatch with an object representing what the user did, called an action
+eg: function handleClick() {
+  dispatch({ type: 'incremented_age' });
+}
+reducer:
+ The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments,
+ and should return the next state. State and action can be of any types.
+initialArg: 
+The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it
+ depends on the next init argument.
+optional init: 
+The initializer function that should return the initial state. If it’s not specified, the initial state is set to initialArg. 
+Otherwise, the initial state is set to the result of calling init(initialArg).
+
+
+useSelector:
+useSlector is the guy who can directly talk to the store..if anyone asks the information they don't talk to the store instead they
+call the useSelector hook so that they selectively ask the store what inrformation does it need..
+
+
+
+
+
+useDispatch:
+whenever you want to update some information in the store..we can do it with reducers but we cannot call reducers directly because
+it will break the flow..in that case we use this hook...this hook tells the reducer to update the store..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+qns)
+diff b/w class and functional comp's
+life cycle of class comp
+rendering and conditional based rendering
+useState,useEffect,useRef,useContext,useMemo
+
+
+what is React
+=========================
+-->ReactJS is an open-source JavaScript library 
+-->by using this we can  building dynamic and interactive user interfaces(UIs) and reusable components
+-->it used Virtual DOM(javascript object)
+  -->javascript virtual dom is faster than regular dom
+-->we can create single page application,web&mobile applicatons
+edms,ldap
+
+VirtualDom
+===================
+-->VDOM is light-wight and in-memory representation of real dom,
+
+
+
+Differences b/w Virtual dom and RegularDom
+==================================================
+--> When a component's state or props change, a new Virtual DOM is created. 
+--> React then compares this new Virtual DOM with the previous version using a process called "reconciliation".
+--> then react checks previous and current VDOM .and reach updates real dom where updates are detected
+
+
+-->regular dom ,When a change is made to the DOM, the browser typically needs to re-render the entire page or large portions of it
+
+
+Difference b/w React and Angular
+==========================================
+-->React is a javascript library
+-->Angular is full pledged framework
+
+-->React uses javascript
+-->Angular uses TypeScript
+
+-->React uses VDOM
+-->Angular uses RegularDOM/RealDOM
+
+
+
+
+How to Create and run react project
+=====================================================
+Node js is required for execute react 
+npx create-react-app app_name         =>create new react application   (npx=node pacjage executor)
+npm start                             =>run the react application
+
+
+
+
+
+JSX(javascript xml)
+============================
+-->JSX is a powerfull feature in the react
+-->JSX is a syntax extension for javascript that allows you write html-like code directly within javascript file.
+-->{actually we won't write UI code in the html file(.html  file) ,we write html(UI)code in the javascipt using jsx 
+                            then react it self convert html to javascript method(React.createElement())}
+
+Note= 
+-->we can create html element by using javascript by using createElement() method
+    react.createElement()
+-->in the react we write html in the javascript 
+-->if we follow above syntax its very complex
+-->to avoid that we can write directly html code in the javascript file by using jsx 
+-->then react wil covert elements like createElement() methods like (internally uses createElement() for creating the element )
+
+
+
+without jsx
+<------------------->
+
+Using pure javascript create h1 tag
+<<----------------------->>
+let h1_tag = document.createElement('h1');
+h1_tag.innerText="hello world";
+document.body.append(h1_tag);
+
+using react create h1 tag
+<<----------------->>
+let h1_tag=React.createElement("h1",{},"hello")   -->in the curly braces we can give attributes/properties
+const root=ReactDom.createRoot(document.getElementById('root'))
+root.render(h1_tag);
+
+
+with jsx
+-----------------
+
+let menu=
+(
+<h1>Hello this is jsx</h1>   //wroted directly html ,but actually it is  not html  it is html-like code using jsx,,,
+                             //it will convert like react creating h1 tag in the behind(babel library is responsible for convert)
+)
+
+const root = ReactDom.createRoot(document.getElementById('root'));
+root.render(menu);
+---
+
+JSX rules
+===================
+-->funtional or class component that name should starts with capital letter only
+-->return jsx in javascipt one one element ,if multiple elements then we have wrap all elements in one div or fragment	
+-->write javascript code in the jsx but in side {} curly braces
+etc......
+---
+
+Folder Structure
+=========================
+
+node_modules
+---------------------------
+-->what ever libraries are required for react,react dom this folder have those libraries
+-->when we create project then this folder comes in the project structure
+
+
+index.html
+-----------------
+-->when ever we run the application then index.html first rendered and displayed 
+
+
+index.js
+----------------
+-->what ever(whcih component or html code ) we mentioned here that code reflected/displayed in the index.html
+-->it is also the main file (from here the data displaying starting)
+
+App.js
+--------
+-->App is a one of the component
+-->in react we should write html code directly in the js file only ,by uisng jsx,bable it's convert element creation style as like javascript element creation
+-->so in App.js we can html code (inside function)
+-->by default this App component rendered in the index.html with help of index.js(in the index.js by default App rendered in index.html like below example) 
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+
+reportWebVitals.js
+--------------------------
+-->it is used for measure the performance of our application
+
+
+
+.gitignore
+--------------
+-->it is used for actually we push our application in the github 
+-->so while your pushing our application if any folder,file you dont want to push then mention those folders/files in this .gitignore then it will ignore those folders/files
+-->actually we will not push the node_modules folder bcz it is very large 
+
+
+package.json
+---------------
+-->actually we will not push the node_modules in the github
+-->if user or anyone want to run our application(clone it from hit like that time)
+-->node_modules will not present so project will not run
+-->but what ever libraries,packages used in the application info present at package.json 
+-->so then user execute npm intsall then based on package.json info nodel_modules folder will generates
+---
+
+Q)why in react html code should be placed in javascipt file
+-------------------------------------------------------------------
+-->react is library of javascript
+-->react uses Virtual DOM
+
+
+
+
+Components in React
+===============================
+-->Components are building block of React Application
+-->components are independent and re-usable code blocks containing logics and UI elements
+-->components are just like a function which return Html code
+
+Types Of Components
+-----------------------------
+-->two types of components in react
+1.Functional component
+2.Class based component
+
+
+In React in wrote HTml code in javascript file ,
+          in the javascript file we if wrote Html code in the function and return it then that is Functional Component
+	  in the javascript file we if wrote Html code in the class and return it then that is Class Based Component
+
+
+
+Note=
+-->In react there in no cli-command for to create component like angular(ng g c component_name)
+-->if we want to create component like Header then create manually Header.js(capital 1st letter) file and write code(functional style or class based stylde) and need to import (import React from 'react');
+-->if we want apply css to the Header.js then create Header.css and write css code and import this css file in the Header.js
+
+==>if we are using ES7 React/Redux/GraphQL/React-Native snippets
+==>shorct cut for create functional style code   is rfce (normal functional style it come)
+==>rafce is for arrows functional style
+
+
+1.Functional Example
+------------------------
+App.js
+<------->
+ import logo from './logo.svg';
+ import './App.css';
+import React from 'react';
+
+//functional component
+function App() {
+ let name='mahi'
+  return (
+    <h1>hello...{name}</h1>
+    
+    
+  );
+}
+
+
+Index.js
+<--------->
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />              //that functional component rendered in the root elememt(root ele is at index.html)
+  </React.StrictMode>
+);
+reportWebVitals();
+
+
+
+2.class based component example
+-----------------------------------
+/*class component*/
+App.js
+<--------->
+class App extends React.Component{     //need to extend React.component
+
+  render(){                           //in the render() we have to return html-like code(JSX)
+    const handleNames=()=>{
+    const names=['nand','junaid','satya','narendra','harshini','shreya' ]
+    const int = Math.floor(Math.random()*8)
+    return names[int]
+  }
+    return(
+      <div>
+        <h1>Best Employee Of this Sep Month::  {handleNames()}</h1>
+        {/* {name} */}
+      </div>
+    )
+  }
+}
+
+
+
+Index.js
+<--------->
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />              //that class based component rendered in the root elememt(root ele is at index.html)
+  </React.StrictMode>
+);
+reportWebVitals();
+---
+
+
+
+
+Component Life Cycle
+=================================
+1.Mounting
+2.Updating
+3.Un Mouniting
+
+1.Mounting
+---------------
+-->it represent rendering react component in the given DOM node
+==>Constrctor :-it invokes at first time comp is created,it initialize the state and binds methods
+constructor()
+componentDidMount()
+render()
+
+
+2.Updating
+------------------
+-->it represent ,re-render the component in the DOM when state chnages/updates
+componentDidUpdate()
+shouldComponentUpdate()
+render()
+
+3.Unmounting
+-------------------
+-->it represents removal of react component 
+componentWillUnmount()
+
+
+Rendering
+===============
+-->React Rendering means rendering html in  the webpage
+-->for rendering Html in webpage the React uses createRoot() and render() function
+-->createRoot()accept one arguemt that html elemt ,,intially root element is takes,that root element present at index.html file
+-->react() function is what ever we wrote inside this component,html code(using jsx syntax) that will be rendered 
+-->what ever you want to render then we need to mention inside the render() funtion.
+
+
+ex:
+------
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+          or
+//const root =React.createRoot(document.getElementById('root'));
+root.render(<p>Hello</p>);
+
+
+
+Contional Rendering
+----------------------------
+-->Based on the condition or based on user situation showing or hiding certain part of UI to user
+-->example is if the user loggedIn the applcation then show next further details other wise show login button
+
+
+example of conditional rendering
+<---------------------------------->
+1.App.js
+------------
+import "./App.css";
+import React from "react";
+
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+const functionAsProp = (str) => {
+  
+  alert('clicked successfully: '+str)
+  console.log('clicke event')
+};
+
+//functional component
+function App() {
+
+  return (
+    <>
+      <MapMethodsex loggedIn={true} methodIs={() => functionAsProp('arguement')} />
+
+    </>
+  );
+}
+export default App;
+
+
+2.MapMethodsex.js
+----------------------------
+import React from 'react';
+
+const MapMethodsex = (props) => {
+  if (props.loggedIn) {                      //if loggin true then it will call methodIs() function other wise it will login button
+    return (
+      <div>
+        <button onClick={props.methodIs}>click</button>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <a href="/">Login</a>
+        {console.log('login')}
+      </div>
+    );
+  }
+};
+export default MapMethodsex;
+---
+
+
+
+
+
+
+export and import
+===========================
+-->export , import are the keyword ,which used for code re-usablity
+-->if any class ,function,varible,etc want be use then use export
+-->if we want to use some othe class,function,varible then use import  
+
+export
+-------------
+-->export are two types
+1.default export
+2.named export
+
+1.default export
+<-------------------->
+-->default means we can use any name while we are importing
+-->but the condition is only one default fucntion,varible,class should ,if multiple defaultes then that occurs error
+
+
+example of default expport
+<<-------------------------------->>
+Header.js
+---------------
+import React from 'react'
+
+const Header = () => {
+  return (
+    <header>
+        <h3>This is header</h3>
+    </header>
+  )
+}
+export default Header       //dault export
+
+App.js
+-------------
+ import logo from './logo.svg';
+ import './App.css';
+ import React from 'react';
+ import Header from './Header';   // instead of Header we can use any name 
+
+//functional component
+function App() {
+ let name='mahi'
+  return (
+    <>
+    <Header/>   
+    <h1>hello...{name}</h1>
+    </>
+    
+    
+  );
+}
+
+
+
+
+2.named export
+<-------------------->
+-->named export means what ever name in the export time(function name ,class name ,varble name) that name we need use
+
+
+example of named export
+<<-------------------------------->>
+Header.js
+----------------
+import React from 'react'
+
+export const Header = () => {
+  return (
+    <header>
+        <h3>This is header</h3>
+    </header>
+  )
+}
+
+App.js
+-----------------------------
+ import logo from './logo.svg';
+ import './App.css';
+ import React from 'react';
+ import {Header} from './Header';    //should use {} 
+
+//functional component
+function App() {
+ let name='mahi'
+  return (
+    <>
+    <Header/>   
+    <h1>hello...{name}</h1>
+    </>
+    
+    
+  );
+}
+---
+
+
+Props
+===========
+-->Props means properties
+-->while calling one component from another component if we send any data or properties then those called as props
+-->which is used for send the data from parent component to child component
+-->the component which sends data is Parent Component,the Component which recieves is Child Component
+-->Props are read-only it's not allow child component to modify,child can use only
+-->send data from parent component to child component just like send arguments to function
+
+
+example-1(functional component used in this)
+-------------------------------------------------
+
+1.index.js
+--------------------
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App1 from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App1 />                       //App.js is rendered here,so we can render our created components in App.js
+  </React.StrictMode>
+);
+
+
+
+2.App.js
+--------------------
+ import logo from './logo.svg';
+ import './App.css';
+ import React from 'react';
+ import Header from './Header';
+
+//functional component
+function App() {
+ let name='mahi'
+  return (
+    <>
+    <Header name='mahi' age='45'/>                //here Child component is Header and parent is App ,,here sending data from App to Header
+    <h1>hello...{name}</h1>
+    </>
+    
+    
+  );
+}
+
+
+
+3.Header.js
+-----------------------
+import React from 'react'
+
+ const Header = (props) => {        //function accept props here,,here we can use any name instead of props(but using props is standards)
+  return (
+    <header>
+        <h3>Name{props.name}</h3>
+        <h3>Name{props.age}</h3>
+    </header>
+  )
+}
+
+export default Header
+
+
+
+
+
+example-2(class based  component used in this)
+------------------------------------------------------
+
+
+1.index.js
+--------------------
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App1 from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App1 />                       //App.js is rendered here,so we can render our created components in App.js
+  </React.StrictMode>
+);
+
+
+
+2.App.js
+--------------------
+ import logo from './logo.svg';
+ import './App.css';
+ import React from 'react';
+ import Header from './Header';
+
+//functional component
+function App() {
+ let name='mahi'
+  return (
+    <>
+    <Header name='mahi' age='45'/>                //here Child component is Header and parent is App ,,here sending data from App to Header
+    <h1>hello...{name}</h1>
+    </>
+    
+    
+  );
+}
+
+
+
+3.Header.js
+---------------
+import React from 'react'
+class Header extends React.Component
+{
+  render()
+  {
+    return(
+      <>
+      <h3>Name{this.props.name}</h3>               //for in the class based we need to this (it's refers access currect class obj)
+      <h3>Age{this.props.age}</h3>
+      </>
+    )
+  }
+}
+
+export default Header
+
+
+Note(below will apply both functional and class based componenents)
+<---------->
+-->if we change data which came from parent to child then it will occur error bcz props are immutable(read-only)
+---
+
+
+
+
+
+
+
+
+Props destructuring in react
+=========================================
+-->Props destructuring is a process of extracting properties from props and assign them to variables in concise way
+
+example
+=============
+
+1.App.js
+-------------
+
+ import './App.css';
+ import React from 'react';
+ import Header from './Header';
+import ImageEx from './ImageEx';
+
+ const userInfo={
+    name:'mahi bahi',
+    adress:'chennai',
+    job:'cricket',
+    age:45
+  
+  }
+
+//functional component
+function App() {
+ 
+ let name='mahi'
+  return (
+    
+	<>      
+    <h1>hello...{name}</h1>
+    <ImageEx userInformation={userInfo}/>
+    </>
+ );
+}
+
+
+
+2.ImageEx.js
+-----------------------
+import React from 'react'
+
+const ImageEx = (props) => {
+    const{name,adress,job,age}=props.userInformation    //this is destructuring
+  return (
+    <div>
+        <div>
+           
+            <h2>{name}</h2>
+            <h2>{adress}</h2>
+            <h2>{job}</h2>
+            <h2>{age}</h2>
+           
+        </div>
+    </div>
+  )
+}
+export default ImageEx
+
+
+
+
+
+
+Child props
+=========================
+-->when we are calling child component with use of self-closing style(<App/>)
+-->what ever data sent inside the tag that is props
+-->we can also call component like opening and closing tag(<App></App>)
+-->while calling child component if we write b/w the opening and clsong tag(<App>This is child props example</App>) 
+-->when we access such data in the child component that is called childprops
+-->so,for that time we need to use props.childer syntax
+
+
+example
+--------------
+1.App.js
+----------------
+import "./App.css";
+import React from "react";
+import Header from "./Header";
+import ImageEx from "./ImageEx";
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+
+//functional component
+
+function App() {
+  let name = "mahi";
+  return (
+    <>
+   {users.map((user) => (
+        <MapMethodsex>This is children props</MapMethodsex>
+      ))}
+    </>
+  );
+}
+
+
+
+2.MapMethodsex.js
+----------------------
+import React from 'react';
+
+const MapMethodsex = (props) => {
+  console.log(props); // Optional: To verify the props being received
+  return (
+    <div>
+      <p>{props.children}</p>  //children name should 
+    </div>
+  );
+};
+
+export default MapMethodsex;
+---
+
+
+
+
+
+PropTypes
+=============
+-->it is used to restrict the type of the props
+
+
+ex
+-----
+import React from "react";
+import PropTypes from "prop-types";
+
+function ProductCard({ name, price, inStock }) {
+  return (
+    <div className="product-card">
+      <h2>{name}</h2>
+      <p>Price: ${price}</p>
+      {inStock ? <p>In Stock</p> : <p>Out of Stock</p>}
+    </div>
+  );
+}
+
+// Defining prop-types
+ProductCard.propTypes = {
+  name: PropTypes.string.isRequired,  // `name` must be a string and required
+  price: PropTypes.number.isRequired, // `price` must be a number and required
+  inStock: PropTypes.bool             // `inStock` must be a boolean and optional
+};
+
+// Defining default props in case they are not passed
+ProductCard.defaultProps = {
+  inStock: true // default value for `inStock`
+};
+
+export default ProductCard;
+---
+
+
+
+
+
+
+
+
+React Events
+======================
+-->Events are just some actions performed by a user to interact with any application
+  -->for example:-mouse click,hover on any component,loading webpage,etc...
+-->React events devided into three types
+ 1.Mouse Events      :- onClick,OnDoubleClick,etc...
+ 2.KeyBoard Events   :- onKeyDown,onKeyUp,onKeyPress
+ 3.Focus Events      :- onFocus,onBlur
+
+
+
+EventHandlers & EventManagement
+------------------------------------
+-->if any event is occurs the application should provide reaction/response that response defined at function or block of code
+-->this is process we called "EVENT HANDLER"
+-->this entire process of working with events with using event handlers is called as "EVENT MANAGEMENT"
+
+
+Synthetic React Events
+----------------------------
+-->React has it's own event handling system which is very similar to handling  events on DOM elements.
+-->the react handling system is called as "SYNTHETIC REACT EVENT".
+
+
+
+Example-1:onclick use in this ex(in the App.js itself it shows)
+---------------------------------------
+1.App.js
+---------------
+import "./App.css";
+import React from "react";
+
+
+const functionAsProp = (str) =>{
+
+  alert('hello events::-'+str)
+ console.log('hello react: '+str)
+  
+};
+
+//functional component
+function App() {
+  
+  return (
+    <>
+      <button onClick={()=>functionAsProp('arguments')}>ClickHere</button>
+    </>
+  );
+}
+export default App;
+
+
+Example-2(in this to call another component and passess functiona and perform event(onClick))
+---------------------------------------------------------------------------------------------
+1.App.js
+-------------
+import "./App.css";
+import React from "react";
+
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+const functionAsProp = (str) =>{
+
+  alert('hello events::-'+str)
+ console.log('hello react: '+str)
+  
+};
+
+//functional component
+function App() {
+  
+  return (
+    <>
+      <MapMethodsex methodIs={ ()=>functionAsProp('arguement')}/>
+      
+    </>
+  );
+}
+export default App;
+
+
+2.MapMethodsex.js
+--------------
+import React from 'react';
+
+const MapMethodsex = (props) => {
+  console.log(props); // Optional: To verify the props being received
+  return (
+    <>
+      {/* <button onClick={props.methodIs}>clickHere</button> */}
+     <button onClick={props.methodIs}>click</button>
+     </>
+  );
+};
+
+export default MapMethodsex;
+---
+
+
+
+
+State
+=========
+-->State is nothing but a value of dynamic property of React component at given instance
+-->it is an object it holds some information that may changes overtime
+-->when the state of the component changes (data changes) then react re-renders whole component again for reflecting changes in the UI
+
+==>Handling State in Class based component and function component is different 
+  -->in class based component we have to use      setState()
+  -->in the functional component we have to use   useState() 
+
+
+
+1.HANDLING STATE IN CLASS BASED COMPONENT
+----------------------------------------------
+-->In class-based components, you use this.setState to update the state.
+-->This method schedules an update to the component's state object and triggers a re-render of the component with the updated state.
+
+Example
+---------
+
+example-1 (only using State()){in this example price is changes overtime the new price value is given in the input feild }
+=======================================
+
+1.App.js
+-----------
+import "./App.css";
+import React from "react";
+
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+
+//functional component
+function App() {
+
+  return (
+    <>
+      <MapMethodsex />
+
+    </>
+  );
+}
+export default App;
+
+
+2.MapMethodsex.js
+-----------------------
+import React from 'react';
+
+class MapMethodsex extends React.Component {
+  
+   state = {
+    price: 100
+   }
+
+  render() {
+    return (
+      <>
+        <div>
+          <h1>PRICE::::::  {this.state.price}</h1>
+        </div>
+        <div>
+          <input type='number' id='p' placeholder='Enter Price'/>
+        </div>
+        <div>
+          <button onClick={
+            ()=>{
+//it will take what-ever enter in the input feild (so whenever iput feild value changes that need to render in the h1 tag Price)
+              let pr = document.getElementById('p').value;  
+              this.setState({price:pr})                     //it will use re-render when state of comp changes
+            }
+          }>
+            click
+          </button>
+          
+        </div>
+
+      </>
+
+    )
+  }
+export default MapMethodsex;
+
+
+Note=
+-->we wroted here setState in the in side button it-self,
+-->if write seState outside of another function then we call that function in button
+-->then we want to write outside then we have to use constructor or bind() function
+
+-->1.setState() --> which renders again component when state of component changes ,it is asynchronous
+-->2.bind()     -->when we want call setState() from outside (write setState() another function) then need to use this ,for use this we need to use constructor also
+
+
+
+example-2(used both setSate() and bind())
+----------------------------------------------------
+1.App.js
+------------
+import "./App.css";
+import React from "react";
+
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+//functional component
+function App() {
+
+  return (
+    <>
+      <MapMethodsex />
+
+    </>
+  );
+}
+
+
+
+export default App;
+
+
+
+2.MapMethodsex.js
+-------------------------
+import React from 'react';
+
+
+class MapMethodsex extends React.Component {
+
+constructor(){
+  super()
+  this.handleSet = this.handleSet.bind(this);
+}
+  state = {
+    price: 100
+  }
+  render() {
+    return (
+      <>
+        <div>
+          <h1>PRICE::::::  {this.state.price}</h1>
+        </div>
+        <div>
+          <input type='number' id='p' placeholder='Enter Price' />
+        </div>
+        <div>
+          <button onClick={this.handleSet}>click</button>
+        </div>
+      </>
+    )
+  }
+   handleSet(){
+    let pr = document.getElementById('p').value;
+    this.setState({price:pr})
+
+  }
+}
+export default MapMethodsex;
+
+
+	
+
+2.HANDLING STATE IN FUNCTIONAL COMPONENT
+----------------------------------------------
+-->In functional components, you manage state using the useState hook. 
+-->This hook returns an array with two elements: the current state value and a function that allows you to update this state. 
+-->When the state is updated, the component re-renders with the new state value.
+
+
+Example
+-----------
+1.App.js
+-------------
+import "./App.css";
+import React from "react";
+
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+//functional component
+function App() {
+
+  return (
+    <>
+      <MapMethodsex />
+
+    </>
+  );
+}
+export default App;
+
+
+
+2.MapMethodsex.js
+--------------------
+import React,{useState} from 'react';   //need to inport useState
+
+const MapMethodsex = () => {
+
+  const[count,setCount] = useState(0); //here count is variable(this current s val) , setCount is function (by using this we update the count
+  return(
+    <>
+    <div>
+      <h1>count::::{count}</h1>
+    </div>
+    <div>
+      <button onClick={()=>setCount(count+1)}>click</button>
+    </div>
+    
+    </>
+  )
+ 
+};
+export default MapMethodsex;
+---
+
+
+
+
+Data Binding
+===================
+-->data binding is a process of establishing connection b/w application's model and UI
+-->two types of data binding's
+
+1.One way data binding  :- Data flows one direction ,typically model to view
+
+2.Two way data binding  :- Data Flows both direction(model to view,view to model)
+                           Allowing the view to update the model and vice-versa   ------------------------->it is also one way ,two way data binding React not supports
+
+
+
+
+
+1.One databinding example
+--------------------------------
+1.App.js
+----------
+import "./App.css";
+import React from "react";
+import { useState } from "react";
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+
+
+//functional component
+function App() {
+const [dataValue,changeDataValue]=useState('One Way Data Binding')
+  
+return (
+    <>
+      <MapMethodsex msg={dataValue}/>
+      <button onClick={()=>{changeDataValue("data changed.....")}}>Change Data</button>
+
+    </>
+  );
+}
+export default App;
+
+
+2.MapMethodsex.js
+------------------
+import React from 'react';
+
+const MapMethodsex = (props) => {
+ return (
+    <>
+      <h1>{props.msg}</h1>
+
+    </>
+  )
+
+};
+export default MapMethodsex;
+
+
+explanation:-
+-->parent component model has data that reflefts on child componenet browser
+-->when ever in the model (javascript) code chages that changes reflects on browser also
+
+
+
+2.Two Way DataBinding Example
+--------------------------------------
+App.js
+------------
+import "./App.css";
+import React from "react";
+import { useState } from "react";
+import MapMethodsex from "./MapMethodsEx/MapMethodsex";
+
+
+//functional component
+function App() {
+  const [dataValue, changeDataValue] = useState('One Way Data Binding')
+
+  return (
+    <>
+    
+      <h1>{dataValue}</h1>
+     
+      <input type='text' value={dataValue} onChange={(event) => {
+        changeDataValue(event.target.value)
+      }} />
+
+    </>
+  );
+}
+export default App;
+
+
+explanation:-
+--------------------
+-->two way data binding means data flows both directions
+-->here input feild(view)allows chages in the model data(dataValue)
+
+-->here we are linked input feild and dataValue ,and when ever any changes in the inputfield that reflects dataValue also
+---
+
+
+
+useEffect
+=============
+-->it is is one of the Hook
+-->use to handle side effects in functional component.such as fetching data,updating dom
+-->whenever componennt is mouting(renders) if we want to perform side effects (like api calling,etc..) then use this
+-->perfroming side effects
+
+{-->actually if we have requirement of calling api fetching data
+-->for fetching data it took some time
+-->instead of waiting first the comonent is built and after api called after getting data is showed in the component 
+-->so,here UI renders without waiting API call && data fetching in the background  UI updated when data is ready
+
+==>for to acheive above useEffect used ,bcz what ever we wrote inside useEffect that will call after comp render }
+
+
+Synyax
+-----------
+useEffect(<FUNCTION>, <DEPENDECY>) 
+
+Note=<Dependency> is optional
+
+ex-1:
+--------
+useEffect(()->{                //it will call every time comp rendering
+    // Example Code             
+})
+
+
+ex-2
+---------
+useEffect(()->{              //first time rendering time it will call
+    // Example Code
+}, [] )
+
+
+ex-3
+------
+useEffect(()->{               //first time rendering it will call and if props,state changes then it will call
+    // Example Code
+}, [props, state] )
+
+
+
+
+
+Api calling
+=================
+-->here we used dummy api
+-->https://fakestoreapi.com/docs(this website gives dummy api's)
+
+example
+-----------
+
+1.App.js
+--------
+import { useEffect, useState } from 'react';
+import './App.css';
+import ProductsCard from './ProductsCard';
+
+function App() {
+
+  //useState bcz Procuct data here changes  handle chaging data in functional comp we need to use useState
+  const [products, updateProducts] = useState([])
+
+  /* for doing side effect operation fetching data(api calling) used useEffect */
+  useEffect(
+    () => {
+      getProducts()
+    }, []
+  )
+
+  /*this will fetch the data in the provided api uses*/
+  async function getProducts() {
+    let res = await fetch('https://fakestoreapi.com/products')
+    let pList = await res.json()
+    console.log(pList)
+    updateProducts(pList)
+
+  }
+
+   //if data is not there it shows this ,
+  if (products.length === 0) {
+    return <>Fetching Data....please wait.....</>
+  }
+
+  return (
+   <>
+   <div className="product-list">
+    { products.map((product)=><ProductsCard  {...product} key={product.id}/>)} //instead of passing one property one property in obj pass whole what ever there in obj
+   </div>
+   </>
+  );
+}
+export default App;
+
+
+2.ProductsCard.js
+------------------
+import React from 'react'
+import './ProductsCard.css'
+
+function ProductsCard(props) {
+  console.log(props)
+ 
+  //props destructuring
+  const {title,price,image} = props
+ 
+   return (
+    <>
+    <div className="product-card"> 
+      <img src={image}/>
+      <p>{title}</p>
+      <p>${price}</p>
+    </div>
+    
+    
+    </>
+  )
+}
+export default ProductsCard
+
+
+3.ProductsCard.css
+-------------------------
+.product-card {
+    width: 250px;
+    padding: 16px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px gray;
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+
+.product-card p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+4.App.css
+--------------
+.product-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px;
+}
+---
+
+
+
+
+
+Routing
+============
+-->Routing is nothing but navigating from one component to another component
+-->for routing feature in react we have to install react-router-dom this package in our project then only our prjct supports routing concept
+-->npm install react-router-dom  ==>this is the command
+
+-->for routing react gives few inbuilt components we have to use those
+
+1.configure routes
+<------------------->
+<BrowserRouter></BrowserRouter>
+<Routes></Routes>
+<Route><Route>
+
+
+ex:-the below shows  data when url meets specified
+
+<BrowserRouter>
+<Routes>
+<Route path="/" element={<Home/>}/>
+<Route path="/about" element={<About/>}/>
+<Route path="/contact" element={<ontact/>}/>
+</Routes>
+</BrowserRouter>
+
+
+
+2.create navigation links
+<--------------------------------->
+-->this means when user clicks it changes browser url ,then configure routes shows url component
+ex:-
+---------
+<Link to="/">Home</Link>
+<Link to="/about">About</Link>
+<Link to="/contact">Contact</Link>
+
+
+
+
+
+
+Example
+==============
+1.App.js
+-----------
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import "./App.css";
+import React from "react";
+import Contact from "./Contact";
+import About from "./About";
+import Header from "./Header";
+import Home from "./Home";
+
+
+//functional component
+function App() {
+  return (
+    <>
+    <BrowserRouter>
+    <Header/>              //this header is fixed 
+    <Routes>
+    <Route  path='' element={<Home/>}/>
+    <Route  path='/about' element={<About/>}/>
+    <Route  path='/contact' element={<Contact/>}/>
+    </Routes>
+    
+    </BrowserRouter>
+    </>
+  );
+}
+export default App;
+
+
+2.Header.js
+--------------
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Header.css'
+const Header = () => {
+  return (
+    <div className='header'>
+      <ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/contact'>Contact</Link></li>
+      </ul>
+
+    </div>
+  )
+}
+export default Header
+
+
+3.Header.css
+--------------------
+.header {
+    background-color: rgb(144, 132, 245);
+    padding: 20px;
+}
+
+.header ul {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+   
+    align-items: center;
+}
+
+.header li {
+    margin: 0;
+    padding: 0;
+}
+
+.header a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header a:hover {
+    background-color: #333;
+    color: white;
+}
+
+
+About.js,Contact.js====>nothing there(just h1 tag)
+---
+
+
+
+
+
+Child Routing
+=================
+-->Routing inside Routing
+-->example,contact page display when contact routes,and inside contact page we put another routing
+
+
+example
+--------------
+
+1.App.js
+--------------
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import "./App.css";
+import React from "react";
+import Contact from "./Contact";
+import About from "./About";
+import Header from "./Header";
+import Home from "./Home";
+import Mail from "./Mail";
+import Phone from "./Phone";
+
+//functional component
+function App() {
+  return (
+    <>
+    <BrowserRouter>
+    <Header/>
+    <Routes>
+    <Route  path='' element={<Home/>}/>
+    <Route  path='/about' element={<About/>}/>
+    
+   <Route  path='/contact' element={<Contact/>}> //write route inside route
+         <Route path='mail' element={<Mail/>}/>
+         <Route path='phone' element={<Phone/>}/>
+    </Route>
+    
+  </Routes>
+    
+    </BrowserRouter>
+    
+
+    </>
+  );
+}
+
+export default App;
+
+
+2.Contact.js
+-----------------
+import React from 'react'
+import { Outlet,Link } from 'react-router-dom'
+
+const Contact = () => {
+  return (
+    <div>
+      <ul>
+        <li><Link to='phone'>Phone</Link></li>
+        <li><Link to='mail'>Mail</Link></li>
+      </ul>
+      <div> 
+        <Outlet/>  //need to mention this ,here routing data displayed here
+      </div>
+    </div>
+  )
+}
+export default Contact
+---
+
+
+handle/acess routeParaments/path parameters   ->useParam
+handle/acess  query parameters                 ->useLocation
+---
+
+
+Difference b/w Link and anchor tag
+----------------------------------------
+-->Link tag,while routig it will not refresh the page
+-->anchor tag,while routing it will refresh the page   (page refresh means that is new request)
+---
+
+
+
+
+
+
+useRef
+============
+-->it is also hook
+-->it used mainly 3-cases
+*==>1.By using this we can directly accesss DOM object directly
+    ==>instead of using document.getElementById('idname') or other DOM queries
+
+*==>2.it prevent the re-rendering or it will not trigger re-rendering when the value changes unlike useState
+    ==>useState re-renders the component when the state/data changes 
+
+==>3.storing persistent values across multiple re-renderings
+     ==>When you need to keep a value that shouldn't be re-initialized on every render, useRef is a good choice
+     ==> Storing the previous value of a prop or state to compare it with the current value.
+
+
+
+
+-->Real time scenario of usage:- when we are buidling search input where after component renders that search input should focus
+                                 then we create a input feild we linked to useRef
+
+
+NOTE=  -->there is current property there in useRef hook through that we have to use useRef
+
+Example
+=============
+
+ex-1(Access DOM obj)
+-----------------------
+import React, { useEffect, useRef } from 'react'
+
+const Home = () => {
+  const h1_tag = useRef(null)    //useRef used initially value is null
+ 
+useEffect(()=>{{console.log(h1_tag.current)}})      //here iam printing h1 tag in the console ,this useEffect will call after comp renders
+
+  return (
+    <div>
+      <h1 ref={h1_tag}>Home!!</h1>    //linked useRef to h1 tag ,so we can acess this h1 tag directly
+    </div>
+  )
+  
+}
+
+export default Home
+
+
+ex-2(Access DOM obj)
+-----------------------
+import React, { useEffect, useRef } from 'react'
+
+const Home = () => {
+const t = useRef(null)
+
+useEffect(()=>{t.current.focus()})     //this will used execute ,means that input tag focus(cursor blink in the input feild)
+  return (
+    <div>
+     
+      <input type='text' ref={t}/>    //linked useRef to this input feild
+    </div>
+  )
+  
+}
+
+export default Home
+
+
+
+ex-3(not trigger re-render when value changes)
+-------------------------------------------------------
+import React, {  useRef } from 'react'
+
+const Home = () => {
+  const t = useRef(10)
+
+
+  return (
+    <div>
+      <h1>{t.current}</h1>
+       
+     <button                               //WHEN the button clicking value of t will be increase
+      onClick={()=>
+        {t.current=t.current+1;
+          console.log(t.current)   //the increment value we found in the console but nt at browser(UI) bcz it will not re-render when value changes
+        }
+      }>clcick</button>
+      
+    </div>
+  )
+  
+}
+
+export default Home
+---
+
+
+
+
+
+Prop Drilling
+====================
+-->prop drilling is a process of passing data from parent to nested childs components
+-->in this data passess so many intermediate components even though those not uses the props
+
+App
+ |
+Header
+ |
+About
+ |
+Contact
+ |
+Login
+
+
+
+Explnation
+------------
+-->in the above Login need a data that avaialable in App component
+-->so App send data to Header usieng props,Header to About,ABout to contact,Contact to Login
+-->like this passing data using intermediate components this is called prop drilling
+
+Example
+-----------------
+
+Note=
+==>(App->Header->About) this heirarchy there in this example(About want to use data which available at App ,so it passess through Header also even though Header no need of that data
+
+1.App.js
+------------
+
+import "./App.css";
+import React from "react";
+import Header from "./Header";
+
+
+//functional component
+function App() {
+  const data={name:'mahi',age:45}
+
+  return (
+    <>
+    <Header data={data}/>  {/* sending to Header */}
+ 
+    </>
+  );
+}
+export default App;
+
+
+2.Header.js
+-----------
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Header.css'
+import About from './About'
+
+
+const Header = (props) => {
+  return (
+    <div>
+      
+       <About data={props.data}/>
+
+    </div>
+  )
+}
+
+export default Header
+
+
+
+3.About.js
+-----------------
+import React from 'react'
+
+const About = (props) => {
+  return (
+    <div>
+     <h1>{props.data.name}</h1>
+     <h2>{props.data.age}</h2>   //here data using
+    </div>
+  )
+}
+export default About
+---
+
+
+
+useContext
+==================
+-->it is used for to avoid the props drilling concept
+-->in the component tree structure ,we can use the data any component
+-->accessing global state without prop drilling
+-->realtime scenario usage:- in the e-commerece application we want to acess user-cart data from any component in the app
+                             then create useContext for card then we can use /access card data in any component
+
+example
+-----------
+1.App.js
+------------
+
+import "./App.css";
+import React, { createContext } from "react";
+import Header from "./Header";
+
+
+//functional component
+export const context = createContext()   //need to create this ,should out side of function
+function App() {
+
+  const data={name:'mahi',age:45}
+
+  return (
+    <>
+    
+    <context.Provider value={data}>   //need to put the data like this
+    <Header/>  {/* sending to Header */}
+    </context.Provider>
+    
+    
+
+    </>
+  );
+}
+export default App;
+
+
+
+
+2.Header.js
+-------------
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Header.css'
+import About from './About'
+
+
+const Header = () => {
+  return (
+    <div>
+      
+       <About/>
+
+    </div>
+  )
+}
+
+export default Header
+
+
+
+3.About.js
+---------------
+import React, { useContext } from 'react'
+import {context} from './App'
+
+const About = () => {
+  let data =useContext(context);
+  return (
+    <div>
+     <h1>{data.name}</h1>
+     <h2>{data.age}</h2>
+    </div>
+  )
+}
+
+export default About
+---
+
+
+
+useMemo
+===============
+-->useMemo hook used for memoise the result of the function
+-->This means it will remember the computed  result of the function 
+-->function not re-calculated for every render unless dependecies changes
+-->useMemo function re-calculated when the dependencies(inputs) changing time only
+-->if the dependencies(input's) are same then it will not re-calculate or will not execute the function simply it will give previously calculated result
+-->by using this we can avoid the re-running the function or re-calculation the function for every time of component rendering
+    bcz that function have heavy calculations ,so its not good for re-calculation heavy calculation every time of comp re-render
+
+
+-->real time scenario:- when we are doing filtering on large data set and it is very complex calculations there
+                        then that situation we use useMemo ,so that filtering re-runs only when inputs/use filter criteria changing time
+                        if the use given same inputs then function will not execute again and again ,give previous result
+
+
+Note= -->useMemo is for values
+
+
+exapmple(without using useMemo hook)
+-------------------------------------------
+App.js
+---------
+
+import "./App.css";
+import React, { useEffect, useState } from "react";
+
+
+
+//functional component
+
+function App() {
+
+  /* for time display in UI,every time changes comp re-render that pupose time taken here,useEffect here resposible change time*/
+  const [Time, setTime] = useState(new Date().toLocaleTimeString())
+ 
+  /*data it stores,when the data changes comp re-render*/ 
+  const [data, changeData] = useState([
+    { id: 1, name: 'mahi', age: 85 },
+    { id: 2, name: 'raju', age: 45 }
+  ])
+
+  /* for searching some one by name,in the input feild search name will give,initially all sdata showed forst bcz ('') given */
+  const [searchText, updateSearchText] = useState('')
+  /*function called here with passing two arguements data and what ever user want to search that word/name*/
+  const searchResult = searchData(data, searchText)
+  /*this is function will search in the data */
+  function searchData(data, searchText) {
+    console.log('searchData function executed...')  //this will print every time comp re-render,means every time re-rendering this fun execution
+    return data.filter((data) =>  data.name.toLowerCase().includes(searchText.toLowerCase()) )
+  }
+
+  /*time changes for every mentioned interval of time */
+  useEffect(() => {
+    console.log('useEffect')
+    //setInterval perform afer specified interval of time
+    //here every 1000 sec setting time then comp re-render,time will display
+    setInterval(() => { setTime(new Date().toLocaleTimeString()) }, 1000)
+  }, [])
+
+  return (
+    <>
+      <p>Time:: {Time}</p>
+
+      <input type='text'
+      value={searchText}
+      onChange={(e)=>updateSearchText(e.target.value)}/>
+
+      <table>
+        <tr>
+          <td>ID</td>
+          <td>NAME</td>
+          <td>AGE</td>
+        </tr>
+        {
+          searchResult.map((res)=>(
+            <tr key={res.id}>
+              <td>{res.id}</td>
+              <td>{res.name}</td>
+              <td>{res.age}</td>
+
+            </tr>
+          ))
+        }
+      </table>
+
+
+
+    </>
+  );
+}
+export default App;
+
+Note =
+-->the above the funtion excutes/calculates or filters every time when the component re-renders
+-->its not good practice bcz inputs not changing but every re-render function  executing.
+-->to avoid this we use useMemo ,then when the inputs changes time it function will execute ,if inputs not changes then previous res it will return
+
+
+
+example(with useMemo)
+--------------------------------
+
+import "./App.css";
+import React, { useEffect, useState,useMemo} from "react";
+
+
+
+//functional component
+
+function App() {
+
+  /* for time display in UI,every time changes comp re-render that pupose time taken here,useEffect here resposible change time*/
+  const [Time, setTime] = useState(new Date().toLocaleTimeString())
+ 
+  /*data it stores,when the data changes comp re-render*/ 
+  const [data, changeData] = useState([
+    { id: 1, name: 'mahi', age: 85 },
+    { id: 2, name: 'raju', age: 45 }
+  ])
+
+  /* for searching some one by name,in the input feild search name will give,initially all sdata showed forst bcz ('') given */
+  const [searchText, updateSearchText] = useState('')
+  
+ /*useMemo used*/
+  const searchResult = useMemo(()=>{
+    console.log('useMemo execueted..')
+    return data.filter((data)=>data.name.toLowerCase().includes(searchText.toLowerCase()))
+  },[data,searchText])
+ 
+
+  /*time changes for every mentioned interval of time */
+  useEffect(() => {
+    console.log('useEffect')
+    //setInterval perform afer specified interval of time
+    //here every 1000 sec setting time then comp re-render,time will display
+    setInterval(() => { setTime(new Date().toLocaleTimeString()) }, 1000)
+  }, [])
+
+  return (
+    <>
+      <p>Time:: {Time}</p>
+
+      <input type='text'
+      value={searchText}                                //two-way data binding
+      onChange={(e)=>updateSearchText(e.target.value)}/>   //when ever data enters in inputfeild that is given to useState for chage searchText value
+
+      <table>
+        <tr>
+          <td>ID</td>
+          <td>NAME</td>
+          <td>AGE</td>
+        </tr>
+        {
+          searchResult.map((res)=>(
+            <tr key={res.id}>
+              <td>{res.id}</td>
+              <td>{res.name}</td>
+              <td>{res.age}</td>
+
+            </tr>
+          ))
+        }
+      </table>
+
+
+
+    </>
+  );
+}
+export default App;
+
+
+
+
+Note=here useMemo execute only once when though how many times component renders(time state chaging for every 1000 sec) ,
+               upto inputs changes useMemo gives previous result.
+---
+
+
+useCallBack
+====================
+-->useCallBack hook used to memoise the function so  it is not re-render evry time unless dependencied chages
+-->this is usefull when we pass function as prop to child component
+-->if  we pass function as prop to child component ,if the parent component re-renders then new function reference passess to child component 
+         then child component re-render again
+-->to avoid the above situation we use useCallBack this will prevent re-renderness unless dependecies(inputs)changes
+
+example scenarion
+------------------------
+-->in the e-commerce website
+-->parent component have addCart function(it's add product in the cart) 
+-->parent component send this addCart() function to child comp as prop
+-->child component displays products and buttons for add to cart 
+-->if click then that product added to cart
+-->so here if the parent comp re-render then new function ref passess to child comp then child comp will re-render
+-->to avoid this we use useCallBack()hook
+
+NOTE=-->useCallBack if for memoise the function
+
+
+
+How to send data from child component to parent component
+===============================================================
+-->for sending data from child to parent
+-->1.first create the function in the parent & and pass that function to child component using props
+-->and call the function in child while calling pass some data to parent 
+-->this is the process of sending data from child to parent
+
+
+
+example
+--------------
+1.App.js
+-------------
+import React, { useState } from 'react'
+import Header from './Header'
+function App() {
+
+  const[data,changeData]=useState()
+
+  function patent(data){
+      changeData(data);
+
+  }
+
+  return (
+    <div>
+      <h1>{data}</h1>
+    <Header fun={patent}/>
+    </div>
+  )
+}
+export default App
+
+
+
+2.Header.js
+-----------------
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Header.css'
+
+
+
+const Header = (props) => {
+
+  props.fun("hello Dear Parent!!!!")
+  return (
+    <div>
+      
+       
+
+    </div>
+  )
+}
+
+export default Header
+--- 
+
+
+
+
+How to install bootstrap
+===================================
+-->npm install bootstrap   ==>this is the command
+
+-->import 'bootstrap/dist/css/bootstrap.min.css';    ==>import this in a component wherever we want
+-->@import url(bootstrap/dist/css/bootstrap.min.css) ==>this will import at index.css ,so it will apply whole not for particular component
+---
+
+
+
+
+
+
+Form control in React
+=================================
+-->two way to hnadle forms in react
+1.Controlled Way       :- using state we will handle the form data
+2.Un Controlled Way    :-using DOM(useRef hook) we will handle the form data
+
+
+
+
+example( for mail used useState,for password used useRef)
+------------------------------------------------------------------
+import React, { useState,useRef } from 'react'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+function App() {
+
+const[mail,changeMail] = useState()
+const pwd = useRef()
+
+return (
+  <>
+    <div className='border w-25 mt-5 p-4 m-auto'>
+      <h2 className='text-primary text-center'>Login Page</h2>
+        <form>
+        <div>
+          <label className='form-label'>EMAIL</label>
+          <input type='email' placeholder='Enter Email'  className="form-control" value={mail}  onChange={(e)=>{changeMail(e.target.value)}}/>
+        </div>
+        <div>
+          <label className='form-label'>Password</label>
+          <input type='password' placeholder='Enter Password' className="form-control" ref={pwd} />
+        </div>
+      <div>
+        <button className='btn btn-primary w-100 mt-3'
+          onClick={(e)=>{
+            e.preventDefault(); 
+            console.log('pwd :'+pwd.current.value);  //hanled password value printed here(used useRef)
+            console.log('Mail :'+mail);             //hanled mail value printed here(used useState)
+          }}
+        >login</button>
+      </div>
+
+        </form>
+    </div>
+  </>
+)
+}
+
+export default App
+---
+
+
+
+
+Form validations
+===========================
+App.js
+----------
+import React, { useState } from 'react'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+function App() {
+
+  /*for email and password */
+  const [mail, changeMail] = useState('')
+  const [password, changePassword] = useState('')
+
+  /*for eerrors display */
+  const [errors, updateErrors] = useState({
+    email: "",
+    password: ""
+  })
+
+  /*for email format checking*/
+  const validEmailCheck = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+
+  function afterClick(e) {
+    e.preventDefault();
+
+    if(mail.trim()===""){
+      updateErrors((errors)=>({...errors,email:"enter email"}))
+    }
+
+    else if(!validEmailCheck.test(mail)){
+      updateErrors((errors)=>({...errors,email:"enter valid email format"}))
+    }
+    else{
+      updateErrors((errors)=>({...errors,email:""}))
+    }
+
+    if(password.trim()===""){
+      updateErrors((errors)=>({...errors,password:"eneter password"}))
+    }
+    else{
+      updateErrors((errors)=>({...errors,password:""}))
+    }
+
+  }
+
+  return (
+    <>
+      <div className='border w-25 mt-5 p-4 m-auto'>
+        <h2 className='text-primary text-center'>Login Page</h2>
+        <form>
+          <div>
+            <label className='form-label'>EMAIL</label>
+            <input type='email' placeholder='Enter Email' className="form-control" value={mail} onChange={(e) => { changeMail(e.target.value) }} />
+            {errors.email && <span className='text-danger'>{errors.email}</span>} //this line responsible to show error msg
+          </div>
+          <div>
+            <label className='form-label'>Password</label>
+            <input type='password' placeholder='Enter Password' className="form-control" value={password}
+              onChange={(e) => changePassword(e.target.value)} />
+               {errors.password && <span className='text-danger'>{errors.password}</span>} //this line responsible to show error msg
+          </div>
+          <div>
+            <button className='btn btn-primary w-100 mt-3'
+              onClick={afterClick}>login</button>
+          </div>
+
+        </form>
+      </div>
+    </>
+  )
+}
+
+export default App
+---
+
+
+
+Promise && async ,await
+==============================
+1)Promise
+---------------
+-->it is used handle the asynchronous operations(the operation may take time to give result)
+-->instead of waiting while getting response it do some other operations
+
+scenario
+<------------>
+-->if we order a food
+-->you get promise from the waiter food will arrive
+-->while getting food,you can do other things that chatting with friends
+-->after getting food(promise resolved )you can eat
+
+ex:-
+<----->
+function getUserData() {
+  // Fetch user data from an API (this is asynchronous)
+  fetch('https://jsonplaceholder.typicode.com/users/1')
+    .then((response) => response.json()) // Wait for response, then parse it as JSON
+    .then((data) => console.log(data))   // Log the data when available
+    .catch((error) => console.error('Error:', error)); // Handle any error
+}
+
+getUserData();
+
+
+2)async ,await
+================
+-->when we use async to any function ,that tells to javascript this method do something that too some time
+-->await keyword used for pause the execution to next line untill getting the response
+-->simply this are used for execute function synchronously
+
+
+scenario
+<------------>
+-->if we order a food
+-->you get promise from the waiter food will arrive
+-->untill getting food you do nothing
+
+ex
+<---->
+async function getUserData() {
+  try {
+    // Wait for the fetch call to finish before going to the next line
+    const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+    const data = await response.json(); // Wait for the data to be converted to JSON
+    console.log(data); // Now log the data after everything is done
+  } catch (error) {
+    console.error('Error:', error); // Handle any error
+  }
+}
+
+getUserData();
+---
+
+
+
+
+Api-calling
+=======================
+Diffarent ways to do Api-calls
+--------------------------------------
+1)fetch() method
+2)Axios library
+3)Jquery library
+
+
+
+
+1)fetch() method
+--------------------
+-->fetch() method is provided by broser which helps to make ajax call
+-->syntax:- fetch(url,[options])
+
+
+ex(getdata)
+--------
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from 'react';
+function App() {
+
+  const [data, modifyData] = useState([])
+  useEffect(() => {
+    getProducts()
+  }, [])
+
+  async function getProducts() {
+
+    let res = await fetch('https://fakestoreapi.com/products')
+    let data = await res.json();
+    modifyData(data)
+    console.log(data)
+  }
+
+
+  return (
+    <div>
+      <h1 className='text-center text-secondary'>fetch method.....</h1>
+        {
+          data && data.length>0?(
+            data.map((i)=>(
+              <div key={i.id}> 
+                 <h2 className='text-warning'>{i.id}</h2>
+                 <h2 className='text-danger'>{i.title}</h2>
+
+              </div>
+            ))
+          ):(
+            <p>data not available....</p>
+          )
+
+        }
+
+
+    </div>
+  )
+}
+
+export default App
+
+
+
+ex-2(save)
+--------------------
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
+function App() {
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+  async function getProducts() {
+    let res = await fetch('https://fakestoreapi.com/products',{
+      method:"POST",
+      body:JSON.stringify({
+        title: 'test product',
+        price: 13.5,
+        description: 'lorem ipsum set',
+        image: 'https://i.pravatar.cc',
+        category: 'electronic'
+      } )
+    })
+    let data = await res.json();
+    console.log(data)
+  }
+  return (
+    <div>
+      <h1 className='text-center text-secondary'>fetch method for save.....</h1>
+    </div>
+  )
+}
+
+export default App
+
+
+
+Note=put,patch,delete can also do like this 
+
+
+
+
+2)Axios library
+-----------------------------
+
+-->it is external library we have to install this in our project to use  =>>>>npm install axios(this is the command for install)
+-->it giving some features
+1.supports promise api
+2.intercept request and response 
+3.Automatically transform json format
+etc......
+
+Note
+--------
+-->we have to install this
+-->npm install axios
+
+
+ex-1(for get)
+--------------------
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
+import axios from 'axios'
+function App() {
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+
+  async function getProducts() {
+    let res = await axios.get('http://localhost:8091/getAll', );
+    console.log(res.data)
+
+  }
+  return (
+    <div>
+      <h1 className='text-center text-secondary'>axios method for get.....</h1>
+    </div>
+  )
+}
+export default App
+
+
+
+ex-2(axios for save)
+------------------------------
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
+import axios from 'axios'
+function App() {
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+
+  async function getProducts() {
+    let res = await axios.post('http://localhost:8091/save', 
+      {
+        "studentHallTicket": 597,
+        "stuentName": "raghu",
+        "collegeName": "aditya degree college,rjy",
+        "state":"AP",
+        "gender":"Male",
+        "skills":["Java","springoot","sql"]
+      }
+    );
+    console.log(res.data)
+
+  }
+  return (
+    <div>
+      <h1 className='text-center text-secondary'>axios method for save.....</h1>
+    </div>
+  )
+}
+export default App
+---
+
+
+Lazy Loading
+=================
+-->React uses two techniques to load the application
+1.eagerly loading/early loading
+2.lazy loading
+
+-->early loading means what ever components we were used in the application,those all will at the time of first time the application starts
+-->so if early loading,at the first time application starts it took time to run the application
+
+-->lazy loading means ,when the application starting not all the components loaded
+-->only necesary time the components load,or when the client route the to that component that time that will load
+
+
+example
+------------
+1.App.js
+-------------
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import "./App.css";
+import React from "react";
+import Header from "./Header";
+import Home from "./Home";
+import {lazy,Suspense} from 'react'
+const About = lazy(()=>import('./About'))                    //need to import which comp's want to load lazyly
+const Contact = lazy(()=>import('./Contact'))
+
+//functional component
+function App() {
+  return (
+    <>
+    <BrowserRouter>
+    <Header/>  
+     <Suspense>           {/* //this header is fixed  */}
+    <Routes>
+    <Route  path='' element={<Home/>}/>
+    
+    <Route  path='/about' element={<About/>}/>
+    <Route  path='/contact' element={<Contact/>}/>
+    
+    </Routes>
+    </Suspense>
+    </BrowserRouter>
+    </>
+  );
+
+}
+export default App;
+
+
+2.Header.js
+
+------------------
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Header.css'
+const Header = () => {
+  return (
+    <div className='header'>
+      <ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/contact'>Contact</Link></li>
+      </ul>
+
+    </div>
+  )
+}
+export default Header
+
+
+Note=in About,Contact,Home nothing is the just h1 tag
+---
+
+
+
+
+
+Higher components
+================================
+-->it is a component that takes another component  as input and returns new component with extra features added to the original component
+-->HOCs are used to reuse logic across multiple components. Instead of copying and pasting the same logic in different components, 
+     you can create an HOC to handle that logic and then use it wherever needed.
+scenario
+<--------->
+-->Imagine you have a plain cake (your component). If you want to add some extra features like frosting or decorations (extra functionality),
+    instead of changing the cake itself, you can wrap it with frosting. Now, your plain cake looks more appealing, 
+   but the base cake hasn't changed. That's what an HOC does—it wraps a component to give it extra features.
+
+
+ex
+----
+// Higher Order Component (HOC) that adds logging
+function withLogging(WrappedComponent) {
+  return function EnhancedComponent(props) {
+    console.log('Component rendered with props:', props);
+    return <WrappedComponent {...props} />;
+  };
+}
+
+// A basic component
+function HelloWorld(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+// Wrapping HelloWorld with the HOC
+const HelloWorldWithLogging = withLogging(HelloWorld);
+
+// Using the enhanced component in the app
+function App() {
+  return <HelloWorldWithLogging name="Alice" />;
+}
+
+export default App;
+---
+
+
+
+
+Portals in React
+====================
+-->React Portals provide a way to render a child component into a different part of the DOM tree, outside of the parent component’s hierarchy.
+
+-->Normally, React renders components as children of their parent element in the DOM. However, 
+   sometimes you may want to render a component outside of its parent but still keep it part of the React component tree.  
+        This is where portals come in handy
+
+{example not practiced}
+---
+
+
+
+
+useReducer
+=================
+-->it is one of the hook
+-->used to handle state of the component like useState()
+-->handling complex state useReducer() is good
+
+-->useReducer is a hook that allows you to manage state in a React component using a reducer function.
+
+-->example scenarios
+<--------------------------->
+ In an e-commerce application, you might need to manage a shopping cart where users can add items, remove items, or update quantities. 
+Since the cart has multiple actions and a more complex structure (list of items, quantities, prices), useReducer is a good fit.
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

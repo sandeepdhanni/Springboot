@@ -1,0 +1,388 @@
+ORDERCONTROLLER CLASS :
+
+
+
+
+//package com.aus.corsafe.controller;
+//import com.aus.corsafe.entity.Cart;
+//import com.aus.corsafe.entity.Orders;
+//import com.aus.corsafe.entity.ResponseModel;
+//import com.aus.corsafe.repository.OrdersRepository;
+//import com.aus.corsafe.repository.PaymentRepo;
+//import com.aus.corsafe.response.CommonResponse;
+//import com.aus.corsafe.service.OrderService;
+//import com.razorpay.Payment;
+//import lombok.extern.slf4j.Slf4j;
+//import org.json.JSONObject;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//import java.util.Map;
+//
+//@Slf4j
+//@Controller
+//@CrossOrigin(origins="*")
+//@RequestMapping("/orderdetails")
+//public class OrderController {
+//    @Autowired
+//    OrderService orderService;
+//
+//    @Autowired
+//    private OrdersRepository orderRepo;
+//
+//
+//    @Autowired
+//    private PaymentRepo paymentRepo;
+//
+//    @PostMapping(value = "/createOrder", produces = "application/json")
+//    public ResponseEntity<ResponseModel<Object>> createOrder(@RequestBody Orders orders) {
+//        Orders createdOrder;
+//        try {
+//            createdOrder = orderService.createOrder(orders);
+//        } catch (Exception e) {
+//            log.error("Error creating order: {}", e.getMessage());
+//            return new CommonResponse<>().prepareErrorResponseObject(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
+//        return new CommonResponse<>().prepareSuccessResponseObject(createdOrder, HttpStatus.CREATED);
+//    }
+//
+//
+//    @GetMapping("/")
+//    public String init()
+//    {
+//        return "index";
+//    }
+//
+//
+//
+//
+//    @GetMapping("/paymentDetails/{paymentId}")
+//    public ResponseEntity<ResponseModel<Object>> getPaymentDetails(@PathVariable String paymentId) {
+//        Payment paymentDetails;
+//        try {
+//            paymentDetails = orderService.getPaymentDetails(paymentId);
+//        } catch (Exception e) {
+//            log.error("Error fetching payment details: {}", e.getMessage());
+//            return new CommonResponse<>().prepareErrorResponseObject("Payment details not found", HttpStatus.NOT_FOUND);
+//        }
+//        return new CommonResponse<>().prepareSuccessResponseObject(paymentDetails, HttpStatus.OK);
+//    }
+//
+//
+//
+//    //this api is used to update the order status by razorpay order id
+//    @PostMapping("/updateOrderStatus")
+//    @ResponseBody
+//    public ResponseEntity<ResponseModel<Object>> updateOrderStatus(@RequestBody Map<String, String> request) {
+//        String orderId = request.get("orderId");
+//        String status = request.get("status");
+//
+//        Orders order = orderRepo.findByRazorPayOrderId(orderId);
+//        if (order != null) {
+//            order.setOrderStatus(status);
+//            orderRepo.save(order);
+//            return new CommonResponse<>().prepareSuccessResponseObject("Order status updated", HttpStatus.OK);
+//        } else {
+//            return new CommonResponse<>().prepareErrorResponseObject("Order not found", HttpStatus.NOT_FOUND);
+//        }
+//    }
+//
+//
+////    @PostMapping("/webhook/razorpay")
+////    @ResponseBody
+////    public ResponseEntity<String> handlePaymentStatusUpdate(
+////            @RequestBody String payload,
+////            @RequestHeader("X-Razorpay-Signature") String razorpaySignature) {
+////        try {
+////            // Verify webhook signature
+////            OrderService webhookService = new OrderService();
+////            String secret = "your-razorpay-webhook-secret";
+////            boolean isValidSignature = webhookService.verifyWebhookSignature(payload, razorpaySignature, secret);
+////
+////            if (!isValidSignature) {
+////                return new ResponseEntity<>("Invalid webhook signature", HttpStatus.UNAUTHORIZED);
+////            }
+////
+////            JSONObject webhookPayload = new JSONObject(payload);
+////            String event = webhookPayload.getString("event");
+////            JSONObject paymentDetails = webhookPayload.getJSONObject("payload").getJSONObject("payment").getJSONObject("entity");
+////
+////            String razorpayOrderId = paymentDetails.getString("order_id");
+////            String paymentStatus = paymentDetails.getString("status");
+////
+////            if ("payment.captured".equals(event)) {
+////                Orders order = orderRepo.findByRazorPayOrderId(razorpayOrderId);
+////
+////                if (order != null) {
+////                    // Update order details
+////                    order.setOrderStatus(paymentStatus);
+////                    order.setRazorPayPaymentId(paymentDetails.getString("id"));
+////                    order.setPaymentMethod(paymentDetails.getString("method"));
+////                    order.setCurrency(paymentDetails.getString("currency"));
+////                    order.setAmount(paymentDetails.getInt("amount") / 100); // Amount in smallest unit, dividing by 100
+////
+////                    // Set additional details based on payment method
+////                    if (paymentDetails.has("bank")) {
+////                        order.setBank(paymentDetails.getString("bank"));
+////                    }
+////                    if (paymentDetails.has("wallet")) {
+////                        order.setWallet(paymentDetails.getString("wallet"));
+////                    }
+////                    if (paymentDetails.has("vpa")) {
+////                        order.setVpa(paymentDetails.getString("vpa"));
+////                    }
+////
+////                    // Save updated order details to the database
+////                    orderRepo.save(order);
+////
+////                    return new ResponseEntity<>("Order details updated successfully", HttpStatus.OK);
+////                } else {
+////                    return new ResponseEntity<>("Order not found", HttpStatus.NOT_FOUND);
+////                }
+////            }
+////
+////            return new ResponseEntity<>("Unhandled event", HttpStatus.BAD_REQUEST);
+////        } catch (Exception e) {
+////            return new ResponseEntity<>("Error processing webhook", HttpStatus.INTERNAL_SERVER_ERROR);
+////        }
+////    }
+//}
+
+
+
+
+
+
+
+ORDERS CLASS :
+
+
+
+//package com.aus.corsafe.entity;
+//
+//import com.fasterxml.jackson.annotation.JsonBackReference;
+//import jakarta.persistence.*;
+//import lombok.Data;
+//import lombok.RequiredArgsConstructor;
+//
+//import java.util.Date;
+//import java.util.List;
+//
+//@Entity
+//@Table(name="orderPayment")
+//@Data
+//@RequiredArgsConstructor
+//public class Orders {
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO
+//    )
+//    private Integer orderId;
+//    private String name;
+//    private String email;
+//    private Integer attempts;
+//    private String phoneNumber;
+//    private String orderStatus;
+//    private Integer amount;
+//    private Date orderDate;
+//    private String razorPayOrderId;
+//    private String userId;
+//
+//
+//    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+//    @JsonBackReference
+//    private List<Cart> cartItems;
+//
+//
+//
+//}
+
+
+
+
+ORDERREPOSITORY :
+
+
+//package com.aus.corsafe.repository;
+//
+//import com.aus.corsafe.entity.Orders;
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.stereotype.Repository;
+//
+//@Repository
+//public interface OrdersRepository extends JpaRepository<Orders,Integer> {
+//    Orders findByRazorPayOrderId(String razorPayOrderId);
+//}
+
+
+
+
+
+ORDERSERVICE CLASS :
+
+
+
+//package com.aus.corsafe.service;
+//import com.aus.corsafe.entity.Cart;
+//import com.aus.corsafe.entity.CartItem;
+//import com.aus.corsafe.entity.Orders;
+//import com.aus.corsafe.entity.UserRegister;
+//import com.aus.corsafe.repository.CartRepository;
+//import com.aus.corsafe.repository.OrdersRepository;
+//import com.aus.corsafe.repository.UserRegisterRepo;
+//import com.razorpay.Order;
+//import com.razorpay.Payment;
+//import com.razorpay.RazorpayClient;
+//import lombok.extern.slf4j.Slf4j;
+//import org.apache.commons.codec.binary.Hex;
+//import org.json.JSONObject;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.stereotype.Service;
+//
+//import javax.crypto.Mac;
+//import javax.crypto.spec.SecretKeySpec;
+//import java.util.Date;
+//import java.util.List;
+//import java.util.Optional;
+//
+//@Slf4j
+//@Service
+//public class OrderService {
+//
+//    @Autowired
+//    OrdersRepository orderRepo;
+//
+//    @Autowired
+//    CartRepository cartRepo;
+//
+//    @Autowired
+//    UserRegisterRepo userRegisterRepo;
+//
+//    @Value("${razorpay.key.id}")
+//    private String razorPayKey;
+//
+//    @Value("${razorpay.secret.key}")
+//    private String razorPaySecret;
+//
+//    private RazorpayClient client;
+//
+//
+//
+////    private static final String HMAC_SHA256 = "HmacSHA256";
+//
+//
+////    public OrderService() throws Exception {
+////        this.client = new RazorpayClient(razorPayKey, razorPaySecret);
+////    }
+//
+////    public boolean verifyWebhookSignature(String payload, String razorpaySignature, String secret) throws Exception {
+////        Mac sha256Hmac = Mac.getInstance(HMAC_SHA256);
+////        SecretKeySpec secretKey = new SecretKeySpec(secret.getBytes(), HMAC_SHA256);
+////        sha256Hmac.init(secretKey);
+////
+////        byte[] hash = sha256Hmac.doFinal(payload.getBytes());
+////        String expectedSignature = Hex.encodeHexString(hash);
+////
+////        return expectedSignature.equals(razorpaySignature);
+////    }
+//
+//
+//
+//    public Orders createOrder(Orders order) throws Exception {
+//
+//        Optional<UserRegister> userOptional = userRegisterRepo.findById(Integer.parseInt(order.getUserId()));
+//        if (userOptional.isEmpty()) {
+//            throw new Exception("User ID not found");
+//        }
+//
+//        UserRegister user = userOptional.get();
+//        validateOrderDetails(order, user);
+//
+//        order.setAttempts(0);
+//
+//        // Fetch user's cart
+//        Optional<Cart> cartOptional = cartRepo.findByUserId(Integer.valueOf(order.getUserId()));
+//        if (cartOptional.isEmpty()) {
+//            throw new Exception("Cart is empty for user: " + order.getUserId());
+//        }
+//
+//        Cart cart = cartOptional.get();
+//        List<CartItem> cartItems = cart.getItems();
+//
+//        // Calculate total amount
+//        int totalAmount = 0;
+//        for (CartItem cartItem : cartItems) {
+//            totalAmount += cartItem.calculateTotalPrice();
+//        }
+//        order.setAmount(totalAmount);
+//        System.out.println("Total Amount in paise: " + (totalAmount * 100));
+//
+//        // Create Razorpay order request
+//        JSONObject orderReq = new JSONObject();
+//        orderReq.put("amount", totalAmount * 100); // Razorpay expects amount in paise
+//        orderReq.put("currency", "INR");
+//        orderReq.put("receipt", order.getEmail());
+//
+//        this.client = new RazorpayClient(razorPayKey, razorPaySecret);
+//        Order razorPayOrder = client.orders.create(orderReq);
+//        order.setRazorPayOrderId(razorPayOrder.get("id"));
+//        order.setOrderStatus(razorPayOrder.get("status"));
+//        order.setOrderDate(new Date());
+//
+//        order.setCartItems(cartItems); // Set the cart items in the order
+//        orderRepo.save(order); // Save the order along with cart items
+//        return order;
+//    }
+//
+//
+//    private void validateOrderDetails(Orders order, UserRegister user) throws Exception {
+//        if (!order.getName().equals(user.getFirstName())) {
+//            throw new Exception("Invalid name provided for user ID: " + order.getUserId());
+//        }
+//        if (!order.getEmail().equals(user.getEmail())) {
+//            throw new Exception("Invalid email provided for user ID: " + order.getUserId());
+//        }
+//        if (!order.getPhoneNumber().equals(String.valueOf(user.getPhoneNumber()))) {
+//            throw new Exception("Invalid phone number provided for user ID: " + order.getUserId());
+//        }
+//    }
+//
+//
+//
+//
+//
+//    public Payment getPaymentDetails(String razorPayPaymentId) throws Exception {
+//        Payment payment = client.payments.fetch(razorPayPaymentId);
+//        return payment;
+//    }
+//
+//
+////    public Orders createOrder(Orders order) throws Exception {
+////        JSONObject orderReq = new JSONObject();
+////        //orderReq.put("Payment ID", order.getRazorPayPaymentId());
+////        orderReq.put("Bank RRN", order.getBank());
+////        orderReq.put("Customer detail", order.getPhoneNumber());
+////        order.setOrderDate(new Date());
+////        orderReq.put("Amount", order.getAmount());
+////        orderReq.put("Status", order.getOrderStatus());
+////
+////        this.client = new RazorpayClient(razorPayKey, razorPaySecret);
+////        Payment razorPayOrders= client.payments.createJsonPayment(orderReq);
+////        log.info("razorPay payment {}",razorPayOrders);
+//////        order.setRazorPayOrderId(razorPayOrders("id"));
+//////        order.setOrderStatus(razorPayOrders.get("status"));
+////        order.setOrderDate(new Date());
+////
+////        orderRepo.save(order);
+////        return order;
+////    }
+//
+//
+//}
+//
+//

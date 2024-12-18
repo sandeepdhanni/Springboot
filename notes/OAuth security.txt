@@ -1,0 +1,59 @@
+add below dependecies
+
+1.web
+2.oauth2-client
+               <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
+
+
+prcoess or creditials for google
+===========================================
+open 
+console.cloud.google.com
+select project(top left)
+new project(top right)
+give project name(ur wish),keep no organisation
+create
+open the project(click after immediate creation of project or  select project(top left))
+click Api & services option
+credintials(left)
+create credintials(top)
+oauth client id
+configure consent screen
+external(it means gmail use can logn)   {internal also there that means comapanies domain mails will only login}
+create 
+give appname,email,logo(select photo location through browse),developer content info(give email)
+save & continue
+scopes will come
+click add or remove scopes
+select 3 check boxes(right side)
+update
+save & continue
+Test users will come
+add user
+give emails(in one box give multiple emials is allowed)
+save & continue
+click back to dashboard
+click creditial(left)
+create credintial
+oauth client id 
+App type = webapplication and give name ,give authorized redirection url(http://localhost:8081/login/oauth2/code/google)   {port number should your application num same}
+create 
+copy the client-d,client-secret
+
+
+
+
+
+use client-d,client-secret in application.properties file like below
+------------------------------------------------------------------------------
+
+hey in the properties file also those oauth properties removed check (bcz some secrecy oauth ,user client-id ,server-id not allowed to store in git)
+
+
+run the project 
+after that git localhost:8081/sample-->it will ask login click google then it shows email (from which gamil you want to login)->after clcik, if every thing is okay then
+   it will login

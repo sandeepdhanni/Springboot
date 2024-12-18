@@ -1,0 +1,494 @@
+JAVASCRIPT:
+
+
+Comparision ooperators:
+>,<,=,<=,>=,
+
+==(double equals),
+===,!=,
+!==//strictly not equal to
+
+
+PROMPT:
+ prompt("please enter a number")
+
+
+parseInt:
+convert string number to integer
+eg:
+parseInt("102dif")
+ 102
+
+
+push(push the num at the last) and pop(pops the num at tthe last):
+eg:let sam=[12,543,65,645];
+sam.pop()
+645
+sam.push(21)
+4
+sam
+(4) [12, 543, 65, 21]
+
+
+
+shift(remove from start) and unshift(adds from start)
+
+
+few more methods in js:
+concat(combines two arrays):
+eg:let days=['sun','mon','tue','wed']
+undefined
+sam.concat
+ƒ concat() { [native code] }
+sam.concat(days)
+(8) [12, 543, 65, 21, 'sun', 'mon', 'tue', 'wed'],
+
+indexOf():it returns the index which the element can be found or not,if it is not found it gives -1..
+eg:
+sam.indexOf(12)
+0,
+
+includes():it is a boolean method.it just tells us whether the element is there or not
+eg: 
+sam.includes(12)
+true
+
+reverse():it reverse the entire array
+
+slice():it gives a copy of array
+eg:
+days.slice()
+(4) ['sun', 'mon', 'tue', 'wed']
+let day=days.slice()
+undefined
+day
+(4) ['sun', 'mon', 'tue', 'wed']
+days
+(4) ['sun', 'mon', 'tue', 'wed']
+day.slice(1,2)
+['mon']
+day.slice(-2)
+(2) ['tue', 'wed']
+
+splice():it delete and insert elements
+eg:
+delete:
+day.splice(0,1)
+['sun']
+day
+(3) ['mon', 'tue', 'wed']
+insert:
+day.splice(1,0,'satursday')
+[]
+day
+(4) ['mon', 'satursday', 'tue', 'wed']
+
+sort():it sort the array using the first digit
+eg:
+day.sort()
+(4) ['mon', 'satursday', 'tue', 'wed']
+sam.sort()
+(4) [12, 21, 543, 65]
+
+multidimentional array:
+const gameboard=[['X','O','X'],['O',NULL,'X'],['O','O','X']];
+undefined
+gameboard
+[array(3),array(3),array(3)]
+gameboard[1][1]
+null
+gameboard[1]
+[''O],null,'X']
+
+
+
+question:
+I've provided you with an array called airplaneSeats, which represents the rows of seats on a flight.  Our friend Hugo is looking to book a seat on our flight. Fortunately, there is one middle seat available (it's set to null currently).  Please update the array element that is currently null, to instead be "Hugo". (Please don't directly change the code on line 6 where I'm initially setting it to null.  This is an exercise in accessing data in nested arrays!)
+
+
+const airplaneSeats = [
+    ['Ruth', 'Anthony', 'Stevie'],
+    ['Amelia', 'Pedro', 'Maya'],
+    ['Xavier', 'Ananya', 'Luis'],
+    ['Luke', null, 'Deniz'],
+    ['Rin', 'Sakura', 'Francisco']
+];
+
+// YOUR CODE GOES BELOW THIS LINE:
+airplaneSeats[3][1]='Hugo';
+
+
+eg question:
+In index.js, you'll find a restaurant object that contains a name, address, city, state, and zipcode. 
+
+Your task to is to create a variable named fullAddress that points to a string using the information from restaurant. 
+
+fullAddress should point to a string that includes the address, city, state, and zipcode from the restaurant object. Make sure to add any necessary commas or spaces between the values as seen in the exact expected output format shown below.
+
+To make it harder to "cheat" by copy and pasting, I've randomly generated the address portion.    For example, if address was "64 Johnson Ave", the fullAddress variable would look like this:
+
+"64 Johnson Ave, Brooklyn, NY 11206" // this is the expected output format of the fullAddress string (keep an eye on the commas and/or spaces between the values and match that too!)
+
+const restaurant = {
+    name: 'Ichiran Ramen',
+    address: `${Math.floor(Math.random() * 100) + 1} Johnson Ave`,
+    city: 'Brooklyn',
+    state: 'NY',
+    zipcode: '11206',
+}
+answer:
+SOLUTION #1:
+
+const fullAddress = `${restaurant.address}, ${restaurant.city}, ${restaurant.state} ${restaurant.zipcode}`;
+SOLUTION #2:
+
+const fullAddress = `${restaurant["address"]}, ${restaurant["city"]}, ${restaurant["state"]} ${restaurant["zipcode"]}`;
+SOLUTION #3:
+
+const fullAddress = restaurant.address + ", " + restaurant.city + ", " + restaurant.state + " " + restaurant.zipcode;
+SOLUTION #4:
+
+const fullAddress = restaurant["address"] + ", " + restaurant["city"] + ", " + restaurant["state"] + " " + restaurant["zipcode"];
+
+        modefying objects(update objects):
+
+
+midterms
+{sam: 32, chai: 21}
+midterms.sam
+32
+midterms.sam=43;
+43
+midterms
+{sam: 43, chai: 21}
+midterms.swap=90
+90
+midtem
+VM550:1 Uncaught ReferenceError: midtem is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM550:1
+midterms
+{sam: 43, chai: 21, swap: 90}
+midterms[malli]=100
+VM611:1 Uncaught ReferenceError: malli is not defined
+    at <anonymous>:1:10
+(anonymous) @ VM611:1
+midterms['malli']=100
+100
+midterms
+{sam: 43, chai: 21, swap: 90, malli: 100}
+
+
+loops:
+for(let i=100;i>=0;i-=10){ console.log(i); }
+ 100
+ 90
+ 80
+ 70
+ 60
+ 50
+ 40
+ 30
+ 20
+ 10
+ 0
+undefined
+for(let i=10;i<=1000;i*=10){ console.log(i); }
+ 10
+ 100
+ 1000
+
+
+
+math.floor:
+it is a build-in function that rounds the nearest integer down to the nearest..
+
+
+                FUNCTION():
+a function or subroutine is a sequence of program instructions that performs a specific task, packaged as a unit.
+
+example:
+Math.random()
+0.15636728894288354
+let rand=Math.random()
+undefined
+rand
+0.36982681757550795
+add(9,5)
+practice.js:204 14
+undefined
+let sam=add(9,5)
+practice.js:204 14
+undefined
+sam
+
+
+    RETURN KEYWORD(): OUR FUNCTION PRINT VALUES OUT BUT DO NOT RETURN ANYTHING..A return statement can return a value to the calling function.it ends the function exeution and speecifies the value to be returned by that function..
+Example:
+add(9,6)
+15
+const sum=add(9,6)
+undefined
+sum
+15
+
+add(3,5)
+8
+add(4,'a')
+false
+add(add(4,6),64)
+74
+let add=add(add(4,6),64)
+VM718:1 Uncaught SyntaxError: Identifier 'add' has already been declared
+let addition=add(add(4,6),64)
+undefined
+addition
+74
+
+
+
+
+                          SCOPE():
+  (VARIABLE VISIBILITY...)THE LOCATION WHERE A VARIEABLE IS DEFINED DICTATES WHERE WE HAVE ACCESS TO THAT VARIABLE..
+
+
+
+                             .at():
+
+The at() method of Array instances takes an integer value and returns the item at that index, allowing for positive and negative integers. Negative integers count back from the last item in the array.
+Eg:
+const array1 = [5, 12, 8, 130, 44];
+
+let index = 2;
+console.log(`An index of ${index} returns ${array1.at(index)}`);
+// Expected output: "An index of 2 returns 8"
+index = -2;
+console.log(`An index of ${index} returns ${array1.at(index)}`);
+// Expected output: "An index of -2 returns 130"
+Console:
+> "An index of 2 returns 8"
+> "An index of -2 returns 130"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            DOM:DOM is fully practiced in console
+IT IS A BUNCH OF JAVASCRIPT OBJECTS THAT REPRESENTS A WEBPAGE.The Document Object Model (DOM) connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory.The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web. The DOM represents the document as nodes and objects; that way, programming languages can interact with the page.
+
+
+       DOCUMENT:IT IS THE BUNCH OF OBJECTS THAT REPRESENTS THE CONTENT THAT IS LOADED INTO THE PAGE.
+if we want to see the actual document properties,the objects, in the console type 'console.dir(document)' just like window which is a special object 'window'.
+
+
+
+document,getelementbyid()-it will get elements by id.the id is occured once per page
+document.getelementsbytagname()-by tag name like h1 or dir
+document.getelementsbyclassname()-by classname 	
+document.queryselector- all in one method to select a single element(id-#idname,class-.classname,tag-'p') but in this it gives only the first match.eg: if u        
+                      have 2 p tags it will show 1.
+document.queryselector('a[title="java"]')- this will give the tag name both with 'a' and title with 'java'
+document.queryselectorall-same idea, but returns the collection of matching elements instead of just first match.
+document.queryselectorall('p a')-this will select all the anchor tags inside of paragraphs.
+document.queryselector('p').innertext- this will give the text inside the 'p' tag.innertext does not do that like textcontent.if we give display set to
+                                    none.we don't see it but it is in the markup,there is a tag that means there is a dom node.it is sensitive to what it is
+                                    showing at the movement
+document.querySelector('p').textContent- text content is going to return every element in this element,every piece of element is going to showup.
+document.querySelector('p').innerHTML- it is going to give the entirity of the markup contained with some elements.we will get all the tags included in it.
+                                        this is very useful when we are updating the contents and i want to change the inner html.
+ document.querySelector('#banner').id='whops'- we have the id property whhere we can change the id name.
+document.querySelector('#banner').src- we can also change the image with this
+document.querySelector('a').title-this will give the title
+document.querySelector('a').href-this will give the href
+document.queryselector('a').getAttribute('href')-this will get what is inside the href 
+document.queryselector('a').setAttribute('href','https://www.google.com')-in set attribute we have to pass 2 parameters.one which attribute u have to set 
+                                                                      and other what u have to set it to
+              There is a difference between href and setattribute of href is href attribute is comming from javascript where u can see 'htts://www.bddvs' 
+              like link but in setattribute u will only see the name of the link as it is comming from html file
+h1.style.fontSize='20px'-we can also change styles in the console using like this.but if u change it comes in inline css.it should be camel casing
+h1.style.fontSize-if we give like this we can't be able to see the size of the h1 as it shows blank
+window.getcomputedstyles(h1)-this will show the styles of h1.but it is recommended not to use contineously.
+
+CLASSLIST:it is an object that we can interact with to control the classes on the element and also to retrieve them or manipulate them.
+const class=document.queryselector('h2');
+h2.setAttribute('class','border');       - we can set the styles for class.where can we create a class in css with styles and access tat class like this.
+h2.classList- this will show if there are any classes
+h2.classList.add('purple')- this will add the styles to it
+h2.classList.add('border')- this will add the class to it
+h2.classList.remove('border')- this will remove 
+h2.classList.contains('border')- this will show a boolean value if it contains or not
+h2.classList.toggle('purple')- this will also set to boolean value whenever u toggle it it keeps on changing the boolean value and the styles also
+
+parentelement:
+const firstbold=document.querySelector('b')
+firstbold.parentElement- this will give the parent element of that tag as <b> is inside the <p> tag it gives <p>
+firstbold.parentElement.parentElement-this will give <body> as b is inside p tag and p is inside body tag
+
+
+childelement -
+this will give the child element
+const firstbold=document.querySelector('b')
+firstbold-<b>​Silkie​</b>​
+firstbold.parentElement-<p>​…​</p>​
+const parent=firstbold.parentElement
+parent-<p>​…​</p>​
+parent.children
+HTMLCollection(8) [b, b, a, a, a, a, a, a]
+parent.parentElement- <body></body>
+parent.children[0]-<b>​Silkie​</b>​       -this will give the matter in array 1
+parent.children[2]-<p>​Silky lsdnc​</p>​  - this in array 2
+
+                               
+siblings:
+nextElementSibling-this will give the next element
+
+we have parent and child element and same like that in node also. so what is the difference, 
+
+nextSibling and previousSibling - it is a node,it comes in text,so node actually represents text .so some browsers automatically make white spaces that make new lines into a text node and that exactly what is happening here.it has to be because it has a return character,it is not a html element,it is a dom node
+
+
+
+
+how to create a new DOM element:
+there is a special method called document.createElement
+document.createElement('img')- <img>​      -this will create a new element
+const newImg=document.createElement('img')
+console.dir(newImg)- img           this will give the image but it will not show it in the page because u have't given any source to it.if u expand it u will not see the path as u have not given any path.
+
+newImg.src="C:\Users\Sandeep\OneDrive\Desktop\download.jpg"  -         in this way u have to store the src image
+console.dir(newImg) -   after u have give src expand the img and u can see the path
+document.body.appendChild(newImg)  -   <img src=​"C:​UsersSandeepOneDriveDesktopdownload.jpg">​    -this will add the image and show it in the page
+ newImg.classList.add('square') -  this will give the image in the square box format.
+
+
+const newH3=document.createElement('h3') - this will create a new element
+newH3.innerText='I am new here'      -   i am giving a new text
+document.body.appendChild(newH3)  -  <h3>​I am new here​</h3>​     - this will print it in the page
+
+
+p.append('I am new text here...')
+const p= document.querySelector('p')  -   this will append the text in the p tag tag as u can see the text is in the p tag.
+
+
+const newB=document.querySelector('b') 
+newB - <b>​Silkie​</b>​
+newB.append('Hii!!!')
+p.prepend(newB)  - this will give the sentence in the first 'Hii!!!Silkie'
+
+ 
+
+
+removeChild and remove:
+removechild
+this will remove the child element.eg: if u wan to remove the image element u can't just remove like that.we have  to select the parent element and then remove the child element
+eg:
+const firstli=document.querySelector('li')
+undefined
+firstli
+<li class=​"toclevel-1 tocsection-1">​…​</li>​
+const ul=document.parentElement
+undefined
+ul
+null
+const ul=firstli.parentElement
+undefined
+ul
+<ul>​…​</ul>​
+ul.removeChild(firstli)
+
+remove:
+this will remove the element directly.
+eg:
+const img=document.querySelector('img');
+undefined
+img.remove()
+
+
+
+
+               DOM EVENTS:
+events are the keys for creating any sort of interactive website,doing anything to what users are doing or resonding to wat users does when he clicks on anything like clicking,dragging,scrolling,hovering,clicking on key,submitting a form
+
+
+            addeventlistener:
+event listener where we can pass any sort of any type of event we want to listen for like click or double click,mouse enter.we pass in a string and the second argument is our callback function,the code we want to run when that event actually happen.
+
+    this keyword:
+it refers to the whatever was clicked on,that triggered on this function being called or another event that we are listeneing on..this refers to thee element
+
+
+     Keyboard events and events object:
+there is a thing called event object which automatically called to our callback function,we are not using it ,not capturing it there is no parameter to capture,but it is being passed in every single time.this is an object which contains information about the event.we often need to relay on event object when we are working with keys because we wanna know what keys are pressed and that information is included in the keyboard event object.there are two types of events we can listen for-keyup and keydown,keypress
+
+
+     Formevents 
+what happens when we submit the form by defaultand how can we prevent that behaviour?
+so the default behaviour of the form when u submit is that it send the data to whatever the action is.so we lose the page we were on but if i want to stay on this page.we could have seen this some times where when u submit some form the url will be same before and after submitting.but the content will change.so how can we do like that?  how can we have a form that a user can submit but then we basically prevent it from changing the page.we stay on the same page and we do something with the form data. So the answer has to do with the method called event.prevent default.
+
+    
+      change and input events:
+there are different ways of updating an input and keydown or keyup does not include all of them or doesn't encompess them. so there is one event that is chage event.
+the change input only fires when you actually blur the input which actually means leaving it by clicking away
+the input only fires when what's in the input changes,not the blur
+
+
+
+         Event bubling:
+an event is going to be triggered first on some element.in this case we click on the button and that event is handled in our case by this function. but there might be other events that would be triggered by that click.And infact there are. so the event itself will bubble up from this button.
+Eg: think of bubbles rising in a fishtank.they go from bottom all the way up to the top or to the higher level to the surface. 
+
+
+
+
+          VERY VERY IMPORTANT SECTION:
+            Callstack:
+the mechanism the interpreter uses to keep track of its places in a script that calls multiple functions.its how js knows where it is.
+how js know what function is currently being run and what function is being called from within that function.
+A stack is a basic data structure in computer science,it is known as a last-in and first-out data structures.
+HOW IT WORKS:
+when a script calls a function,the interpreter adds it to the call stack and then starts carrying out the function.Any function that are called by that function are added to the call stack futher up, and run where their calls are reached.when the current function is finished,the interpreter takes it off the stack and resumes execution where it left off the last code listing.
+
+
+
+
+             WEBAPI and single threaded:
+js is a single threaded,basically mean there is one thing in js that can process at any given point,it cannot be multitasking in the sense that it's doing two things simultaneously.in simple terms we can say js is running at most one line of code at a time..it can switch back and fourth between different lines of code ...
+this should actually not print as it is a single threaded but it print...why?because the browser is doing the work not javascript.the browser u use is typically written in language like c++ and it can do things javascript can't do.so what happens is js is going to hand off certain tasks to the browser to take care of,browsers come with somethiing called webapi and thse webapi are generally methods,thinigs that we call from javascript that basically are handed to the browser..and these things happen in the background.js does'nt really have to care about it as they've handed to the browser which include things like set timeout(),but also making requests so how it works is that the call stack in js is able to recognise these special these webapi functions and it can pass them off to the browser.so it says,here you go,remind me in three seconds to take care of this.and when the browser finishes those tasks,they are added to the call stack,then js takes over again and execute the approriate code.so these browsers come with these functions,these things that browsers can do for us for js and second is call back of passing a function that is not executed right away,but instead executed later...
+
+
+
+            PROMISES:
+a promise is a object representing the evential completion or failure of an asynchronous function.promises came along where they promised a future where we have asynchronous code,where we did'nt have these nested crazy callback but we could have the exact same logic or the same flow where we only make the second request if the first one works,we can make the third one if the second one works and then at any point when an error occur we will print out the error..we'll handle the error...So promises allow us to have that branching path
+promises represent this asynchronous value that eventually will be restored or rejected..the whole point of promises is that i can run the code when that promise is rejected or when it is resolved and the way we do that is by attaching callbacks to the object or the promise itself..rather than passing callback to the function.we wait for the function to return a promise object...
+
+
+
+            Async function:
+Async function helps us write really really clean asynchronous code.they just make our code a lot more cleaner.it's all build on top of promises.There are two keywords they are async and await,they work together...
+Async:
+Async keyword is a keyword we use to declare a function as a async function.Async function always returns a promises.If a function returns a value,the promise will be resolved with that value.if that function throws an exception,the promise will be rejected..
+await:
+await keyword is what allows us to write asynchronous code that looks like a synchronous.so what it does is will await.whenever we use await keyword,it will pause the executionof our async function and wait for the promise to be resolved before continuing on.Now this only works on a async function.thats why they are paired together
+
+
+
+
+          AJAX(asynchronous javascript and XML):
+ it just refers to making requests to load information or to send information on the page while it's already being loaded or after it's being loaded making requests behind the scene and that enables us to do things.  

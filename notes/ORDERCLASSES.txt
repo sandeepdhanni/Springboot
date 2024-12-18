@@ -1,0 +1,304 @@
+ORDERS CLASS :
+
+
+//package com.aus.corsafe.entity;
+//
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+//import jakarta.persistence.Id;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Data
+//@Entity
+//public class Order {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer orderId;
+//    private Integer productId; // Reference to the product
+//    private Integer quantity;
+//    private Double totalPrice;
+//}
+
+
+
+ORDERCONTROLLER CLASS :
+
+
+//package com.aus.corsafe.controller;
+//
+//import com.aus.corsafe.entity.Orders;
+//import com.aus.corsafe.response.CommonResponse;
+//import com.aus.corsafe.service.OrderServices;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//
+//@RestController
+//@RequestMapping("/orders")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
+//public class OrderController {
+//
+//    @Autowired
+//    private OrderServices orderService;
+//
+//    @PostMapping("/placeOrder")
+//    public ResponseEntity<?> placeOrder(@RequestParam String email, @RequestParam List<Integer> productIds, @RequestParam Integer quantity) {
+//        try {
+//            Orders order = orderService.placeOrder(email, productIds, quantity);
+//            return new CommonResponse<>().prepareSuccessResponseObject(order, HttpStatus.CREATED);
+//        } catch (Exception e) {
+//            return new CommonResponse<>().prepareErrorResponseObject(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
+//    }
+//
+////    @GetMapping("/getOrder/{orderId}")
+////    public ResponseEntity<?> getOrder(@PathVariable Integer orderId) {
+////        Orders order = orderService.getOrderById(orderId);
+////        if (order != null) {
+////            return new CommonResponse<>().prepareSuccessResponseObject(order, HttpStatus.OK);
+////        } else {
+////            return new CommonResponse<>().prepareErrorResponseObject("Order not found", HttpStatus.NOT_FOUND);
+////        }
+////    }
+//}
+
+
+
+
+
+ORDERCONTROLLERC CLASS :
+
+
+
+//package com.aus.corsafe.controller;
+//
+//
+//import com.aus.corsafe.entity.Order;
+//import com.aus.corsafe.service.OrderService;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//
+//@RestController
+//@RequestMapping("/orders")
+//public class OrderControllerC {
+//
+//        @Autowired
+//        private OrderService orderService;
+//
+//        @PostMapping
+//        public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+//            Order createdOrder = orderService.createOrder(order);
+//            return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
+//        }
+//
+//        @GetMapping("/{id}")
+//        public ResponseEntity<Order> getOrderById(@PathVariable Integer id) {
+//            return orderService.getOrderById(id)
+//                    .map(order -> new ResponseEntity<>(order, HttpStatus.OK))
+//                    .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+//        }
+//
+//        @GetMapping
+//        public ResponseEntity<List<Order>> getAllOrders() {
+//            List<Order> orders = orderService.getAllOrders();
+//            return new ResponseEntity<>(orders, HttpStatus.OK);
+//        }
+//    }
+//
+
+
+
+
+ORDER CLASS :
+
+
+//package com.aus.corsafe.entity;
+//
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+//import jakarta.persistence.Id;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Data
+//@Entity
+//public class Order {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer orderId;
+//    private Integer productId; // Reference to the product
+//    private Integer quantity;
+//    private Double totalPrice;
+//}
+
+
+
+ORDERS CLASS :
+
+
+
+//package com.aus.corsafe.entity;
+//
+//import jakarta.persistence.*;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//
+//import java.util.List;
+//
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Data
+//@Entity
+//public class Orders {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Integer orderId;
+//
+//    private String userEmail; // Assuming user email is used to place orders
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "productId", nullable = false)
+//    private Products product;
+//
+//    private Integer quantity;
+//    private Double totalAmount;
+//
+//    @ElementCollection
+//    @CollectionTable(name = "order_product_ids", joinColumns = @JoinColumn(name = "order_id"))
+//    @Column(name = "product_id")
+//    private List<Integer> productIds; // To store product IDs in a list
+//
+//    private String razorpayOrderId; // Razorpay order ID for tracking payments
+//}
+
+
+
+
+ORDERREPOSITORY  :
+
+
+
+//package com.aus.corsafe.repository;
+//
+//import com.aus.corsafe.entity.Order;
+//import org.springframework.data.repository.CrudRepository;
+//import org.springframework.stereotype.Repository;
+//
+//@Repository
+//public interface OrderRepository extends CrudRepository<Order, Integer> {
+//
+//}
+
+
+
+
+ORDERSERVICE CLASS :
+
+
+//package com.aus.corsafe.service;
+//
+//import com.aus.corsafe.entity.Order;
+//import com.aus.corsafe.repository.OrderRepository;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import java.util.List;
+//import java.util.Optional;
+//
+//@Service
+//public class OrderService {
+//
+//    @Autowired
+//    private OrderRepository orderRepository;
+//
+//    public Order createOrder(Order order) {
+//        return orderRepository.save(order);
+//    }
+//
+//    public Optional<Order> getOrderById(Integer orderId) {
+//        return orderRepository.findById(orderId);
+//    }
+//
+//    public List<Order> getAllOrders() {
+//        return (List<Order>) orderRepository.findAll();
+//    }
+//}
+
+
+
+
+
+
+
+ORDERSERVICES CLASS :
+
+
+
+//package com.aus.corsafe.service;
+//
+//import com.aus.corsafe.entity.Orders;
+//import com.aus.corsafe.entity.Products;
+//import com.aus.corsafe.repository.OrderRepository;
+//import com.aus.corsafe.repository.ProductRepository;
+//import com.razorpay.RazorpayClient;
+//import jakarta.persistence.criteria.Order;
+//import org.json.JSONObject;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import java.util.List;
+//
+//@Service
+//public class OrderServices {
+//
+//    @Autowired
+//    private OrderRepository orderRepository;
+//
+//    @Autowired
+//    private ProductRepository productRepository;
+//
+//    public Orders placeOrder(String email, List<Integer> productIds, Integer quantity) throws Exception {
+//        RazorpayClient razorpayClient = new RazorpayClient("YOUR_API_KEY", "YOUR_SECRET_KEY");
+//
+//        // Fetch product details
+//        Products product = productRepository.findById(productIds.get(0)).orElseThrow(() -> new Exception("Product not found"));
+//
+//        // Calculate total price
+//        double totalPrice = product.getPrice() * quantity;
+//
+//        // Create a Razorpay order
+//        JSONObject orderRequest = new JSONObject();
+//        orderRequest.put("amount", totalPrice * 100); // Razorpay deals with paise
+//        orderRequest.put("currency", "INR");
+//        orderRequest.put("receipt", "order_rcptid_11");
+//        Order razorpayOrder = razorpayClient.Orders.create(orderRequest);
+//
+//        // Save the order details in DB
+//        Orders order = new Orders();
+//        order.setUserEmail(email);
+//        order.setProduct(product);
+//        order.setQuantity(quantity);
+//        order.setTotalAmount(totalPrice);
+//        order.setProductIds(productIds);
+//        order.setRazorpayOrderId(razorpayOrder.get("id").toString());
+//
+//        return orderRepository.save(order);
+//    }
+//}

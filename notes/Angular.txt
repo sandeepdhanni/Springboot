@@ -1,0 +1,31 @@
+features if angular:
+____________________
+single page application(SPA),
+data binding
+dependency injection
+mvc architeccture
+
+to install bootstrap in angular type this command:npm install bootstrap --save
+
+
+directives:
+directives are classes that adds additional behaviour to your angular application.the directives are used to 
+manipulate the dom elements.
+
+
+
+service:
+the main objective of service is to share data,functions with other components in angular application.
+
+
+decorators:
+they are design patterns that is used to seperate the decoration of a class without modifying the original code.
+
+
+pipes:
+they are powerful features that are used for transforming data directly within your template
+
+
+
+A framework is a set of pre-written code that provides a structure for developing software applications.
+ A library, on the other hand, is a collection of pre-written code that can be used to perform specific tasks

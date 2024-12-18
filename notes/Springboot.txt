@@ -1,0 +1,7 @@
+apache poi is an opensourses java library to create and manipulate various file formats.
+because java doesn't have build in support for working with excel files.it has several classes and methods 
+to work with excel files.like hssf and xssf api which provides the mechanism to read,write and modify excel
+spreadsheets.
+apache poi contains components like workbook,sheet,row,cell..using workboot we can create a workbook and using 
+sheet we can create a sheet based on the index and inside the sheet we can create the rows and when the row is 
+created in that row we can create a cell and inside the cell we can set the cell data..
