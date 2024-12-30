@@ -5,3 +5,83 @@ spreadsheets.
 apache poi contains components like workbook,sheet,row,cell..using workboot we can create a workbook and using 
 sheet we can create a sheet based on the index and inside the sheet we can create the rows and when the row is 
 created in that row we can create a cell and inside the cell we can set the cell data..
+
+
+
+
+
+
+multithreading in java:
+
+multiththreading is the ability of the cpu to perform multiple tasks concurrently..
+process:
+process is a instance of program execution.An independent executing instance of a program.
+Processes operate independently, with each having its own:
+Memory space (address space).
+State (e.g., running, waiting, or terminated).
+it Requires inter-process communication (IPC) like pipes, sockets, or shared memory.
+One process crashing does not affect others.
+
+
+Role of Processes in Multithreading:
+Every multithreaded application runs within a single process.
+Threads exist within a process, sharing its resources like memory, files, and sockets.
+Real-World Example: Web Browsers
+A browser (e.g., Chrome, Firefox) uses processes and threads:
+Processes:
+Each tab is a separate process to isolate crashes (one tab crashing doesn't bring down others).
+Threads:
+Each tab's process may have multiple threads:
+One for rendering.
+One for JavaScript execution.
+One for network requests.
+Advantages of Using Processes with Threads
+Fault Isolation:
+A process crash doesn’t affect others, even if it contains multiple threads.
+Parallel Execution:
+Processes can run on different CPUs, while threads share the CPU cores.
+Security:
+Processes are more secure due to memory isolation.
+
+
+
+threads in java:
+A thread is the smallest unit of execution within a process. It is a lightweight sub-process that 
+shares the process's memory and resources while performing its tasks independently. In a multithreading 
+context, multiple threads run concurrently within a single process.each threqad in th eprocess share 
+the same memory and resources..
+
+Thread Lifecycle
+Threads in Java go through several states during their lifecycle:
+New: A thread is created but not yet started (using new Thread()).
+Runnable: The thread is ready to run but waiting for CPU time (after start() is called).
+Running: The thread is executing its task.
+Blocked/Waiting: The thread is waiting for a resource or signal.
+Terminated: The thread has completed execution.
+
+Why Use Threads?
+Threads enable a program to perform multiple tasks concurrently, improving efficiency and responsiveness.
+Thread Methods
+start(): Starts the thread and invokes the run() method.
+run(): The entry point for the thread's execution.
+join(): Waits for a thread to finish its execution.
+sleep(long millis): Puts the thread to sleep for a specified time.
+yield(): Suggests to the thread scheduler to pause the current thread and allow other threads to execute.
+isAlive(): Checks if the thread is still active.
+
+Thread Priorities
+Threads can have priorities between 1 (MIN_PRIORITY) and 10 (MAX_PRIORITY). The default priority is 5 
+(NORM_PRIORITY). The thread scheduler may use these priorities to decide which thread to execute next.
+
+Real-World Example
+Online Shopping Cart:
+A thread handles user interactions with the cart.
+Another thread processes payment.
+A third thread updates inventory after a purchase.
+Threads enable these tasks to run concurrently, ensuring a smooth user experience.
+
+
+
+
+
+
