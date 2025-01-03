@@ -1,0 +1,21 @@
+rabbitmq:
+
+
+rabbit mq is a message broker that originally implements the abvance message queing protocol(AMQP)
+RabbitMQ is an open-source message broker software that facilitates communication between distributed
+ systems. It implements the Advanced Message Queuing Protocol (AMQP), making it highly reliable,
+ efficient, and suitable for asynchronous messaging in distributed architectures.
+
+AMQP(Advanced Message Queuing Protocol) standadizes messaging using producers,broker and consumers.
+producers will publish the message.broker will hold the message and consumers will consume the 
+message...
+KEY FEATURES:
+security : support authentication,authorization,LDAP and TLS via Rabbitmq plugins.
+reliability: lets assume publisher will publish the message to the broker and consumer
+will consume the message from broker.so there will be a two way communication..once the publisher
+will confirm the message it will confirm that it is successfully delivered to the broker.and once 
+consumer willl consume  the message again it will confirm that the message was successfully deliverd 
+by consumer
+interoperability: message is transfered as a stream of bytes so any clients can operate on it irrespective
+of any other language..
+

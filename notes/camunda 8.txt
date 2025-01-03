@@ -21,3 +21,8 @@ Built around a single, vertically scalable process engine
 Camunda 8:
 Microservices-based architecture 
 Uses Zeebe as its core engine, which is designed for distributed systems.
+
+
+
+
+
