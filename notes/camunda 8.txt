@@ -26,3 +26,18 @@ Uses Zeebe as its core engine, which is designed for distributed systems.
 
 
 
+
+
+
+
+
+signal startevent:
+
+it is just like message event like when u want to trigger some message event u need to send a message name
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+apache kafka is a distributed streaming platform it allows u to publish or subscribe to streams of records,similar 
+to the messaging system..one hand u can send and other hand u can consume that message..
+
+because we need a distributed platform that can process all the data in paralle and you can also send data easily
+ and retrieve data on the other end..
+
+
+
+ apache kafka has three main component ..they are producer,consumer and broker
+producers are the source of the data pushing the records into the data..
+consumers are the people that consume the data to do something about it,basically to take action

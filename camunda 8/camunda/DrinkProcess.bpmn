@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_06kfecr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
   <bpmn:process id="DrinkProcess" name="OrderDrinkProcess" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_0jdfin8">{
+  "components": [
+    {
+      "label": "Please ener yoour name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0kl4sxo",
+        "columns": null
+      },
+      "id": "Field_0pc4r0m",
+      "key": "name"
+    },
+    {
+      "label": "Please Enter your time of day",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0n7ttjd",
+        "columns": null
+      },
+      "id": "Field_0pqs5n5",
+      "key": "timeOfDay"
+    }
+  ],
+  "type": "default",
+  "id": "Form_07706o2",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
     <bpmn:startEvent id="StartEvent_1" name="Start">
       <bpmn:outgoing>Flow_062b4t0</bpmn:outgoing>
     </bpmn:startEvent>
@@ -17,12 +52,15 @@
     </bpmn:userTask>
     <bpmn:businessRuleTask id="Activity_1qxnqt7" name="Decide on beverage">
       <bpmn:extensionElements>
-        <zeebe:calledDecision decisionId="Beverage" />
+        <zeebe:calledDecision decisionId="Beverage" resultVariable="drink" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1yoby4g</bpmn:incoming>
       <bpmn:outgoing>Flow_000z6tc</bpmn:outgoing>
     </bpmn:businessRuleTask>
     <bpmn:userTask id="Activity_1lai051" name="Enter order details">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_0jdfin8" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_062b4t0</bpmn:incoming>
       <bpmn:outgoing>Flow_1yoby4g</bpmn:outgoing>
     </bpmn:userTask>

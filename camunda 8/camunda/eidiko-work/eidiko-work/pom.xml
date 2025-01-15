@@ -64,6 +64,12 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/io.camunda/zeebe-client-java -->
+    <dependency>
+      <groupId>io.camunda</groupId>
+      <artifactId>spring-zeebe-starter</artifactId>
+      <version>8.5.11</version>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
