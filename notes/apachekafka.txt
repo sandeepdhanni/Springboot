@@ -1,5 +1,12 @@
-apache kafka is a distributed streaming platform it allows u to publish or subscribe to streams of records,similar 
+apache kafka is a open-source distributed streaming platform it allows u to publish or subscribe to streams of records,similar 
 to the messaging system..one hand u can send and other hand u can consume that message..
+(distributed streaming platform)-means creating real time stream and processing real time stream.
+
+
+apache kafka was originally developed at linkedin and was open sourced in 2011..
+
+why kafka is needed?
+
 
 because we need a distributed platform that can process all the data in paralle and you can also send data easily
  and retrieve data on the other end..
@@ -9,3 +16,153 @@ because we need a distributed platform that can process all the data in paralle 
  apache kafka has three main component ..they are producer,consumer and broker
 producers are the source of the data pushing the records into the data..
 consumers are the people that consume the data to do something about it,basically to take action
+
+
+
+
+kafka components:
+producer
+consumer
+broker
+cluster
+topic
+patitions
+offset
+consumer groups
+zookeeper
+
+
+
+producer:producer is the source of data who will publish the messages or events..
+consumer:consumer act as a receiver.it is responsible for receiving or consuming a message
+broker: but producer and consumer cannot directly commmunicate with each other..there should
+   be a middlemen to process the messages from producer to consumer that is kafka server..
+   this is message broker..
+zookeeper:it is a prerelinques for kafka..kafka is a distributive system and it uses zookeper
+   for coordination and to track the the status of the kafka cluster nodes.it also keeps track
+   of kafka topics,partitions,offset etc.
+
+
+
+kafka instalation:
+there are three ways for instalation:
+opensource:apache kafka
+commercial distribution:confluent kafka
+managed kafka service:confluent and aws
+
+opensource:apache kafka- this u can easiy download from apache portal and u can install and use it.
+commercial distribution:confluent kafka- this comes with a lot of tools and utility to perform a day
+                       to day operation..this will cost an organisation or for project..confluent 
+                        kafka is the best commercial destribution to use which simplifies connecting
+                       datasource to the kafka,building streaming application as well as securing,
+                       managing your kafka infra.
+managed kafka service:confluent and aws- this comes with everything u need.u just need to create an
+                      instance as per requirement u need and let everything managed by the kafka 
+                      provider.
+
+
+1st step -opensource instalation
+https://kafka.apache.org/downloads
+dowload the latest version near binary downloads.click on any scala
+
+
+2nd process - commercial distribution:confluent kafka
+https://www.confluent.io/confluent-cloud/tryfree/
+fill in the details and under the community version click on download 
+
+
+after downloading any one process then download kafka offset explorer for monitring kafka messaging 
+system..
+https://www.kafkatool.com/download.html
+click on download
+and double click after downloaded..
+
+
+installation process for open  source kafka 
+next step:
+first we need to start the kafka ecosystem fot that we need a kafka server or broker.or to manage the
+server we need a server which is zookeeper.steps are :
+1.start zookeeper
+2.start kafka server/broker
+3.create a topic
+
+if producer want to send any message to consumer then he cannot so we need a  component called topic
+so that producer can send it to topic and consumer can consume it.once u have created a topic u can 
+define n number of partitions to distribute the load comming from producer.
+
+next using the command line we will start the zookeeper,kafka server,create the topic..
+go the folder where u have downloaded the kafka 
+go to kafka folder and open the terminal from that folder..create 3 terminals..
+first start the zookeeper...there is a shellscript file in bin directory-zookeeper-server-start.sh
+run the command:
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+zookeeper port number is 2181
+
+next:
+in the next terminal start the kafka server.
+run command:
+bin/kafka-server-start.sh config/server.properties
+kafka server/broker port number is 9092.
+
+
+next is to create a topic:
+open another terminal and run command:
+the bootstrap server is nothing but the kafka server which u have run and then the port number and the 
+topic name and partition how many u want or by default this will take 1 and replication means copy...
+
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test --partition 3 --replication-factor 1
+
+if u want the list of topics run this command:
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+
+
+if u want to describe about the topic then run this command:
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic test
+
+
+next step is to open the offset explorer for testing
+after opening u will find the topics which u have created click on any because need to create a 
+connection ..
+create a new connection by clicking right click and new connection and then test it..
+
+
+next step to run the producer and consumer
+run command 
+bin/kafka-console-producer.sh localhost:9092 --topic test
+
+
+and then run the consumer and run command:
+bin/kafka-console-consumer.sh --bootstrap -server localhost:9092 --topic --test --from-beginning
+
+after that enter some message in producer it will display in the consumer
+
+
+u can also test it like 
+f u have any huge amount of data just give the path
+bin/kafka-console-producer.sh localhost:9092 --topic test </users/onedrive/Downloads/test.csv
+
+
+
+
+
+
+
+
+installation process for commercial distribution:confluent kafka community adition
+to start the confluent kafka u need to stop the open source kafka
+
+the steps are same as like open source kafka
+first start zookeeper
+bin/zookeeper-server-start.sh etc/kafka/zookeeper.properties
+
+
+start kafka server:
+bin/kafka-server-start.sh etc/kafka/server.properties
+
+
+create topic:
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test --partition 3 --replication-factor 1
+
+this is the github link where u can find the commands
+https://github.com/basanta-spring-boot/documents/tree/main
