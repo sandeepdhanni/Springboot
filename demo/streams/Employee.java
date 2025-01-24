@@ -70,7 +70,7 @@ public class Employee {
         List<Employee> empl=employee.stream()
                 .filter(s->"IT".equals(s.getDepartment()))
                 .collect(Collectors.toList());
-        System.out.println("the list of all the employee of department who are in it: "+empl);
+         System.out.println("the list of all the employee of department who are in it: "+empl);
 
 
 

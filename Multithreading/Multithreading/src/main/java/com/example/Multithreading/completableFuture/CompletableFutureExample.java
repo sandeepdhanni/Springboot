@@ -37,7 +37,7 @@ public class CompletableFutureExample {
         CompletableFuture<String> orderFuture = getOrderData();
 
         // Combine both results when both are complete
-        CompletableFuture<Void> combinedFuture = CompletableFuture.allOf(userFuture, orderFuture);
+        CompletableFuture<Void> combinedFuture = CompletableFuture.allOf (userFuture, orderFuture);
 
         // Wait for both futures to complete and then process the results
         combinedFuture.thenRun(() -> {
