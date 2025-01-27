@@ -24,6 +24,150 @@ Uses Zeebe as its core engine, which is designed for distributed systems.
 
 
 
+components in camunda are :
+modeler-The Camunda Modeler is a desktop or web-based tool for creating and editing BPMN diagrams that define workflows.
+
+operator- The Operate component is used for monitoring and troubleshooting workflows.
+Key features:
+Workflow Visualization: Provides real-time visibility into active and completed workflows.
+Error Handling: Detects and allows for manual resolution of errors in workflow executions.
+
+tasklist - The Tasklist is an out-of-the-box application that allows end-users to view and manage user tasks assigned to them.
+Key features:
+User Task Management: Helps users claim, complete, or delegate tasks within a workflow.
+Role-Based Access: Tasks are assigned and managed based on roles or users
+
+optimize - The Optimize component focuses on reporting and process improvement.
+Key features:
+Analytics and Reports: Generates reports based on workflow data to analyze performance.
+Dashboards: Provides visual dashboards to monitor key process metrics (KPIs).
+
+connectors - Connectors are pre-built integrations that enable Camunda workflows to interact with external systems.
+
+
+BPM(business process management):
+it is a systematic approach for designing,executing,documenting,monitoring and controlling both automated and non automated process..
+
+
+BPMN(business process model and notaion) -BPMN is a standardized notation or visual language used to model and represent business 
+processes. It is a diagramming standard used to document and design workflows in a way that is understandable by both business 
+stakeholders and technical teams.BPMN is a powerful modeling language for simple and complex business processes.
+
+OMG(object management group) - it is responsible for maintainance of bpmn standards..
+
+
+
+simulaton token - the simulation token is a concept primarily related to process visualization and testing. It is used to represent
+the execution of a business process instance as it moves through the BPMN workflow. The simulation token provides a way to visually 
+track the flow of execution during modeling, testing, or debugging of a process, ensuring that the process behaves as expected 
+before deployment.
+
+
+
+BPMN flow elements:
+events - they describe things that happens before or during the end of the process...they can happen regardless of the process or as a
+result of the process..u can react to an event or trigger to an events..
+
+tasks - this is an activity that has to be done...
+
+gateways - these are elements that represent multiple possible paths in the process..
+
+
+
+
+
+
+
+zeebe engine :
+Zeebe is the heart of Camunda 8 and acts as the core workflow engine. It is a streaming-based, distributed, and event-driven engine 
+designed for high scalability and fault tolerance.
+BPMN Support: Zeebe supports the Business Process Model and Notation (BPMN) standard for defining workflows.
+Event-Driven: It processes workflows as a sequence of events, making it suitable for integrating with event-driven systems (e.g., Kafka).
+zeebe is a workflow engine what powers camunda 8.its been newely designed cloud native engine as a 5 yr of research an develoopment.
+your business logic lives in worker, microservices that interact with the zeebe engine through a secure grpc gateway and your brokers 
+within your zeebe clusters are responsible for executing the bpmn..workers can be implemented in your favourite programming language
+as we do have clients for major programming language....zeebe uses a event based architecture that destributes and replicate the run
+time state of your process instances over several 
+
+zeebe vs classical engine throughput:
+designed to accommodate high throughput use case out of the box.
+no relatyional database bottleneck...
+linear performance scalling...
+
+
+ 
+
+tasks in camunda 8 -
+user task - the user task iis used to define an activity that needs to be completed by human actor...
+when the token arrives to the user tasks it will stop at this point and waits until the task is 
+completedby human actor..
+
+business rule task - 
+it is used to define the evaluation of business rules..those are typically modeled in decision model and notaion(DMN)..
+once the decision is made process instance is continues...
+
+
+manual task - it is used to define the activity that is external to the bpm engine..when u set the task as manuel it means that
+the engine does not need to know who will do this activity and there is no known system or user interface..when the token arrives
+at this task the process instance will continue automatically..for the engine manual task is handled as pass activity..
+
+service task - it is used to define the automatic execution of that task..typically it represends service task...this means that 
+the engine does not execute the task by itself but deligates to different it system...when the token reaches the service task,it 
+waits for the external system to complete the task before it continues it
+
+
+script task- it is used to define the evaluation of script..
+
+
+send task and receive task - it is used for sending and receiving message..when the token arrives to send task,the process instance 
+sends a message to the external system..it is same as service task..
+the receiver task referance the message, so the process instanc has to wait here until the proper mesasge is received..
+
+
+
+events in camunda 8:
+they are flow elements along with tasks and gateways...
+tasks - things that has to be done during the process..
+gateways - circumstances that lead to different path in the flow...
+events - things that is suppose to happen..
+
+
+
+start event - shows the event that causes the process to start...this is where the process or subprocess starts...
+
+intermediate events - nothing happens but some state indicate some state archieved in the process..they are espically useful for 
+monitoring to understand how the process is doing..
+
+end event - this will end the process....
+
+catching events(passive or start event) - they have a defined trigger : something happened independent of the 
+process...the process has to wait for this event or react to it..
+catching event may result in :
+the process starting
+
+
+throwing event - 
+the event is caused or triggered by the process itself...
+
+
+timer events -
+they are the events triggered by a defined timer..
+timer events can be :
+1. timer start events- a process can have one or more timer events...each of the timer events must have either a time or date or lifecycle defineation...when a timer is triggered a new peocess is created and the corresponding timer event is activated..
+2. intermediate timer catch events - an intermediate timer catch event mush have a time duration that defines
+when it defines when it is triggered....
+
+
+conditional events -
+sometimes we only want a process to start or to continue if a certian condition is true..anything can be condition(like the timeer event) can only exist as a catching event..
+the conditional event is triggered if a given condition is evaluated to true...
+
+message events - it is used to send or recieve the events..
+with the message throw event we send the message..
+with the message catch event we have to rely on the sender,so we wait until we receive the message
+we have :
+message start event and end event
+intermediate message catch or throw events
 
 
 
