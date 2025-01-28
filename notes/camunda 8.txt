@@ -293,3 +293,10 @@ data objects - it represents any kind of data that is relevent for this process 
 purpose of data objects - to indicate where data is needed and how it flows between tasks within the process...
 
 
+collection data objects - modification of a regular data object...used when you need to handle multiple instances of the same datatype..
+
+
+data stores - they are the type of stores that allows data to be persistently stored like a database...they are typically shared and accessed by multiple processes or instances and can be accessed or updated by activities within the process...they provide the mechanism for storing data that persists on the line of the process....
+purpose of data stores - to show where the data is stored for long ter, access or where multiple process instances might access or update the same data...to indicate the reuse of data across different processes or different instances of the same process...
+
+
