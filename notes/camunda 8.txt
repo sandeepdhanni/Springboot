@@ -171,7 +171,17 @@ intermediate message catch or throw events
 
 
 
+boundary event -
+they are the only intermediate catching events that are attached to a task within a process..you wait for them while you do something else in the process...
+there are two types in boundary events..they are :
+interrupting and non interrupting boundary events
 
+intermediate boundary event - when triggered , they cancel the task.
+non interrupting boundary event - when triggered,they create a new token that runs parallel with the initial token..
+
+
+event based gateway - it is similar to exclusive data based gateway, the event based gateways offers a different way to design process paths...this gateway does not route based on data, but reather by which event takes place next...not all intermediate events combine with the event gateway...you can , however combine it with a receive task..
+events are used to model the things that are supposed to happen during a process...events can be catching or throwing....events can be attched to tasks(boundary events,interruptingor non-interrupting)..
 
 
 
@@ -182,6 +192,104 @@ it is just like message event like when u want to trigger some message event u n
 
 
 
+BPMN participants - 
+participant is the entity who controls a single process,or the tasks within a process..this could be :
+a person
+an organization
+a department
+a role
+participants are represented as pools and lanes ...pools shows who controls the process and lanes are who are responsible for task within it..
 
+
+pool :
+pool represents the participant who controls the single process..it contains all the flow nodes and artifacts that make up to single process..since the process is entirtely contained within the pool sequence flows cannot leave the boundaries of the pool..the pool controls the process flow..besides the task within the process similar to a conductor assign the pieces of a musical score to musicians in an archestra...assignment of tasks within a process is also referred to as orchestration...anytime a new process is created pool is implied in the modeler even though u have not defined it is there by default...1 process=1 pool
+
+
+lanes :
+while the pool behaves like the conductor for the whole process...lanes alos known as swim lanes are like a vaarious musicians in orcastra..each lane defines who or waht is responsible for completing each of the task in the process..lanes can be named according to :
+positions or roles within the organization("manager")
+General roles("customer,user")
+Department("sales,accounting")
+applications("crm system")
+ each flow object(events,activities,gateways) can only belong to a single lane.
+lanes can be useful for clarifying who owns the tasks within a process but they also have some drawbacks the are :
+adding multiple lanes to a pool makes the process harder to read..
+lanes make it more difficult to change the process down  the line,which increases the maintainance burden..
+
+when to use lanes?
+we can use lanes only in stategic process and operational process model..
+stategic process model - 
+focused on responsibilities and their borders.high level overview(birds eye view),logically abstract,not meant to be executable,avoids complicated events or structures,
+operational process model - focused on human workflows.it is low level(worm eye view),logically concrete,coordinates details between human workflow and technical workfloww.can be detailed and complex..
+
+
+
+FEEL() -
+FEEL (Friendly Enough Expression Language) is a key component in Camunda 8, designed to write expressions that are easily understood by both business professionals and developers. Here are the main points about FEEL:
+Purpose: FEEL is used to define expressions in BPMN diagrams, DMN diagrams, and Forms within Camunda 8
+Origin: It is specified in the DMN (Decision Model and Notation) specification by the Object Management Group (OMG) 
+
+
+
+
+BPMN message - 
+message enables the communication between processes and other systems..messages helps model and understand information is shared and flows between different parts of the overall business process..
+
+
+choosing between task and event messages -
+send messages are active and receive mesages are passive..
+tasks- a task emphasizes the action, you can attach several different boundary events to a message task.
+events - the event reflects a status,use a message event when : you start a process when a message is received,a message triggers or interrupts the flow..best practice is use a task for sending messages and a event for receiving messages..
+
+
+orchestration - we have one pool where orchestrator make sure that the task are assigned correctly..in each participant lane.. 
+
+
+collaboration - each participant orchestrate their tasks which means they are represented in seperate pools..the interaction between them are modeled with message flows..
+collapsed pool: shows the different services/processes that are connected to the expanded process.
+
+
+synchronous adn asynchronous communicartion - receive instant response where as asynchronous means waitin for the response..the sender of the message expects a immediate response from the receiver before proceding to the next activity.....
+asynchronous communication  means the sender of the message does not wait for the immediate response from the receiver..the sender can continue with other activitywhile waiting for the response asynchronously...for asynchronmous request response calls u can use send task for the request and the following receiving task or receive message event to wait for the response...
+
+
+
+
+subprocess - 
+subprocess is a group of elements or flow nodes that make up a child process used within the large parent process..usually the elements in the subprocess contained within the rounded rectangular similar to a task...
+why use subprocesses ? - subprocesses encapsulates complexity processes that represents high level and low level detail at a single heirachy can sometimes be overweling and confusing...subprocesses helps to simplify the process by encapsulating the groups of process elements into their own seperate scope..these groups can be collapse to the size of a task which makes it easier to read the process from the parent level.....subprocesses can also help to modularize and organize your processes..subprocesses allows u to attach events to a specific scope..
+there are different types of tasks.they are :
+embedded subprocesses
+call activity("reusable subprocesses")
+transaction subprocesses
+ad-hoc subprocesses
+event subprocesses
+
+
+
+embedded or nested subprocesses - it is contained within an excessable from the parent process....it shares the same set of data from its parent processes...in the parent process it is handled like a task this means that the subprocesses starts when the token arrives from the parent process..this is the only way the subprocess starts..it can't be started from outside such as message event ot timed event...it only begins when the token arrives from the parent process...it stays active as long as any element contained within it is active...when the last element is completed then the subprocess is completed...then the token moves through the outgoing flow and comtinues through the parent processes.. 
+note: embedded subprocesses must always have one none start event or start from the none events..
+
+
+collapse subprocesses - 
+they hide the details of the subprocess from the parent view...this is useful when a high level view of a parent process..without reveling the lower level of the subprocess...
+
+
+
+call acticity - they are referred to as resuable subprocesses...they contain the same subprocesses,but store in seperate bpmn diagram..they can be shared across teams and managed by multiple team member,which promotes collaboration and distributed ownership,reduces dependencies on any single person or team..they do not inherit data from the parent process..a call acctivity needs data to be passed to it...
+
+
+BPMN artifacts - it include annotations and groups...they add valuable information to process diagram,it does not effect the flow...
+
+
+annotations - add descriptive text to diagrams...used to supplement diagrams..should not replace the process documentation...provide insight into the execution of tasks....
+purpose of annotations - to provide textual description that can give more context to a model element..
+
+
+groups - they organize elements within our diagram and won't change the sequencial flow...do not influence execution semantics..can be applied across pool boundaries...markoff parts of your models which only certain conventions apply..groups are about the characterization and analytics...they are the visual marker used for organizational purpose and have no impact on the execution..
+
+
+data objects - it represents any kind of data that is relevent for this process instance..data objects should be connected to flow nodes using associations..
+purpose of data objects - to indicate where data is needed and how it flows between tasks within the process...
 
 
