@@ -279,24 +279,77 @@ they hide the details of the subprocess from the parent view...this is useful wh
 call acticity - they are referred to as resuable subprocesses...they contain the same subprocesses,but store in seperate bpmn diagram..they can be shared across teams and managed by multiple team member,which promotes collaboration and distributed ownership,reduces dependencies on any single person or team..they do not inherit data from the parent process..a call acctivity needs data to be passed to it...
 
 
-BPMN artifacts - it include annotations and groups...they add valuable information to process diagram,it does not effect the flow...
+BPMN artifacts - it include annotations and groups...they add valuable information to process diagram,it does not effect the flow...artifacts does not effect the sequence flow...
 
 
 annotations - add descriptive text to diagrams...used to supplement diagrams..should not replace the process documentation...provide insight into the execution of tasks....
-purpose of annotations - to provide textual description that can give more context to a model element..
+purpose of annotations - to provide textual description that can give more context to a model element..annotations serves as a means to add descriptive text or explaination to elements wiithin a BPMN diagram...
 
 
-groups - they organize elements within our diagram and won't change the sequencial flow...do not influence execution semantics..can be applied across pool boundaries...markoff parts of your models which only certain conventions apply..groups are about the characterization and analytics...they are the visual marker used for organizational purpose and have no impact on the execution..
+groups - they organize elements within our diagram and won't change the sequencial flow...do not influence execution semantics..can be applied across pool boundaries...markoff parts of your models which only certain conventions apply..groups are about the characterization and analytics...they are the visual marker used for organizational purpose and have no impact on the execution..groups are used to visually categorize or cluster elements within a bpmn diagram...
 
 
 data objects - it represents any kind of data that is relevent for this process instance..data objects should be connected to flow nodes using associations..
-purpose of data objects - to indicate where data is needed and how it flows between tasks within the process...
+purpose of data objects - to indicate where data is needed and how it flows between tasks within the process...represents information that is input into,output from,or transformed within the process...
 
 
 collection data objects - modification of a regular data object...used when you need to handle multiple instances of the same datatype..
 
 
-data stores - they are the type of stores that allows data to be persistently stored like a database...they are typically shared and accessed by multiple processes or instances and can be accessed or updated by activities within the process...they provide the mechanism for storing data that persists on the line of the process....
-purpose of data stores - to show where the data is stored for long ter, access or where multiple process instances might access or update the same data...to indicate the reuse of data across different processes or different instances of the same process...
+data stores - they are the type of stores that allows data to be persistently stored like a database...they are typically shared and accessed by multiple processes or instances and can be accessed or updated by activities within the process...they provide the mechanism for storing data that persists on the line of the process....data stores are connected to activities through association lines,indicating the flow of data into and out of the store...
+purpose of data stores - to show where the data is stored for long ter, access or where multiple process instances might access or update the same data...to indicate the reuse of data across different processes or different instances of the same process...symbolizes a storage location for data that persistes beyond the life of the process....
 
 
+
+
+BPMN error events -
+there are cases where error occurs and when that occurs then we have to use error event for handling errors...
+error event -
+Error events in Camunda 8 are used to handle business errors or technical failures that occur during process execution.
+ an error event is a bpmn element represented as a flash symbol..it reacts to an error that occur in an activity such as a task or a subprocess or call activty when it can't complete due to error that you have defined for it..it is considered as serious because it interupts the activity it is attached to which means the processinstance will not continue pass but instead go to another path which u have defined....like other event the error events can be thowing event or a cathching event..the error can be thrown in any activity.....
+in order to model the error expecitly in your process..we would use a throw event...error throw event modeled as an end event for a subprocess or call activity and typically it include the 
+
+when to use error events -
+when the activity cannot be completed..and the error happens during activity execution,requires a business reaction,occurs offen and repeatedly...
+
+note : be selective when modeling error events so that your process remains uncluttered..
+
+
+Error catch events :
+An Error Catch Event is used to catch an error thrown within a process and take corrective action.
+Types of Error Catch Events:
+Error Boundary Event (Attached to a Task or Subprocess)
+Placed on the boundary of a BPMN task or subprocess.
+Interrupts the task/subprocess if an error occurs.
+Redirects the process to an alternative path.
+Error Start Event (Inside an Event Subprocess)
+Triggers a new event subprocess when a specific error occurs.
+Can handle errors globally within the scope of the main process.
+
+
+Error throw events :
+An Error Throw Event is used to explicitly signal that an error has occurred.it is an active event to throw an error..
+Types of Error Throw Events:
+Error Intermediate Throw Event
+Used within a process to indicate an error.
+The thrown error must be caught by an error catch event.
+Error End Event
+Ends the process abnormally by throwing an error.
+Can be caught by an Error Boundary Event or an Error Start Event.
+
+
+
+
+escalation events :
+Escalation events in Camunda 8 are used to signal a non-critical issue that needs attention but does not terminate the process. Unlike Error Events, which indicate failures, Escalation Events allow a process to handle exceptional situations while continuing execution.it is a bpmn element which is represented as a upward symbol..it is used for communication between parent and subprocess levels(vertical communication)..unlike other events escalation events are non critical because they don't necessarily interupt the process..they indicate that information needs to be send to a higher scope level in the process...unlike error events escalation events can be thrown and caught..
+
+
+
+DMN(decision management and notation) - 
+it is a standard notation developed by object management group(OMG) and widely used in different industries....DMN defines the desicion logic in a visual way,working alongside BPMN...in DMN,decision means derive a result(output) from given facts..
+
+DRD(decision requirement diagram) - theya are visualize as disicion requirement diagram..when starting to model a decision it is important to start with drd because it defines with the structure of the decision....
+
+
+decision logic - it defines the roles in the decision..the most common way to model the decision logic is by decision table..
+dmn comes with its own expression logic feel(friendly enough expression language)...with both drd(decision requirement diagram) and decision logic it is easy tho define the logic of the decision..

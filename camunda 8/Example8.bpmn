@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ii4r6l" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="Process_1bs9l0y" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="New facebook posts written">
+      <bpmn:outgoing>Flow_0skpsth</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_1kvd0ib" name="Review posts">
+      <bpmn:incoming>Flow_0skpsth</bpmn:incoming>
+      <bpmn:incoming>Flow_0c2btlk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g9qfpx</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0skpsth" sourceRef="StartEvent_1" targetRef="Activity_1kvd0ib" />
+    <bpmn:exclusiveGateway id="Gateway_1bjknbg" name="Post approved">
+      <bpmn:incoming>Flow_0g9qfpx</bpmn:incoming>
+      <bpmn:outgoing>Flow_116aygb</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1mkri04</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0g9qfpx" sourceRef="Activity_1kvd0ib" targetRef="Gateway_1bjknbg" />
+    <bpmn:task id="Activity_03xf33q" name="Publish on facebook">
+      <bpmn:incoming>Flow_116aygb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tgxren</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_116aygb" name="Yes" sourceRef="Gateway_1bjknbg" targetRef="Activity_03xf33q" />
+    <bpmn:task id="Activity_110ouyn" name="Send rejection notification">
+      <bpmn:incoming>Flow_1mkri04</bpmn:incoming>
+      <bpmn:outgoing>Flow_1eh0utb</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1mkri04" name="No" sourceRef="Gateway_1bjknbg" targetRef="Activity_110ouyn" />
+    <bpmn:endEvent id="Event_0dp9u5r" name="Facebook posts rejected">
+      <bpmn:incoming>Flow_1eh0utb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1eh0utb" sourceRef="Activity_110ouyn" targetRef="Event_0dp9u5r" />
+    <bpmn:endEvent id="Event_1bw47df" name="Facebook post published">
+      <bpmn:incoming>Flow_1tgxren</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1tgxren" sourceRef="Activity_03xf33q" targetRef="Event_1bw47df" />
+    <bpmn:boundaryEvent id="Event_0im9o9u" name="Facebook posts dublicated" attachedToRef="Activity_03xf33q">
+      <bpmn:outgoing>Flow_035lk93</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1juz6a6" />
+    </bpmn:boundaryEvent>
+    <bpmn:task id="Activity_0fflas6" name="Handle dublicate facebook posts">
+      <bpmn:incoming>Flow_035lk93</bpmn:incoming>
+      <bpmn:outgoing>Flow_0c2btlk</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_035lk93" sourceRef="Event_0im9o9u" targetRef="Activity_0fflas6" />
+    <bpmn:sequenceFlow id="Flow_0c2btlk" sourceRef="Activity_0fflas6" targetRef="Activity_1kvd0ib" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1bs9l0y">
+      <bpmndi:BPMNShape id="Activity_1kvd0ib_di" bpmnElement="Activity_1kvd0ib">
+        <dc:Bounds x="270" y="197" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1bjknbg_di" bpmnElement="Gateway_1bjknbg" isMarkerVisible="true">
+        <dc:Bounds x="425" y="212" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="415" y="269" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03xf33q_di" bpmnElement="Activity_03xf33q">
+        <dc:Bounds x="530" y="197" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_110ouyn_di" bpmnElement="Activity_110ouyn">
+        <dc:Bounds x="530" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0dp9u5r_di" bpmnElement="Event_0dp9u5r">
+        <dc:Bounds x="692" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="671" y="145" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1bw47df_di" bpmnElement="Event_1bw47df">
+        <dc:Bounds x="692" y="219" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="673" y="262" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0fflas6_di" bpmnElement="Activity_0fflas6">
+        <dc:Bounds x="660" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="142" y="219" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="125" y="262" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0nazcpa_di" bpmnElement="Event_0im9o9u">
+        <dc:Bounds x="532" y="259" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="570" y="286" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0skpsth_di" bpmnElement="Flow_0skpsth">
+        <di:waypoint x="178" y="237" />
+        <di:waypoint x="270" y="237" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g9qfpx_di" bpmnElement="Flow_0g9qfpx">
+        <di:waypoint x="370" y="237" />
+        <di:waypoint x="425" y="237" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_116aygb_di" bpmnElement="Flow_116aygb">
+        <di:waypoint x="475" y="237" />
+        <di:waypoint x="530" y="237" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="494" y="219" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1mkri04_di" bpmnElement="Flow_1mkri04">
+        <di:waypoint x="450" y="212" />
+        <di:waypoint x="450" y="120" />
+        <di:waypoint x="530" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="458" y="163" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eh0utb_di" bpmnElement="Flow_1eh0utb">
+        <di:waypoint x="630" y="120" />
+        <di:waypoint x="692" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tgxren_di" bpmnElement="Flow_1tgxren">
+        <di:waypoint x="630" y="237" />
+        <di:waypoint x="692" y="237" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_035lk93_di" bpmnElement="Flow_035lk93">
+        <di:waypoint x="550" y="295" />
+        <di:waypoint x="550" y="360" />
+        <di:waypoint x="660" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0c2btlk_di" bpmnElement="Flow_0c2btlk">
+        <di:waypoint x="710" y="400" />
+        <di:waypoint x="710" y="430" />
+        <di:waypoint x="210" y="430" />
+        <di:waypoint x="210" y="267" />
+        <di:waypoint x="270" y="267" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
