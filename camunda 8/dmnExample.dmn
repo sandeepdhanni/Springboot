@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ih32q4" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <decision id="Decision_01ai38c" name="Decision 1">
+    <decisionTable id="DecisionTable_1tzwu83">
+      <input id="Input_1">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>matches(input, pattern)</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="group" typeRef="string" />
+      <rule id="DecisionRule_183z29m">
+        <inputEntry id="UnaryTests_128rycp">
+          <text>&gt;100</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10utmeu">
+          <text>"group1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pzihud">
+        <inputEntry id="UnaryTests_0f1gc3v">
+          <text>&lt;100</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dnc99f">
+          <text>"group2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_149thqg">
+        <inputEntry id="UnaryTests_0wub8f1">
+          <text>&lt;1000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uo1b2d">
+          <text>"group3"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14l3p50">
+        <inputEntry id="UnaryTests_1c7sk8r">
+          <text>&gt;100 and &lt;1000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08wc20r">
+          <text>"group4"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_01ai38c">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

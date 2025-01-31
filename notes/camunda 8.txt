@@ -353,3 +353,128 @@ DRD(decision requirement diagram) - theya are visualize as disicion requirement 
 
 decision logic - it defines the roles in the decision..the most common way to model the decision logic is by decision table..
 dmn comes with its own expression logic feel(friendly enough expression language)...with both drd(decision requirement diagram) and decision logic it is easy tho define the logic of the decision..
+
+
+
+FEEL(friendly enough expression language) - it is the part of th4e DMN specification of the object management group..it is designed to write the expression for decision table and literal expressions in a way that is easy top understand business professionals and developers..everything begins with datatypes and it has several datatypes..
+string - this is a text value ,a sequence of characters enclosed in double quotes..eg: "audi"
+number - this can be any kind of number like integer(1) or floats(2.34)..the numbver can be negative...
+boolean -this can have only two values - true and false..
+Date - 
+A date value without a time component.
+Format: yyyy-MM-dd.
+Java Type: java.time.LocalDate
+date("2017-03-10")
+eg: @"2017-03-10"
+Time -
+A local or zoned time. The time can have an offset or time zone id.
+Format: HH:mm:ss / HH:mm:ss+/-HH:mm / HH:mm:ss@ZoneId
+Java Type: java.time.LocalTime / java.time.OffsetTime
+time("11:45:30")
+Date-time - 
+A date with a local or zoned time component. The time can have an offset or time zone id.
+Format: yyyy-MM-dd'T'HH:mm:ss / yyyy-MM-dd'T'HH:mm:ss+/-HH:mm / yyyy-MM-dd'T'HH:mm:ss@ZoneId
+Java Type: java.time.LocalDateTime / java.time.DateTime
+date and time("2015-09-18T10:31:10")
+Days-time-duration -
+A duration based on seconds. It can contain days, hours, minutes, and seconds.
+Format: PxDTxHxMxS
+Java Type: java.time.Duration
+duration("P4D")
+Years-months-duration
+A duration based on the calendar. It can contain years and months.
+Format: PxYxM
+Java Type: java.time.Period
+duration("P2Y")
+List -
+A list of elements. The elements can be of any type. The list can be empty.
+Java Type: java.util.List
+[]
+[1,2,3]
+["a","b"]
+Context -
+A list of entries. Each entry has a key and a value. The key is either a name or a string. The value can be any type. The context can be empty.
+Java Type: java.util.Map
+{}
+{a:1}
+{b: 2, c: "valid"}
+
+
+unary-tests in feel -
+unary tests is a special kind of boolean expression..it should be used for input entries of decision table(i.e the condition of a rule)
+A unary-tests expression returns true if one of the following conditions is fulfilled:
+The expression evaluates to true when the input value is applied to the unary operators.
+The expression evaluates to true when the input value is assigned to the special variable ?.
+The expression evaluates to a value, and the input value is equal to that value.
+The expression evaluates to a list, and the input value is equal to at least one of the values.
+The expression is equal to - (a dash).
+Comparison
+Compares the input value with a given value. The input value is passed implicitly as the first argument of the operator.
+Both values must be of the same type. Otherwise, the result is null.
+Operator	Description	Supported types
+(none)	equal to	any
+<	less than	number, date, time, date-time, duration
+<=	less than or equal to	number, date, time, date-time, duration
+>	greater than	number, date, time, date-time, duration
+>=	greater than or equal	number, date, time, date-time, duration
+
+
+Interval -
+Checks if the input value is within a given interval between x and y.
+An interval has two boundaries that can be open (x..y) / ]x..y[ or closed [x..y]. If a boundary is closed, it includes the given value (i.e. less/greater than or equal). Otherwise, it excludes the value (i.e. less/greater than).
+The input value is passed implicitly to the operator.
+(2..5)
+// input > 2 and input < 5
+
+]2..5[
+// input > 2 and input < 5
+
+[2..5]
+// input >= 2 and input <= 5
+
+(2..5]
+// input > 2 and input <= 5
+
+Disjunction/or -
+Combines multiple unary-test expressions following the ternary logic.
+Returns true if at least one unary-test evaluates to true.
+Otherwise, it returns false.
+2, 3, 4
+// input = 2 or input = 3 or input = 4
+< 10, > 50
+// input < 10 or input > 50
+
+Negation/not -
+Negates a given unary-test expression. The expression can be a comparison, an interval, or a disjunction.
+It returns true if the given unary-test evaluates to false.
+not("valid")
+// input != "valid"
+not(2, 3)
+// input != 2 and input != 3
+
+
+https://docs.camunda.io/docs/components/modeler/feel/language-guide/feel-boolean-expressions/
+this url contain the docs about the feel expression
+
+
+expressions - general expression that can return values of different types..they can uesd everywhere..
+
+
+
+Manual task - 
+it is an external to zeebe engine..it is used to model work done by somebody who the engine does not know of that and that has unknown system or ui interface...it is also considered as  a pass through activity,automatically continuing when the process execution arrives at it..
+
+
+
+
+
+
+
+
+
+IN SAAS WE CAN CREATE ONLY ONE CLUSTER...IF WE CREATE ONE CLUSTER WE CANNOT CREATE ANOTHER ONE AS IT WILL AUTOMATICALLY BE DISABELED..
+
+
+
+OPERATOR - 
+IT IS A TOOL FOR MONITORING AND TROUBLESHOOTING PROCESS INSTANCES RUNNING IN THE ZEEBE ENGINE..IN ADDITION TO PROVIDING VISIBILITY INTO ACTIVE AND COMPLETED PROCESS INSTANCE, OPERATE ALSO MAKES IT POSSIBLE TO CARRY OUT KEY OPERATIONS SUCH AS RESOLVING INCIDENTS, AND UPDATING PROCESS INSTANCE VARIABLE...

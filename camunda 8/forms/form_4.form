@@ -1,0 +1,59 @@
+{
+  "components": [
+    {
+      "text": "# Annual Leave Request\nplease try to submit your application at least one month before the desired start date",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0n3u85s",
+        "columns": null
+      },
+      "id": "Field_0b1eq2q"
+    },
+    {
+      "label": "Start date",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1n49o7z",
+        "columns": null
+      },
+      "id": "Field_11bf09o",
+      "key": "startDate",
+      "description": "Format - DD.MM.YYYY",
+      "validate": {
+        "maxLength": 10,
+        "minLength": 10
+      }
+    },
+    {
+      "label": "End Date",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_079ibqq",
+        "columns": null
+      },
+      "id": "Field_1yovtax",
+      "key": "textfield_hi7lsg",
+      "defaultValue": "endDate"
+    },
+    {
+      "label": "Comment",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0g9i29g",
+        "columns": null
+      },
+      "id": "Field_142mswf",
+      "key": "comment"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lw128z",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}
