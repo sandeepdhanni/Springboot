@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_15e1f07" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="Process_0sur680" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_19u3q7n">{
+  "components": [
+    {
+      "components": [
+        {
+          "text": "## Services",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0kig1cq",
+            "columns": null
+          },
+          "id": "Field_0ui0i12"
+        },
+        {
+          "values": [
+            {
+              "label": "Consulting",
+              "value": "consulting"
+            },
+            {
+              "label": "Training",
+              "value": "training"
+            },
+            {
+              "label": "Support",
+              "value": "support"
+            }
+          ],
+          "label": "Please select the service you are interrested in",
+          "type": "checklist",
+          "layout": {
+            "row": "Row_0kqz0la",
+            "columns": null
+          },
+          "id": "Field_1c2r860",
+          "key": "checklist_z2mjq"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_122a1vo",
+        "columns": null
+      },
+      "id": "Field_1g8qwrw",
+      "path": "services"
+    },
+    {
+      "components": [
+        {
+          "text": "### Consulting",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1duat9b",
+            "columns": null
+          },
+          "id": "Field_0rx7tpr"
+        },
+        {
+          "label": "Text area",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_10bolu3",
+            "columns": null
+          },
+          "id": "Field_1cw53tq",
+          "key": "textarea_gyj1lk"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_0or0dxk",
+        "columns": null
+      },
+      "id": "Field_1jyr6ep",
+      "path": "seleced.consulting",
+      "conditional": {
+        "hide": "=not(list contains(services.options, \"consulting\"))"
+      }
+    },
+    {
+      "components": [
+        {
+          "text": "### Training",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0wvig8t",
+            "columns": null
+          },
+          "id": "Field_13edsyg"
+        },
+        {
+          "label": "Number of employees to be trained:",
+          "type": "number",
+          "layout": {
+            "row": "Row_092sblc",
+            "columns": null
+          },
+          "id": "Field_1wi20l0",
+          "key": "numberEmployees",
+          "defaultValue": 1
+        },
+        {
+          "values": [
+            {
+              "label": "Online",
+              "value": "online"
+            }
+          ],
+          "label": "Preferred Training Format:",
+          "type": "radio",
+          "layout": {
+            "row": "Row_1i1wg9x",
+            "columns": null
+          },
+          "id": "Field_1fkfw0r",
+          "key": "format"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_02diu2z",
+        "columns": null
+      },
+      "id": "Field_06ulzbo",
+      "path": "selected.training",
+      "conditional": {
+        "hide": "=not(list contains(services.options, \"training\"))"
+      }
+    },
+    {
+      "components": [
+        {
+          "text": "# this is the main",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0z2m8or",
+            "columns": null
+          },
+          "id": "Field_0fmyewh"
+        },
+        {
+          "values": [
+            {
+              "label": "Value",
+              "value": "value"
+            }
+          ],
+          "label": "sam",
+          "type": "select",
+          "layout": {
+            "row": "Row_1wwcj5h",
+            "columns": null
+          },
+          "id": "Field_1u5x7gy",
+          "key": "select_yma6ao"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_19z63qz",
+        "columns": null
+      },
+      "id": "Field_032ed5t",
+      "conditional": {
+        "hide": "=not(list contains(services.options, \"support\"))"
+      },
+      "path": "selected.support"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lcd2um",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Vacation requested">
+      <bpmn:extensionElements />
+      <bpmn:outgoing>Flow_0o502i5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0o502i5" sourceRef="StartEvent_1" targetRef="Activity_0796rfn" />
+    <bpmn:exclusiveGateway id="Gateway_1tr8s54" name="Vacation approved">
+      <bpmn:incoming>Flow_12rw790</bpmn:incoming>
+      <bpmn:outgoing>Flow_1w8j2ia</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0x479yu</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_12rw790" sourceRef="Activity_0796rfn" targetRef="Gateway_1tr8s54" />
+    <bpmn:sequenceFlow id="Flow_1w8j2ia" name="Yes" sourceRef="Gateway_1tr8s54" targetRef="Activity_1dpe3v9" />
+    <bpmn:endEvent id="Event_0th5sdl" name="Vacation approved">
+      <bpmn:incoming>Flow_0egcxkz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0egcxkz" sourceRef="Activity_1dpe3v9" targetRef="Event_0th5sdl" />
+    <bpmn:task id="Activity_12ucfod" name="Send rejection mail">
+      <bpmn:incoming>Flow_0x479yu</bpmn:incoming>
+      <bpmn:outgoing>Flow_19zk2hl</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0x479yu" name="No" sourceRef="Gateway_1tr8s54" targetRef="Activity_12ucfod" />
+    <bpmn:endEvent id="Event_0yycj55" name="Vacation rejected">
+      <bpmn:incoming>Flow_19zk2hl</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_19zk2hl" sourceRef="Activity_12ucfod" targetRef="Event_0yycj55" />
+    <bpmn:userTask id="Activity_0796rfn" name="Approve vacation">
+      <bpmn:incoming>Flow_0o502i5</bpmn:incoming>
+      <bpmn:outgoing>Flow_12rw790</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1dpe3v9" name="Add to calendar">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_19u3q7n" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1w8j2ia</bpmn:incoming>
+      <bpmn:outgoing>Flow_0egcxkz</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0sur680">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="173" y="202" width="49" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1tr8s54_di" bpmnElement="Gateway_1tr8s54" isMarkerVisible="true">
+        <dc:Bounds x="425" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="405" y="122" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0th5sdl_di" bpmnElement="Event_0th5sdl">
+        <dc:Bounds x="692" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="665" y="202" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12ucfod_di" bpmnElement="Activity_12ucfod">
+        <dc:Bounds x="530" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yycj55_di" bpmnElement="Event_0yycj55">
+        <dc:Bounds x="692" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="668" y="315" width="84" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mg0sdt_di" bpmnElement="Activity_0796rfn">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1oj3eok_di" bpmnElement="Activity_1dpe3v9">
+        <dc:Bounds x="530" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0o502i5_di" bpmnElement="Flow_0o502i5">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12rw790_di" bpmnElement="Flow_12rw790">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="425" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1w8j2ia_di" bpmnElement="Flow_1w8j2ia">
+        <di:waypoint x="475" y="177" />
+        <di:waypoint x="530" y="177" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="494" y="159" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0egcxkz_di" bpmnElement="Flow_0egcxkz">
+        <di:waypoint x="630" y="177" />
+        <di:waypoint x="692" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0x479yu_di" bpmnElement="Flow_0x479yu">
+        <di:waypoint x="450" y="202" />
+        <di:waypoint x="450" y="290" />
+        <di:waypoint x="530" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="458" y="243" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19zk2hl_di" bpmnElement="Flow_19zk2hl">
+        <di:waypoint x="630" y="290" />
+        <di:waypoint x="692" y="290" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

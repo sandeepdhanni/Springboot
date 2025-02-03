@@ -465,6 +465,52 @@ Manual task -
 it is an external to zeebe engine..it is used to model work done by somebody who the engine does not know of that and that has unknown system or ui interface...it is also considered as  a pass through activity,automatically continuing when the process execution arrives at it..
 
 
+camunda forms -
+they are used to create camunda forms using moduler...they are used in conjunction with user tasks and can be displayed in tasklist..they will be going through the three different nodes...they are : code editor mode,validate mode,design mode
+design mode - which is used for designing the form..this si the default mode where we create a new form..there are three section in form..they are
+ components,form defination and form preview..
+in components we have input,selection,presentation,containers and action..
+in form definition u build the visual aspect of your form in the form defination section..
+
+form preview - 
+in form preview you interact with a form and see how it looks and behaves with mock data that simulates what an end user sees in tasklist...
+in form preview we have disabled and read only where disabled means any data in the field will not be submitted with the form and will not be seen where as read only will have data where we can only read 
+fx in form preview - it means the field can be use as a feel expression..
+
+
+validate mode - which is used for testing
+code editor mode -  which is used to see the code..
+
+
+milestones functoionality - 
+shows the milestones that you set for the form..
+
+
+
+components -
+components are the elements that make up a form and define its structure...
+input section - these elements allow you to display and/or manually enter data into the form..
+text field - this is used to display,modify or create data stored in a process variable..
+selection catagory -this allows the user of the form to make choices that will altimately change the data related to the form..
+
+note : the options can be created statically and dynamically voted from the input data.....
+
+presentation section -
+this will help u display data headings or any other data in the form..these elements are typically read only...
+
+container section - this section allows u to group elements together or in the case of iframe embed external content into your form..
+
+action element - we will use this to either trigger a form submssion or reset the form itself....
+
+field element - this typically serves as a heading or title for the field itself...
+field description - this will allows u to add additional details..
+key field - this refers to the data this element is interacting with..if u change the value in the text field it modifies the value stored in the process variable....in this way you can read and write to a process variable through form element..
+disabled button - this element can still be edited but the data in the field will not be submitted...
+default value - you can create default value which allows the elements to use a specific value..until one is written or choosen..
+custom properties - this will allow you to set the property value that can be used in the execution of the swarm.. this is often used by custom task list implementaions to customize the form..
+
+
+
 
 
 
@@ -478,3 +524,9 @@ IN SAAS WE CAN CREATE ONLY ONE CLUSTER...IF WE CREATE ONE CLUSTER WE CANNOT CREA
 
 OPERATOR - 
 IT IS A TOOL FOR MONITORING AND TROUBLESHOOTING PROCESS INSTANCES RUNNING IN THE ZEEBE ENGINE..IN ADDITION TO PROVIDING VISIBILITY INTO ACTIVE AND COMPLETED PROCESS INSTANCE, OPERATE ALSO MAKES IT POSSIBLE TO CARRY OUT KEY OPERATIONS SUCH AS RESOLVING INCIDENTS, AND UPDATING PROCESS INSTANCE VARIABLE...
+
+
+
+
+
+

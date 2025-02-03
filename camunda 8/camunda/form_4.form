@@ -1,0 +1,191 @@
+{
+  "components": [
+    {
+      "components": [
+        {
+          "text": "## Services",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0kig1cq",
+            "columns": null
+          },
+          "id": "Field_0ui0i12"
+        },
+        {
+          "values": [
+            {
+              "label": "Consulting",
+              "value": "consulting"
+            },
+            {
+              "label": "Training",
+              "value": "training"
+            },
+            {
+              "label": "Support",
+              "value": "support"
+            }
+          ],
+          "label": "Please select the service you are interrested in",
+          "type": "checklist",
+          "layout": {
+            "row": "Row_0kqz0la",
+            "columns": null
+          },
+          "id": "Field_1c2r860",
+          "key": "checklist_z2mjq"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_122a1vo",
+        "columns": null
+      },
+      "id": "Field_1g8qwrw",
+      "path": "services"
+    },
+    {
+      "components": [
+        {
+          "text": "### Consulting",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1duat9b",
+            "columns": null
+          },
+          "id": "Field_0rx7tpr"
+        },
+        {
+          "label": "Text area",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_10bolu3",
+            "columns": null
+          },
+          "id": "Field_1cw53tq",
+          "key": "textarea_gyj1lk"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_0or0dxk",
+        "columns": null
+      },
+      "id": "Field_1jyr6ep",
+      "path": "seleced.consulting",
+      "conditional": {
+        "hide": "=not(list contains(services.options, \"consulting\"))"
+      }
+    },
+    {
+      "components": [
+        {
+          "text": "### Training",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0wvig8t",
+            "columns": null
+          },
+          "id": "Field_13edsyg"
+        },
+        {
+          "label": "Number of employees to be trained:",
+          "type": "number",
+          "layout": {
+            "row": "Row_092sblc",
+            "columns": null
+          },
+          "id": "Field_1wi20l0",
+          "key": "numberEmployees",
+          "defaultValue": 1
+        },
+        {
+          "values": [
+            {
+              "label": "Online",
+              "value": "online"
+            }
+          ],
+          "label": "Preferred Training Format:",
+          "type": "radio",
+          "layout": {
+            "row": "Row_1i1wg9x",
+            "columns": null
+          },
+          "id": "Field_1fkfw0r",
+          "key": "format"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_02diu2z",
+        "columns": null
+      },
+      "id": "Field_06ulzbo",
+      "path": "selected.training",
+      "conditional": {
+        "hide": "=not(list contains(services.options, \"training\"))"
+      }
+    },
+    {
+      "components": [
+        {
+          "text": "# this is the main",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0z2m8or",
+            "columns": null
+          },
+          "id": "Field_0fmyewh"
+        },
+        {
+          "values": [
+            {
+              "label": "Value",
+              "value": "value"
+            }
+          ],
+          "label": "sam",
+          "type": "select",
+          "layout": {
+            "row": "Row_1wwcj5h",
+            "columns": null
+          },
+          "id": "Field_1u5x7gy",
+          "key": "select_yma6ao"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_19z63qz",
+        "columns": null
+      },
+      "id": "Field_032ed5t",
+      "conditional": {
+        "hide": "=not(list contains(services.options, \"support\"))"
+      },
+      "path": "selected.support"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lcd2um",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}

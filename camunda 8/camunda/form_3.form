@@ -1,0 +1,79 @@
+{
+  "components": [
+    {
+      "text": "# Vacation request",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0ti8tf8",
+        "columns": null
+      },
+      "id": "Field_1xyxtwf"
+    },
+    {
+      "label": "Employee Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_03wcj6f",
+        "columns": null
+      },
+      "id": "Field_1300xbp",
+      "key": "textfield_lxmgjc",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Employee Id",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_03wcj6f",
+        "columns": null
+      },
+      "id": "Field_1eu9mko",
+      "key": "textfield_8q78mg",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Start Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_1jao2yd",
+        "columns": null
+      },
+      "id": "Field_1d9xu0m",
+      "key": "datetime_xu3s2p",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "End Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_1jao2yd",
+        "columns": null
+      },
+      "id": "Field_1jxd239",
+      "key": "datetime_2cvsme",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "vacationRequest",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}

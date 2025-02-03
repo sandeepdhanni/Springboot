@@ -1,0 +1,91 @@
+{
+  "components": [
+    {
+      "text": "# Salar Increased approval form",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_097cdvs",
+        "columns": null
+      },
+      "id": "Field_10zb7wy"
+    },
+    {
+      "label": "Employee",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1fpqn4z",
+        "columns": null
+      },
+      "id": "Field_07cwv4c",
+      "key": "approvee",
+      "readonly": true
+    },
+    {
+      "label": "Approver",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0nmze3c",
+        "columns": null
+      },
+      "id": "Field_13u505j",
+      "key": "approver",
+      "validate": {
+        "required": true,
+        "minLength": 5,
+        "maxLength": 50
+      },
+      "conditional": {
+        "hide": "=predefinedApprover != null"
+      }
+    },
+    {
+      "label": "Percent salary increase",
+      "type": "number",
+      "layout": {
+        "row": "Row_17u007c",
+        "columns": null
+      },
+      "id": "Field_0kpp63k",
+      "key": "payIncrease",
+      "serializeToString": false,
+      "decimalDigits": 2
+    },
+    {
+      "values": [
+        {
+          "label": "Approved",
+          "value": "1"
+        },
+        {
+          "label": "Rejected",
+          "value": "0"
+        },
+        {
+          "label": "Approved with changes",
+          "value": "2"
+        }
+      ],
+      "label": "Approal",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_087hsy1",
+        "columns": null
+      },
+      "id": "Field_1ja12ws",
+      "key": "approved",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_0yu5khf",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}

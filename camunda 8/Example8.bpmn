@@ -4,11 +4,6 @@
     <bpmn:startEvent id="StartEvent_1" name="New facebook posts written">
       <bpmn:outgoing>Flow_0skpsth</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_1kvd0ib" name="Review posts">
-      <bpmn:incoming>Flow_0skpsth</bpmn:incoming>
-      <bpmn:incoming>Flow_0c2btlk</bpmn:incoming>
-      <bpmn:outgoing>Flow_0g9qfpx</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0skpsth" sourceRef="StartEvent_1" targetRef="Activity_1kvd0ib" />
     <bpmn:exclusiveGateway id="Gateway_1bjknbg" name="Post approved">
       <bpmn:incoming>Flow_0g9qfpx</bpmn:incoming>
@@ -16,15 +11,7 @@
       <bpmn:outgoing>Flow_1mkri04</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0g9qfpx" sourceRef="Activity_1kvd0ib" targetRef="Gateway_1bjknbg" />
-    <bpmn:task id="Activity_03xf33q" name="Publish on facebook">
-      <bpmn:incoming>Flow_116aygb</bpmn:incoming>
-      <bpmn:outgoing>Flow_1tgxren</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_116aygb" name="Yes" sourceRef="Gateway_1bjknbg" targetRef="Activity_03xf33q" />
-    <bpmn:task id="Activity_110ouyn" name="Send rejection notification">
-      <bpmn:incoming>Flow_1mkri04</bpmn:incoming>
-      <bpmn:outgoing>Flow_1eh0utb</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1mkri04" name="No" sourceRef="Gateway_1bjknbg" targetRef="Activity_110ouyn" />
     <bpmn:endEvent id="Event_0dp9u5r" name="Facebook posts rejected">
       <bpmn:incoming>Flow_1eh0utb</bpmn:incoming>
@@ -38,32 +25,39 @@
       <bpmn:outgoing>Flow_035lk93</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1juz6a6" />
     </bpmn:boundaryEvent>
-    <bpmn:task id="Activity_0fflas6" name="Handle dublicate facebook posts">
-      <bpmn:incoming>Flow_035lk93</bpmn:incoming>
-      <bpmn:outgoing>Flow_0c2btlk</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_035lk93" sourceRef="Event_0im9o9u" targetRef="Activity_0fflas6" />
     <bpmn:sequenceFlow id="Flow_0c2btlk" sourceRef="Activity_0fflas6" targetRef="Activity_1kvd0ib" />
+    <bpmn:userTask id="Activity_110ouyn" name="Send rejection notification">
+      <bpmn:incoming>Flow_1mkri04</bpmn:incoming>
+      <bpmn:outgoing>Flow_1eh0utb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0fflas6" name="Handle dublicate facebook posts">
+      <bpmn:incoming>Flow_035lk93</bpmn:incoming>
+      <bpmn:outgoing>Flow_0c2btlk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1kvd0ib" name="Review posts">
+      <bpmn:incoming>Flow_0skpsth</bpmn:incoming>
+      <bpmn:incoming>Flow_0c2btlk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g9qfpx</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_03xf33q" name="Publish on facebook">
+      <bpmn:incoming>Flow_116aygb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tgxren</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1bs9l0y">
-      <bpmndi:BPMNShape id="Activity_1kvd0ib_di" bpmnElement="Activity_1kvd0ib">
-        <dc:Bounds x="270" y="197" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="142" y="219" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="125" y="262" width="71" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1bjknbg_di" bpmnElement="Gateway_1bjknbg" isMarkerVisible="true">
         <dc:Bounds x="425" y="212" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="415" y="269" width="71" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_03xf33q_di" bpmnElement="Activity_03xf33q">
-        <dc:Bounds x="530" y="197" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_110ouyn_di" bpmnElement="Activity_110ouyn">
-        <dc:Bounds x="530" y="80" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0dp9u5r_di" bpmnElement="Event_0dp9u5r">
         <dc:Bounds x="692" y="102" width="36" height="36" />
@@ -77,15 +71,17 @@
           <dc:Bounds x="673" y="262" width="74" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0fflas6_di" bpmnElement="Activity_0fflas6">
-        <dc:Bounds x="660" y="320" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNShape id="Activity_1e6s5vo_di" bpmnElement="Activity_110ouyn">
+        <dc:Bounds x="530" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="142" y="219" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="125" y="262" width="71" height="27" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Activity_0reznd6_di" bpmnElement="Activity_0fflas6">
+        <dc:Bounds x="660" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0x1qaxw_di" bpmnElement="Activity_1kvd0ib">
+        <dc:Bounds x="270" y="197" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0g9azb6_di" bpmnElement="Activity_03xf33q">
+        <dc:Bounds x="530" y="197" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0nazcpa_di" bpmnElement="Event_0im9o9u">
         <dc:Bounds x="532" y="259" width="36" height="36" />
