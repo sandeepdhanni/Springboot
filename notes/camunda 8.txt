@@ -348,7 +348,26 @@ Escalation events in Camunda 8 are used to signal a non-critical issue that need
 DMN(decision management and notation) - 
 it is a standard notation developed by object management group(OMG) and widely used in different industries....DMN defines the desicion logic in a visual way,working alongside BPMN...in DMN,decision means derive a result(output) from given facts..
 
-DRD(decision requirement diagram) - theya are visualize as disicion requirement diagram..when starting to model a decision it is important to start with drd because it defines with the structure of the decision....
+DRD(decision requirement diagram) - they are visualize as disicion requirement diagram..when starting to model a decision it is important to start with drd because it defines with the structure of the decision....it is a dmn notation that allows for the definition of complex decisions.drd's contain :
+decision - the act of determining an output value from the number of input values,using logic decision
+input data - the input data that you feed into your decision logic in order to determinethe output value..
+relations between decisions - you can connect decision with arrows and therefoew indicate which decision output will be considered as an input for another decision...
+
+Each line in the decision table represents a rule...a rule consists of an input expression and an output expression..if the input expression returns true,then the corresponding output will be returned...
+
+
+Business rule task - it is used to model the evalution of business rule,for example, a decision modeled in decision model and notation..
+
+hit policies in dmn - 
+it describes different ways to evaluate the rules conatained in a decision table..different policies do not only lead to different result, but typically also requires different modes of thinking and reasoning about the meaning of the entire decision table...the unique hit poolicy returns a single result...two rules cannot overlap and evaluate to true at the same time...in our decision table,the forth rule overlaps with other rulles and therefore prevents us from using the unique hit policy...the hit policy first evaluates the rules from top to bottom and returns the first rule that evaluates as true..
+
+
+
+
+
+
+
+
 
 
 decision logic - it defines the roles in the decision..the most common way to model the decision logic is by decision table..
@@ -508,6 +527,115 @@ key field - this refers to the data this element is interacting with..if u chang
 disabled button - this element can still be edited but the data in the field will not be submitted...
 default value - you can create default value which allows the elements to use a specific value..until one is written or choosen..
 custom properties - this will allow you to set the property value that can be used in the execution of the swarm.. this is often used by custom task list implementaions to customize the form..
+
+
+
+
+script task -
+it is used to model the evaluation of a script..
+
+
+expanded subprocesses - 
+this is a embedded subprocesses that allows you to group elements of the process..
+
+
+call activity - 
+a call activity allows you to call and invoke another process as part of this process...the subprocess is externalized (stored as seperate bpmn diagram) and can be invoked by different processes...
+
+
+
+TIMER EVENT - 
+it is used to initiate the process instance periodically or pause it for a specific duration of time..
+date- it is used to start a new process instance at a certain date/time...
+cycle - it is used to start a new process instance at a certain time,such as every 2 hours..
+eg: R/PT2H - Repetition/Period Time 2 Hours
+
+
+
+MLTI-INSTANCE MARKER -
+WHEN TO USE -
+manage iterations in a business process
+execute a task or a process several times..
+TYPES OF MULTI-INSTANCE MARKERS:
+sequencial-instance marker
+parallel-instance marker
+multi-instance markers can be used with different task types.. 
+
+paralle instance -
+in case of parallel instance activity,all instances are created when the multi-instancebody is activated..the instances are executed concurrently and independently from each other..
+in parallel instance we have completion condition which terminates the multi-instance in advance if a condition occurs...
+we have input collection in multi-instance where we define a variable where this variable will be evaluated and the task instance will be createdfor each element in the collection..
+we have input element variable will be populated with the values from the collection..
+we have output collection will contain the aggregate result of each individual vote which is defined in the output element property..  
+
+
+
+
+
+
+FRIENDLY ENOUGH EXPRESSION LANGUAGE(FEEL) -
+FEEL is a expression language designed to write expressions in a way that both business professionals and developers can easily understand it...FEEL is executed by engines...FEEL is part of the decision model and notation(DMN) standard...
+FEEL is designed to have:
+simple syntax designed for a wide audience and executablle by engines..
+simple data model with JSON-like types:number,dates,strings,lists, and context...
+three-valued logic(true,false,null)
+
+FEEL defines several data types that you can use to represent different kinds of valueswithin expression..
+data types provide a framework for representing various kinds of data,from simple values like number and strings to more complex structures like lists and contexts...they dictate how we interact with data,influencing operations,constraintts,and within decision models....
+
+NULL - (nothing,null,or nil(the value is not present))
+	FEEL follows one simple rule:if something goes wrong,return null....
+if the expression camnnot be evaluated successfully it returns null 
+NUMBER - 
+       a whole or floating point number...the number can be negative...not-a-nuber(NaN),positive/negative infinity are represented as null...example of expressions based on number datatype: addition,substraction,multiplication,etc...additional expression:2+3
+
+SEQUENCE - 
+         sequence of characters enclosed in double quotes "....the sequence can also contain escaped charaxcters starting  with /....eg : \'l,\",\r,\t,unicode like \u269D or  \u101EF
+
+BOOLEAN -
+        a boolean value...it can be either true or false...
+
+DATE -
+a date value without a time component...format:yyyy-mm-dd....eg:date("2024-06-06")
+
+
+
+ADDITIONAL FEEL DATA TYPES -
+temporal data types and complex data types play a pivotal roles in decision modeling..
+temporal data types are crucial for scenarios involving time-sensative decisions or events...
+temporal data include :  time,date-time,days-time-duration,years-months-duration
+format: PxDtXhXmXs
+eg : date("2024-04-06")+duration("P1D")   //date("2020-04-07")
+
+complex data types empower modelers to organize and manage intricate data structures,such as nested lists and key-value pairs,essential for capturing complex business logic and relationships... .complex data types include : 
+context - context is a list of entries..each entry has a key and a value...the kety is either a name or a string..the value can  be any type..eg : [1,2,3,4]
+
+
+BASIC FEEL OPERATORS - 
+they are calculation operators,comparison operators,logical operators..
+CALCULATION OPERATORS - 
+they are Addition(+),Subtraction(-),Multiplication(*),Division(/),Exponentiation(**)
+
+COMPARISON OPERATOR - 
+they are Equal to(=),not equals to (!=),greater than(>),less than(<)
+
+IMPORTANT : the equals operator has only one equals sign....eg : x=y
+
+
+LOGICAL OPERATOR - 
+they are and,or
+
+
+
+FEEL BUILD-IN FUNCTIONS - 
+FEEL comes with set of build-in functions that enable u to manipulate data,perform calculations, and make decision....
+some build-in functions are :
+upper case(string):
+contains(string,match) :
+round(number) :
+random number() :
+today() :
+
 
 
 

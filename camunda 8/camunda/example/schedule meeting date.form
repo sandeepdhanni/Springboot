@@ -1,0 +1,454 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "cf76b8f"
+  },
+  "schemaVersion": 16,
+  "id": "Form_ScheduleMeetingDate",
+  "components": [
+    {
+      "components": [
+        {
+          "label": "Company name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0xghx8l",
+            "columns": null
+          },
+          "id": "Field_00210mp",
+          "key": "name",
+          "readonly": true
+        },
+        {
+          "label": "Address",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_056d38i",
+            "columns": null
+          },
+          "id": "Field_1x0yoaa",
+          "key": "address",
+          "readonly": true
+        },
+        {
+          "label": "Postal/ZIP Code",
+          "type": "number",
+          "layout": {
+            "row": "Row_1oe5rmn",
+            "columns": null
+          },
+          "id": "Field_03htx9i",
+          "key": "postalCode",
+          "readonly": true
+        },
+        {
+          "label": "City",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_1oe5rmn",
+            "columns": null
+          },
+          "id": "Field_1ne6bdt",
+          "key": "city",
+          "readonly": true
+        },
+        {
+          "label": "Country",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_19ewo0b",
+            "columns": null
+          },
+          "id": "Field_140mm07",
+          "key": "country",
+          "readonly": true
+        },
+        {
+          "label": "Separator",
+          "type": "separator",
+          "layout": {
+            "row": "Row_0yivwab",
+            "columns": null
+          },
+          "id": "Field_0ar6f0v"
+        },
+        {
+          "label": "Phone Number",
+          "type": "number",
+          "layout": {
+            "row": "Row_06n1l8s",
+            "columns": null
+          },
+          "id": "Field_0of9cbz",
+          "key": "phoneNumber",
+          "validate": {
+            "min": 9
+          },
+          "readonly": true
+        },
+        {
+          "label": "Email",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_06n1l8s",
+            "columns": null
+          },
+          "id": "Field_0dngibt",
+          "key": "email",
+          "readonly": true,
+          "validate": { }
+        }
+      ],
+      "showOutline": true,
+      "label": "Quotation for",
+      "type": "group",
+      "layout": {
+        "row": "Row_1h5wbeh",
+        "columns": null
+      },
+      "id": "Field_0x66bra",
+      "path": "client"
+    },
+    {
+      "components": [
+        {
+          "text": "### Project information",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1p66a9l",
+            "columns": null
+          },
+          "id": "Field_19sik76"
+        },
+        {
+          "label": "Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0yom5cr",
+            "columns": null
+          },
+          "id": "Field_02zzma7",
+          "key": "description",
+          "readonly": true
+        },
+        {
+          "subtype": "date",
+          "dateLabel": "Start Date",
+          "label": "Date time",
+          "type": "datetime",
+          "layout": {
+            "row": "Row_0ucpkqc",
+            "columns": null
+          },
+          "id": "Field_1kqa86k",
+          "key": "startDate",
+          "readonly": true
+        },
+        {
+          "label": "Duration",
+          "type": "number",
+          "layout": {
+            "row": "Row_0ucpkqc",
+            "columns": null
+          },
+          "id": "Field_02pquvu",
+          "key": "duration",
+          "description": "In months",
+          "readonly": true
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_1xx1jeu",
+        "columns": null
+      },
+      "id": "Field_1k62mmp",
+      "path": "project"
+    },
+    {
+      "components": [
+        {
+          "text": "### Services",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1bzyh6u",
+            "columns": null
+          },
+          "id": "Field_0w77bmf"
+        },
+        {
+          "values": [
+            {
+              "label": "Consulting",
+              "value": "consulting"
+            },
+            {
+              "label": "Training",
+              "value": "training"
+            },
+            {
+              "label": "Support",
+              "value": "support"
+            }
+          ],
+          "label": "Please select the services you are interested in:",
+          "type": "checklist",
+          "layout": {
+            "row": "Row_17wjfsz",
+            "columns": null
+          },
+          "id": "Field_13ek9xg",
+          "key": "options",
+          "readonly": true
+        },
+        {
+          "components": [
+            {
+              "text": "### Consulting",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_07aji6g",
+                "columns": null
+              },
+              "id": "Field_1m4z0qi"
+            },
+            {
+              "label": "",
+              "type": "textarea",
+              "layout": {
+                "row": "Row_1rk3b9n",
+                "columns": null
+              },
+              "id": "Field_1ni7rcu",
+              "key": "requirements",
+              "readonly": true
+            }
+          ],
+          "showOutline": true,
+          "label": "",
+          "type": "group",
+          "layout": {
+            "row": "Row_1ahsu8c",
+            "columns": null
+          },
+          "id": "Field_09fyp7u",
+          "conditional": {
+            "hide": "=not(list contains(services.options, \"consulting\"))"
+          },
+          "path": "selected.consulting"
+        },
+        {
+          "components": [
+            {
+              "text": "### Training",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1g2m5cc",
+                "columns": null
+              },
+              "id": "Field_1gk1zqf"
+            },
+            {
+              "label": "Number of employees to be trained:",
+              "type": "number",
+              "layout": {
+                "row": "Row_194ok0v",
+                "columns": null
+              },
+              "id": "Field_04vzl4o",
+              "key": "numberEmployees",
+              "increment": "1",
+              "defaultValue": 10,
+              "readonly": true
+            },
+            {
+              "values": [
+                {
+                  "label": "Instructor Led Training",
+                  "value": "Instructor Led Training"
+                },
+                {
+                  "label": "Online",
+                  "value": "Online"
+                }
+              ],
+              "label": "Preferred Training Format:",
+              "type": "radio",
+              "layout": {
+                "row": "Row_1nan1hh",
+                "columns": null
+              },
+              "id": "Field_09uls3v",
+              "key": "format",
+              "readonly": true
+            }
+          ],
+          "showOutline": true,
+          "label": "",
+          "type": "group",
+          "layout": {
+            "row": "Row_1a0t1g1",
+            "columns": null
+          },
+          "id": "Field_05dyzhe",
+          "conditional": {
+            "hide": "=not(list contains(services.options, \"training\"))"
+          },
+          "path": "selected.training"
+        },
+        {
+          "components": [
+            {
+              "text": "### Support",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1ccgbcj",
+                "columns": null
+              },
+              "id": "Field_0sxy4i7"
+            },
+            {
+              "values": [
+                {
+                  "label": "SILVER",
+                  "value": "SILVER"
+                },
+                {
+                  "label": "GOLD",
+                  "value": "GOLD"
+                },
+                {
+                  "label": "PLATINUM",
+                  "value": "PLATINUM"
+                }
+              ],
+              "label": "",
+              "type": "select",
+              "layout": {
+                "row": "Row_02vl5ed",
+                "columns": null
+              },
+              "id": "Field_0ovctyq",
+              "key": "type",
+              "defaultValue": "SILVER",
+              "readonly": true
+            }
+          ],
+          "showOutline": true,
+          "label": "",
+          "type": "group",
+          "layout": {
+            "row": "Row_13dhmdi",
+            "columns": null
+          },
+          "id": "Field_1ypwqey",
+          "conditional": {
+            "hide": "=not(list contains(services.options,\"support\"))"
+          },
+          "path": "selected.support"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_00zkoz7",
+        "columns": null
+      },
+      "id": "Field_0ubjege",
+      "path": "services"
+    },
+    {
+      "label": "Separator",
+      "type": "separator",
+      "layout": {
+        "row": "Row_1pyryn7",
+        "columns": null
+      },
+      "id": "Field_1xbitzp"
+    },
+    {
+      "content": "<style>        \n        .info-box {\n            background-color: #fff;\n            border: 1px solid #e0e0e0;\n            border-left: 8px solid #0f62fe;\n            border-radius: 0px;\n            padding: 20px;\n        }\n        .info-header {\n            font-size: 16px;\n            font-weight: bold;\n            color: #333;\n            margin-bottom: 10px;\n        }\n        .info-message {\n            font-size: 13px;\n            color: #333;\n        }\n</style>\n\n<div class=\"info-box\">\n    <div class=\"info-header\">General instructions</div>\n    <div class=\"info-message\">\n        <p>Your task includes selecting one of the available consultants and an appropriate date to discuss the needs with the client. </p>\n        <p>By carefully considering both the client's needs and the counselor's schedule, you play a vital role in facilitating productive counseling sessions and fostering positive outcomes for our clients.</p>\n    </div>\n</div>",
+      "label": "HTML view",
+      "type": "html",
+      "layout": {
+        "row": "Row_04z0uln",
+        "columns": null
+      },
+      "id": "Field_10zok00"
+    },
+    {
+      "components": [
+        {
+          "text": "availability: <pre><code>{{availability}}</pre></code>\navailableCounselors: <pre><code>{{availableCounselors}}</pre></code>\nselectedCounselor: <pre><code>{{selectedCounselor}}</pre></code>\nexp_availableDates: <pre><code>{{exp_availableDates}}</pre></code>",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1qypojm",
+            "columns": null
+          },
+          "id": "Field_036i3d5",
+          "conditional": {
+            "hide": "=true"
+          }
+        },
+        {
+          "label": "Available counselors",
+          "type": "select",
+          "layout": {
+            "row": "Row_10grziw",
+            "columns": null
+          },
+          "id": "Field_06dv9y5",
+          "key": "selectedCounselor",
+          "valuesExpression": "=availability.counselor",
+          "searchable": false
+        },
+        {
+          "computeOn": "change",
+          "label": "Expression",
+          "type": "expression",
+          "layout": {
+            "row": "Row_0ganmt2",
+            "columns": null
+          },
+          "id": "Field_1p6jjcv",
+          "key": "exp_availableDates",
+          "expression": "=flatten(availability[counselor = selectedCounselor].availableDates)"
+        },
+        {
+          "label": "Available dates",
+          "type": "radio",
+          "layout": {
+            "row": "Row_0338zyh",
+            "columns": null
+          },
+          "id": "Field_0gmic0v",
+          "key": "selectedDate",
+          "valuesExpression": "=exp_availableDates",
+          "conditional": {
+            "hide": "=selectedCounselor = null"
+          }
+        }
+      ],
+      "showOutline": true,
+      "label": "Meeting info",
+      "type": "group",
+      "layout": {
+        "row": "Row_1r23oy0",
+        "columns": null
+      },
+      "id": "Field_1tdx6to"
+    }
+  ],
+  "type": "default"
+}

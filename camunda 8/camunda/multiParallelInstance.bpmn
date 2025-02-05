@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0m24ehk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="Process_1dqhayl" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_2pi1meu">{
+  "components": [
+    {
+      "label": "voter",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1u5xz5b",
+        "columns": null
+      },
+      "id": "Field_0sbf0fq",
+      "key": "voter"
+    },
+    {
+      "label": "Proposal",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1rbiggn",
+        "columns": null
+      },
+      "id": "Field_1d8qq4f",
+      "key": "voters"
+    },
+    {
+      "label": "Separator",
+      "type": "separator",
+      "layout": {
+        "row": "Row_0gr65hs",
+        "columns": null
+      },
+      "id": "Field_17im3zn"
+    },
+    {
+      "values": [
+        {
+          "label": "Accept proposal ?",
+          "value": "acceptPropsal"
+        }
+      ],
+      "label": "",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0y8cm0r",
+        "columns": null
+      },
+      "id": "Field_12aqkav",
+      "key": "votes"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0z1btlc",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0fos03s</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0fos03s" sourceRef="StartEvent_1" targetRef="Activity_1wcymhe" />
+    <bpmn:exclusiveGateway id="Gateway_1dcitc2" name="Proposal accepted ?" default="Flow_1urh3g9">
+      <bpmn:incoming>Flow_13t3lxu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ynm0ps</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1urh3g9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_13t3lxu" sourceRef="Activity_1wcymhe" targetRef="Gateway_1dcitc2" />
+    <bpmn:task id="Activity_1033wdz" name="Accept proposal">
+      <bpmn:incoming>Flow_1ynm0ps</bpmn:incoming>
+      <bpmn:outgoing>Flow_04ukovx</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1ynm0ps" name="Yes" sourceRef="Gateway_1dcitc2" targetRef="Activity_1033wdz">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=every x in votes satisfies x</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:task id="Activity_0jjoz6r" name="Reject proposal">
+      <bpmn:incoming>Flow_1urh3g9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1girg1y</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1urh3g9" name="No" sourceRef="Gateway_1dcitc2" targetRef="Activity_0jjoz6r" />
+    <bpmn:endEvent id="Event_0nk7sp1" name="Proposal accepted">
+      <bpmn:incoming>Flow_04ukovx</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_04ukovx" sourceRef="Activity_1033wdz" targetRef="Event_0nk7sp1" />
+    <bpmn:endEvent id="Event_0z26v12" name="Proposal rejected">
+      <bpmn:incoming>Flow_1girg1y</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1girg1y" sourceRef="Activity_0jjoz6r" targetRef="Event_0z26v12" />
+    <bpmn:userTask id="Activity_1wcymhe" name="Vote for proposal">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_2pi1meu" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0fos03s</bpmn:incoming>
+      <bpmn:outgoing>Flow_13t3lxu</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="=voters" inputElement="voter" outputCollection="votes" outputElement="=vote" />
+        </bpmn:extensionElements>
+        <bpmn:completionCondition xsi:type="bpmn:tFormalExpression">=some x in votes satisfies x=false</bpmn:completionCondition>
+      </bpmn:multiInstanceLoopCharacteristics>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1dqhayl">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1dcitc2_di" bpmnElement="Gateway_1dcitc2" isMarkerVisible="true">
+        <dc:Bounds x="425" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="423" y="122" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1033wdz_di" bpmnElement="Activity_1033wdz">
+        <dc:Bounds x="530" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jjoz6r_di" bpmnElement="Activity_0jjoz6r">
+        <dc:Bounds x="530" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0nk7sp1_di" bpmnElement="Event_0nk7sp1">
+        <dc:Bounds x="692" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="688" y="202" width="45" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0z26v12_di" bpmnElement="Event_0z26v12">
+        <dc:Bounds x="692" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="667" y="315" width="86" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1b579r7_di" bpmnElement="Activity_1wcymhe">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0fos03s_di" bpmnElement="Flow_0fos03s">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13t3lxu_di" bpmnElement="Flow_13t3lxu">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="425" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ynm0ps_di" bpmnElement="Flow_1ynm0ps">
+        <di:waypoint x="475" y="177" />
+        <di:waypoint x="530" y="177" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="494" y="159" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1urh3g9_di" bpmnElement="Flow_1urh3g9">
+        <di:waypoint x="450" y="202" />
+        <di:waypoint x="450" y="290" />
+        <di:waypoint x="530" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="458" y="243" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04ukovx_di" bpmnElement="Flow_04ukovx">
+        <di:waypoint x="630" y="177" />
+        <di:waypoint x="692" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1girg1y_di" bpmnElement="Flow_1girg1y">
+        <di:waypoint x="630" y="290" />
+        <di:waypoint x="692" y="290" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

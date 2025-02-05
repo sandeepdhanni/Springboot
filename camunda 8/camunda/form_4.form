@@ -84,6 +84,31 @@
       }
     },
     {
+      "content": "<style>        \n.info-box {\n    background-color: #fff;\n    border: 1px solid #e0e0e0;\n    border-left: 8px solid #0f62fe;\n    border-radius: 0px;\n    padding: 20px;\n}\n.info-header {\n    font-size: 16px;\n    font-weight: bold;\n    color: #333;\n    margin-bottom: 10px;\n}\n.info-message {\n    font-size: 13px;\n    color: #333;\n}\n</style>\n\n<div class=\"info-box\">\n    <div class=\"info-header\">General instructions</div>\n    <div class=\"info-message\">\n        <p>Your task includes selecting one of the available consultants and an appropriate date to discuss the needs with the client. </p>\n        <p>By carefully considering both the client's needs and the counselor's schedule, you play a vital role in facilitating productive counseling sessions and fostering positive outcomes for our clients.</p>\n    </div>\n</div>",
+      "label": "HTML view",
+      "type": "html",
+      "layout": {
+        "row": "Row_1ucoads",
+        "columns": null
+      },
+      "id": "Field_1rwze0x"
+    },
+    {
+      "components": [],
+      "showOutline": true,
+      "isRepeating": true,
+      "allowAddRemove": true,
+      "defaultRepetitions": 1,
+      "label": "Dynamic list",
+      "type": "dynamiclist",
+      "layout": {
+        "row": "Row_0oitxrh",
+        "columns": null
+      },
+      "id": "Field_018awl7",
+      "path": "dynamiclist_6wr1qa"
+    },
+    {
       "components": [
         {
           "text": "### Training",
