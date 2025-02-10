@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_1txbvox" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="skill-metrix" name="skill-metrix">
+    <decisionTable id="DecisionTable_1x5gnmt">
+      <input id="Input_1" label="Account value">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>accountValue</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Gruop" name="groupId" typeRef="string" biodi:width="211" />
+      <rule id="DecisionRule_16t1ngn">
+        <inputEntry id="UnaryTests_0ski4kj">
+          <text>&lt;100</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1op5xmk">
+          <text>"processorGroup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_022jff5">
+        <inputEntry id="UnaryTests_0x0av6o">
+          <text>[100..1000]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_106cb2d">
+          <text>"seniorProcessorGroup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c5h6jw">
+        <inputEntry id="UnaryTests_0jszvue">
+          <text>&gt;1000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t3nzkx">
+          <text>"managerGroup"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="skill-metrix">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

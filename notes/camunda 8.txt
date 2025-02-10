@@ -1387,16 +1387,106 @@ context you will be working with:
 }
 Task
 Get the context skills from the senior teachers (with at least 10 years of experience)
+teachers["yearsOfExperience" >=10 ].skills
 
 
 
 
 
+RECAP OF BASIC CONDITIONALS -
+ 
+A simple conditional in FEEL evaluates a condition and returns a result based on whether the condition is true or false.
+Syntax:
+if condition then result1 else result2
+Example:
+if order.totalAmount > 50 then "Free Shipping" else "Standard Shipping"
+
+Nested Conditionals -
+Nested conditionals are conditionals within conditionals. They allow for more complex decision logic by evaluating multiple conditions in a hierarchical manner.
+Syntax -
+if condition1 then
+  if condition2 then result1 else result2
+else
+  if condition3 then result3 else result4
+Example:
+Determine the discount based on customer type and order amount:
+if customer.isPremiumMember then
+  if order.totalAmount > 100 then 20 else 10
+else
+  if order.totalAmount > 100 then 5 else 0
+
+Using Logical Operators -
+Logical operators (and and or) allow for combining multiple conditions into a single conditional statement.
+AND Operator
+Evaluates to true if all conditions are true.
+if condition1 and condition2 then result1 else result2
+Example :
+if order.totalAmount > 50 and customer.isPremiumMember then "Free Shipping" else "Standard Shipping"
+
+OR Operator -
+Evaluates to true if at least one condition is true.
+if condition1 or condition2 then result1 else result2
+Example :
+if order.totalAmount > 50 or customer.isPremiumMember then "Free Shipping" else "Standard Shipping"
+
+NOT Operator -
+Reverses the boolean value of a condition.
+if not(condition) then result1 else result2
+Example :
+if not(customer.isPremiumMember) then "Standard Shipping" else "Free Shipping"
+Examples :
+{
+  "customer": {
+    "loyaltyPoints": 550,
+    "isFirstOrder": false,
+    "age": 23,
+    "isStudent": true,
+    "isMember": false,
+    "isPremiumMember": true
+  },
+  "order": {
+    "totalAmount": 250,
+    "isGift": false
+  },
+  "user": {
+    "role": "Manager",
+    "department": "Sales"
+  }
+}
+Grant user access
+Write a FEEL expression to determine the level of access a user should have based on their role and department. The levels are:
+Admins in any department: "Full Access"
+Managers in Sales: "Sales Access"
+Managers in other departments: "Limited Access"
+All other roles: "No Access"
+if user.role = "Admin" then "Full Access"
+else if user.role = "Manager" then
+  if user.department = "Sales" then "Sales Access"
+  else "Limited Access"
+else "No Access"
+Result:
+"Sales Access"
+Write a FEEL expression to add a new element to the customer following this rules:
+category will be "Adult" if the age is greater than 18
+otherwise, category will be "Minor"
+{
+  "category": if customer.age > 18 then context put(customer, "category", "Adult") else context put(customer, "category", "Minor")
+}.category
+Result:
+{
+  "isFirstOrder": false,
+  "isStudent": true,
+  "category": "Adult",
+  "isPremiumMember": true,
+  "loyaltyPoints": 550,
+  "isMember": false,
+  "age": 23
+}
 
 
 
 
-
+L
 
 
 

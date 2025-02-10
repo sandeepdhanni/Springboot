@@ -1,0 +1,91 @@
+
+/* General container for the dropdowns */
+.dropdown-container {
+    display: flex;
+    gap: 20px; /* Space between dropdowns */
+    align-items: center;
+    justify-content: center;
+    /* Space from the top */
+  }
+  
+  /* Style for each dropdown */
+  .dropdown {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  /* Hover effect for dropdown */
+  .dropdown:hover {
+    border-color: #545455;
+  }
+  
+  /* Focus effect for dropdown */
+  .dropdown:focus {
+    border-color: #3f4041;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Dropdown option styles */
+  .dropdown option {
+    padding: 10px;
+  }
+  
+  /* Optional: Style the option text (increase size, font style, etc.) */
+  .dropdown option {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Adding a little shadow effect */
+  .dropdown-container select {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+.userTask-container{
+    padding: 20px 0px;
+}
+
+
+.table-data{
+    margin-top: 30px;
+    margin-left: 8%;
+    width: auto;
+    max-width: 80%;
+
+}
+.table-btn{
+    background-color: #1a36d4;
+    padding: 10px 25px;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+.table-btn:active{
+background-color: #5079ff;
+}
+.tss-qbo1l6-MUIDataTableToolbar-actions{
+    display: none;
+}
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.MuiTablePagination-toolbar.tss-1dccma1-MUIDataTablePagination-toolbar.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar{
+    display: none;
+}
+.MuiTypography-root.MuiTypography-h6.tss-hj53wm-MUIDataTableToolbar-titleText.css-2ulfj5-MuiTypography-root{
+   text-align: center;
+   color: #fff;
+  
+}
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.tss-tlx3x1-MUIDataTableToolbar-root.css-hyum1k-MuiToolbar-root{
+    background-color: #5079ff;
+}
+.eye-button{
+    cursor: pointer;
+}
+.MuiButtonBase-root.MuiTableSortLabel-root.tss-1ntzg4z-MUIDataTableHeadCell-sortLabelRoot.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root{
+display: none;
+}
