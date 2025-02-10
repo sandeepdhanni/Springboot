@@ -573,7 +573,7 @@ we have output collection will contain the aggregate result of each individual v
 
 
 
-FRIENDLY ENOUGH EXPRESSION LANGUAGE(FEEL) -
+FRIENDLY ENOUGH EXPRESSION LANGUAGE(FEEL) OVERVIEW -
 FEEL is a expression language designed to write expressions in a way that both business professionals and developers can easily understand it...FEEL is executed by engines...FEEL is part of the decision model and notation(DMN) standard...
 FEEL is designed to have:
 simple syntax designed for a wide audience and executablle by engines..
@@ -630,11 +630,778 @@ they are and,or
 FEEL BUILD-IN FUNCTIONS - 
 FEEL comes with set of build-in functions that enable u to manipulate data,perform calculations, and make decision....
 some build-in functions are :
-upper case(string):
-contains(string,match) :
-round(number) :
-random number() :
-today() :
+upper case(string): convert a string to uppercase
+contains(string,match) : check if a string contains a specified substring..eg:contins("I know FEEL","FEEL")
+round(number) : rounds a number to the nearest integer
+random number() : generates a random number between zero and one
+today() : obtains the current date without any time component..eg:2025-02-06
+
+
+
+WHERE CAN YOU USE FEEL :
+you can use feel in 
+BPMN diagram -in script task,gateway conditions
+DMN diagram - in decision tables,literal expressions
+camunda forms - element properties,templating syntax.
+
+FEEL IN SCRIPT TASK - 
+when the process instance arrives at a script task,the integrated FEEL scala engine evaluates the script task FEEL expression..once the FEEL expression is evaluated successfully,the process instance continues..if the FEEL expression is unsuccessful,an incident is raised at the script task..when the incident is resolved,the script task is evaluated again...
+To configure a script task with an inline FEEL expression,perform the following steps:
+1. define the feel expression inside the expression attribute...
+2.Define the name of the process variable in the resultVariable attribute..this variable will store the result of the feel expression evaluation...
+
+
+FEEL IN EXCLUSIVE GATEWAY - 
+when an exclusive gateway is entered,the conditionExpression is evaluated.the process instance takesthe first sequence flow where the condition is fulfilled..
+if no condition is fulfilled,it takes the default flow of the gateway..if the gateway has no default flow,an incident is created.....A condition defines when a flow is taken..it is a boolean expression that  can access the process instance variables and compare them with literals or other variables.the condition is fulfilled when the expressionreturns true..Multiple boolean valuesor comparisions can be combinedas disjunction(or) or conjunction(and)...
+
+FEEL IN DECISION TABLE - 
+An input expression specifies how the value of the input clause is generated.it is usually simple and references a variable which is available during the evaluation..the expression is set inside a text element that is a child of the inputExpression XML element..
+An input entry contains a unary-test in a text element as child of an inputEntry XML element..the input entry is satisfied when the evaluated expression returns true...
+
+
+FEEL IN LITERAL EXPRESSION - 
+A decision literal expression represents decision logic which can be depicted as an expression..it consistes of a literal expression and a variable..
+A decision literal expression is represented by a literalExpression inside a decision XML element..The literal expression  specifies how the value of the decision is generated.it can be used to do a complex calculation,or to combine the output values of the requred decision...
+
+FEEL IN ELEMENT PROPERTY :
+A form configuration starts off as a composition of form elements to define the structure..the specific behaviors are then defined as properties on the individual form elements through the properties panel....
+the literal expression specifies how the value of the decision is generated..it can be used to do a complex calculation,or to combine the output values of required decision...
+
+FEEL in templating syntax - 
+templated properties configuration allows for dynamic content creation within forms using a templating languagecalled feelers..
+FEELERS SYNTAX :
+VARIABLES/INSERTS : to insert a variable,use double curly braces{{variable}}, and the value of this variable will be inserted..we can use any valid FEEL expression within double braces..
+iterating through arrays
+conditional sections
+additional details
+
+
+
+
+
+Understand the basic temporal data types:
+date
+time
+date and time
+day-time duration
+year-month duration
+Operate with various temporal expressions:
+Addition
+Subtraction
+Multiplication
+Division
+Recognize most common temporal attributes:
+year, years
+month, months
+day, days
+weekday
+hour, hours
+minute, minutes
+second, seconds
+time offset
+timezone
+Use various temporal functions:
+now()
+today()
+day of week()
+day of year()
+week of year()
+month of year()
+last day of month()
+
+
+
+
+
+
+
+FEEL TEMPORIALS :
+ADDITION - 
+In this lesson, we will explore how to perform addition operations between different data types in DMN FEEL. We will cover:
+Adding durations to dates
+Adding durations to times
+Adding durations to date and time
+Adding durations to durations
+By practicing these operations, you will become proficient in handling various date, time, and duration manipulations in your decision models using FEEL.
+Date
+Info
+DATE + DURATION = DATE
+When you add a duration to a date, you adjust the date by the specified period.
+Adding a day-time duration to a date
+date("2025-01-01") + duration("P10DT24H2M")
+Result: "2025-01-12"
+Adding a year-month duration to a date
+date("2025-01-01") + duration("P2Y3M")
+Result: "2027-04-01"
+Time
+Info
+TIME + DURATION = TIME
+When you add a duration to a time, you adjust the time by the specified period.
+Adding hours and minutes to a time
+To add hours and minutes, you can combine different duration parts. For example, adding 1 hour and 45 minutes:
+time("14:30:00") + duration("PT1H45M")
+Result: "16:15:00"
+Date and time
+Info
+DATE-TIME + DURATION = DATE-TIME
+When you add a duration to a date and time, you adjust both the date and the time by the specified period.
+Adding a year-month duration to a datetime
+date and time("2025-01-01T14:30:00") + duration("P1Y3M")
+Result: "2026-04-01T14:30:00"
+Adding a day-time duration to a datetime
+date and time("2025-01-01T14:30:00") + duration("P3DT4H5M6S")
+Result: "2025-01-04T18:35:06"
+Duration
+Info
+DURATION + DURATION = DURATION
+Adding duration to duration
+The two arguments of the expression must have a day-time or a year-month duration.
+duration("P2D") + duration("P5D")
+Result: "PT168H"
+Null result
+The addition of these different data types will return null:
+DATE + DATE = NULL
+TIME + TIME = NULL
+TIME + DATE = NULL
+DURATION(YM) + DURATION(DT) = NULL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CAMUNDA FEEL ENGINES -
+To evaluate the expression,camunda employs two distinct FEEL engines:
+FEEL scala : it is a java based FEEL engine integrated into the backend of camunda 8..it is primarily responsible for evaluating expressions in BPMN diagrams and DMN tables..
+Feelin : it is a javascript-based FEEL engine designed for use in the browser and used for camundaforms and templating...
+note: camunda extensions are currently not supported by feelin...
+
+
+CAMUNDA FEEL TEMPORIALS :
+
+Understand the basic temporal data types:
+date
+time
+date and time
+day-time duration
+year-month duration
+Operate with various temporal expressions:
+Addition
+Subtraction
+Multiplication
+Division
+Recognize most common temporal attributes:
+year, years
+month, months
+day, days
+weekday
+hour, hours
+minute, minutes
+second, seconds
+time offset
+timezone
+Use various temporal functions:
+now()
+today()
+day of week()
+day of year()
+week of year()
+month of year()
+last day of month()
+
+
+
+
+
+
+FEEL LISTS :
+Operate with various list expressions:
+Get - To access an element in a list, you use the index notation.
+["Mercury", "Venus", "Earth", "Mars"][1]
+
+
+Filter
+Some
+Every
+Use various number list functions:
+min() and max() -
+The min() and themax() functions in 🔗FEEL used in Camunda are used to find the smallest and largest values in a list, respectively.
+// Syntax
+min(list)
+max(list)
+min([0, -10, -20, 5, 15])
+max([date("2023-01-01"), date("2022-06-15"), date("2024-03-10")])
+	
+
+sum() and product() -
+The sum() and theproduct() functions in 🔗FEEL used in Camunda are used to calculate the sum and the product of the elements in a list, respectively.
+// Syntax
+sum(list)
+product(list)
+sum([1, 2.5, 3.5, -3])
+
+
+mean(), median(), and stddev() -
+The mean() , themedian(), and the stddev() functions in 🔗FEEL used in Camunda are used to calculate the average (arithmetic mean), the median (middle value), and the standard deviation (the amount of variation or dispersion) of the elements in a list, respectively.
+// Syntax
+mean(list)
+median(list)
+stddev(list)
+mean([1, 2.5, 0.5, -4])
+median([1, 2, 3, 4, 5, 6])
+stddev([1, -2, 3, -4, 5])
+
+
+mode() -
+The mode() function in 🔗FEEL used in Camunda is used to determine the number(s) that appear most frequently in a list. If there are multiple numbers with the same highest frequency, it returns all of them. It returns a list of elements.
+// Syntax
+mode(list)
+mode([1, 2, 2, 3, 4])
+mode([1, 1, -2, -2, 3, 4])
+
+
+Use various general list functions:
+list contains() -
+The list contains() function in 🔗FEEL used in Camunda is used to check if a list contains a specific element. It returns a boolean value.
+// Syntax
+list contains(list, element)
+list contains([1, 2, 3, 4, 5], 3)
+
+
+count() -
+The count() function in 🔗FEEL used in Camunda is used to determine the number of elements in a list. It returns a number.
+// Syntax
+count(list)
+count([1, 2, 3, 4, 5])
+count([5, 10, 15, 20, 25][item < 20])
+
+
+all() and any() -
+In FEEL (Friendly Enough Expression Language) used in Camunda, the all() and any() functions work with lists and logical conditions. They are contrary in the sense that:
+all(condition, list) → Returns true if all elements in the list satisfy the given condition.
+any(condition, list) → Returns true if at least one element in the list satisfies the given condition.
+Using all()
+all(x > 5, [6, 7, 8])  // true (all elements are > 5)
+all(x > 5, [6, 4, 8])  // false (4 is not > 5)
+Using any()
+any(x > 5, [6, 7, 8])  // true (at least one element > 5)
+any(x > 5, [3, 4, 5])  // false (no element is > 5)	
+
+
+sublist() -
+The sublist() function in 🔗FEEL used in Camunda is used to extract a portion of a list based on specified start postion and lenght indexes.
+// Syntax
+sublist(list, start position, length)
+Returns a partial list of the given list starting at start position, of a given length (optional).
+The start position starts at the index 1. The last position is -1.
+Get the next 2 elements from position 1
+sublist(["Mars","Earth","Mercury"], 1, 2)
+Result: ["Mars","Earth"]
+
+
+append(), insert before(), and remove() -
+In this lesson, we will cover the append(), insert before(), and the remove() functions in 🔗FEEL used in Camunda.
+append(): Returns the given list with all items appended
+The parameter items can be a single element or a sequence of elements
+insert before(): Returns the given list with newItem inserted at position
+remove(): Returns the given list without the element at position
+// Syntax
+append(list, items)
+insert before(list, position, newItem)
+remove(list, position)
+append(["onions","tomatoes"],"garlic","pepper")
+insert before(["onions","tomatoes"], 2, "garlic")
+remove(["onions","tomatoes"],2)
+
+
+reverse() and index of() -
+In this lesson, we will cover the reverse() and the index of() functions in 🔗FEEL used in Camunda.
+reverse(): Returns the given list in reverse order
+index of(): Returns a list with the index(es) of the occurrence(s) of a specified element in the list.
+If the element is not found, it returns an empty list []
+// Syntax
+reverse(list)
+index of(list, element)
+reverse([10, 20, 30, 40, 50])
+index of([10, 20, 30, 40, 50], 30)
+Result: [3]
+
+
+
+union(), distinct values(), and duplicate values() -
+In this lesson, we will cover the union(), distinct values(), and the duplicate values() functions in 🔗FEEL used in Camunda.
+union(): Returns a list containing all the elements from the input lists, without any duplicates
+distinct values(): Returns a list containing only the distinct (unique) values from the input list
+duplicate values(): Returns a list containing only the duplicate values from the input list.
+// Syntax
+union(lists)
+distinct values(list)
+duplicate values(list)
+union([1, 2, 3, 4],[3, 4, 5])
+distinct values([1, 2, 2, 3, 4, 4, 5])
+duplicate values([1, 2, 2, 3, 4, 4, 5])
+
+
+sort() -
+The sort() function in 🔗FEEL used in Camunda defines the sorting order using a custom precedes function. This advanced feature allows you to sort lists based on custom criteria.
+// Syntax
+sort(list, precedes: function<(Any, Any) -> boolean>)
+list: The list to be sorted.
+precedes: A custom function that defines the sorting order. It takes two arguments and returns a boolean indicating whether the first argument should precede the second.
+sort([3, 1, 4, 5, 2], function(x,y) x > y)
+Result: [5, 4, 3, 2, 1]
+Sort the list ["pear", "plum", "apple", "banana"] by the second character of each string. You can use the substring() function.
+sort(["pear", "plum", "apple", "banana"], function(x, y) substring(x, 2, 1) < substring(y, 2, 1))
+
+
+flatten(), concatenate(), and string join() -0
+In this lesson, we will cover the flatten(), concatenate(), and the string join() functions in 🔗FEEL used in Camunda. These functions help in manipulating lists and strings for various purposes in decision models.
+flatten(): takes a nested list and merges the elements into a single list
+concatenate(): Concatenates multiple lists into a single list
+string join(): Joins the strings of a list into a single string, with an optional delimiter between elements and/or an optional prefix or sufix
+// Syntax
+flatten(nested list)
+concatenate(lists)
+string join(list, delimiter, prefix, suffix)
+flatten([[1, 2, 3], [4, 5], [6, 7, 8]])
+Result: [1, 2, 3, 4, 5, 6, 7, 8]
+concatenate([1, 2], [3, 4], [5, 6])
+Result: [1, 2, 3, 4, 5, 6]
+string join(["Camunda", "FEEL", "is", "great"], " ")
+Result: "Camunda FEEL is great"
+Build a paragraph in HTML (<p> tag) to display the colors of this list separated by comma ",": ["red","yellow","blue","green"]
+string join(["red","yellow","blue","green"], ", ", "<p>", "</p>")  
+Result: "<p>red, yellow, blue, green</p>"
+
+
+
+
+
+FEEL CONTEXTS -
+Understand the basic context data type
+Operate with various context expressions:
+Access the context
+Filter a list of context elements
+Project a list of context elements
+Use various general context functions:
+get value()
+get entries()
+context put()
+context merge()
+
+
+CONTEXT -
+A context data type is a powerful feature that allows you to define and manipulate collections of key-value pairs:
+key: is a string. Refer to the 🔗Variable Names Conventions for valid key names.
+value: can be any FEEL data type, including numbers, strings, booleans, lists, other contexts, and FEEL expressions.
+NOTE : This context input will only accept a JSON object.
+Otherwise, we will simply create the context through an expression directly, so the "context input" will be empty "{}"
+Creating a context data type
+To create a context data type in FEEL, you enclose the elements within curly braces {}.
+// empty context
+{}
+// context example
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "age": 25,
+  "isEmployed": true,
+  "address": {
+    "street": "Main Street",
+    "city": "Metropolis"
+  },
+  "scores": [80, 85, 90],
+  "resultScores": sum(scores)
+}
+Creating a context using an expression
+A context data type can also be created through an expression in a similar way.
+When using an expression to create a context, keys can be either a name or a string.
+Reminder: context input accepts only a JSON object, so you can only use string values for the keys.
+The expression will look like this with names as keys:
+{
+  "person": {
+    "name": "Alice",
+    "birthday": "1981-03-04",
+    "age": now().year - date(birthday).year
+  }
+}
+Result:
+{
+  "person": {
+    "name": "Alice",
+    "birthday": "1981-03-04",
+    "age": 43
+  }
+}
+
+context expressions in FEEL. We will cover:
+Accessing the context
+Filtering a list of context elements
+Projecting a list of context elements
+
+ACCESSING THE CONTEXT :
+To access values in a provided context data, use the dot notation in your expression.
+{
+  "person": {
+    "name": "Alice",
+    "age": 30
+  }
+}
+person.name
+Result:
+"Alice"
+
+FILTERING A LIST OF CONTEXT ELEMENTS -
+You can filter a list of context elements based on a condition using a filter expression.
+Get the context elements where age is greater than 18
+[
+  {
+    name: "Jane",
+    age: 22
+  },
+  {
+    name: "William",
+    age: 16
+  }
+][age > 18]
+result :
+[
+  {
+    "name": "Jane",
+    "age": 22
+  }
+]
+PROJECTING A LIST OF CONTEXT ELEMENTS -
+You can project a list of context elements based on the their key.
+Project the name of the context elements
+[
+  {
+    name: "Jane",
+    age: 22
+  },
+  {
+    name: "William",
+    age: 16
+  }
+].name
+Result:
+[
+  "Jane",
+  "William"
+]
+
+
+
+GET VALUE() - 
+The get value() function in 🔗FEEL used in Camunda is used to retrieve a value from a context based either on a single key or a list of keys to provide the path to the value. This function is particularly useful when dealing with simple and nested contexts or when you need to dynamically access values.
+// Syntax
+get value(list, key)
+get value(list, keys list)
+The expression returns null for any attempt to retrieve a value using non-existent keys.
+get value({color: "green"}, "color")
+Result:
+"green"
+Retrieve a nested context key
+{
+  "company": {
+    "name": "Camunbankia",
+    "offices": {
+      "headquarters": {
+        "city": "Neverland",
+        "address": {
+          "street": "5th Avenue",
+          "number": 123
+        }
+      }
+    }
+  },
+  "streetName": get value(company, ["offices", "headquarters", "address", "street"])
+}.streetName
+Result:
+"5th Avenue"
+
+Use the dynamic key list stored in keyPath to retrieve the value from the settings context:
+{
+    "settings": {
+        "theme": "dark",
+        "preferences": {
+            "notifications": {
+                "email": "info@camunbankia.com",
+                "sms": 4567
+            }
+        },
+        "keyPath": ["preferences", "notifications", "email"]
+    }
+}
+get value(settings, settings.keyPath)
+Result:
+"info@camunbankia.com"
+
+GET ENTRIES() -
+The get entries() function in 🔗FEEL used in Camunda is used to retrieve all key-value pairs from a context as a list of entries. Each entry is represented as a context with keys "key" and "value".
+// Syntax
+get entries(context)
+{
+  "employee": {
+    "id": 1001,
+    "name": "Alice",
+    "position": "Engineer"
+  },
+  "entries": get entries(employee)
+}.entries
+Result:
+[
+  {
+    "key": "id",
+    "value": 1001
+  },
+  {
+    "key": "name",
+    "value": "Alice"
+  },
+  {
+    "key": "position",
+    "value": "Engineer"
+  }
+]
+
+
+
+CONTEXT PUT() -
+The context put() function in 🔗FEEL used in Camunda allows you to add or update a key-value pair in a context. It returns a new context that includes the entry. This function is particularly useful for dynamically modifying contexts during decision-making processes.
+A list of 2 keys will define the path of the entry to add or update nested contexts:
+If keys contains the keys [k1, k2] then it adds the nested entry k1.k2 = value to the context
+If an entry for the same keys already exists in the context, it overrides the value.
+// Syntax
+context put(context, key, value)
+context put(context, 2 keys, value)
+{
+  "person": {
+    "name": "Peter",
+    "age": 30
+  },
+  "updatedPerson": context put(person, "city", "New York")
+}.updatedPerson
+Result :
+{
+  "name": "Peter",
+  "age": 30,
+  "city": "New York"
+}
+Modify a simple entry
+{
+  "person": {
+    "name": "Peter",
+    "age": 30,
+    "city": "New York"
+  },
+  "updatedPerson": context put(person, "age", 31)
+}.updatedPerson
+Result:
+{
+  "name": "Peter",
+  "age": 31,
+  "city": "New York"
+}
+Add a 2 keys entry
+{
+    "book": {
+        "title": "1984",
+        "author": "George Orwell"
+    }
+}
+context put(book, ["publication","year"], 1949)
+Result:
+{
+  "author": "George Orwell",
+  "title": "1984",
+  "publication": {
+    "year": 1949
+  }
+}
+
+CONTACT MERGE() -
+The context merge() function in 🔗FEEL used in Camunda is useful for consolidating data from a list of contexts or for enriching an existing context with additional information.
+// Syntax
+context merge(context list)
+{
+  "context1": {
+    "name": "Alice",
+    "age": 30
+  },
+  "context2": {
+    "city": "New York",
+    "age": 31
+  },
+  "mergedContext": context merge(context1, context2)
+}.mergedContext
+Result:
+{
+  "name": "Alice",
+  "age": 31,
+  "city": "New York"
+}
+Merge context1 and context2, and observe how duplicate keys are handled.
+{
+    "context1": {
+        "employeeId": 123,
+        "name": "Emily",
+        "department": "HR"
+    },
+    "context2": {
+        "name": "Emma",
+        "age": 28,
+        "department": "Finance"
+    }
+}
+Expression:
+{
+    "context1": {
+        "employeeId": 123,
+        "name": "Emily",
+        "department": "HR"
+    },
+    "context2": {
+        "name": "Emma",
+        "age": 28,
+        "department": "Finance"
+    },"mergedContext": context merge(context1,context2)
+}.mergedContext
+Result :
+{
+  "employeeId": 123,
+  "name": "Emma",
+  "department": "Finance",
+  "age": 28
+}
+
+context you will be working with:
+{
+  "teachers": [
+    {
+      "name": "John Doe",
+      "yearsOfExperience": 5,
+      "skills": {
+        "Classroom Management": "Intermediate",
+        "Curriculum Development": "Basic",
+        "Mathematical Analysis": "Expert"
+      }
+    },
+    {
+      "name": "Jane Smith",
+      "yearsOfExperience": 7,
+      "skills": {
+        "Literary Criticism": "Expert",
+        "Creative Writing": "Intermediate",
+        "Public Speaking": "Basic"
+      }
+    },
+    {
+      "name": "Emily Johnson",
+      "yearsOfExperience": 4,
+      "skills": {
+        "Lab Safety": "Intermediate",
+        "Biology Research": "Basic",
+        "Student Engagement": "Intermediate"
+      }
+    },
+    {
+      "name": "Michael Brown",
+      "yearsOfExperience": 10,
+      "skills": {
+        "Historical Research": "Expert",
+        "Archival Studies": "Expert",
+        "Lesson Planning": "Intermediate"
+      }
+    },
+    {
+      "name": "Jessica Garcia",
+      "yearsOfExperience": 3,
+      "skills": {
+        "Chemical Analysis": "Basic",
+        "Safety Procedures": "Intermediate",
+        "Problem Solving": "Basic"
+      }
+    },
+    {
+      "name": "William Martinez",
+      "yearsOfExperience": 6,
+      "skills": {
+        "Physical Fitness": "Expert",
+        "Sports Coaching": "Intermediate",
+        "Team Building": "Intermediate"
+      }
+    },
+    {
+      "name": "Sarah Wilson",
+      "yearsOfExperience": 9,
+      "skills": {
+        "Artistic Expression": "Expert",
+        "Design Fundamentals": "Intermediate",
+        "Art History": "Basic"
+      }
+    },
+    {
+      "name": "Brian Anderson",
+      "yearsOfExperience": 8,
+      "skills": {
+        "Theoretical Physics": "Expert",
+        "Experimental Design": "Intermediate",
+        "Quantitative Analysis": "Expert"
+      }
+    },
+    {
+      "name": "Nancy Davis",
+      "yearsOfExperience": 2,
+      "skills": {
+        "Music Theory": "Intermediate",
+        "Instrumental Skills": "Basic",
+        "Performance Techniques": "Basic"
+      }
+    },
+    {
+      "name": "David Miller",
+      "yearsOfExperience": 11,
+      "skills": {
+        "Programming": "Expert",
+        "Algorithm Design": "Expert",
+        "Cybersecurity": "Intermediate"
+      }
+    }
+  ]
+}
+Task
+Get the context skills from the senior teachers (with at least 10 years of experience)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

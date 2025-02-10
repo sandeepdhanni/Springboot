@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "text": "# Text",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1kyyz4t",
+        "columns": null
+      },
+      "id": "Field_16qykw2"
+    },
+    {
+      "label": "a",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_18czlft",
+        "columns": null
+      },
+      "id": "Field_0i85kh5",
+      "key": "a"
+    },
+    {
+      "label": "b",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ypbyi3",
+        "columns": null
+      },
+      "id": "Field_0tjvcwd",
+      "key": "b"
+    },
+    {
+      "text": "",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_03uweiz",
+        "columns": null
+      },
+      "id": "Field_0t5bbvp"
+    },
+    {
+      "label": "=a+b",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_15rayla",
+        "columns": null
+      },
+      "id": "Field_18hyml4",
+      "key": "textfield_3mtv0p"
+    }
+  ],
+  "type": "default",
+  "id": "Form_054qc3p",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}

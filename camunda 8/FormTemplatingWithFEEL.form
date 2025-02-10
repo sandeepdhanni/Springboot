@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "text": "The total value of your order is {{sum(items.price)}}",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0uxisnw",
+        "columns": null
+      },
+      "id": "Field_0pz6vh0"
+    }
+  ],
+  "type": "default",
+  "id": "Form_02mkw6a",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}
