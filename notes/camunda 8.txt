@@ -1486,11 +1486,387 @@ Result:
 
 
 
-L
+LOOPS AND ITERATIONS -
+In FEEL, the primary looping construct is the for loop, which can be used to iterate over a collection of items, performing operations on each item. This is particularly useful for processing lists.
+Using for Loops :
+for element in list return expression
+Example: Suppose you have a list of prices and you want to apply a 10% discount to each price:
+for price in [100, 200, 300] return price * 0.9
+Output:
+[90, 180, 270]
+Examples :
+Applying Discounts to Prices
+Apply a 15% discount to each price in this list [50, 150, 250]
+for price in [50, 150, 250] return price * 0.85
+Result:
+[42.5, 127.5, 212.5]
+Evaluating and Transforming Context Data
+Given this context containing different types of services and their respective details, write a FEEL expression that iterates through the services and constructs a new list of contexts. Each new context will include a formatted (upper case()) label with the service name and a value based on the service elements.
+{
+  "services": ["training","consulting","support"],
+  "training":{
+    "format": "Online",
+    "roles": ["Developer","Sys Admin"],
+    "numPeople": 20
+  },
+  "consulting":{
+    "description":"Project follow-up"
+  },
+  "support":{
+    "type":"gold"
+  }
+}
+Expression:
+for s in services
+    return {
+        "label": upper case(s),
+        "value": if(s = "training") then 
+        "Format: " + training.format + " - " + string(training.numPeople) + " people - Roles: " + string join(training.roles, ", ")
+        else if(s = "consulting") then 
+        get value(consulting, "description")
+        else
+        get value(support, "type")
+    } 
+Result:
+[
+    {
+        "label":"TRAINING",
+        "value":"Format: Online - 20 people - Roles: Developer, Sys Admin"
+    },
+    {
+        "label":"CONSULTING",
+        "value":"Project follow-up"
+    },
+    {
+        "label":"SUPPORT",
+        "value":"gold"
+    }
+]
+
+Example2:
+{
+  "invoices": [
+    {
+      "id": "INV001",
+      "items": [
+        { "description": "Widget", "price": 10, "quantity": 3 },
+        { "description": "Gadget", "price": 15, "quantity": 2 }
+      ]
+    },
+    {
+      "id": "INV002",
+      "items": [
+        { "description": "Thingamajig", "price": 7, "quantity": 5 },
+        { "description": "Doohickey", "price": 20, "quantity": 1 }
+      ]
+    }
+  ]
+}
+Problem:
+Write a FEEL expression that iterates over the invoices and, for each one, calculates a total amount by summing over the line items (using a nested iteration).
+for inv in invoices
+    return {
+        "id": inv.id,
+        "total": sum( for item in inv.items return item.price * item.quantity )
+    }
+result :
+[
+  { "id": "INV001", "total": 60 },   // (10*3 + 15*2 = 30 + 30)
+  { "id": "INV002", "total": 55 }    // (7*5 + 20*1 = 35 + 20)
+]
+
+Example 3:
+{
+  "departments": [
+    {
+      "name": "Engineering",
+      "employees": [
+        { "name": "Alice", "salary": 7000, "bonus": 0.1 },
+        { "name": "Bob", "salary": 6500, "bonus": 0.15 }
+      ]
+    },
+    {
+      "name": "Marketing",
+      "employees": [
+        { "name": "Charlie", "salary": 5000, "bonus": 0.05 },
+        { "name": "Dana", "salary": 5500, "bonus": 0.07 }
+      ]
+    }
+  ]
+}
+Problem:
+Write a FEEL expression that iterates through the departments. For each department, compute the total cost of employees where the cost for an employee is calculated as salary increased by their bonus percentage. Return a new context with the department name and its total cost.
+for dept in departments
+    return {
+       "department": dept.name,
+       "totalCost": sum( for emp in dept.employees return emp.salary * (1 + emp.bonus) )
+    }
+result :
+[
+  { "department": "Engineering", "totalCost": 15175 },  // (7000*1.1 + 6500*1.15 = 7700 + 7475)
+  { "department": "Marketing", "totalCost": 11135 }       // (5000*1.05 + 5500*1.07 = 5250 + 5885)
+]
+
+Example 4 :
+{
+  "orders": [
+    {
+      "orderId": "ORD1001",
+      "customer": "Acme Corp",
+      "items": [
+        { "product": "Laptop", "price": 1200, "quantity": 2 },
+        { "product": "Mouse", "price": 25, "quantity": 5 }
+      ],
+      "discountCode": "SUMMER"
+    },
+    {
+      "orderId": "ORD1002",
+      "customer": "Globex Inc",
+      "items": [
+        { "product": "Desktop", "price": 800, "quantity": 3 },
+        { "product": "Keyboard", "price": 50, "quantity": 3 }
+      ]
+      // discountCode is not provided for this order
+    }
+  ]
+}
+Problem:
+Write a FEEL expression that iterates over each order and builds a new context containing:
+
+The orderId
+A computed total amount (using a nested loop to sum each item's price * quantity)
+A message indicating whether a discount was applied. If a discountCode exists, the message should read "Discount Applied: [discountCode]"; otherwise, it should read "No Discount".
+FEEL Expression:
+for order in orders
+    return {
+       "orderId": order.orderId,
+       "total": sum( for item in order.items return item.price * item.quantity ),
+       "message": if( defined(order.discountCode) )
+                    then "Discount Applied: " + order.discountCode
+                    else "No Discount"
+    }
+Result :
+[
+  {
+    "orderId": "ORD1001",
+    "total": 2525,          // (1200*2 + 25*5 = 2400 + 125)
+    "message": "Discount Applied: SUMMER"
+  },
+  {
+    "orderId": "ORD1002",
+    "total": 2550,          // (800*3 + 50*3 = 2400 + 150)
+    "message": "No Discount"
+  }
+]
+
+
+
+CUSTOM FUNCTIONS :
+Custom functions in FEEL allow you to encapsulate complex logic into reusable blocks. This helps in simplifying expressions, improving readability, and promoting reuse across different decision tables and business rules.
+Defining Custom Functions
+To define a custom function in FEEL, you specify the function name, parameters, and the expression that the function evaluates.
+syntax :
+function(parameter1, parameter2, ...) expression
+Example: Define a function to calculate the square of a number:
+{
+  square: function(x) x * x
+}
+Example: Define a custom function to calculate the area of a circle given its radius:
+{
+  pi: 3.14159,      
+  areaOfCircle : function(radius) (pi * radius * radius),
+  result: areaOfCircle(3)
+}.result
+Output:
+28.27431
+You can also define functions that take multiple parameters. For example, a function to calculate the sum of two numbers:
+{
+  sumTwoNumbers: function(a, b) a + b
+}
+Example: Use the sumTwoNumbers function to add 3 and 5:
+{
+  sumTwoNumbers: function(a, b) a + b,
+  result: sumTwoNumbers(3,5)
+}.result
+Output:
+8
+Example1:
+Define a function to create a custom welcome message according to the current time and the user name. e.g. Good Morning, Alice!
+{
+  "greet": function(userName) 
+    if now().hour < 12 then "Good Morning, " + userName + "!" 
+    else if now().hour < 18 then "Good Afternoon, " + userName + "!"
+    else "Good Evening, " + userName + "!",
+  "welcomeMessage": greet("Alice")
+}.welcomeMessage
+Result:
+"Good Morning, Alice!"
+Example2:
+Define a custom function to return the number of days remaining until a date in the future. e.g. 12 days
+{
+  daysFromToday: function(futureDate) 
+    string((futureDate - today()).days) + " days",
+  result: daysFromToday(date("2025-06-25"))
+}.result
+Result:
+"366 days"
+
+EXAMPLE PROBLEMS:
+{
+  "processInstance": {
+        "id": "P123456789",
+        "startDate": "2023-01-01T09:00:00Z",
+        "tasks": [
+            {"id": "T2", "name": "Gather Requirements", "duration": 120, "completed": true},
+            {"id": "T6", "name": "Deployment", "duration": 90, "completed": false},
+            {"id": "T4", "name": "Implement Solution", "duration": 240, "completed": false},
+            {"id": "T3", "name": "Design Solution", "duration": 180, "completed": false},
+            {"id": "T5", "name": "Testing & QA", "duration": 180, "completed": false},
+            {"id": "T1", "name": "Initial Assessment", "duration": 60, "completed": true}      
+        ],
+        "variables": {
+        "budget": 10000,
+        "expenses": 4500,
+        "stakeholders": [
+            {"name": "Alice", "role": "Sponsor"},
+            {"name": "Bob", "role": "Product Owner"},
+            {"name": "Charlie", "role": "Lead Developer"}
+        ]
+    }
+  }
+}
+Example1:
+Calculate Total Duration of Completed Tasks
+Write a FEEL expression to calculate the total duration of all completed tasks. Update the processInstance object by adding a new element totalCompletedDuration with the calculated value.
+context put(processInstance, "totalCompletedDuration", sum(processInstance.tasks[completed = true].duration))
+Result:
+{
+"variables": {
+    "stakeholders": [
+        {"name": "Alice", "role": "Sponsor"},
+        {"name": "Bob", "role": "Product Owner"},
+        {"name": "Charlie", "role": "Lead Developer"}
+    ],
+    "expenses": 4500,
+    "budget": 10000
+},
+"id": "P123456789",
+"tasks": [
+    {"id": "T2", "name": "Gather Requirements", "duration": 120, "completed": true},
+    {"id": "T6", "name": "Deployment", "duration": 90, "completed": false},
+    {"id": "T4", "name": "Implement Solution", "duration": 240, "completed": false},
+    {"id": "T3", "name": "Design Solution", "duration": 180, "completed": false},
+    {"id": "T5", "name": "Testing & QA", "duration": 180, "completed": false},
+    {"id": "T1", "name": "Initial Assessment", "duration": 60, "completed": true}      
+],
+"totalCompletedDuration": 180,
+"startDate": "2023-01-01T09:00:00Z"
+}
+Example2 :
+Check Budget Status
+Write a FEEL expression that compares the current expenses against the budget and determines the budget status as "Under Budget", "On Budget", or "Over Budget". Update the processInstance variables with a new key-value pair budgetStatus.
+context put(processInstance.variables,"budgetStatus",if processInstance.variables.expenses < processInstance.variables.budget then "Under Budget" else if processInstance.variables.expenses = processInstance.variables.budget then "On Budget" else "Over Budget")
+Result:
+{
+    "stakeholders": [
+        {
+        "role": "Sponsor",
+        "name": "Alice"
+        },
+        {
+        "role": "Product Owner",
+        "name": "Bob"
+        },
+        {
+        "role": "Lead Developer",
+        "name": "Charlie"
+        }
+    ],
+    "expenses": 4500,
+    "budget": 10000,
+    "budgetStatus": "Under Budget"
+}
+Example3:
+Identify and Sort the Next Task to Complete
+Write a FEEL expression to find the first uncompleted task in the process sorted by id in alphabetical order. Update the processInstance object by adding a new element nextTask which should be the name of the next task to complete.
+context put(processInstance, "nextTask", sort(processInstance.tasks[not(completed)], function(x,y) x.id< y.id)[1].name)
+Result:
+{
+    "variables": {
+        "stakeholders": [
+            {"name": "Alice", "role": "Sponsor"},
+            {"name": "Bob", "role": "Product Owner"},
+            {"name": "Charlie", "role": "Lead Developer"}
+        ],
+        "expenses": 4500,
+        "budget": 10000
+    },
+    "id": "P123456789",
+    "tasks": [
+        {"id": "T2", "name": "Gather Requirements", "duration": 120, "completed": true},
+        {"id": "T6", "name": "Deployment", "duration": 90, "completed": false},
+        {"id": "T4", "name": "Implement Solution", "duration": 240, "completed": false},
+        {"id": "T3", "name": "Design Solution", "duration": 180, "completed": false},
+        {"id": "T5", "name": "Testing & QA", "duration": 180, "completed": false},
+        {"id": "T1", "name": "Initial Assessment", "duration": 60, "completed": true}      
+    ],  
+    "nextTask": "Design Solution",
+    "startDate": "2023-01-01T09:00:00Z"
+}
+
+Example4:
+Custom Function for Stakeholder Roles
+Create a custom FEEL function named stakeholderRoles that takes the stakeholders list and returns a list of roles. Use this function to update the processInstance object by adding a new property rolesList that contains the list of roles from the stakeholders.
+{
+    "getList": function(stakeholders) for s in stakeholders return s.role,
+    "listOfRoles": getList(processInstance.variables.stakeholders),
+    "processInstanceUpdated": context put(processInstance, "rolesList", listOfRoles)
+}.processInstanceUpdated
+Result:
+{
+    "rolesList": [
+        "Sponsor",
+        "Product Owner",
+        "Lead Developer"
+    ],
+    "variables": {
+        "stakeholders": [
+            {"name": "Alice", "role": "Sponsor"},
+            {"name": "Bob", "role": "Product Owner"},
+            {"name": "Charlie", "role": "Lead Developer"}
+        ],
+        "expenses": 4500,
+        "budget": 10000
+    },
+    "id": "P123456789",
+    "tasks": [
+        {"id": "T2", "name": "Gather Requirements", "duration": 120, "completed": true},
+        {"id": "T6", "name": "Deployment", "duration": 90, "completed": false},
+        {"id": "T4", "name": "Implement Solution", "duration": 240, "completed": false},
+        {"id": "T3", "name": "Design Solution", "duration": 180, "completed": false},
+        {"id": "T5", "name": "Testing & QA", "duration": 180, "completed": false},
+        {"id": "T1", "name": "Initial Assessment", "duration": 60, "completed": true}      
+    ],
+    "startDate": "2023-01-01T09:00:00Z"
+}
 
 
 
 
+
+
+
+IN CAMUNDA WE HAVE SERVICE TASK:
+IN THAT WE HAVE TASK DEFINATION..
+task defination : task defination defines which job workers can execute the task..when the service is encountered in a process instance,a corresponding job is created..the process instance is stops here and waits until the job has been completed...
+Job worker :
+A job worker can subscroibe to a job type,process the job and complete them using one of the zeebe clients..once the job is complete,the service task is complete an dthe process instance continues..
+
+DEPLOYMENT :
+deployment allows the process defination to be executed by the zeebe engine..
+
+INSTANCE :
+one execution of a process defination is called a process instance.many process instance can be launched from one process defination.
 
 
 
