@@ -1868,6 +1868,246 @@ deployment allows the process defination to be executed by the zeebe engine..
 INSTANCE :
 one execution of a process defination is called a process instance.many process instance can be launched from one process defination.
 
+JOB WORKER :
+a job worker can be thought of as a specialized client.
+clients connect to camunda platform 8 through grpc,a high performance,open source and universal rpc protocol.
+
+
+
+Zeebe Client - The Zeebe Client allows you to interact with Zeebe using the API
+Job Worker - The Job Worker is responsible for requesting Jobs of a defined type from the Zeebe Engine
+Job Handler - A Job Worker is a service capable of performing a particular task in a process. Job Workers are used to manage the interactions between the Zeebe Engine and the outside world.
+
+
+Zeebe Clients allow applications to perform the following:
+Deploy a Process Definition
+Start and Cancel a Process Instance
+Activate Jobs and Complete Jobs
+Update Process Variables
+
+
+
+
+
+
+
+CREATING A MAVEN PROJECT USING COMMAND LINE :
+IN ECLIPSE GI TO THE DIRECTORY WORKSPACE AND OPEN TERMINAL AND ENTER THE COMMANDS
+1.Start a Command Prompt e.g. Terminal or PowerShell
+
+2.Change to an appropriate directory e.g. your IDE workspace
+
+3.Create a Maven Project using the following command
+
+mvn archetype:generate \
+-DgroupId=com.camunda.academy \
+-DartifactId=c8-getting-started-microservice-orchestration-lab \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DarchetypeVersion=1.4 \
+-DinteractiveMode=false
+4.Maven will generate the new project and will output something similar to the following if everything has been successful
+
+[INFO] Project created from Archetype in dir: C:\DevTools\Workspace\eclipse\camunda-academy\c8-getting-started-microservice-orchestration-lab
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.457 s
+[INFO] Finished at: 2022-12-09T14:44:55Z
+[INFO] ------------------------------------------------------------------------
+5.Change to the newly created project using cd c8-getting-started-microservice-orchestration-lab
+
+6.Confirm that the project can be built using mvn clean package
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.926 s
+[INFO] Finished at: 2022-12-09T14:54:20Z
+[INFO] ------------------------------------------------------------------------
+
+
+
+
+CREATING MAVEN PROJECT USING AN IDE :
+Add the Java Client Dependency
+We will now add the Java Client dependency into our Maven project to gain access to the convenience functions that have been provided.
+
+1.Add the following dependency to your pom.xml
+
+  <dependency>
+    <groupId>io.camunda</groupId>
+    <artifactId>zeebe-client-java</artifactId>
+    <version>${zeebe.version}</version>
+  </dependency>
+Java Client Version
+You should use the latest stable version of the Java Client from the Maven Repository.
+At the time of writing, the latest stable version is 8.3.0.
+Spring Boot
+If you are building a Spring or Spring Boot application, you may want to use the Spring Zeebe dependency instead of handling the lifecycle and configuration of the Java client yourself.
+The Spring Zeebe client is a community maintained client which is not officially supported by Camunda.
+
+2.Confirm that the project can be built using mvn clean package
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.926 s
+[INFO] Finished at: 2022-12-09T14:54:20Z
+[INFO] ------------------------------------------------------------------------
+
+
+Connect to the Cluster
+We will now connect to the Cluster to ensure that everything is working as expected before implementing the handler for our Job Worker.
+Configure Connection Properties
+For the purposes of simplicity, we will configure the connection properties for our Job Worker as Java constants. In a real-world application these properties would be picked up from an application.properties file or environment variables based upon the development framework that you are using.
+1.Create a new PaymentApplication Class with a main method in the com.camunda.academy package
+2.Add the following constants to your Class
+
+private static final String ZEEBE_ADDRESS = "[ZEEBE_ADDRESS]";
+private static final String ZEEBE_CLIENT_ID = "[ZEEBE_CLIENT_ID]";
+private static final String ZEEBE_CLIENT_SECRET = "[ZEEBE_CLIENT_SECRET]";
+private static final String ZEEBE_AUTHORIZATION_SERVER_URL = "[ZEEBE_AUTHORIZATION_SERVER_URL]";
+private static final String ZEEBE_TOKEN_AUDIENCE = "[ZEEBE_TOKEN_AUDIENCE]";
+3.Replace each of the constants in square brackets with the values from your CamundaCloudMgmtAPI-Client-Camundanzia.txt which you downloaded in an earlier lesson
+Connection Properties :
+ZEEBE_ADDRESS - The address to reach the Zeebe Cluster, i.e. a standalone or embedded gateway or a proxy / load balancer sitting in front of a Zeebe Cluster
+ZEEBE_CLIENT_ID - The unique identifier of the Client for the OAuth2 provider
+ZEEBE_CLIENT_SECRET - The pre-shared secret for the OAuth2 provider
+ZEEBE_AUTHORIZATION_SERVER_URL - The URI from which an Access Token can be requested from
+ZEEBE_TOKEN_AUDIENCE - The audience of the Client token for the OAuth2 provider
+
+Configure the Credentials Provider :
+We now need to create an OAuthCredentialsProvider so that our Client can authenticate with the Cluster.
+1.Add the following snippet to the main method to instantiate the OAuthCredentialsProvider:
+
+final OAuthCredentialsProvider credentialsProvider =
+    new OAuthCredentialsProviderBuilder()
+        .authorizationServerUrl(ZEEBE_AUTHORIZATION_SERVER_URL)
+        .audience(ZEEBE_TOKEN_AUDIENCE)
+        .clientId(ZEEBE_CLIENT_ID)
+        .clientSecret(ZEEBE_CLIENT_SECRET)
+        .build();
+
+Create a Zeebe Client :
+We can now create a Zeebe Client which will connect to our Cluster using the address and credentials that have been made available through our constants:
+1.Add the following snippet to the main method beneath the instantiation of the OAuthCredentialsProvider:
+
+final ZeebeClient client =
+    ZeebeClient.newClientBuilder()
+        .gatewayAddress(ZEEBE_ADDRESS)
+        .credentialsProvider(credentialsProvider)
+        .build();
+Close the Client
+The Zeebe Client connection should be closed when it is no longer needed. Whilst the snippet above will work, a try-with-resources statement would be a better implementation here to ensure that resources are cleaned up.
+
+2.Modify the snippet above so that the Zeebe Client will be cleaned up after use
+
+try (final ZeebeClient client =
+        ZeebeClient.newClientBuilder()
+            .gatewayAddress(ZEEBE_ADDRESS)
+            .credentialsProvider(credentialsProvider)
+            .build()) {
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+Make a Request :
+Before we implement the functionality for our Job Worker, we can make a simple request to retrieve the Topology of the Cluster.
+1.Modify the Zeebe Client snippet so that it now reflects the following:
+
+try (final ZeebeClient client =
+        ZeebeClient.newClientBuilder()
+            .gatewayAddress(ZEEBE_ADDRESS)
+            .credentialsProvider(credentialsProvider)
+            .build()) {
+    System.out.println("Connected to: " + client.newTopologyRequest().send().join());
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+Remember to Send :
+Requests sent to the Zeebe API from a Client are asynchronous; Clients use the same pattern to make requests against the API for consistency and ease of use.
+
+Obtain a new Command object from the Client
+Configure the Command object (specific to each Command e.g. CreateInstanceCommand)
+Send the Command to the Zeebe API
+Join the Future object to wait for and handle the response
+
+Always remember to Send the Command after it has been configured and Join the Future to wait for and handle the response.
+
+Test the Connection :
+We can now test the connection between our Client and the Cluster:
+If you now run the PaymentApplication from your IDE or Maven, you should get a connection to the Cluster and a response similar to the below:
+Connected to Camunda 8: TopologyImpl{brokers=[BrokerInfoImpl{nodeId=1, host='zeebe-1.zeebe-broker-service.5f400cdf-a978...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TECHNICAL OVERVIEW :
+camunda 8 components -
+modeler,zeebe engine,tasklist,operate,optimize.
+
+zeebe engine - it is the process automation engine powering camunda 8.it follows a unique architecture that allows scalability and fault tolerance
+modeler - it helps u to design the bpmn process diagram and implement them...u can usae connectors directly..
+connectors - they are building blocks that perform the integration with external systems.
+tasklist - it is a ready to use that allows to view and manage assigned tasks..
+operator - it is a tool for monitoring and troubleshooting the process instance running in the zeebe.
+optimize - it is a powerful analytics tool..
+
+
+OPERATE :
+3 views :global instances, instances by process defination and incidents by error message
+
+
+CONNECTORS :
+connectors offers a multilayered coding experience 
+connectors consists of two parts :
+1.the programming code in java to connect to the external system (for example connectors)
+2.the user interface to be used during modeling, which is provided using connectors template..
+
+
+
+
+
+
+
+CONNECTORS INTRRODUCTION  
+connectors are represented by a concrete task in bpmn process in modeler..
+the components of connectors are :
+1.the programming code in java to connect to external systems...
+2.the user interface to be used during modeling,which provided using camunda connector template..
+camanda 8 provides variety of out of bound connectors.they reduce the time and effort required to develop process automation solutions.
+they are two types of connectors. they are:
+Inbound connectors -
+allows process instance to be started or influenced by the external system or service.it triggers process automatically..it can be message event or receive task.
+
+Outbound connectors -
+allows process instance to issue a request to an external system or a service.allows process instance to invoke business logic managed outside of camunda..it can be message throw or service task..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
