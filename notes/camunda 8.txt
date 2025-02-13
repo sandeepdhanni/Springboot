@@ -2095,14 +2095,26 @@ Outbound connectors -
 allows process instance to issue a request to an external system or a service.allows process instance to invoke business logic managed outside of camunda..it can be message throw or service task..
 
 
+What is an Incident?
+An Incident represents a problem in process execution. This means that a process instance is stuck at a particular point, and requires user interaction to resolve the problem.
+Incidents are created in different situations, including the following:
+A Job is failed and it has no retries left.
+An input or output variable mapping can't be applied.
+A condition can't be evaluated.
+A decision can't be evaluated.
 
 
 
+What is a Job?
+A Job represents a task that needs to be performed by a process. For example, a Job is created by Zeebe whenever a process instance reaches a Service Task. A Job representing the Service Task must be completed before the process is able to continue.
 
-
-
-
-
+What is a Job Worker?
+A Job Worker is a service capable of performing a particular task in a process. Job Workers are used to manage the interactions between the Zeebe Engine and the outside world and perform the following actions:
+Request Jobs - Request jobs of a certain type on a regular interval (i.e. polling). This interval and the number of jobs requested are configurable.
+Complete or Fail Jobs - After working on an Activated Job, a Job Worker informs Zeebe that the Job has either Completed or failed.
+A Job Worker may either Complete or Fail a Job.
+Complete - When the Job Worker completes its work, it sends a complete job command along with any variables, which in turn is merged into the process instance. This is how the Job Worker exposes the results of its work.
+Fail - If the Job Worker cannot successfully complete its work, it sends a fail job command along with an error message.
 
 
 
