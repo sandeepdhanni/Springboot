@@ -2082,7 +2082,7 @@ connectors consists of two parts :
 
 
 CONNECTORS INTRRODUCTION  
-connectors are represented by a concrete task in bpmn process in modeler..
+connectors are represented by a concrete task in bpmn process in modeler..connectors are resuable building blocks that enables connectivity to outside systems..they can be easily be added to a bpmn diagram using camunda modeler and configured without the code..
 the components of connectors are :
 1.the programming code in java to connect to external systems...
 2.the user interface to be used during modeling,which provided using camunda connector template..
