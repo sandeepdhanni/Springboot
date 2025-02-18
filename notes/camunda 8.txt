@@ -2117,6 +2117,31 @@ Complete - When the Job Worker completes its work, it sends a complete job comma
 Fail - If the Job Worker cannot successfully complete its work, it sends a fail job command along with an error message.
 
 
+CONNECTORS :
+What are connectors
+Connectors are building blocks that allow for the execution of code, that usually involves integrations with other systems.A connector is composed of several components that allow for modeling, runtime behavior, and reuse as a reusable building piece.
+Main advantages
+Connectors bring the following benefits:
+They are focused on business logic
+Runtime-agnostic
+Abstracted from Zeebe API
+Allow processes to connect to outside systems to orchestrate work
+Reduce costs in maintenance because they can be reused in different environments
+Camunda provides a list of out of the box connectors
+Custom connectors can be implemented to tailor the project needs
+connectors types  :
+Connectors are categorized by the direction data flows into or out of Camunda.
+Outbound connectors allow workflows to trigger external systems or services, making it possible to integrate workflows with other parts of a business process or system architecture. The Java code is executed when the workflow reaches the service task.
+Inbound connectors enable workflows to receive data or messages from external systems or services, making it possible to integrate workflows into a wider business process or system architecture. Inbound Connectors can be used to create a new process instance, or to send a message to a running process instance.
+CONNECTOR COMPONENTS :
+A connector consists of a Connector Template and a Connector Implementation, executed by a Connector Runtime Environment.
+
+The @ElementTemplate is the way to configure the 🔗Element Template Generator to generate the connector template automatically based on the Java data model.
+It is a great way to ensure your template is always synchronized with your Java code and automate some of the effort.
+
+
+
+
 
 
 
