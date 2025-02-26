@@ -2168,6 +2168,9 @@ it is a type of subprocess that is triggered by an event..it can be used globall
 WHY ARE EVENT SUBPROCESS USEFUL ?
 A subprocess should contain a group of elements with common functionality...
 
+
+COMPENSATION EVENTS -
+compensation events are a means of representing the reversal or undoing of a process activity that has already been completed...a compensation catch event can only be triggered by a compensation throw event....catching events are always attched to an activity..throw events can be intermediate or end events..if a compensation throw event is inside an embedded subprocess,only the subprocess compensation handlers are invoked...
 COMPENSATION THROW EVENT -
 throw events can be intermediate or end events..
 COMPENSATION INTERMEDIATE THROW EVENTS -
@@ -2182,13 +2185,39 @@ this is attached to an activity that might need to be compensated...
 
 
 
+INCLUSIVE GATEWAY -
+	inclusive gateway or OR gateway,are used in BPMN to diverge the flow of multiple paths based on conditions..unlike exclusive gateway that select only one path inclusive gateways can activate multiple paths based on conditions met..they allow for more flexible decision making workflows....
+inclusive gateways are used in BPMMN to diverge the flow of multiple paths based on conditions..inclusive gateways can activate multiple paths simultaneously...
 
 
+BPMN MARKERS -
+marker can be added to an activity to define a specific behavior for that activity...
+MARKER TYPES -
+loop markers,ad-hoc marker,compensation marker,multi-instance marker which can be parallel or sequencial....
+
+LOOP MARKER -
+when used on activity,it wikk cause that activity to run multiple times in a loop,and will check for a specific condition before or after each repetition...it can be used in th edesign mode in camunda modeler,but can't be run because isn't supported by the camunda engine...
+
+AD-FOC MARKER -
+an ad-hoc marker is represented with a tilde symboland can only be used on a subprocess,and will change that subprocess into ad-hoc subprocess...all activities contained within an ad-hoc subprocess can be run any number of times and can be run in any order...
+
+COMPENSATIOIN MARKER -
+compensation marker is represented with two backward facing arrows,indicating that it can be used to undo a previously completed activity...it is included on default on a compensation handler,which is an activity that is associated to a compensation boundary event....
 
 
+PARALLEL ACTIVITY -
+when used on an activity,it will run all instances of that activity simultaneously or it will run in parallel with each other.....
+
+SEQUENTIAL MULTI-INSTANCE MARKER -
+the sequential multi-instance marker is represented with an icon that has three horizontal lines stacked on each other or it will run the instance in a sequence,one at a time.....
 
 
+reading an email and storing the email in the .msg file and saving the file in a particular path
 
+
+reading an email and storing the email in the .msh file and saving the file in a particular path
+
+CONVERT .EML TO .MSG
 
 
 
