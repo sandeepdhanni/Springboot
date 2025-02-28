@@ -1,7 +1,7 @@
 rabbitmq:
 
 
-rabbit mq is a message broker that originally implements the abvance message queing protocol(AMQP)
+rabbit mq is a message broker that originally implements the advance message queing protocol(AMQP)
 RabbitMQ is an open-source message broker software that facilitates communication between distributed
  systems. It implements the Advanced Message Queuing Protocol (AMQP), making it highly reliable,
  efficient, and suitable for asynchronous messaging in distributed architectures.

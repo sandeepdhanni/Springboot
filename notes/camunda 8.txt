@@ -2212,12 +2212,26 @@ SEQUENTIAL MULTI-INSTANCE MARKER -
 the sequential multi-instance marker is represented with an icon that has three horizontal lines stacked on each other or it will run the instance in a sequence,one at a time.....
 
 
+
+
+
+STATEGIC PROCESS MODELS -
+high level,logic adstract,not meant to be automated..used by everyone,but especially process managers and process owners....process is easily read and understood...
+
+
+OPERATIONAL PROCESS MODELS -
+low level,logically concrete,focused on automation....used by process participants(focused on human workflow),process engineers(focused on technical workflow),process analyst(focused on the whole collaboration)....process is detailed and executable...
+
+
+
 reading an email and storing the email in the .msg file and saving the file in a particular path
 
 
 reading an email and storing the email in the .msh file and saving the file in a particular path
 
 CONVERT .EML TO .MSG
+convert .mht to .msg
+jotlmsg dependency
 
 
 
