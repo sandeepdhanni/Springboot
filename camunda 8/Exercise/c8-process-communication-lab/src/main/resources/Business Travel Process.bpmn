@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f289941" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0" camunda:diagramRelationId="4966444d-e450-4129-9f81-804aafee1ae2">
+  <bpmn:collaboration id="Collaboration_01wslmh" name="Business Travel Process">
+    <bpmn:participant id="Participant_06s9onz" name="Consultant" processRef="BusinessTravelProcess" />
+  </bpmn:collaboration>
+  <bpmn:process id="BusinessTravelProcess" name="BusinessTravelProcess" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_16j5piv">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "54e0234"
+  },
+  "schemaVersion": 10,
+  "components": [
+    {
+      "text": "### Business Travel Request",
+      "type": "text",
+      "layout": {
+        "row": "row_1",
+        "col": "auto"
+      },
+      "id": "Heading_1"
+    },
+    {
+      "label": "Destination",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_10ze6m1",
+        "columns": null
+      },
+      "id": "Field_1118l0w",
+      "key": "travelDestination",
+      "description": "Customer's location",
+      "defaultValue": "Paris",
+      "readonly": false
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_063g8qc",
+        "columns": null
+      },
+      "id": "Field_0ugeqr2",
+      "key": "travelDate",
+      "readonly": false,
+      "description": "Date selected by customer",
+      "disallowPassedDates": true,
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "text": "##### Flight Details",
+      "type": "text",
+      "layout": {
+        "row": "row_2",
+        "col": "auto"
+      },
+      "id": "Subheading_1"
+    },
+    {
+      "values": [
+        {
+          "value": "LH 1074",
+          "label": "LH 1074"
+        },
+        {
+          "value": "LH 1036",
+          "label": "LH 1036"
+        },
+        {
+          "value": "LH 1089",
+          "label": "LH 1089"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "row_3",
+        "col": "auto"
+      },
+      "id": "Select_1",
+      "label": "Select a flight",
+      "key": "travelFlight",
+      "searchable": false
+    },
+    {
+      "text": "##### Hotel Details",
+      "type": "text",
+      "layout": {
+        "row": "row_4",
+        "col": "auto"
+      },
+      "id": "Subheading_2"
+    },
+    {
+      "values": [
+        {
+          "value": "Hotel Résidence Montebello",
+          "label": "Hotel Résidence Montebello"
+        },
+        {
+          "value": "Hotel Park Lane",
+          "label": "Hotel Park Lane"
+        },
+        {
+          "value": "Hotel Rivoli",
+          "label": "Hotel Rivoli"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "row_5",
+        "col": "auto"
+      },
+      "id": "Select_2",
+      "label": "Select a hotel",
+      "key": "travelHotel"
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "layout": {
+        "row": "Row_07f3jy5",
+        "columns": 3
+      },
+      "id": "Field_0bvho9p",
+      "key": "field_1o6kk60",
+      "properties": { }
+    }
+  ],
+  "generated": true,
+  "type": "default",
+  "id": "select-flight-and-hotel-01n9xjw"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_1eo5eg4">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "f21c83d"
+  },
+  "schemaVersion": 16,
+  "id": "check-mission-details-0pemorr",
+  "components": [],
+  "type": "default"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:laneSet id="LaneSet_128ui3l" />
+    <bpmn:startEvent id="StartEvent_NewBusinessTravelRequested" name="New business travel requested">
+      <bpmn:outgoing>Flow_1la4pm9</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_SelectFlightAndHotel" name="Select flight and hotel">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_16j5piv" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1la4pm9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0mdhp08</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:subProcess id="SubProcess_Booking" name="Booking">
+      <bpmn:incoming>Flow_0lzvhe8</bpmn:incoming>
+      <bpmn:outgoing>Flow_10xlyu1</bpmn:outgoing>
+      <bpmn:endEvent id="EndEvent_BookingEnded" name="Booking ended">
+        <bpmn:incoming>Flow_1nfqd8j</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:startEvent id="StartEvent_BookingStarted" name="Booking started">
+        <bpmn:outgoing>Flow_1nfqd8j</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1nfqd8j" sourceRef="StartEvent_BookingStarted" targetRef="EndEvent_BookingEnded" />
+    </bpmn:subProcess>
+    <bpmn:serviceTask id="Activity_NotifyCustomerTravelConfirmed" name="Notify customer travel confirmed">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="notifyCustomerTravelConfirmed" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1w92n50</bpmn:incoming>
+      <bpmn:outgoing>Flow_16yz073</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_BusinessTravelCompleted" name="Business travel completed">
+      <bpmn:incoming>Flow_16yz073</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:parallelGateway id="Gateway_0ivp6ke">
+      <bpmn:incoming>Flow_0mdhp08</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lzvhe8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_15u1zoz</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="Gateway_1dzzpug">
+      <bpmn:incoming>Flow_10xlyu1</bpmn:incoming>
+      <bpmn:incoming>Flow_0g8op17</bpmn:incoming>
+      <bpmn:outgoing>Flow_1w92n50</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_1la4pm9" sourceRef="StartEvent_NewBusinessTravelRequested" targetRef="Activity_SelectFlightAndHotel" />
+    <bpmn:sequenceFlow id="Flow_0mdhp08" sourceRef="Activity_SelectFlightAndHotel" targetRef="Gateway_0ivp6ke" />
+    <bpmn:sequenceFlow id="Flow_0lzvhe8" sourceRef="Gateway_0ivp6ke" targetRef="SubProcess_Booking" />
+    <bpmn:sequenceFlow id="Flow_10xlyu1" sourceRef="SubProcess_Booking" targetRef="Gateway_1dzzpug" />
+    <bpmn:sequenceFlow id="Flow_1w92n50" sourceRef="Gateway_1dzzpug" targetRef="Activity_NotifyCustomerTravelConfirmed" />
+    <bpmn:sequenceFlow id="Flow_16yz073" sourceRef="Activity_NotifyCustomerTravelConfirmed" targetRef="EndEvent_BusinessTravelCompleted" />
+    <bpmn:sequenceFlow id="Flow_15u1zoz" sourceRef="Gateway_0ivp6ke" targetRef="Activity_CheckMissionDetails" />
+    <bpmn:sequenceFlow id="Flow_0g8op17" sourceRef="Activity_CheckMissionDetails" targetRef="Gateway_1dzzpug" />
+    <bpmn:userTask id="Activity_CheckMissionDetails" name="Check mission details">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_1eo5eg4" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_15u1zoz</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g8op17</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_01wslmh">
+      <bpmndi:BPMNShape id="Participant_06s9onz_di" bpmnElement="Participant_06s9onz" isHorizontal="true">
+        <dc:Bounds x="120" y="80" width="1040" height="380" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0sjagbj_di" bpmnElement="StartEvent_NewBusinessTravelRequested">
+        <dc:Bounds x="212" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="193" y="255" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hzidzo_di" bpmnElement="Activity_SelectFlightAndHotel">
+        <dc:Bounds x="330" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08yj55t_di" bpmnElement="SubProcess_Booking" isExpanded="true">
+        <dc:Bounds x="560" y="160" width="190" height="120" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1dptwn6_di" bpmnElement="EndEvent_BookingEnded">
+        <dc:Bounds x="682" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="663" y="245" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0q55svb_di" bpmnElement="StartEvent_BookingStarted">
+        <dc:Bounds x="602" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="582" y="245" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1nfqd8j_di" bpmnElement="Flow_1nfqd8j">
+        <di:waypoint x="638" y="220" />
+        <di:waypoint x="682" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0hakp2s_di" bpmnElement="Activity_NotifyCustomerTravelConfirmed">
+        <dc:Bounds x="910" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0nskeu0_di" bpmnElement="EndEvent_BusinessTravelCompleted">
+        <dc:Bounds x="1062" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1045" y="255" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_106i7f6_di" bpmnElement="Gateway_0ivp6ke">
+        <dc:Bounds x="465" y="205" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_10tluac_di" bpmnElement="Gateway_1dzzpug">
+        <dc:Bounds x="795" y="205" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06m5xgf_di" bpmnElement="Activity_CheckMissionDetails">
+        <dc:Bounds x="605" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1la4pm9_di" bpmnElement="Flow_1la4pm9">
+        <di:waypoint x="248" y="230" />
+        <di:waypoint x="330" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mdhp08_di" bpmnElement="Flow_0mdhp08">
+        <di:waypoint x="430" y="230" />
+        <di:waypoint x="465" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lzvhe8_di" bpmnElement="Flow_0lzvhe8">
+        <di:waypoint x="515" y="230" />
+        <di:waypoint x="560" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10xlyu1_di" bpmnElement="Flow_10xlyu1">
+        <di:waypoint x="750" y="230" />
+        <di:waypoint x="795" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1w92n50_di" bpmnElement="Flow_1w92n50">
+        <di:waypoint x="845" y="230" />
+        <di:waypoint x="910" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16yz073_di" bpmnElement="Flow_16yz073">
+        <di:waypoint x="1010" y="230" />
+        <di:waypoint x="1062" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15u1zoz_di" bpmnElement="Flow_15u1zoz">
+        <di:waypoint x="490" y="255" />
+        <di:waypoint x="490" y="350" />
+        <di:waypoint x="605" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g8op17_di" bpmnElement="Flow_0g8op17">
+        <di:waypoint x="705" y="350" />
+        <di:waypoint x="820" y="350" />
+        <di:waypoint x="820" y="255" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

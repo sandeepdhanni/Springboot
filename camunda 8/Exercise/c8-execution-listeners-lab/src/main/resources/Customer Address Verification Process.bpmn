@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="eed7a16" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:process id="Process_Customer_Address_Verification" name="Customer Address Verification Process" isExecutable="true">
+    <bpmn:extensionElements />
+    <bpmn:sequenceFlow id="Flow_1irq6xy" sourceRef="StartEvent_Verification" targetRef="Activity_VerifyAddress" />
+    <bpmn:startEvent id="StartEvent_Verification" name="Verification started">
+      <bpmn:outgoing>Flow_1irq6xy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_VerifyAddress" name="Verify Address">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="verifyAddress" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1irq6xy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0q51mq3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_Verification" name="Verification ended">
+      <bpmn:incoming>Flow_0q51mq3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0q51mq3" sourceRef="Activity_VerifyAddress" targetRef="EndEvent_Verification" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Customer_Address_Verification">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_Verification">
+        <dc:Bounds x="152" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="126" y="185" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ccsc0x_di" bpmnElement="Activity_VerifyAddress">
+        <dc:Bounds x="270" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1wfu6f7_di" bpmnElement="EndEvent_Verification">
+        <dc:Bounds x="452" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="427" y="185" width="87" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1irq6xy_di" bpmnElement="Flow_1irq6xy">
+        <di:waypoint x="188" y="160" />
+        <di:waypoint x="270" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0q51mq3_di" bpmnElement="Flow_0q51mq3">
+        <di:waypoint x="370" y="160" />
+        <di:waypoint x="452" y="160" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

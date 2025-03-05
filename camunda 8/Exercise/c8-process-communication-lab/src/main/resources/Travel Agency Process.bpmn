@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f289941" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0" camunda:diagramRelationId="4966444d-e450-4129-9f81-804aafee1ae2">
+  <bpmn:collaboration id="Collaboration_01wslmh" name="Travel Agency Process">
+    <bpmn:participant id="Participant_03p627h" name="Travel Agency" processRef="Process_TravelAgency" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_TravelAgency" name="TravelAgencyProcess" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_2k2m0md">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "917d9a1"
+  },
+  "schemaVersion": 10,
+  "components": [
+    {
+      "text": "### Business Travel Request",
+      "type": "text",
+      "layout": {
+        "row": "row_1",
+        "col": "auto"
+      },
+      "id": "Heading_1"
+    },
+    {
+      "label": "Destination",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_10ze6m1",
+        "columns": null
+      },
+      "id": "Field_1118l0w",
+      "key": "travelDestination",
+      "description": "Customer's location",
+      "readonly": false
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_063g8qc",
+        "columns": null
+      },
+      "id": "Field_0ugeqr2",
+      "key": "travelDate",
+      "readonly": false,
+      "description": "Date selected by customer",
+      "disallowPassedDates": true,
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "text": "##### Flight Details",
+      "type": "text",
+      "layout": {
+        "row": "row_2",
+        "col": "auto"
+      },
+      "id": "Subheading_1"
+    },
+    {
+      "values": [
+        {
+          "value": "LH 1074",
+          "label": "LH 1074"
+        },
+        {
+          "value": "LH 1036",
+          "label": "LH 1036"
+        },
+        {
+          "value": "LH 1089",
+          "label": "LH 1089"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "row_3",
+        "col": "auto"
+      },
+      "id": "Select_1",
+      "label": "Select a flight",
+      "key": "travelFlight",
+      "searchable": false
+    },
+    {
+      "text": "##### Hotel Details",
+      "type": "text",
+      "layout": {
+        "row": "row_4",
+        "col": "auto"
+      },
+      "id": "Subheading_2"
+    },
+    {
+      "values": [
+        {
+          "value": "Hotel Résidence Montebello",
+          "label": "Hotel Résidence Montebello"
+        },
+        {
+          "value": "Hotel Park Lane",
+          "label": "Hotel Park Lane"
+        },
+        {
+          "value": "Hotel Rivoli",
+          "label": "Hotel Rivoli"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "row_5",
+        "col": "auto"
+      },
+      "id": "Select_2",
+      "label": "Select a hotel",
+      "key": "travelHotel"
+    },
+    {
+      "label": "Approve booking request",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0rmx3f0",
+        "columns": null
+      },
+      "id": "Field_0y36bkb",
+      "key": "isBooked",
+      "defaultValue": true
+    }
+  ],
+  "generated": true,
+  "type": "default",
+  "id": "select-flight-and-hotel-01n9xjw"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:endEvent id="throwMessage_BookingCancellation" name="Booking cancellation sent">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="bookingCancelled" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1nbhv0g</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0dn4kx8" />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="throwMessage_BookingConfirmation" name="Booking confirmation sent">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="bookingConfirmed" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0vico42</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0wazvz0" />
+    </bpmn:endEvent>
+    <bpmn:startEvent id="startMessageTravelRequest" name="Travel request received">
+      <bpmn:outgoing>Flow_00ha9bb</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1pot69o" messageRef="Message_2bim635" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1nbhv0g" name="no" sourceRef="Gateway_BookingSuccess" targetRef="throwMessage_BookingCancellation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=not(isBooked)</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1fxw6l4" sourceRef="Activity_ReviewBookingRequest" targetRef="Gateway_BookingSuccess" />
+    <bpmn:sequenceFlow id="Flow_00ha9bb" sourceRef="startMessageTravelRequest" targetRef="Activity_ReviewBookingRequest" />
+    <bpmn:userTask id="Activity_ReviewBookingRequest" name="Review booking request">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_2k2m0md" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_00ha9bb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fxw6l4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0vico42" sourceRef="Activity_BookFlightAndHotel" targetRef="throwMessage_BookingConfirmation" />
+    <bpmn:exclusiveGateway id="Gateway_BookingSuccess" name="Booking success?" default="Flow_1ijaw0m">
+      <bpmn:incoming>Flow_1fxw6l4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nbhv0g</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ijaw0m</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1ijaw0m" name="yes" sourceRef="Gateway_BookingSuccess" targetRef="Activity_BookFlightAndHotel" />
+    <bpmn:serviceTask id="Activity_BookFlightAndHotel" name="Book flight and hotel">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="bookFlightAndHotel" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ijaw0m</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vico42</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:message id="Message_2bim635" name="msg_startBookingRequest" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_01wslmh">
+      <bpmndi:BPMNShape id="Participant_03p627h_di" bpmnElement="Participant_03p627h" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1060" height="230" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0wfxc4e_di" bpmnElement="throwMessage_BookingCancellation">
+        <dc:Bounds x="1030" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1007" y="255" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06dp8bu_di" bpmnElement="throwMessage_BookingConfirmation">
+        <dc:Bounds x="892" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="870" y="195" width="84" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_10vmo7z_di" bpmnElement="startMessageTravelRequest">
+        <dc:Bounds x="232" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="216" y="195" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05uxpfw_di" bpmnElement="Activity_ReviewBookingRequest">
+        <dc:Bounds x="320" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_10xumv5_di" bpmnElement="Gateway_BookingSuccess" isMarkerVisible="true">
+        <dc:Bounds x="535" y="145" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="515" y="123" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rp7kha_di" bpmnElement="Activity_BookFlightAndHotel">
+        <dc:Bounds x="690" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1nbhv0g_di" bpmnElement="Flow_1nbhv0g">
+        <di:waypoint x="560" y="195" />
+        <di:waypoint x="560" y="230" />
+        <di:waypoint x="1030" y="230" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="633" y="217" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fxw6l4_di" bpmnElement="Flow_1fxw6l4">
+        <di:waypoint x="420" y="170" />
+        <di:waypoint x="535" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00ha9bb_di" bpmnElement="Flow_00ha9bb">
+        <di:waypoint x="268" y="170" />
+        <di:waypoint x="320" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vico42_di" bpmnElement="Flow_0vico42">
+        <di:waypoint x="790" y="170" />
+        <di:waypoint x="892" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ijaw0m_di" bpmnElement="Flow_1ijaw0m">
+        <di:waypoint x="585" y="170" />
+        <di:waypoint x="690" y="170" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="629" y="152" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

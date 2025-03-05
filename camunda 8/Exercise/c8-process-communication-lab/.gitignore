@@ -1,0 +1,8 @@
+target/
+.DS_Store
+.vscode/
+.classpath
+.project
+.settings/
+resources/travelagency.cluster.properties
+resources/cluster.properties
