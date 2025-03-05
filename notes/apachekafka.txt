@@ -502,6 +502,7 @@ what is partition
 
 
 KAFKA VS TRADITIONAL MESSAGING SYSTEM -
+
 WHEN TO USE KAFKA?
 ->high throughput event straming
 ->big data pipelines
