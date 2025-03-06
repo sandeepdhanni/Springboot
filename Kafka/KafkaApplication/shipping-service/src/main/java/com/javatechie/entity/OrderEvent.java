@@ -2,6 +2,8 @@ package com.javatechie.entity;
 
 import com.javatechie.dto.enums.OrderStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +17,8 @@ import java.time.LocalDateTime;
 @Entity
 public class OrderEvent {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String orderId;
     private OrderStatus status;  // CREATED, CONFIRMED
     private String details;

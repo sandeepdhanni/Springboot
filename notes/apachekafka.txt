@@ -580,5 +580,5 @@ kafka-console-producer.bat --topic firstTopic --bootstrap-server localhost:9092 
 
 kafka-console-consumer.bat --topic firstTopic --bootstrap-server localhost:9092                                          ->consumer consumes msgs 
 
-kafka-console-producer.bat --topic firstTopic --bootstrap-server localhost:9092 --from-beginning                         ->consumer consumes msgs from 1st msg onwards it will consume.
+kafka-console-consumer.bat --topic firstTopic --bootstrap-server localhost:9092 --from-beginning                         ->consumer consumes msgs from 1st msg onwards it will consume.
 
