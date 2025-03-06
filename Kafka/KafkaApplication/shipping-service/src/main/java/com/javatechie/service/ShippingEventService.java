@@ -12,9 +12,12 @@ import java.time.LocalDateTime;
 @Service
 public class ShippingEventService {
 
-    @Autowired
-    private OrderEventRepository repository;
+    private final OrderEventRepository repository;
 
+    @Autowired
+    public ShippingEventService(OrderEventRepository repository) {
+        this.repository = repository;
+    }
 
     @KafkaListener(topics = "order-events", groupId = "shipping-service")
     public void consumeOrderEvent(OrderEvent orderEvent) {

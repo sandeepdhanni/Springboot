@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderEventKafkaPublisher {
 
+    private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
+
     @Autowired
-    private KafkaTemplate<String, OrderEvent> kafkaTemplate;
+    public OrderEventKafkaPublisher(KafkaTemplate<String, OrderEvent> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     @Value("${order.event.topicName}")
     private String topicName;

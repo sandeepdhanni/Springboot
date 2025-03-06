@@ -16,12 +16,15 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class OrderService {
-    @Autowired
-    private OrderEventRepository repository;
+    private final OrderEventRepository repository;
+
+    private final OrderEventKafkaPublisher publisher;
 
     @Autowired
-    private OrderEventKafkaPublisher publisher;
-
+    public OrderService(OrderEventRepository repository, OrderEventKafkaPublisher publisher) {
+        this.repository = repository;
+        this.publisher = publisher;
+    }
 
     // Handle order creation
     public OrderResponse placeAnOrder(OrderRequest orderRequest) {

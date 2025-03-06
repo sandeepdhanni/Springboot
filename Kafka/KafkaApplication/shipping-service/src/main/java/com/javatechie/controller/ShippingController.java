@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/shipping")
 public class ShippingController {
 
+    private final ShippingEventService shippingEventService;
+
     @Autowired
-    private ShippingEventService shippingEventService;
+    public ShippingController(ShippingEventService shippingEventService) {
+        this.shippingEventService = shippingEventService;
+    }
 
     @PostMapping("/{orderId}/ship")
     public ResponseEntity<String> shipOrder(@PathVariable String orderId) {
