@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f289941" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0" camunda:diagramRelationId="9744a5ff-5a87-42e1-8a59-b871d356780e">
+  <bpmn:collaboration id="Collaboration_0ofsrqm" name="Handle Customer Onsite Request Process">
+    <bpmn:participant id="Participant_0t3whwu" name="Handle customer onsite request" processRef="HandleCustomerOnsiteRequest" />
+  </bpmn:collaboration>
+  <bpmn:message id="Message_1ivugqr" name="catchTravelRequest" />
+  <bpmn:message id="Message_0d9l367" name="msg_bookingCancelled">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=travelRequestId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_29ni4ju" name="msg_bookingConfirmed">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=travelRequestId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:process id="HandleCustomerOnsiteRequest" name="Handle customer onsite request" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_1jp6s8m">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "823759a"
+  },
+  "schemaVersion": 11,
+  "components": [
+    {
+      "text": "### Business Travel Request",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ski79f",
+        "columns": null
+      },
+      "id": "Field_0wrpny7"
+    },
+    {
+      "label": "Destination",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1wqhz20",
+        "columns": null
+      },
+      "id": "Field_1t9i9fo",
+      "key": "travelDestination",
+      "description": "Customer's location",
+      "defaultValue": "Paris"
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0w2o8c1",
+        "columns": null
+      },
+      "id": "Field_0zynihr",
+      "key": "travelDate",
+      "description": "Date selected by customer"
+    },
+    {
+      "label": "Trip required?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_16f2ya9",
+        "columns": null
+      },
+      "id": "Field_04okdj6",
+      "key": "tripRequired",
+      "description": "If the issue can only be solved onsite",
+      "defaultValue": true
+    },
+    {
+      "label": "Notes",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0ggqifn",
+        "columns": null
+      },
+      "id": "Field_07kchtx",
+      "key": "notes"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0i3ynfv"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3jdn29k">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "823759a"
+  },
+  "schemaVersion": 11,
+  "components": [
+    {
+      "text": "### Business Travel Request",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ski79f",
+        "columns": null
+      },
+      "id": "Field_0wrpny7"
+    },
+    {
+      "label": "Destination",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1wqhz20",
+        "columns": null
+      },
+      "id": "Field_1t9i9fo",
+      "key": "travelDestination",
+      "description": "Customer's location",
+      "defaultValue": "Paris"
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0w2o8c1",
+        "columns": null
+      },
+      "id": "Field_0zynihr",
+      "key": "travelDate",
+      "description": "Date selected by customer"
+    },
+    {
+      "label": "Trip required?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_16f2ya9",
+        "columns": null
+      },
+      "id": "Field_04okdj6",
+      "key": "tripRequired",
+      "description": "If the issue can only be solved onsite",
+      "defaultValue": true
+    },
+    {
+      "label": "Notes",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0ggqifn",
+        "columns": null
+      },
+      "id": "Field_07kchtx",
+      "key": "notes"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0i3ynfv"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:laneSet id="LaneSet_1yzjggg" />
+    <bpmn:startEvent id="StartEvent_OnsiteConsultingRequired" name="Onsite consulting required">
+      <bpmn:outgoing>Flow_1wplolr</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_DefineScopeAndTerms" name="Define scope and terms with customer">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1jp6s8m" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wplolr</bpmn:incoming>
+      <bpmn:outgoing>Flow_0002nm4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_0i39knd">
+      <bpmn:incoming>Flow_0002nm4</bpmn:incoming>
+      <bpmn:incoming>Flow_0evojkm</bpmn:incoming>
+      <bpmn:outgoing>Flow_004i34f</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="EndEvent_CustomerRequestHandled" name="Customer request handled">
+      <bpmn:incoming>Flow_081b29o</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Activity_RescheduleBusinessTravel" name="Reschedule business travel">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3jdn29k" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0fz2939</bpmn:incoming>
+      <bpmn:outgoing>Flow_0evojkm</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_1syfobc">
+      <bpmn:incoming>Flow_0behkrh</bpmn:incoming>
+      <bpmn:incoming>Flow_0fwe1wc</bpmn:incoming>
+      <bpmn:outgoing>Flow_081b29o</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_TripRequired" name="Trip required?" default="Flow_0behkrh">
+      <bpmn:incoming>Flow_004i34f</bpmn:incoming>
+      <bpmn:outgoing>Flow_08segt5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0behkrh</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:callActivity id="CallActivity_PlanAndExecuteBusinessTravel" name="Plan and execute the business travel">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="BusinessTravelProcess" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_08segt5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fwe1wc</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:boundaryEvent id="Event_1ge9jea" name="Business travel cancelled" attachedToRef="CallActivity_PlanAndExecuteBusinessTravel">
+      <bpmn:outgoing>Flow_0fz2939</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1u0m2fz" errorRef="Error_1qbhlsi" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1wplolr" sourceRef="StartEvent_OnsiteConsultingRequired" targetRef="Activity_DefineScopeAndTerms" />
+    <bpmn:sequenceFlow id="Flow_0002nm4" sourceRef="Activity_DefineScopeAndTerms" targetRef="Gateway_0i39knd" />
+    <bpmn:sequenceFlow id="Flow_0evojkm" sourceRef="Activity_RescheduleBusinessTravel" targetRef="Gateway_0i39knd" />
+    <bpmn:sequenceFlow id="Flow_004i34f" sourceRef="Gateway_0i39knd" targetRef="Gateway_TripRequired" />
+    <bpmn:sequenceFlow id="Flow_081b29o" sourceRef="Gateway_1syfobc" targetRef="EndEvent_CustomerRequestHandled" />
+    <bpmn:sequenceFlow id="Flow_0fz2939" sourceRef="Event_1ge9jea" targetRef="Activity_RescheduleBusinessTravel" />
+    <bpmn:sequenceFlow id="Flow_0fwe1wc" sourceRef="CallActivity_PlanAndExecuteBusinessTravel" targetRef="Gateway_1syfobc" />
+    <bpmn:sequenceFlow id="Flow_0behkrh" name="no" sourceRef="Gateway_TripRequired" targetRef="Gateway_1syfobc" />
+    <bpmn:sequenceFlow id="Flow_08segt5" name="yes" sourceRef="Gateway_TripRequired" targetRef="CallActivity_PlanAndExecuteBusinessTravel">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=tripRequired</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmn:error id="Error_1qbhlsi" name="Error_travelCancelled" errorCode="travelRequestId" />
+  <bpmn:signal id="Signal_2ad6gqs" name="travelPolicyChanged" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0ofsrqm">
+      <bpmndi:BPMNShape id="Participant_0t3whwu_di" bpmnElement="Participant_0t3whwu" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1100" height="420" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0arwjbt_di" bpmnElement="StartEvent_OnsiteConsultingRequired">
+        <dc:Bounds x="252" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="228" y="335" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kptgdz_di" bpmnElement="Activity_DefineScopeAndTerms">
+        <dc:Bounds x="370" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0i39knd_di" bpmnElement="Gateway_0i39knd" isMarkerVisible="true">
+        <dc:Bounds x="545" y="285" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0bffqwj_di" bpmnElement="EndEvent_CustomerRequestHandled">
+        <dc:Bounds x="1132" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1109" y="335" width="88" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00dir5o_di" bpmnElement="Activity_RescheduleBusinessTravel">
+        <dc:Bounds x="670" y="150" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1syfobc_di" bpmnElement="Gateway_1syfobc" isMarkerVisible="true">
+        <dc:Bounds x="985" y="285" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_17cjbjc_di" bpmnElement="Gateway_TripRequired" isMarkerVisible="true">
+        <dc:Bounds x="655" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="606" y="273" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mstttx_di" bpmnElement="CallActivity_PlanAndExecuteBusinessTravel">
+        <dc:Bounds x="790" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0n3om6d_di" bpmnElement="Event_1ge9jea">
+        <dc:Bounds x="872" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="915" y="226" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1wplolr_di" bpmnElement="Flow_1wplolr">
+        <di:waypoint x="288" y="310" />
+        <di:waypoint x="370" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0002nm4_di" bpmnElement="Flow_0002nm4">
+        <di:waypoint x="470" y="310" />
+        <di:waypoint x="545" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0evojkm_di" bpmnElement="Flow_0evojkm">
+        <di:waypoint x="670" y="190" />
+        <di:waypoint x="570" y="190" />
+        <di:waypoint x="570" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_004i34f_di" bpmnElement="Flow_004i34f">
+        <di:waypoint x="595" y="310" />
+        <di:waypoint x="655" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_081b29o_di" bpmnElement="Flow_081b29o">
+        <di:waypoint x="1035" y="310" />
+        <di:waypoint x="1132" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fz2939_di" bpmnElement="Flow_0fz2939">
+        <di:waypoint x="890" y="252" />
+        <di:waypoint x="890" y="190" />
+        <di:waypoint x="770" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fwe1wc_di" bpmnElement="Flow_0fwe1wc">
+        <di:waypoint x="890" y="310" />
+        <di:waypoint x="985" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0behkrh_di" bpmnElement="Flow_0behkrh">
+        <di:waypoint x="680" y="335" />
+        <di:waypoint x="680" y="410" />
+        <di:waypoint x="1010" y="410" />
+        <di:waypoint x="1010" y="335" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="741" y="392" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08segt5_di" bpmnElement="Flow_08segt5">
+        <di:waypoint x="705" y="310" />
+        <di:waypoint x="790" y="310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="739" y="292" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

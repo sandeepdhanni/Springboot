@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="f140ca4" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0" camunda:diagramRelationId="fb2ed551-11bf-4371-b117-c3c5549bed2a">
+  <bpmn:collaboration id="Collaboration_006flti" name="Reimbursement Claim">
+    <bpmn:participant id="Participant_0x0adx4" name="Reimbursement Claim" processRef="ReimbursementClaimProcess" />
+  </bpmn:collaboration>
+  <bpmn:process id="ReimbursementClaimProcess" name="ReimbursementClaimProcess" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_3n2n90l">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "917d9a1"
+  },
+  "schemaVersion": 10,
+  "components": [
+    {
+      "text": "### Review Expense Report",
+      "type": "text",
+      "layout": {
+        "row": "row_1",
+        "col": "auto"
+      },
+      "id": "Heading_1"
+    },
+    {
+      "label": "Destination",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_10ze6m1",
+        "columns": null
+      },
+      "id": "Field_1118l0w",
+      "key": "travelDestination",
+      "description": "Business travel destination",
+      "readonly": false
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Date",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_10ze6m1",
+        "columns": null
+      },
+      "id": "Field_1s4wi54",
+      "key": "travelDate"
+    },
+    {
+      "text": "##### Flight Details",
+      "type": "text",
+      "layout": {
+        "row": "row_2",
+        "col": "auto"
+      },
+      "id": "Subheading_1"
+    },
+    {
+      "text": "##### Hotel Details",
+      "type": "text",
+      "layout": {
+        "row": "row_2",
+        "col": "auto"
+      },
+      "id": "Subheading_2"
+    },
+    {
+      "values": [
+        {
+          "value": "LH 1074",
+          "label": "LH 1074"
+        },
+        {
+          "value": "LH 1036",
+          "label": "LH 1036"
+        },
+        {
+          "value": "LH 1089",
+          "label": "LH 1089"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "row_3",
+        "col": "auto"
+      },
+      "id": "Select_1",
+      "label": "Start Flight",
+      "key": "travelFlight",
+      "searchable": false
+    },
+    {
+      "values": [
+        {
+          "value": "Hotel Résidence Montebello",
+          "label": "Hotel Résidence Montebello"
+        },
+        {
+          "value": "Hotel Park Lane",
+          "label": "Hotel Park Lane"
+        },
+        {
+          "value": "Hotel Rivoli",
+          "label": "Hotel Rivoli"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "row_3",
+        "col": "auto"
+      },
+      "id": "Select_2",
+      "label": "Hotel",
+      "key": "travelHotel"
+    },
+    {
+      "text": "---",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ens538",
+        "columns": null
+      },
+      "id": "Field_0991vfs"
+    },
+    {
+      "label": "How was your travel? (optional)",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0d9voh8",
+        "columns": null
+      },
+      "id": "Field_1xxtb8x",
+      "key": "travelFeedback"
+    },
+    {
+      "label": "Approve reimbursement",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0nnq9xe",
+        "columns": null
+      },
+      "id": "Field_0au7wgc",
+      "key": "isReimbursementApproved",
+      "defaultValue": true
+    }
+  ],
+  "generated": true,
+  "type": "default",
+  "id": "select-flight-and-hotel-01n9xjw"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_ReimbursementRequestStarted" name="Reimbursement request started">
+      <bpmn:outgoing>Flow_04xiydj</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_04xiydj" sourceRef="StartEvent_ReimbursementRequestStarted" targetRef="Activity_ReviewExpenseReport" />
+    <bpmn:userTask id="Activity_ReviewExpenseReport" name="Review expense report">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3n2n90l" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_04xiydj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pizfyy</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_049ysb8" name="Reimbursement approved?" default="Flow_1fop8kp">
+      <bpmn:incoming>Flow_0pizfyy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1n01r8q</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1fop8kp</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0pizfyy" sourceRef="Activity_ReviewExpenseReport" targetRef="Gateway_049ysb8" />
+    <bpmn:sequenceFlow id="Flow_1n01r8q" name="yes" sourceRef="Gateway_049ysb8" targetRef="Activity_ReimburseExpenses">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isReimbursementApproved</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_10843w1" sourceRef="Activity_ReimburseExpenses" targetRef="Gateway_05xy6k8" />
+    <bpmn:sequenceFlow id="Flow_1fop8kp" name="no" sourceRef="Gateway_049ysb8" targetRef="Gateway_05xy6k8" />
+    <bpmn:exclusiveGateway id="Gateway_05xy6k8">
+      <bpmn:incoming>Flow_10843w1</bpmn:incoming>
+      <bpmn:incoming>Flow_1fop8kp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bnw0kb</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_ReimburseExpenses" name="Reimburse expenses">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="reimburseExpenses" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1n01r8q</bpmn:incoming>
+      <bpmn:outgoing>Flow_10843w1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0bnw0kb" sourceRef="Gateway_05xy6k8" targetRef="Activity_NotifyRequester" />
+    <bpmn:sequenceFlow id="Flow_0jwhtgu" sourceRef="Activity_NotifyRequester" targetRef="EndEvent_ReimbursementRequestedEnded" />
+    <bpmn:serviceTask id="Activity_NotifyRequester" name="Notify requester">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="notifyRequesterExpensesReimbursed" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bnw0kb</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jwhtgu</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_ReimbursementRequestedEnded" name="Reimbursement request ended">
+      <bpmn:incoming>Flow_0jwhtgu</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_006flti">
+      <bpmndi:BPMNShape id="Participant_0x0adx4_di" bpmnElement="Participant_0x0adx4" isHorizontal="true">
+        <dc:Bounds x="160" y="60" width="1050" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_ReimbursementRequestStarted">
+        <dc:Bounds x="232" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="212" y="195" width="78" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0970kji_di" bpmnElement="Activity_ReviewExpenseReport">
+        <dc:Bounds x="310" y="130" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_049ysb8_di" bpmnElement="Gateway_049ysb8" isMarkerVisible="true">
+        <dc:Bounds x="455" y="145" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="441" y="115" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_05xy6k8_di" bpmnElement="Gateway_05xy6k8" isMarkerVisible="true">
+        <dc:Bounds x="785" y="145" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_163qnvj_di" bpmnElement="Activity_ReimburseExpenses">
+        <dc:Bounds x="600" y="130" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02w6hqt_di" bpmnElement="Activity_NotifyRequester">
+        <dc:Bounds x="900" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1m5znle_di" bpmnElement="EndEvent_ReimbursementRequestedEnded">
+        <dc:Bounds x="1082" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1063" y="195" width="78" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_04xiydj_di" bpmnElement="Flow_04xiydj">
+        <di:waypoint x="268" y="170" />
+        <di:waypoint x="310" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pizfyy_di" bpmnElement="Flow_0pizfyy">
+        <di:waypoint x="410" y="170" />
+        <di:waypoint x="455" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1n01r8q_di" bpmnElement="Flow_1n01r8q">
+        <di:waypoint x="505" y="170" />
+        <di:waypoint x="600" y="170" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="545" y="152" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10843w1_di" bpmnElement="Flow_10843w1">
+        <di:waypoint x="700" y="170" />
+        <di:waypoint x="785" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fop8kp_di" bpmnElement="Flow_1fop8kp">
+        <di:waypoint x="480" y="195" />
+        <di:waypoint x="480" y="260" />
+        <di:waypoint x="810" y="260" />
+        <di:waypoint x="810" y="195" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="639" y="242" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bnw0kb_di" bpmnElement="Flow_0bnw0kb">
+        <di:waypoint x="835" y="170" />
+        <di:waypoint x="900" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jwhtgu_di" bpmnElement="Flow_0jwhtgu">
+        <di:waypoint x="1000" y="170" />
+        <di:waypoint x="1082" y="170" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
