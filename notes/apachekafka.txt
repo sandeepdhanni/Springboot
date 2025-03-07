@@ -117,7 +117,7 @@ If 3 consumers are reading this topic, each will process one partition in parall
 
 
 7. Offset (Keeps track of messages)
-Each message in a Kafka partition has a unique offset (like an ID).
+Each message in a Kafka partition has a unique offset (like an ID).it is the position of the message inside the partition
 Consumers use offsets to track which messages they have already processed.
 If a consumer restarts, it can resume from the last saved offset.
 Example
