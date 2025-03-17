@@ -119,6 +119,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 
 @Service
 public class MsgFileReaderService {
@@ -187,33 +188,38 @@ public class MsgFileReaderService {
 
     private static void readExcelContent(byte[] content) {
         try (Workbook workbook = WorkbookFactory.create(new ByteArrayInputStream(content))) {
-
-            // Iterate over all sheets
-            for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
-                Sheet sheet = workbook.getSheetAt(i);
-                System.out.println("----- Reading Sheet: " + sheet.getSheetName() + " -----");
-
+            for (Sheet sheet : workbook) {
+                System.out.println("Reading Sheet: " + sheet.getSheetName());
                 for (Row row : sheet) {
+                    boolean isEmptyRow = true;
                     for (Cell cell : row) {
-                        // Print each cell's content
-                        switch (cell.getCellType()) {
-                            case STRING:
-                                System.out.print(cell.getStringCellValue() + "\t");
-                                break;
-                            case NUMERIC:
-                                System.out.print(cell.getNumericCellValue() + "\t");
-                                break;
-                            case BOOLEAN:
-                                System.out.print(cell.getBooleanCellValue() + "\t");
-                                break;
-                            case FORMULA:
-                                System.out.print(cell.getCellFormula() + "\t");
-                                break;
-                            default:
-                                System.out.print("UNKNOWN\t");
+                        String cellValue = "";
+                        if (cell == null || cell.getCellType() == CellType.BLANK) {
+                            cellValue = "UNKNOWN";
+                        } else if (cell.getCellType() == CellType.NUMERIC) {
+                            if (DateUtil.isCellDateFormatted(cell)) {
+                                // Format date to 'dd/MM/yyyy'
+                                cellValue = new SimpleDateFormat("dd/MM/yyyy").format(cell.getDateCellValue());
+                            } else {
+                                cellValue = String.valueOf(cell.getNumericCellValue());
+                            }
+                        } else if (cell.getCellType() == CellType.STRING) {
+                            cellValue = cell.getStringCellValue();
+                        } else {
+                            cellValue = "UNKNOWN";
                         }
+
+                        if (!"UNKNOWN".equals(cellValue)) {
+                            isEmptyRow = false;
+                        }
+
+                        System.out.print(cellValue + "\t");
                     }
-                    System.out.println(); // New line after each row
+                    // Skip empty rows
+                    if (isEmptyRow) {
+                        break;
+                    }
+                    System.out.println();
                 }
             }
         } catch (IOException e) {
@@ -221,5 +227,7 @@ public class MsgFileReaderService {
             e.printStackTrace();
         }
     }
+
+
 
 }
