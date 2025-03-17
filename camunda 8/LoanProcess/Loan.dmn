@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1t38i38" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <decision id="Decision_00bwmwp" name="Decision 1">
+    <decisionTable id="DecisionTable_19n2hh7">
+      <input id="Input_1" label="Credit Score">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_062hgzo" label="Income">
+        <inputExpression id="LiteralExpression_05kf82x" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Decision" typeRef="string" />
+      <rule id="DecisionRule_0xh0osd">
+        <inputEntry id="UnaryTests_0em8isc">
+          <text>&gt;800</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ckafdw">
+          <text>&gt;50000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zby2xr">
+          <text>"high"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0p4o8fa">
+        <inputEntry id="UnaryTests_00soaue">
+          <text>]500..800[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14yq0sk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06q2j6l">
+          <text>"Average"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bpgmup">
+        <inputEntry id="UnaryTests_0cdkty3">
+          <text>&lt;500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09nl1xc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vf8wfn">
+          <text>"Low"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_00bwmwp">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

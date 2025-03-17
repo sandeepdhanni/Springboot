@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0pof1hx" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="Process_17nu2a3" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_1ctbo1q" sourceRef="StartEvent_1" targetRef="Activity_1jdkafx" />
+    <bpmn:sequenceFlow id="Flow_1toa0hf" sourceRef="Activity_1jdkafx" targetRef="Activity_1xlqfrh" />
+    <bpmn:serviceTask id="Activity_1jdkafx" name="Check credit score">
+      <bpmn:incoming>Flow_1ctbo1q</bpmn:incoming>
+      <bpmn:outgoing>Flow_1toa0hf</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:businessRuleTask id="Activity_1xlqfrh" name="Check Loan Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1toa0hf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ivkzxf</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="Gateway_1vc7epr">
+      <bpmn:incoming>Flow_0ivkzxf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oixo31</bpmn:outgoing>
+      <bpmn:outgoing>Flow_14dyz0f</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0maszm1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1b1eprh</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0ivkzxf" sourceRef="Activity_1xlqfrh" targetRef="Gateway_1vc7epr" />
+    <bpmn:sequenceFlow id="Flow_1oixo31" name="&#62;50000" sourceRef="Gateway_1vc7epr" targetRef="Activity_17lv9iy" />
+    <bpmn:exclusiveGateway id="Gateway_01n9maf">
+      <bpmn:incoming>Flow_0lgcf2q</bpmn:incoming>
+      <bpmn:incoming>Flow_0q685n7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ksw56s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ofl3ah</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0lgcf2q" sourceRef="Activity_17lv9iy" targetRef="Gateway_01n9maf" />
+    <bpmn:sequenceFlow id="Flow_0ksw56s" sourceRef="Gateway_01n9maf" targetRef="Activity_03k84ns" />
+    <bpmn:userTask id="Activity_03k84ns" name="Loan approved">
+      <bpmn:incoming>Flow_0ksw56s</bpmn:incoming>
+      <bpmn:incoming>Flow_1b1eprh</bpmn:incoming>
+      <bpmn:outgoing>Flow_10x9kzk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_17lv9iy" name="Manager approval">
+      <bpmn:incoming>Flow_1oixo31</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lgcf2q</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_10x9kzk" sourceRef="Activity_03k84ns" targetRef="Activity_1q2j83c" />
+    <bpmn:endEvent id="Event_0cli6id">
+      <bpmn:incoming>Flow_0y5agoy</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0y5agoy" sourceRef="Activity_1q2j83c" targetRef="Event_0cli6id" />
+    <bpmn:serviceTask id="Activity_1q2j83c" name="Send loan offer letter" zeebe:modelerTemplate="io.camunda.connectors.SendGrid.v2" zeebe:modelerTemplateVersion="4" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0id2hpdGUiLz4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0iIzk5RTFGNCIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSJ3aGl0ZSIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSIjOTlFMUY0Ii8+CiAgICA8cGF0aCBkPSJNMC4yODU3MDYgMTUuNjg0Nkw1LjQzODM3IDE1LjY4NDRWMTUuNzE0M0gwLjI4NTcwNlYxNS42ODQ2Wk0wLjI4NTcwNiAxMC41NjE5SDUuNDM4MzdWMTUuNjg0NEwwLjI4NTcwNiAxNS42ODQ2VjEwLjU2MTlaIiBmaWxsPSIjMUE4MkUyIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAwLjI4NTcwNkgxMC41NjExVjUuNDA4NDdINS40MzgzN1YwLjI4NTcwNlpNMTAuNTYxNiA1LjQzODM3SDE1LjcxNDNWMTAuNTYxMUgxMC41NjE2VjUuNDM4MzdaIiBmaWxsPSIjMDBCM0UzIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAxMC41NjExTDEwLjU2MTEgMTAuNTYxNlY1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMVoiIGZpbGw9IiMwMDlERDkiLz4KICAgIDxwYXRoIGQ9Ik0xMC41NjExIDAuMjg1NzA2SDE1LjcxNDNWNS40MDg0N0gxMC41NjExVjAuMjg1NzA2WiIgZmlsbD0iIzFBODJFMiIvPgogICAgPHBhdGggZD0iTTEwLjU2MTEgNS40MDg0N0gxNS43MTQzVjUuNDM4MzdIMTAuNTYxNkwxMC41NjExIDUuNDA4NDdaIiBmaWxsPSIjMUE4MkUyIi8+Cjwvc3ZnPg==">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:sendgrid:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input target="apiKey" />
+          <zeebe:input target="from.name" />
+          <zeebe:input target="from.email" />
+          <zeebe:input target="to.name" />
+          <zeebe:input target="to.email" />
+          <zeebe:input target="unMappedFieldNotUseInModel.mailType" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_10x9kzk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0y5agoy</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_14dyz0f" name="&#60;50000" sourceRef="Gateway_1vc7epr" targetRef="Activity_0mbxqfl" />
+    <bpmn:sequenceFlow id="Flow_0maszm1" name="low" sourceRef="Gateway_1vc7epr" targetRef="Activity_17p2ty8" />
+    <bpmn:endEvent id="Event_0rldqbn">
+      <bpmn:incoming>Flow_0qcvf08</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1drd23x" sourceRef="Activity_17p2ty8" targetRef="Activity_15r5xfm" />
+    <bpmn:userTask id="Activity_0mbxqfl" name="Sent to Loan officer">
+      <bpmn:incoming>Flow_14dyz0f</bpmn:incoming>
+      <bpmn:outgoing>Flow_0q685n7</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0q685n7" sourceRef="Activity_0mbxqfl" targetRef="Gateway_01n9maf" />
+    <bpmn:sequenceFlow id="Flow_0ofl3ah" sourceRef="Gateway_01n9maf" targetRef="Activity_17p2ty8" />
+    <bpmn:sequenceFlow id="Flow_1b1eprh" name="high credit score &#38; income" sourceRef="Gateway_1vc7epr" targetRef="Activity_03k84ns" />
+    <bpmn:sequenceFlow id="Flow_0qcvf08" sourceRef="Activity_15r5xfm" targetRef="Event_0rldqbn" />
+    <bpmn:serviceTask id="Activity_15r5xfm" name="Send rejection mail" zeebe:modelerTemplate="io.camunda.connectors.SendGrid.v2" zeebe:modelerTemplateVersion="4" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0id2hpdGUiLz4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0iIzk5RTFGNCIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSJ3aGl0ZSIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSIjOTlFMUY0Ii8+CiAgICA8cGF0aCBkPSJNMC4yODU3MDYgMTUuNjg0Nkw1LjQzODM3IDE1LjY4NDRWMTUuNzE0M0gwLjI4NTcwNlYxNS42ODQ2Wk0wLjI4NTcwNiAxMC41NjE5SDUuNDM4MzdWMTUuNjg0NEwwLjI4NTcwNiAxNS42ODQ2VjEwLjU2MTlaIiBmaWxsPSIjMUE4MkUyIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAwLjI4NTcwNkgxMC41NjExVjUuNDA4NDdINS40MzgzN1YwLjI4NTcwNlpNMTAuNTYxNiA1LjQzODM3SDE1LjcxNDNWMTAuNTYxMUgxMC41NjE2VjUuNDM4MzdaIiBmaWxsPSIjMDBCM0UzIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAxMC41NjExTDEwLjU2MTEgMTAuNTYxNlY1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMVoiIGZpbGw9IiMwMDlERDkiLz4KICAgIDxwYXRoIGQ9Ik0xMC41NjExIDAuMjg1NzA2SDE1LjcxNDNWNS40MDg0N0gxMC41NjExVjAuMjg1NzA2WiIgZmlsbD0iIzFBODJFMiIvPgogICAgPHBhdGggZD0iTTEwLjU2MTEgNS40MDg0N0gxNS43MTQzVjUuNDM4MzdIMTAuNTYxNkwxMC41NjExIDUuNDA4NDdaIiBmaWxsPSIjMUE4MkUyIi8+Cjwvc3ZnPg==">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:sendgrid:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input target="apiKey" />
+          <zeebe:input target="from.name" />
+          <zeebe:input target="from.email" />
+          <zeebe:input target="to.name" />
+          <zeebe:input target="to.email" />
+          <zeebe:input target="unMappedFieldNotUseInModel.mailType" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1drd23x</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qcvf08</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_17p2ty8" name="Loan Rejected">
+      <bpmn:incoming>Flow_0maszm1</bpmn:incoming>
+      <bpmn:incoming>Flow_0ofl3ah</bpmn:incoming>
+      <bpmn:outgoing>Flow_1drd23x</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1ctbo1q</bpmn:outgoing>
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_17nu2a3">
+      <bpmndi:BPMNShape id="Activity_16kp7s7_di" bpmnElement="Activity_1xlqfrh">
+        <dc:Bounds x="440" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1vc7epr_di" bpmnElement="Gateway_1vc7epr" isMarkerVisible="true">
+        <dc:Bounds x="615" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zu4rsz_di" bpmnElement="Activity_0mbxqfl">
+        <dc:Bounds x="740" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_148r95c_di" bpmnElement="Activity_17lv9iy">
+        <dc:Bounds x="740" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_01n9maf_di" bpmnElement="Gateway_01n9maf" isMarkerVisible="true">
+        <dc:Bounds x="985" y="225" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jmuk2l_di" bpmnElement="Activity_03k84ns">
+        <dc:Bounds x="1110" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0saficd_di" bpmnElement="Activity_1q2j83c">
+        <dc:Bounds x="1260" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0cli6id_di" bpmnElement="Event_0cli6id">
+        <dc:Bounds x="1422" y="232" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0t08ocq_di" bpmnElement="Activity_1jdkafx">
+        <dc:Bounds x="260" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_089xvbt_di" bpmnElement="Activity_17p2ty8">
+        <dc:Bounds x="960" y="440" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1t2snyy_di" bpmnElement="Activity_15r5xfm">
+        <dc:Bounds x="1130" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rldqbn_di" bpmnElement="Event_0rldqbn">
+        <dc:Bounds x="1312" y="462" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0bsd3od_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ctbo1q_di" bpmnElement="Flow_1ctbo1q">
+        <di:waypoint x="188" y="200" />
+        <di:waypoint x="260" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1toa0hf_di" bpmnElement="Flow_1toa0hf">
+        <di:waypoint x="360" y="200" />
+        <di:waypoint x="440" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ivkzxf_di" bpmnElement="Flow_0ivkzxf">
+        <di:waypoint x="540" y="200" />
+        <di:waypoint x="615" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oixo31_di" bpmnElement="Flow_1oixo31">
+        <di:waypoint x="665" y="200" />
+        <di:waypoint x="740" y="200" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="684" y="182" width="38" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14dyz0f_di" bpmnElement="Flow_14dyz0f">
+        <di:waypoint x="640" y="225" />
+        <di:waypoint x="640" y="310" />
+        <di:waypoint x="740" y="310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="661" y="293" width="38" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0maszm1_di" bpmnElement="Flow_0maszm1">
+        <di:waypoint x="640" y="225" />
+        <di:waypoint x="640" y="480" />
+        <di:waypoint x="960" y="480" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="781" y="453" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1drd23x_di" bpmnElement="Flow_1drd23x">
+        <di:waypoint x="1060" y="480" />
+        <di:waypoint x="1130" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lgcf2q_di" bpmnElement="Flow_0lgcf2q">
+        <di:waypoint x="840" y="200" />
+        <di:waypoint x="1010" y="200" />
+        <di:waypoint x="1010" y="225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ksw56s_di" bpmnElement="Flow_0ksw56s">
+        <di:waypoint x="1035" y="250" />
+        <di:waypoint x="1110" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10x9kzk_di" bpmnElement="Flow_10x9kzk">
+        <di:waypoint x="1210" y="250" />
+        <di:waypoint x="1260" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y5agoy_di" bpmnElement="Flow_0y5agoy">
+        <di:waypoint x="1360" y="250" />
+        <di:waypoint x="1422" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0q685n7_di" bpmnElement="Flow_0q685n7">
+        <di:waypoint x="790" y="270" />
+        <di:waypoint x="790" y="250" />
+        <di:waypoint x="985" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ofl3ah_di" bpmnElement="Flow_0ofl3ah">
+        <di:waypoint x="1010" y="275" />
+        <di:waypoint x="1010" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1b1eprh_di" bpmnElement="Flow_1b1eprh">
+        <di:waypoint x="640" y="175" />
+        <di:waypoint x="640" y="110" />
+        <di:waypoint x="1160" y="110" />
+        <di:waypoint x="1160" y="210" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="860" y="76" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qcvf08_di" bpmnElement="Flow_0qcvf08">
+        <di:waypoint x="1230" y="480" />
+        <di:waypoint x="1312" y="480" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

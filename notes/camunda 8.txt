@@ -2212,6 +2212,15 @@ SEQUENTIAL MULTI-INSTANCE MARKER -
 the sequential multi-instance marker is represented with an icon that has three horizontal lines stacked on each other or it will run the instance in a sequence,one at a time.....
 
 
+PROCESS DEFINATION -
+it is the static model of the business process created using bpmn..
+
+
+PROCESS INSTANCE -
+it is a single, runtime execution of that process definition..
+
+PROCESS INSTANCE MIGRATION -
+migration is done to a process instance running on one version o fthe process definition to have it continuing onto on a different version of the process definition
 
 
 
@@ -2249,3 +2258,19 @@ IT IS A TOOL FOR MONITORING AND TROUBLESHOOTING PROCESS INSTANCES RUNNING IN THE
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nisasi4930@erapk.com
+Narayana@123

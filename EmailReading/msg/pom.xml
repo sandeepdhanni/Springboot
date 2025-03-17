@@ -93,9 +93,47 @@
 			<version>8.11.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.aspose</groupId>
+			<artifactId>aspose-email</artifactId>
+			<version>24.2</version> <!-- Use the latest version -->
+		</dependency>
+
+
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.simplejavamail/outlook-message-parser -->
+		<dependency>
+			<groupId>org.simplejavamail</groupId>
+			<artifactId>outlook-message-parser</artifactId>
+			<version>1.13.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>2.0.29</version>
+		</dependency>
+
+
+
 
 	</dependencies>
 
+	<repositories>
+		<repository>
+			<id>AsposeJavaAPI</id>
+			<name>Aspose Java API</name>
+			<url>https://releases.aspose.com/java/repo/</url>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
