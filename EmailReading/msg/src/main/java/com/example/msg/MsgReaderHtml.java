@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 //this is msg file which contains the html content which can read
 public class MsgReaderHtml {
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\Sreenivas Bandaru\\Downloads\\a737b-snjcd.msg";
+        String filePath = "C:\\Users\\ADMIN\\Downloads\\a0icp-3g0ay.msg";
         System.out.println("Starting to read MSG file: " + filePath);
         readMsgFile(filePath);
     }
