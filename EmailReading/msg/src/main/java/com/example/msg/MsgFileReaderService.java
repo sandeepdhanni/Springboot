@@ -195,7 +195,7 @@ public class MsgFileReaderService {
                     for (Cell cell : row) {
                         String cellValue = "";
                         if (cell == null || cell.getCellType() == CellType.BLANK) {
-                            cellValue = "UNKNOWN";
+                            cellValue = "NULL";
                         } else if (cell.getCellType() == CellType.NUMERIC) {
                             if (DateUtil.isCellDateFormatted(cell)) {
                                 // Format date to 'dd/MM/yyyy'
@@ -206,10 +206,10 @@ public class MsgFileReaderService {
                         } else if (cell.getCellType() == CellType.STRING) {
                             cellValue = cell.getStringCellValue();
                         } else {
-                            cellValue = "UNKNOWN";
+                            cellValue = "NULL";
                         }
 
-                        if (!"UNKNOWN".equals(cellValue)) {
+                        if (!"NULL".equals(cellValue)) {
                             isEmptyRow = false;
                         }
 
