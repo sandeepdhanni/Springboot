@@ -19,3 +19,42 @@ by consumer
 interoperability: message is transfered as a stream of bytes so any clients can operate on it irrespective
 of any other language..
 
+
+RABBITMQ ARCHITECTURE :
+                                 ROUTING KEY         MESSAGE
+                               |-------------> QUEUE ------> CONSUMER
+                               |
+                   MESSAGE     | ROUTING KEY         MESSAGE
+           PRODUCER -----> EXCHANGE ---------> QUEUE ------> CONSUMER
+                               |
+                               | ROUTING KEY         MESSAGE
+                               |-------------> QUEUE ------> CONSUMER
+
+
+
+WHAT IS MESSAGE QUEUE :
+message queuing allows applications to communicate by sending messages to each other...the message queue provides temparary message storage when the destination program is busy or not connected...a message queue is made of a producer,broker and a consumer..it provides a asynchronous communication between applications...
+
+
+WHAT IS RABBOTMQ :
+it is a message queue software (message broker) that acts as an intermediary platform where different applications can send and receive messages...
+rabbitmq originally implements the advanced message queueing protocol(AMQP).but now rabbitmq also supports several other api protocols such as STOMP,MQTT AND HTTP..
+
+producer is an application that sends messages to the rabbitmq broker and consumer is an application that reads messages from the rabbitmq broker..
+
+WHAT IS PRODUCER :
+producer is an application that sends messages.it does not send messages directly to the consumer.it send messages only to the reabbitmq broker...
+
+what is consumer :
+consumer os an application that reads messages from the rabbitmq broker..
+
+WHAT IS MESSAGE :
+an information that is sent from the producer to a consumer through rabbitmq..
+
+WHAT IS EXCHANGE :
+it acts as an intermediary between the producer and a queue..instead of sending messages directly to a queue,a producer can send them to an exchange instead.the exchange then send those messsages to one or more queuees following a specific set of rules  
+
+
+
+
+ 
