@@ -2109,7 +2109,7 @@ What is a Job?
 A Job represents a task that needs to be performed by a process. For example, a Job is created by Zeebe whenever a process instance reaches a Service Task. A Job representing the Service Task must be completed before the process is able to continue.
 
 What is a Job Worker?
-A Job Worker is a service capable of performing a particular task in a process. Job Workers are used to manage the interactions between the Zeebe Engine and the outside world and perform the following actions:
+A Job Worker is a service capable of performing a particular task in a process.A job worker implements the business logic required to complete a task. Job Workers are used to manage the interactions between the Zeebe Engine and the outside world and perform the following actions:
 Request Jobs - Request jobs of a certain type on a regular interval (i.e. polling). This interval and the number of jobs requested are configurable.
 Complete or Fail Jobs - After working on an Activated Job, a Job Worker informs Zeebe that the Job has either Completed or failed.
 A Job Worker may either Complete or Fail a Job.
@@ -2230,6 +2230,17 @@ high level,logic adstract,not meant to be automated..used by everyone,but especi
 
 OPERATIONAL PROCESS MODELS -
 low level,logically concrete,focused on automation....used by process participants(focused on human workflow),process engineers(focused on technical workflow),process analyst(focused on the whole collaboration)....process is detailed and executable...
+
+
+
+
+
+VARIABLE SIZE LIMITATION -
+there is a limit of 4 MB for the payload of a process instance. This 4 MB includes the variables and the workflow engine internal data, which means there is slightly less memory available for variables. The exact limitation depends on a few factors, but you can consider 3 MB as being safe. 
+
+
+
+
 
 
 
