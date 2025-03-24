@@ -2240,6 +2240,24 @@ there is a limit of 4 MB for the payload of a process instance. This 4 MB includ
 
 
 
+Hit policy -
+hit policy determines how decisions are made, and which outcomes are prioritized..it contains two decision they are output and result..hit policy define how outputs are aggregated or selected to produce the final result..the hit policy influences the readabilityand maintainability of the decision table..hit policy determines the final result..
+output - the output contains the sprecific value literal or expression..calculation an dfunction calls are added here..
+they are categorized into two hit policies..they are single and multiple hit policies...
+SINGLE HIT POLICY -
+single hit policy such as unique,first and any produces one result based on one matching rule.single hit policies are ideal for scenarios requiring decisive outcome,such as,
+medical triage(where only the most critical condition should be treated first),user authentication(only the first correct password should grant access)
+UNIQUE HIT POLICY -
+it means only one rule will apply or no rule at all..and it is the default if no policy is deternmined...common applications for the unique hit policy are:
+determininf discounts,determining the employee responsible for the task..the unique hit policy requires that the decision result contains the output entries of only one satisfied rule..if multiple rules are satisfied it indicates a policy voilation..
+Example : when there are 4 guests and the season is winter rule 3 and 6 overlap because they overlap because they share this inputs..
+MULTIPLE HIT POLICY -
+multiple hit policy such as collect,rule order and output order consider all matching rules and may return multiple results..multiple hit policies are better suited for scenarios requiring comprehensive results,such as,
+compiling  a shooping list from multiple meal plans,gathering all applicable discounts on a purchase..
+
+
+
+
 
 
 
