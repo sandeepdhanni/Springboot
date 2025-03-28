@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1qxiwr2" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="addcace" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <inputData id="InputData_0dyz74r" name="Production year" />
+  <inputData id="InputData_07rlmp1" name="Engine displacement" />
+  <inputData id="InputData_0vvdp66" name="Length" />
+  <inputData id="InputData_0r51w3k" name="Horsepower" />
+  <inputData id="InputData_0au9cl1" name="Width" />
+  <inputData id="InputData_0kjhi1t" name="Height" />
+  <inputData id="InputData_0ap7mxn" name="Wheelbase" />
+  <inputData id="InputData_1uy8a75" name="Driver Age" />
+  <inputData id="InputData_1tmqjun" name="Driver experience (years)" />
+  <inputData id="InputData_0728sh2" name="no-claims years" />
+  <inputData id="InputData_12a3mvs" name="Car value" />
+  <decision id="Decision_0gmw59q" name="Driver Score">
+    <informationRequirement id="InformationRequirement_0k69rph">
+      <requiredInput href="#InputData_1uy8a75" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0o5ubhu">
+      <requiredInput href="#InputData_1tmqjun" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1e0x3ia">
+      <requiredInput href="#InputData_0728sh2" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0soktc9">
+      <input id="InputClause_06szb49">
+        <inputExpression id="LiteralExpression_1qj2cc3" typeRef="string" />
+      </input>
+      <output id="OutputClause_17hsowi" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_ptypmtu" name="Car Insurance Rate">
+    <informationRequirement id="InformationRequirement_05hd1je">
+      <requiredDecision href="#Decision_0wmosv3" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1hnf0ji">
+      <requiredDecision href="#Decision_0gmw59q" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0nmst9q">
+      <input id="InputClause_01evgh5">
+        <inputExpression id="LiteralExpression_0gn5kbg" typeRef="string" />
+      </input>
+      <output id="OutputClause_0f8cehf" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0wmosv3" name="Car Score">
+    <informationRequirement id="InformationRequirement_191pwgg">
+      <requiredInput href="#InputData_12a3mvs" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1uo260n">
+      <requiredInput href="#InputData_0r51w3k" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1xiy6f5">
+      <requiredInput href="#InputData_0dyz74r" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1d5b1wy">
+      <requiredInput href="#InputData_07rlmp1" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1w58a3l">
+      <requiredInput href="#InputData_0vvdp66" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0od5w64">
+      <requiredInput href="#InputData_0au9cl1" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0bgiph6">
+      <requiredInput href="#InputData_0kjhi1t" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_04qqkaa">
+      <requiredInput href="#InputData_0ap7mxn" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_05dca6c">
+      <input id="InputClause_1mjj4zj">
+        <inputExpression id="LiteralExpression_0ypuv8y" typeRef="string" />
+      </input>
+      <output id="OutputClause_1pbr00p" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_1jntztn" dmnElementRef="InputData_0dyz74r">
+        <dc:Bounds height="45" width="125" x="427" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1y2thdi" dmnElementRef="InputData_07rlmp1">
+        <dc:Bounds height="45" width="125" x="557" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_03xmnk1" dmnElementRef="InputData_0vvdp66">
+        <dc:Bounds height="45" width="125" x="687" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0147ndk" dmnElementRef="InputData_0r51w3k">
+        <dc:Bounds height="45" width="125" x="297" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1q09fiy" dmnElementRef="InputData_0au9cl1">
+        <dc:Bounds height="45" width="125" x="817" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0od26r2" dmnElementRef="InputData_0kjhi1t">
+        <dc:Bounds height="45" width="125" x="947" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0nzochv" dmnElementRef="InputData_0ap7mxn">
+        <dc:Bounds height="45" width="125" x="1077" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1weav0i" dmnElementRef="InputData_1uy8a75">
+        <dc:Bounds height="45" width="125" x="1317" y="427" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_197ova9" dmnElementRef="InputData_1tmqjun">
+        <dc:Bounds height="45" width="125" x="1445" y="427" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0okr62r" dmnElementRef="InputData_0728sh2">
+        <dc:Bounds height="45" width="125" x="1577" y="427" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0mxjy3k" dmnElementRef="InformationRequirement_05hd1je">
+        <di:waypoint x="760" y="270" />
+        <di:waypoint x="1050" y="150" />
+        <di:waypoint x="1050" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0wjljov" dmnElementRef="InformationRequirement_1hnf0ji">
+        <di:waypoint x="1508" y="270" />
+        <di:waypoint x="1110" y="150" />
+        <di:waypoint x="1110" y="130" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_19q4mcx" dmnElementRef="InputData_12a3mvs">
+        <dc:Bounds height="45" width="125" x="167" y="477" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0pdpujs" dmnElementRef="InformationRequirement_0k69rph">
+        <di:waypoint x="1380" y="427" />
+        <di:waypoint x="1463" y="370" />
+        <di:waypoint x="1463" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0dx7513" dmnElementRef="InformationRequirement_0o5ubhu">
+        <di:waypoint x="1508" y="427" />
+        <di:waypoint x="1508" y="370" />
+        <di:waypoint x="1508" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_17c1aj4" dmnElementRef="InformationRequirement_1e0x3ia">
+        <di:waypoint x="1640" y="427" />
+        <di:waypoint x="1553" y="370" />
+        <di:waypoint x="1553" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0mw6z7n" dmnElementRef="InformationRequirement_191pwgg">
+        <di:waypoint x="230" y="477" />
+        <di:waypoint x="690" y="370" />
+        <di:waypoint x="690" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0glprvj" dmnElementRef="InformationRequirement_1uo260n">
+        <di:waypoint x="360" y="477" />
+        <di:waypoint x="710" y="370" />
+        <di:waypoint x="710" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0zbdkxg" dmnElementRef="InformationRequirement_1xiy6f5">
+        <di:waypoint x="490" y="477" />
+        <di:waypoint x="730" y="370" />
+        <di:waypoint x="730" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0u53u64" dmnElementRef="InformationRequirement_1d5b1wy">
+        <di:waypoint x="620" y="477" />
+        <di:waypoint x="750" y="370" />
+        <di:waypoint x="750" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0l8378c" dmnElementRef="InformationRequirement_1w58a3l">
+        <di:waypoint x="750" y="477" />
+        <di:waypoint x="770" y="370" />
+        <di:waypoint x="770" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0l78oos" dmnElementRef="InformationRequirement_0od5w64">
+        <di:waypoint x="880" y="477" />
+        <di:waypoint x="790" y="370" />
+        <di:waypoint x="790" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0l11kbd" dmnElementRef="InformationRequirement_0bgiph6">
+        <di:waypoint x="1010" y="477" />
+        <di:waypoint x="810" y="370" />
+        <di:waypoint x="810" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0091cg7" dmnElementRef="InformationRequirement_04qqkaa">
+        <di:waypoint x="1140" y="477" />
+        <di:waypoint x="830" y="370" />
+        <di:waypoint x="830" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0jrfck3" dmnElementRef="Decision_0gmw59q">
+        <dc:Bounds height="80" width="180" x="1418" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_011z5z0" dmnElementRef="Decision_ptypmtu">
+        <dc:Bounds height="80" width="180" x="990" y="50" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_003qt5o" dmnElementRef="Decision_0wmosv3">
+        <dc:Bounds height="80" width="180" x="670" y="270" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

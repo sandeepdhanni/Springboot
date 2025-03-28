@@ -1,9 +1,9 @@
 
 Camunda 8 is the latest version of Camunda, an open-source workflow and decision automation platform. 
-
+---------------------------------------------------------------------------------------------------------------------
 Improved Architecture: Camunda 8 introduces a more modular and flexible architecture, making it easier to integrate with other systems and scale.
 Cloud-Native: Designed for cloud environments, Camunda 8 supports containerization and serverless deployment.
-
+---------------------------------------------------------------------------------------------------------------------
 difference between camunda 7 and camunda 8:
 Integration
 REST API (Camunda 7): Camunda 7 provides a REST API for integration.
@@ -22,47 +22,47 @@ Camunda 8:
 Microservices-based architecture 
 Uses Zeebe as its core engine, which is designed for distributed systems.
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 components in camunda are :
 modeler-The Camunda Modeler is a desktop or web-based tool for creating and editing BPMN diagrams that define workflows.
-
+---------------------------------------------------------------------------------------------------------------------
 operator- The Operate component is used for monitoring and troubleshooting workflows.
 Key features:
 Workflow Visualization: Provides real-time visibility into active and completed workflows.
 Error Handling: Detects and allows for manual resolution of errors in workflow executions.
-
+---------------------------------------------------------------------------------------------------------------------
 tasklist - The Tasklist is an out-of-the-box application that allows end-users to view and manage user tasks assigned to them.
 Key features:
 User Task Management: Helps users claim, complete, or delegate tasks within a workflow.
 Role-Based Access: Tasks are assigned and managed based on roles or users
-
+---------------------------------------------------------------------------------------------------------------------
 optimize - The Optimize component focuses on reporting and process improvement.
 Key features:
 Analytics and Reports: Generates reports based on workflow data to analyze performance.
 Dashboards: Provides visual dashboards to monitor key process metrics (KPIs).
-
+---------------------------------------------------------------------------------------------------------------------
 connectors - Connectors are pre-built integrations that enable Camunda workflows to interact with external systems.
 
-
+---------------------------------------------------------------------------------------------------------------------
 BPM(business process management):
 it is a systematic approach for designing,executing,documenting,monitoring and controlling both automated and non automated process..
-
+---------------------------------------------------------------------------------------------------------------------
 
 BPMN(business process model and notaion) -BPMN is a standardized notation or visual language used to model and represent business 
 processes. It is a diagramming standard used to document and design workflows in a way that is understandable by both business 
 stakeholders and technical teams.BPMN is a powerful modeling language for simple and complex business processes.
-
+---------------------------------------------------------------------------------------------------------------------
 OMG(object management group) - it is responsible for maintainance of bpmn standards..
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 simulaton token - the simulation token is a concept primarily related to process visualization and testing. It is used to represent
 the execution of a business process instance as it moves through the BPMN workflow. The simulation token provides a way to visually 
 track the flow of execution during modeling, testing, or debugging of a process, ensuring that the process behaves as expected 
 before deployment.
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 BPMN flow elements:
 events - they describe things that happens before or during the end of the process...they can happen regardless of the process or as a
@@ -77,8 +77,8 @@ gateways - these are elements that represent multiple possible paths in the proc
 
 
 
-
-zeebe engine :
+---------------------------------------------------------------------------------------------------------------------
+ZEEBE ENGINE :
 Zeebe is the heart of Camunda 8 and acts as the core workflow engine. It is a streaming-based, distributed, and event-driven engine 
 designed for high scalability and fault tolerance.
 BPMN Support: Zeebe supports the Business Process Model and Notation (BPMN) standard for defining workflows.
@@ -88,81 +88,86 @@ your business logic lives in worker, microservices that interact with the zeebe 
 within your zeebe clusters are responsible for executing the bpmn..workers can be implemented in your favourite programming language
 as we do have clients for major programming language....zeebe uses a event based architecture that destributes and replicate the run
 time state of your process instances over several 
-
-zeebe vs classical engine throughput:
+---------------------------------------------------------------------------------------------------------------------
+ZEEBE VS CLASSICAL ENGINE THROUGHPUT:
 designed to accommodate high throughput use case out of the box.
 no relatyional database bottleneck...
 linear performance scalling...
 
 
  
-
-tasks in camunda 8 -
+---------------------------------------------------------------------------------------------------------------------
+TASKS IN CAMUNDA 8 -
 user task - the user task iis used to define an activity that needs to be completed by human actor...
 when the token arrives to the user tasks it will stop at this point and waits until the task is 
 completedby human actor..
-
-business rule task - 
+---------------------------------------------------------------------------------------------------------------------
+BUSINESS RULE TASK - 
 it is used to define the evaluation of business rules..those are typically modeled in decision model and notaion(DMN)..
 once the decision is made process instance is continues...
 
-
-manual task - it is used to define the activity that is external to the bpm engine..when u set the task as manuel it means that
+---------------------------------------------------------------------------------------------------------------------
+MANUAL TASK - 
+it is used to define the activity that is external to the bpm engine..when u set the task as manuel it means that
 the engine does not need to know who will do this activity and there is no known system or user interface..when the token arrives
 at this task the process instance will continue automatically..for the engine manual task is handled as pass activity..
-
-service task - it is used to define the automatic execution of that task..typically it represends service task...this means that 
+---------------------------------------------------------------------------------------------------------------------
+SERVICE TASK -
+ it is used to define the automatic execution of that task..typically it represends service task...this means that 
 the engine does not execute the task by itself but deligates to different it system...when the token reaches the service task,it 
 waits for the external system to complete the task before it continues it
 
+---------------------------------------------------------------------------------------------------------------------
+SCRIPT TASK- 
+it is used to define the evaluation of script..
 
-script task- it is used to define the evaluation of script..
-
-
-send task and receive task - it is used for sending and receiving message..when the token arrives to send task,the process instance 
+---------------------------------------------------------------------------------------------------------------------
+SEND TASK AND RECEIVE TASK - 
+it is used for sending and receiving message..when the token arrives to send task,the process instance 
 sends a message to the external system..it is same as service task..
 the receiver task referance the message, so the process instanc has to wait here until the proper mesasge is received..
 
 
-
-events in camunda 8:
+---------------------------------------------------------------------------------------------------------------------
+EVENTS IN CAMUNDA 8:
 they are flow elements along with tasks and gateways...
 tasks - things that has to be done during the process..
 gateways - circumstances that lead to different path in the flow...
 events - things that is suppose to happen..
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 start event - shows the event that causes the process to start...this is where the process or subprocess starts...
-
+---------------------------------------------------------------------------------------------------------------------
 intermediate events - nothing happens but some state indicate some state archieved in the process..they are espically useful for 
 monitoring to understand how the process is doing..
-
+---------------------------------------------------------------------------------------------------------------------
 end event - this will end the process....
-
+---------------------------------------------------------------------------------------------------------------------
 catching events(passive or start event) - they have a defined trigger : something happened independent of the 
 process...the process has to wait for this event or react to it..
 catching event may result in :
 the process starting
 
-
-throwing event - 
+---------------------------------------------------------------------------------------------------------------------
+THROWING EVENT - 
 the event is caused or triggered by the process itself...
 
-
-timer events -
+---------------------------------------------------------------------------------------------------------------------
+TIMER EVENTS -
 they are the events triggered by a defined timer..
 timer events can be :
 1. timer start events- a process can have one or more timer events...each of the timer events must have either a time or date or lifecycle defineation...when a timer is triggered a new peocess is created and the corresponding timer event is activated..
 2. intermediate timer catch events - an intermediate timer catch event mush have a time duration that defines
 when it defines when it is triggered....
 
-
-conditional events -
+---------------------------------------------------------------------------------------------------------------------
+CONDITIONAL EVENTS -
 sometimes we only want a process to start or to continue if a certian condition is true..anything can be condition(like the timeer event) can only exist as a catching event..
 the conditional event is triggered if a given condition is evaluated to true...
-
-message events - it is used to send or recieve the events..
+---------------------------------------------------------------------------------------------------------------------
+MESSAGE EVENTS - 
+it is used to send or recieve the events..
 with the message throw event we send the message..
 with the message catch event we have to rely on the sender,so we wait until we receive the message
 we have :
@@ -170,29 +175,31 @@ message start event and end event
 intermediate message catch or throw events
 
 
-
-boundary event -
+---------------------------------------------------------------------------------------------------------------------
+BOUNDARY EVENT -
 they are the only intermediate catching events that are attached to a task within a process..you wait for them while you do something else in the process...
 there are two types in boundary events..they are :
 interrupting and non interrupting boundary events
-
-intermediate boundary event - when triggered , they cancel the task.
+---------------------------------------------------------------------------------------------------------------------
+INTERMEDIATE BOUNDARY EVENT - 
+when triggered , they cancel the task.
 non interrupting boundary event - when triggered,they create a new token that runs parallel with the initial token..
 
-
-event based gateway - it is similar to exclusive data based gateway, the event based gateways offers a different way to design process paths...this gateway does not route based on data, but reather by which event takes place next...not all intermediate events combine with the event gateway...you can , however combine it with a receive task..
+---------------------------------------------------------------------------------------------------------------------
+EVENT BASED GATEWAY - 
+it is similar to exclusive data based gateway, the event based gateways offers a different way to design process paths...this gateway does not route based on data, but reather by which event takes place next...not all intermediate events combine with the event gateway...you can , however combine it with a receive task..
 events are used to model the things that are supposed to happen during a process...events can be catching or throwing....events can be attched to tasks(boundary events,interruptingor non-interrupting)..
 
 
-
-signal startevent:
+---------------------------------------------------------------------------------------------------------------------
+SIGNAL STARTEVENT:
 
 it is just like message event like when u want to trigger some message event u need to send a message name
 
 
 
-
-BPMN participants - 
+---------------------------------------------------------------------------------------------------------------------
+BPMN PARTICIPANTS - 
 participant is the entity who controls a single process,or the tasks within a process..this could be :
 a person
 an organization
@@ -200,10 +207,10 @@ a department
 a role
 participants are represented as pools and lanes ...pools shows who controls the process and lanes are who are responsible for task within it..
 
-
-pool :
+---------------------------------------------------------------------------------------------------------------------
+POOL :
 pool represents the participant who controls the single process..it contains all the flow nodes and artifacts that make up to single process..since the process is entirtely contained within the pool sequence flows cannot leave the boundaries of the pool..the pool controls the process flow..besides the task within the process similar to a conductor assign the pieces of a musical score to musicians in an archestra...assignment of tasks within a process is also referred to as orchestration...anytime a new process is created pool is implied in the modeler even though u have not defined it is there by default...1 process=1 pool
-
+---------------------------------------------------------------------------------------------------------------------
 
 lanes :
 while the pool behaves like the conductor for the whole process...lanes alos known as swim lanes are like a vaarious musicians in orcastra..each lane defines who or waht is responsible for completing each of the task in the process..lanes can be named according to :
@@ -215,7 +222,7 @@ applications("crm system")
 lanes can be useful for clarifying who owns the tasks within a process but they also have some drawbacks the are :
 adding multiple lanes to a pool makes the process harder to read..
 lanes make it more difficult to change the process down  the line,which increases the maintainance burden..
-
+---------------------------------------------------------------------------------------------------------------------
 when to use lanes?
 we can use lanes only in stategic process and operational process model..
 stategic process model - 
@@ -223,7 +230,7 @@ focused on responsibilities and their borders.high level overview(birds eye view
 operational process model - focused on human workflows.it is low level(worm eye view),logically concrete,coordinates details between human workflow and technical workfloww.can be detailed and complex..
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 FEEL() -
 FEEL (Friendly Enough Expression Language) is a key component in Camunda 8, designed to write expressions that are easily understood by both business professionals and developers. Here are the main points about FEEL:
 Purpose: FEEL is used to define expressions in BPMN diagrams, DMN diagrams, and Forms within Camunda 8
@@ -231,31 +238,34 @@ Origin: It is specified in the DMN (Decision Model and Notation) specification b
 
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 BPMN message - 
 message enables the communication between processes and other systems..messages helps model and understand information is shared and flows between different parts of the overall business process..
 
-
+---------------------------------------------------------------------------------------------------------------------
 choosing between task and event messages -
 send messages are active and receive mesages are passive..
 tasks- a task emphasizes the action, you can attach several different boundary events to a message task.
 events - the event reflects a status,use a message event when : you start a process when a message is received,a message triggers or interrupts the flow..best practice is use a task for sending messages and a event for receiving messages..
 
+---------------------------------------------------------------------------------------------------------------------
+ORCHESTRATION - 
+we have one pool where orchestrator make sure that the task are assigned correctly..in each participant lane.. 
 
-orchestration - we have one pool where orchestrator make sure that the task are assigned correctly..in each participant lane.. 
-
-
-collaboration - each participant orchestrate their tasks which means they are represented in seperate pools..the interaction between them are modeled with message flows..
+---------------------------------------------------------------------------------------------------------------------
+COLLABORATION - 
+each participant orchestrate their tasks which means they are represented in seperate pools..the interaction between them are modeled with message flows..
 collapsed pool: shows the different services/processes that are connected to the expanded process.
 
-
-synchronous adn asynchronous communicartion - receive instant response where as asynchronous means waitin for the response..the sender of the message expects a immediate response from the receiver before proceding to the next activity.....
+---------------------------------------------------------------------------------------------------------------------
+SYNCHRONOUS ADN ASYNCHRONOUS COMMUNICARTION - 
+receive instant response where as asynchronous means waitin for the response..the sender of the message expects a immediate response from the receiver before proceding to the next activity.....
 asynchronous communication  means the sender of the message does not wait for the immediate response from the receiver..the sender can continue with other activitywhile waiting for the response asynchronously...for asynchronmous request response calls u can use send task for the request and the following receiving task or receive message event to wait for the response...
 
 
 
-
-subprocess - 
+---------------------------------------------------------------------------------------------------------------------
+SUBPROCESS - 
 subprocess is a group of elements or flow nodes that make up a child process used within the large parent process..usually the elements in the subprocess contained within the rounded rectangular similar to a task...
 why use subprocesses ? - subprocesses encapsulates complexity processes that represents high level and low level detail at a single heirachy can sometimes be overweling and confusing...subprocesses helps to simplify the process by encapsulating the groups of process elements into their own seperate scope..these groups can be collapse to the size of a task which makes it easier to read the process from the parent level.....subprocesses can also help to modularize and organize your processes..subprocesses allows u to attach events to a specific scope..
 there are different types of tasks.they are :
@@ -266,45 +276,53 @@ ad-hoc subprocesses
 event subprocesses
 
 
-
-embedded or nested subprocesses - it is contained within an excessable from the parent process....it shares the same set of data from its parent processes...in the parent process it is handled like a task this means that the subprocesses starts when the token arrives from the parent process..this is the only way the subprocess starts..it can't be started from outside such as message event ot timed event...it only begins when the token arrives from the parent process...it stays active as long as any element contained within it is active...when the last element is completed then the subprocess is completed...then the token moves through the outgoing flow and comtinues through the parent processes.. 
+---------------------------------------------------------------------------------------------------------------------
+EMBEDDED OR NESTED SUBPROCESSES - 
+it is contained within an excessable from the parent process....it shares the same set of data from its parent processes...in the parent process it is handled like a task this means that the subprocesses starts when the token arrives from the parent process..this is the only way the subprocess starts..it can't be started from outside such as message event ot timed event...it only begins when the token arrives from the parent process...it stays active as long as any element contained within it is active...when the last element is completed then the subprocess is completed...then the token moves through the outgoing flow and comtinues through the parent processes.. 
 note: embedded subprocesses must always have one none start event or start from the none events..
 
-
-collapse subprocesses - 
+---------------------------------------------------------------------------------------------------------------------
+COLLAPSE SUBPROCESSES - 
 they hide the details of the subprocess from the parent view...this is useful when a high level view of a parent process..without reveling the lower level of the subprocess...
 
 
+---------------------------------------------------------------------------------------------------------------------
+CALL ACTICITY - 
+they are referred to as resuable subprocesses...they contain the same subprocesses,but store in seperate bpmn diagram..they can be shared across teams and managed by multiple team member,which promotes collaboration and distributed ownership,reduces dependencies on any single person or team..they do not inherit data from the parent process..a call acctivity needs data to be passed to it...
 
-call acticity - they are referred to as resuable subprocesses...they contain the same subprocesses,but store in seperate bpmn diagram..they can be shared across teams and managed by multiple team member,which promotes collaboration and distributed ownership,reduces dependencies on any single person or team..they do not inherit data from the parent process..a call acctivity needs data to be passed to it...
+---------------------------------------------------------------------------------------------------------------------
+BPMN ARTIFACTS -
+ it include annotations and groups...they add valuable information to process diagram,it does not effect the flow...artifacts does not effect the sequence flow...
 
-
-BPMN artifacts - it include annotations and groups...they add valuable information to process diagram,it does not effect the flow...artifacts does not effect the sequence flow...
-
-
-annotations - add descriptive text to diagrams...used to supplement diagrams..should not replace the process documentation...provide insight into the execution of tasks....
+---------------------------------------------------------------------------------------------------------------------
+ANNOTATIONS - 
+add descriptive text to diagrams...used to supplement diagrams..should not replace the process documentation...provide insight into the execution of tasks....
 purpose of annotations - to provide textual description that can give more context to a model element..annotations serves as a means to add descriptive text or explaination to elements wiithin a BPMN diagram...
 
+---------------------------------------------------------------------------------------------------------------------
+GROUPS - 
+they organize elements within our diagram and won't change the sequencial flow...do not influence execution semantics..can be applied across pool boundaries...markoff parts of your models which only certain conventions apply..groups are about the characterization and analytics...they are the visual marker used for organizational purpose and have no impact on the execution..groups are used to visually categorize or cluster elements within a bpmn diagram...
 
-groups - they organize elements within our diagram and won't change the sequencial flow...do not influence execution semantics..can be applied across pool boundaries...markoff parts of your models which only certain conventions apply..groups are about the characterization and analytics...they are the visual marker used for organizational purpose and have no impact on the execution..groups are used to visually categorize or cluster elements within a bpmn diagram...
-
-
-data objects - it represents any kind of data that is relevent for this process instance..data objects should be connected to flow nodes using associations..
+---------------------------------------------------------------------------------------------------------------------
+DATA OBJECTS - 
+it represents any kind of data that is relevent for this process instance..data objects should be connected to flow nodes using associations..
 purpose of data objects - to indicate where data is needed and how it flows between tasks within the process...represents information that is input into,output from,or transformed within the process...
 
+---------------------------------------------------------------------------------------------------------------------
+COLLECTION DATA OBJECTS -
+ modification of a regular data object...used when you need to handle multiple instances of the same datatype..
 
-collection data objects - modification of a regular data object...used when you need to handle multiple instances of the same datatype..
-
-
-data stores - they are the type of stores that allows data to be persistently stored like a database...they are typically shared and accessed by multiple processes or instances and can be accessed or updated by activities within the process...they provide the mechanism for storing data that persists on the line of the process....data stores are connected to activities through association lines,indicating the flow of data into and out of the store...
+---------------------------------------------------------------------------------------------------------------------
+DATA STORES - 
+they are the type of stores that allows data to be persistently stored like a database...they are typically shared and accessed by multiple processes or instances and can be accessed or updated by activities within the process...they provide the mechanism for storing data that persists on the line of the process....data stores are connected to activities through association lines,indicating the flow of data into and out of the store...
 purpose of data stores - to show where the data is stored for long ter, access or where multiple process instances might access or update the same data...to indicate the reuse of data across different processes or different instances of the same process...symbolizes a storage location for data that persistes beyond the life of the process....
 
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 BPMN error events -
 there are cases where error occurs and when that occurs then we have to use error event for handling errors...
-error event -
+ERROR EVENT -
 Error events in Camunda 8 are used to handle business errors or technical failures that occur during process execution.
  an error event is a bpmn element represented as a flash symbol..it reacts to an error that occur in an activity such as a task or a subprocess or call activty when it can't complete due to error that you have defined for it..it is considered as serious because it interupts the activity it is attached to which means the processinstance will not continue pass but instead go to another path which u have defined....like other event the error events can be thowing event or a cathching event..the error can be thrown in any activity.....
 in order to model the error expecitly in your process..we would use a throw event...error throw event modeled as an end event for a subprocess or call activity and typically it include the 
@@ -314,8 +332,8 @@ when the activity cannot be completed..and the error happens during activity exe
 
 note : be selective when modeling error events so that your process remains uncluttered..
 
-
-Error catch events :
+---------------------------------------------------------------------------------------------------------------------
+ERROR CATCH EVENTS :
 An Error Catch Event is used to catch an error thrown within a process and take corrective action.
 Types of Error Catch Events:
 Error Boundary Event (Attached to a Task or Subprocess)
@@ -326,8 +344,8 @@ Error Start Event (Inside an Event Subprocess)
 Triggers a new event subprocess when a specific error occurs.
 Can handle errors globally within the scope of the main process.
 
-
-Error throw events :
+---------------------------------------------------------------------------------------------------------------------
+ERROR THROW EVENTS :
 An Error Throw Event is used to explicitly signal that an error has occurred.it is an active event to throw an error..
 Types of Error Throw Events:
 Error Intermediate Throw Event
@@ -339,25 +357,41 @@ Can be caught by an Error Boundary Event or an Error Start Event.
 
 
 
-
-escalation events :
+---------------------------------------------------------------------------------------------------------------------
+ESCALATION EVENTS :
 Escalation events in Camunda 8 are used to signal a non-critical issue that needs attention but does not terminate the process. Unlike Error Events, which indicate failures, Escalation Events allow a process to handle exceptional situations while continuing execution.it is a bpmn element which is represented as a upward symbol..it is used for communication between parent and subprocess levels(vertical communication)..unlike other events escalation events are non critical because they don't necessarily interupt the process..they indicate that information needs to be send to a higher scope level in the process...unlike error events escalation events can be thrown and caught..
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 DMN(decision management and notation) - 
 it is a standard notation developed by object management group(OMG) and widely used in different industries....DMN defines the desicion logic in a visual way,working alongside BPMN...in DMN,decision means derive a result(output) from given facts..
+---------------------------------------------------------------------------------------------------------------------
+DRD(decision requirement diagram) - it is the graphical representation of the decision making process and its input relation to input data,knowledge sources and other decisions... they are visualize as dicision requirement diagram..when starting to model a decision it is important to start with drd because it defines with the structure of the decision....it is a dmn notation that allows for the definition of complex decisions. In drd all required decisions are evaluated first...
+drd's contain :
 
-DRD(decision requirement diagram) - they are visualize as disicion requirement diagram..when starting to model a decision it is important to start with drd because it defines with the structure of the decision....it is a dmn notation that allows for the definition of complex decisions.drd's contain :
+knowledge requirements - this connector arrow indicates that a decision requires knowledge from a business knowledge model...the connection between knowledge source and a decision is called knowledge requirement
 decision - the act of determining an output value from the number of input values,using logic decision
-input data - the input data that you feed into your decision logic in order to determinethe output value..
+input data - the input data that you feed into your decision logic in order to determine the output value..these are the pieces of information required to make a decision
+box expression - this is the core element of a drd..it represents decisions and you can implement them as decision tables...
+knowledge source - this represents the authority or source of a decision..it can be a document,a person,or an organization..it is used to document the authority that defines the rules for a decision..
+* the connection between input data and the decision box is called information requirement..
+
 relations between decisions - you can connect decision with arrows and therefoew indicate which decision output will be considered as an input for another decision...
+
+* decisions can be based on other decision for example in the discount scenario we can add a final screnario regarding the discounted amount represented by literal expression..in the example the order amount and customer type still serve as input for the decision table that calculates the discount percentage..then the discount decision table informs the final decision which also uses the order amount to  determine the discounted amount..the initial decision is required to as required decision establish the outcome for the final decision..
+
+
+top-down approach -
+a strategy used to model complex decisions by starting with the main decision and then breaking it down into smaller,more manageble decision..
+
+
+
 
 Each line in the decision table represents a rule...a rule consists of an input expression and an output expression..if the input expression returns true,then the corresponding output will be returned...
 
-
+---------------------------------------------------------------------------------------------------------------------
 Business rule task - it is used to model the evalution of business rule,for example, a decision modeled in decision model and notation..
-
+---------------------------------------------------------------------------------------------------------------------
 hit policies in dmn - 
 it describes different ways to evaluate the rules conatained in a decision table..different policies do not only lead to different result, but typically also requires different modes of thinking and reasoning about the meaning of the entire decision table...the unique hit poolicy returns a single result...two rules cannot overlap and evaluate to true at the same time...in our decision table,the forth rule overlaps with other rulles and therefore prevents us from using the unique hit policy...the hit policy first evaluates the rules from top to bottom and returns the first rule that evaluates as true..
 
@@ -369,10 +403,10 @@ it describes different ways to evaluate the rules conatained in a decision table
 
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 decision logic - it defines the roles in the decision..the most common way to model the decision logic is by decision table..
 dmn comes with its own expression logic feel(friendly enough expression language)...with both drd(decision requirement diagram) and decision logic it is easy tho define the logic of the decision..
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 FEEL(friendly enough expression language) - it is the part of th4e DMN specification of the object management group..it is designed to write the expression for decision table and literal expressions in a way that is easy top understand business professionals and developers..everything begins with datatypes and it has several datatypes..
@@ -528,21 +562,21 @@ disabled button - this element can still be edited but the data in the field wil
 default value - you can create default value which allows the elements to use a specific value..until one is written or choosen..
 custom properties - this will allow you to set the property value that can be used in the execution of the swarm.. this is often used by custom task list implementaions to customize the form..
 
+---------------------------------------------------------------------------------------------------------------------
 
 
-
-script task -
+SCRIPT TASK -
 it is used to model the evaluation of a script..
+---------------------------------------------------------------------------------------------------------------------
 
-
-expanded subprocesses - 
+EXPANDED SUBPROCESSES - 
 this is a embedded subprocesses that allows you to group elements of the process..
+---------------------------------------------------------------------------------------------------------------------
 
-
-call activity - 
+CALL ACTIVITY - 
 a call activity allows you to call and invoke another process as part of this process...the subprocess is externalized (stored as seperate bpmn diagram) and can be invoked by different processes...
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 TIMER EVENT - 
 it is used to initiate the process instance periodically or pause it for a specific duration of time..
@@ -551,7 +585,7 @@ cycle - it is used to start a new process instance at a certain time,such as eve
 eg: R/PT2H - Repetition/Period Time 2 Hours
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 MLTI-INSTANCE MARKER -
 WHEN TO USE -
 manage iterations in a business process
@@ -560,8 +594,8 @@ TYPES OF MULTI-INSTANCE MARKERS:
 sequencial-instance marker
 parallel-instance marker
 multi-instance markers can be used with different task types.. 
-
-paralle instance -
+---------------------------------------------------------------------------------------------------------------------
+PARALLE INSTANCE -
 in case of parallel instance activity,all instances are created when the multi-instancebody is activated..the instances are executed concurrently and independently from each other..
 in parallel instance we have completion condition which terminates the multi-instance in advance if a condition occurs...
 we have input collection in multi-instance where we define a variable where this variable will be evaluated and the task instance will be createdfor each element in the collection..
@@ -571,7 +605,7 @@ we have output collection will contain the aggregate result of each individual v
 
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 FRIENDLY ENOUGH EXPRESSION LANGUAGE(FEEL) OVERVIEW -
 FEEL is a expression language designed to write expressions in a way that both business professionals and developers can easily understand it...FEEL is executed by engines...FEEL is part of the decision model and notation(DMN) standard...
@@ -599,7 +633,7 @@ DATE -
 a date value without a time component...format:yyyy-mm-dd....eg:date("2024-06-06")
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 ADDITIONAL FEEL DATA TYPES -
 temporal data types and complex data types play a pivotal roles in decision modeling..
 temporal data types are crucial for scenarios involving time-sensative decisions or events...
@@ -609,24 +643,24 @@ eg : date("2024-04-06")+duration("P1D")   //date("2020-04-07")
 
 complex data types empower modelers to organize and manage intricate data structures,such as nested lists and key-value pairs,essential for capturing complex business logic and relationships... .complex data types include : 
 context - context is a list of entries..each entry has a key and a value...the kety is either a name or a string..the value can  be any type..eg : [1,2,3,4]
-
+---------------------------------------------------------------------------------------------------------------------
 
 BASIC FEEL OPERATORS - 
 they are calculation operators,comparison operators,logical operators..
 CALCULATION OPERATORS - 
 they are Addition(+),Subtraction(-),Multiplication(*),Division(/),Exponentiation(**)
-
+---------------------------------------------------------------------------------------------------------------------
 COMPARISON OPERATOR - 
 they are Equal to(=),not equals to (!=),greater than(>),less than(<)
 
 IMPORTANT : the equals operator has only one equals sign....eg : x=y
-
+---------------------------------------------------------------------------------------------------------------------
 
 LOGICAL OPERATOR - 
 they are and,or
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 FEEL BUILD-IN FUNCTIONS - 
 FEEL comes with set of build-in functions that enable u to manipulate data,perform calculations, and make decision....
 some build-in functions are :
@@ -637,37 +671,37 @@ random number() : generates a random number between zero and one
 today() : obtains the current date without any time component..eg:2025-02-06
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 WHERE CAN YOU USE FEEL :
 you can use feel in 
 BPMN diagram -in script task,gateway conditions
 DMN diagram - in decision tables,literal expressions
 camunda forms - element properties,templating syntax.
-
+---------------------------------------------------------------------------------------------------------------------
 FEEL IN SCRIPT TASK - 
 when the process instance arrives at a script task,the integrated FEEL scala engine evaluates the script task FEEL expression..once the FEEL expression is evaluated successfully,the process instance continues..if the FEEL expression is unsuccessful,an incident is raised at the script task..when the incident is resolved,the script task is evaluated again...
 To configure a script task with an inline FEEL expression,perform the following steps:
 1. define the feel expression inside the expression attribute...
 2.Define the name of the process variable in the resultVariable attribute..this variable will store the result of the feel expression evaluation...
-
+---------------------------------------------------------------------------------------------------------------------
 
 FEEL IN EXCLUSIVE GATEWAY - 
 when an exclusive gateway is entered,the conditionExpression is evaluated.the process instance takesthe first sequence flow where the condition is fulfilled..
 if no condition is fulfilled,it takes the default flow of the gateway..if the gateway has no default flow,an incident is created.....A condition defines when a flow is taken..it is a boolean expression that  can access the process instance variables and compare them with literals or other variables.the condition is fulfilled when the expressionreturns true..Multiple boolean valuesor comparisions can be combinedas disjunction(or) or conjunction(and)...
-
+---------------------------------------------------------------------------------------------------------------------
 FEEL IN DECISION TABLE - 
 An input expression specifies how the value of the input clause is generated.it is usually simple and references a variable which is available during the evaluation..the expression is set inside a text element that is a child of the inputExpression XML element..
 An input entry contains a unary-test in a text element as child of an inputEntry XML element..the input entry is satisfied when the evaluated expression returns true...
-
+---------------------------------------------------------------------------------------------------------------------
 
 FEEL IN LITERAL EXPRESSION - 
 A decision literal expression represents decision logic which can be depicted as an expression..it consistes of a literal expression and a variable..
 A decision literal expression is represented by a literalExpression inside a decision XML element..The literal expression  specifies how the value of the decision is generated.it can be used to do a complex calculation,or to combine the output values of the requred decision...
-
+---------------------------------------------------------------------------------------------------------------------
 FEEL IN ELEMENT PROPERTY :
 A form configuration starts off as a composition of form elements to define the structure..the specific behaviors are then defined as properties on the individual form elements through the properties panel....
 the literal expression specifies how the value of the decision is generated..it can be used to do a complex calculation,or to combine the output values of required decision...
-
+---------------------------------------------------------------------------------------------------------------------
 FEEL in templating syntax - 
 templated properties configuration allows for dynamic content creation within forms using a templating languagecalled feelers..
 FEELERS SYNTAX :
@@ -710,7 +744,7 @@ week of year()
 month of year()
 last day of month()
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -783,7 +817,7 @@ DURATION(YM) + DURATION(DT) = NULL
 
 
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 CAMUNDA FEEL ENGINES -
 To evaluate the expression,camunda employs two distinct FEEL engines:
@@ -791,7 +825,7 @@ FEEL scala : it is a java based FEEL engine integrated into the backend of camun
 Feelin : it is a javascript-based FEEL engine designed for use in the browser and used for camundaforms and templating...
 note: camunda extensions are currently not supported by feelin...
 
-
+---------------------------------------------------------------------------------------------------------------------
 CAMUNDA FEEL TEMPORIALS :
 
 Understand the basic temporal data types:
@@ -824,7 +858,7 @@ week of year()
 month of year()
 last day of month()
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -987,7 +1021,7 @@ Result: "Camunda FEEL is great"
 Build a paragraph in HTML (<p> tag) to display the colors of this list separated by comma ",": ["red","yellow","blue","green"]
 string join(["red","yellow","blue","green"], ", ", "<p>", "</p>")  
 Result: "<p>red, yellow, blue, green</p>"
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -1003,7 +1037,7 @@ get value()
 get entries()
 context put()
 context merge()
-
+---------------------------------------------------------------------------------------------------------------------
 
 CONTEXT -
 A context data type is a powerful feature that allows you to define and manipulate collections of key-value pairs:
@@ -1053,7 +1087,7 @@ context expressions in FEEL. We will cover:
 Accessing the context
 Filtering a list of context elements
 Projecting a list of context elements
-
+---------------------------------------------------------------------------------------------------------------------
 ACCESSING THE CONTEXT :
 To access values in a provided context data, use the dot notation in your expression.
 {
@@ -1065,7 +1099,7 @@ To access values in a provided context data, use the dot notation in your expres
 person.name
 Result:
 "Alice"
-
+---------------------------------------------------------------------------------------------------------------------
 FILTERING A LIST OF CONTEXT ELEMENTS -
 You can filter a list of context elements based on a condition using a filter expression.
 Get the context elements where age is greater than 18
@@ -1086,6 +1120,7 @@ result :
     "age": 22
   }
 ]
+---------------------------------------------------------------------------------------------------------------------
 PROJECTING A LIST OF CONTEXT ELEMENTS -
 You can project a list of context elements based on the their key.
 Project the name of the context elements
@@ -1104,7 +1139,7 @@ Result:
   "Jane",
   "William"
 ]
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 GET VALUE() - 
@@ -1151,7 +1186,7 @@ Use the dynamic key list stored in keyPath to retrieve the value from the settin
 get value(settings, settings.keyPath)
 Result:
 "info@camunbankia.com"
-
+---------------------------------------------------------------------------------------------------------------------
 GET ENTRIES() -
 The get entries() function in 🔗FEEL used in Camunda is used to retrieve all key-value pairs from a context as a list of entries. Each entry is represented as a context with keys "key" and "value".
 // Syntax
@@ -1179,7 +1214,7 @@ Result:
     "value": "Engineer"
   }
 ]
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 CONTEXT PUT() -
@@ -1234,7 +1269,7 @@ Result:
     "year": 1949
   }
 }
-
+---------------------------------------------------------------------------------------------------------------------
 CONTACT MERGE() -
 The context merge() function in 🔗FEEL used in Camunda is useful for consolidating data from a list of contexts or for enriching an existing context with additional information.
 // Syntax
@@ -1388,7 +1423,7 @@ context you will be working with:
 Task
 Get the context skills from the senior teachers (with at least 10 years of experience)
 teachers["yearsOfExperience" >=10 ].skills
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -1849,7 +1884,7 @@ Result:
     ],
     "startDate": "2023-01-01T09:00:00Z"
 }
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -1859,20 +1894,21 @@ Result:
 IN CAMUNDA WE HAVE SERVICE TASK:
 IN THAT WE HAVE TASK DEFINATION..
 task defination : task defination defines which job workers can execute the task..when the service is encountered in a process instance,a corresponding job is created..the process instance is stops here and waits until the job has been completed...
-Job worker :
+---------------------------------------------------------------------------------------------------------------------
+JOB WORKER :
 A job worker can subscroibe to a job type,process the job and complete them using one of the zeebe clients..once the job is complete,the service task is complete an dthe process instance continues..
-
+---------------------------------------------------------------------------------------------------------------------
 DEPLOYMENT :
 deployment allows the process defination to be executed by the zeebe engine..
-
+---------------------------------------------------------------------------------------------------------------------
 INSTANCE :
 one execution of a process defination is called a process instance.many process instance can be launched from one process defination.
-
+---------------------------------------------------------------------------------------------------------------------
 JOB WORKER :
 a job worker can be thought of as a specialized client.
 clients connect to camunda platform 8 through grpc,a high performance,open source and universal rpc protocol.
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 Zeebe Client - The Zeebe Client allows you to interact with Zeebe using the API
 Job Worker - The Job Worker is responsible for requesting Jobs of a defined type from the Zeebe Engine
@@ -1885,7 +1921,7 @@ Start and Cancel a Process Instance
 Activate Jobs and Complete Jobs
 Update Process Variables
 
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -1924,7 +1960,7 @@ mvn archetype:generate \
 [INFO] Total time:  2.926 s
 [INFO] Finished at: 2022-12-09T14:54:20Z
 [INFO] ------------------------------------------------------------------------
-
+---------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -2039,7 +2075,7 @@ Test the Connection :
 We can now test the connection between our Client and the Cluster:
 If you now run the PaymentApplication from your IDE or Maven, you should get a connection to the Cluster and a response similar to the below:
 Connected to Camunda 8: TopologyImpl{brokers=[BrokerInfoImpl{nodeId=1, host='zeebe-1.zeebe-broker-service.5f400cdf-a978...
-
+-----------------------------------------------------------------------------------------------------
 
 
 
@@ -2056,25 +2092,25 @@ Connected to Camunda 8: TopologyImpl{brokers=[BrokerInfoImpl{nodeId=1, host='zee
 TECHNICAL OVERVIEW :
 camunda 8 components -
 modeler,zeebe engine,tasklist,operate,optimize.
-
+-----------------------------------------------------------------------------------------------------
 zeebe engine - it is the process automation engine powering camunda 8.it follows a unique architecture that allows scalability and fault tolerance
 modeler - it helps u to design the bpmn process diagram and implement them...u can usae connectors directly..
 connectors - they are building blocks that perform the integration with external systems.
 tasklist - it is a ready to use that allows to view and manage assigned tasks..
 operator - it is a tool for monitoring and troubleshooting the process instance running in the zeebe.
 optimize - it is a powerful analytics tool..
-
+-----------------------------------------------------------------------------------------------------
 
 OPERATE :
 3 views :global instances, instances by process defination and incidents by error message
-
+-----------------------------------------------------------------------------------------------------
 
 CONNECTORS :
 connectors offers a multilayered coding experience 
 connectors consists of two parts :
 1.the programming code in java to connect to the external system (for example connectors)
 2.the user interface to be used during modeling, which is provided using connectors template..
-
+-----------------------------------------------------------------------------------------------------
 
 
 
@@ -2090,10 +2126,10 @@ camanda 8 provides variety of out of bound connectors.they reduce the time and e
 they are two types of connectors. they are:
 Inbound connectors -
 allows process instance to be started or influenced by the external system or service.it triggers process automatically..it can be message event or receive task.
-
+-----------------------------------------------------------------------------------------------------
 Outbound connectors -
 allows process instance to issue a request to an external system or a service.allows process instance to invoke business logic managed outside of camunda..it can be message throw or service task..
-
+-----------------------------------------------------------------------------------------------------
 
 What is an Incident?
 An Incident represents a problem in process execution. This means that a process instance is stuck at a particular point, and requires user interaction to resolve the problem.
@@ -2102,12 +2138,12 @@ A Job is failed and it has no retries left.
 An input or output variable mapping can't be applied.
 A condition can't be evaluated.
 A decision can't be evaluated.
-
+-----------------------------------------------------------------------------------------------------
 
 
 What is a Job?
 A Job represents a task that needs to be performed by a process. For example, a Job is created by Zeebe whenever a process instance reaches a Service Task. A Job representing the Service Task must be completed before the process is able to continue.
-
+-----------------------------------------------------------------------------------------------------
 What is a Job Worker?
 A Job Worker is a service capable of performing a particular task in a process.A job worker implements the business logic required to complete a task. Job Workers are used to manage the interactions between the Zeebe Engine and the outside world and perform the following actions:
 Request Jobs - Request jobs of a certain type on a regular interval (i.e. polling). This interval and the number of jobs requested are configurable.
@@ -2115,7 +2151,7 @@ Complete or Fail Jobs - After working on an Activated Job, a Job Worker informs 
 A Job Worker may either Complete or Fail a Job.
 Complete - When the Job Worker completes its work, it sends a complete job command along with any variables, which in turn is merged into the process instance. This is how the Job Worker exposes the results of its work.
 Fail - If the Job Worker cannot successfully complete its work, it sends a fail job command along with an error message.
-
+-----------------------------------------------------------------------------------------------------
 
 CONNECTORS :
 What are connectors
@@ -2129,34 +2165,36 @@ Allow processes to connect to outside systems to orchestrate work
 Reduce costs in maintenance because they can be reused in different environments
 Camunda provides a list of out of the box connectors
 Custom connectors can be implemented to tailor the project needs
-connectors types  :
+-----------------------------------------------------------------------------------------------------
+CONNECTORS TYPES  :
 Connectors are categorized by the direction data flows into or out of Camunda.
 Outbound connectors allow workflows to trigger external systems or services, making it possible to integrate workflows with other parts of a business process or system architecture. The Java code is executed when the workflow reaches the service task.
 Inbound connectors enable workflows to receive data or messages from external systems or services, making it possible to integrate workflows into a wider business process or system architecture. Inbound Connectors can be used to create a new process instance, or to send a message to a running process instance.
+-----------------------------------------------------------------------------------------------------
 CONNECTOR COMPONENTS :
 A connector consists of a Connector Template and a Connector Implementation, executed by a Connector Runtime Environment.
 
 The @ElementTemplate is the way to configure the 🔗Element Template Generator to generate the connector template automatically based on the Java data model.
 It is a great way to ensure your template is always synchronized with your Java code and automate some of the effort.
-
+-----------------------------------------------------------------------------------------------------
 
 
 
 
 JOB WORKER -
 job worker is a service capable of performing a particular task in a process..each time such a task is performed,thi is represented by a job..a job worker uses the client api to activate jobs and complete or fail jobs...job worker request jobs of certain type on a regular interval which is called as pooling..if one or more jobs of the requested type is available,zeebe streams activated jobs to the worker..upon receiving jobs,a worker performs them and sends back a complete or fail command for each job...
-
+-----------------------------------------------------------------------------------------------------
 
 HOW THE JOB WILL GET COMPLETED -
 after activation,the worker will have to perform two action..first tackle its use case,which could involve anything from writing data to the database,to interacting to nasa system dependoing on the business requirements....second,communicate with the zeebe to indicate that the job is done..zeebe will then move the token to the next element..whjich action to execute first???well it depends..both are possible..and lead to different outcomes..
-
+-----------------------------------------------------------------------------------------------------
 synchronous setup -
 the worker executes the business logic first and then sends back the result to the zeebe..the result can be either complete message or complete failure..zeebe will be informed of the status and can react accordingly..the busiiness logic can be executed twice...the worker will have to handle the situation...the transaction underlying the business logic will need to be idempotent( means something can be repeated multiple times without changing the outcome)...the way of achieving this is by providing a transaction identifier..
-
+-----------------------------------------------------------------------------------------------------
 
 asynchronous setup -
 first the approach consists in completing the job first,informing zeebe about the task completion,and then executing the business logic...it provides speed because zeebe will not wait for the completion of the job...it is a good choice for cases where zeebe doesn't need data returned from worker,like sending mails..if an error occurs in executing the business logic,the worker will have to handle it on its own without the help of zeebe..in other words,the worker will have to become stateful with a higher level of complexity...
-
+-----------------------------------------------------------------------------------------------------
 
 
 
@@ -2164,101 +2202,162 @@ first the approach consists in completing the job first,informing zeebe about th
 
 EVENT SUBPROCESS -
 it is a type of subprocess that is triggered by an event..it can be used globally as a process or locally within the subprocess....
-
+-----------------------------------------------------------------------------------------------------
 WHY ARE EVENT SUBPROCESS USEFUL ?
 A subprocess should contain a group of elements with common functionality...
-
+-----------------------------------------------------------------------------------------------------
 
 COMPENSATION EVENTS -
 compensation events are a means of representing the reversal or undoing of a process activity that has already been completed...a compensation catch event can only be triggered by a compensation throw event....catching events are always attched to an activity..throw events can be intermediate or end events..if a compensation throw event is inside an embedded subprocess,only the subprocess compensation handlers are invoked...
+-----------------------------------------------------------------------------------------------------
 COMPENSATION THROW EVENT -
 throw events can be intermediate or end events..
+-----------------------------------------------------------------------------------------------------
 COMPENSATION INTERMEDIATE THROW EVENTS -
 this events is used to expecitly trigger compensation for completed activities..it triggers the compensation for the process or a specific activity in the process...
+-----------------------------------------------------------------------------------------------------
 COMPENSATION END EVENTS -
 this event triggers compensation and the current path of execution is ended..it has the same behavior and limitations as a compensation intermediate throwing event..
-
+-----------------------------------------------------------------------------------------------------
 ATTACHED COMPENSATION EVENTS -
 COMPENSATION BOUNDARY EVENT -
 this is attached to an activity that might need to be compensated...
-
+-----------------------------------------------------------------------------------------------------
 
 
 
 INCLUSIVE GATEWAY -
 	inclusive gateway or OR gateway,are used in BPMN to diverge the flow of multiple paths based on conditions..unlike exclusive gateway that select only one path inclusive gateways can activate multiple paths based on conditions met..they allow for more flexible decision making workflows....
 inclusive gateways are used in BPMMN to diverge the flow of multiple paths based on conditions..inclusive gateways can activate multiple paths simultaneously...
-
+-----------------------------------------------------------------------------------------------------
 
 BPMN MARKERS -
 marker can be added to an activity to define a specific behavior for that activity...
 MARKER TYPES -
 loop markers,ad-hoc marker,compensation marker,multi-instance marker which can be parallel or sequencial....
-
+-----------------------------------------------------------------------------------------------------
 LOOP MARKER -
 when used on activity,it wikk cause that activity to run multiple times in a loop,and will check for a specific condition before or after each repetition...it can be used in th edesign mode in camunda modeler,but can't be run because isn't supported by the camunda engine...
-
+-----------------------------------------------------------------------------------------------------
 AD-FOC MARKER -
 an ad-hoc marker is represented with a tilde symboland can only be used on a subprocess,and will change that subprocess into ad-hoc subprocess...all activities contained within an ad-hoc subprocess can be run any number of times and can be run in any order...
-
+-----------------------------------------------------------------------------------------------------
 COMPENSATIOIN MARKER -
 compensation marker is represented with two backward facing arrows,indicating that it can be used to undo a previously completed activity...it is included on default on a compensation handler,which is an activity that is associated to a compensation boundary event....
-
+-----------------------------------------------------------------------------------------------------
 
 PARALLEL ACTIVITY -
 when used on an activity,it will run all instances of that activity simultaneously or it will run in parallel with each other.....
-
+-----------------------------------------------------------------------------------------------------
 SEQUENTIAL MULTI-INSTANCE MARKER -
 the sequential multi-instance marker is represented with an icon that has three horizontal lines stacked on each other or it will run the instance in a sequence,one at a time.....
-
+-----------------------------------------------------------------------------------------------------
 
 PROCESS DEFINATION -
 it is the static model of the business process created using bpmn..
-
+-----------------------------------------------------------------------------------------------------
 
 PROCESS INSTANCE -
 it is a single, runtime execution of that process definition..
-
+-----------------------------------------------------------------------------------------------------
 PROCESS INSTANCE MIGRATION -
 migration is done to a process instance running on one version o fthe process definition to have it continuing onto on a different version of the process definition
-
+-----------------------------------------------------------------------------------------------------
 
 
 STATEGIC PROCESS MODELS -
 high level,logic adstract,not meant to be automated..used by everyone,but especially process managers and process owners....process is easily read and understood...
-
+-----------------------------------------------------------------------------------------------------
 
 OPERATIONAL PROCESS MODELS -
 low level,logically concrete,focused on automation....used by process participants(focused on human workflow),process engineers(focused on technical workflow),process analyst(focused on the whole collaboration)....process is detailed and executable...
 
 
-
-
+-----------------------------------------------------------------------------------------------------
 
 VARIABLE SIZE LIMITATION -
 there is a limit of 4 MB for the payload of a process instance. This 4 MB includes the variables and the workflow engine internal data, which means there is slightly less memory available for variables. The exact limitation depends on a few factors, but you can consider 3 MB as being safe. 
 
 
+----------------------------------------------------------------------------------------------------
 
-Hit policy -
+HIT POLICY -
 hit policy determines how decisions are made, and which outcomes are prioritized..it contains two decision they are output and result..hit policy define how outputs are aggregated or selected to produce the final result..the hit policy influences the readabilityand maintainability of the decision table..hit policy determines the final result..
 output - the output contains the sprecific value literal or expression..calculation an dfunction calls are added here..
 they are categorized into two hit policies..they are single and multiple hit policies...
+-------------------------------------
 SINGLE HIT POLICY -
 single hit policy such as unique,first and any produces one result based on one matching rule.single hit policies are ideal for scenarios requiring decisive outcome,such as,
 medical triage(where only the most critical condition should be treated first),user authentication(only the first correct password should grant access)
+-----------------------------------------
 UNIQUE HIT POLICY -
 it means only one rule will apply or no rule at all..and it is the default if no policy is deternmined...common applications for the unique hit policy are:
 determininf discounts,determining the employee responsible for the task..the unique hit policy requires that the decision result contains the output entries of only one satisfied rule..if multiple rules are satisfied it indicates a policy voilation..
 Example : when there are 4 guests and the season is winter rule 3 and 6 overlap because they overlap because they share this inputs..
+----------------------------------------
 MULTIPLE HIT POLICY -
 multiple hit policy such as collect,rule order and output order consider all matching rules and may return multiple results..multiple hit policies are better suited for scenarios requiring comprehensive results,such as,
 compiling  a shooping list from multiple meal plans,gathering all applicable discounts on a purchase..
-
-
-
-
-
+-------------------------------------
+FIRST HIT POLICY -
+the first hit policy dictates only the first matching row from top to bottom influences the outcome,subsequence rules are disregarded...The rules in a decision table are evaluated from top to bottom.
+As soon as the first matching rule is found, it is applied, and the decision-making process stops.
+Any rules below the first match are ignored, even if they also match the conditions.
+common applications for the first hit policy are : 
+* Creditworthiness Evaluation:
+When determining if a person is eligible for a loan, the first rule that matches their credit score is applied, and no further rules are checked.
+* Fraud Detection & Risk Assessment:
+If multiple risk factors exist, the system stops evaluating as soon as it finds the first applicable risk condition.
+For example, if a transaction is flagged as "High Risk" due to unusual location, no further checks are needed.
+-------------------------------
+ANY HIT POLICY -
+multiple rules can be satisfied but all satisfied rules must generate the same output..the result of the decision table reflects only the output of one of the satisfied rules..The ANY hit policy in Camunda DMN allows multiple rules to be satisfied at the same time, but they must all return the same output. If any of the matching rules provide different outputs, it results in a Hit Policy Violation (an error).
+Key Characteristics of ANY Hit Policy:
+✅ Multiple rules can match the input at the same time.
+✅ All matching rules must return the same output for the decision to be valid.
+❌ If matching rules have different outputs, it causes a Hit Policy Violation (conflict).
+note: Voilation of any hit policy - if multiple rules are satisfied and they produce different outputs...
+Example :
+Decision Table: Fraud Risk Assessment
+Rule	Transaction Amount	Location	Fraud Risk
+1	Above $10,000	Local	Low Risk
+2	Above $10,000	Foreign	High Risk
+3	Below $10,000	Any	Low Risk
+Scenario 1: No Violation (Valid Case)
+Transaction Details:
+Transaction Amount: $12,000
+Transaction Location: Local
+Step-by-Step Matching Process:
+Check Rule 1:
+Transaction Amount: $12,000 (✅ Above $10,000 → Match)
+Location: Local (✅ Local → Match)
+✅ Rule 1 Matches → Output: "Low Risk"
+Check Rule 2:
+Transaction Amount: $12,000 (✅ Above $10,000 → Match)
+Location: Local (❌ Expected: Foreign → No Match)
+❌ Rule 2 does NOT match.
+Check Rule 3:
+Transaction Amount: $12,000 (❌ Expected: Below $10,000 → No Match)
+❌ Rule 3 does NOT match.
+Final Decision:
+Only Rule 1 matches, and its output is "Low Risk".
+✅ Valid decision: "Low Risk".
+------------------
+PRIORITY HIT POLICY -
+it prioritizes rule outputs,meaning that rules may overlap,only the match with high output priority is considered valid.camunda does not support the priority hit policy..
+---------------
+RULE ORDER -
+the rule order hit policy defines multiple rules to be satisfied..the decision table result contains the output of all satisfied rules in the order of the rules in the decision table...
+----------------
+OUTPUT ORDER -
+the output order produces the list of all matching results(just like rule order hit policy does) but the order in the result list is based on the priority.camunda does not support this hit policy.
+------------------
+COLLECT HIT POLICY -
+all matching rules result in an arbitorily ordered list of all the output entries..collect aggregates will generate the output entry from all satisfied rules.
+Collect(Sum) -the sum of all output values..
+Collect(Min) -the smallest value of all output values..
+Collect(Max) -the largest value of all output values..it returns only the highest number among all applicable rules...
+Colelct(Count) -the number of output values..it returns the total number of applicable rules..
 
 
 

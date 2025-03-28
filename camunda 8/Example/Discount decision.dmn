@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_167psfx" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="addcace" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="DiscountDecision" name="Discount">
+    <informationRequirement id="InformationRequirement_1gvfute">
+      <requiredInput href="#InputData_0br84pl" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0nhz47l">
+      <requiredInput href="#InputData_1vz8anx" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_04mjmvy">
+      <requiredAuthority href="#KnowledgeSource_05x0lb6" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_1p9zzi5" hitPolicy="FIRST">
+      <input id="Input_1" label="Order Amount">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>orderAmount</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0aj8umc" label="Customer Type">
+        <inputExpression id="LiteralExpression_1n9it8s" typeRef="string">
+          <text>customerType</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Discount" name="discount" typeRef="number" />
+      <rule id="DecisionRule_14itibi">
+        <inputEntry id="UnaryTests_1w0ft9q">
+          <text>&gt;10000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gzqv78">
+          <text>"Gold"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04p077i">
+          <text>17</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c5m6uk">
+        <inputEntry id="UnaryTests_041vz95">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k6yuvr">
+          <text>"Gold"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xgd8q5">
+          <text>15</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s7ydjv">
+        <inputEntry id="UnaryTests_0x6jxd1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10x5kj1">
+          <text>"Silver"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0whm2qf">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0whlfun">
+        <inputEntry id="UnaryTests_1yhsd06">
+          <text>&gt;10000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ffq6b8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i139jr">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_025b4y0">
+        <inputEntry id="UnaryTests_1yifrrg">
+          <text>&gt;1000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u2d0hf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_131bnho">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0br84pl" name="Order Amount" />
+  <inputData id="InputData_1vz8anx" name="Customer Type" />
+  <decision id="Decision_1f0pfz5" name="Discounted Amount">
+    <variable id="InformationItem_1xdujob" name="discountedAmount" typeRef="number" />
+    <informationRequirement id="InformationRequirement_1oh64xz">
+      <requiredDecision href="#DiscountDecision" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1ol8x9m">
+      <requiredInput href="#InputData_0br84pl" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0szqzq6">
+      <text>orderAmount * (100-DiscountDecision)/100</text>
+    </literalExpression>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_05x0lb6" name="Discount Policy" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="DiscountDecision">
+        <dc:Bounds height="80" width="180" x="260" y="210" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1czuel9" dmnElementRef="InputData_0br84pl">
+        <dc:Bounds height="45" width="125" x="157" y="349" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1r9d72r" dmnElementRef="InputData_1vz8anx">
+        <dc:Bounds height="45" width="125" x="407" y="349" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_16uplwp" dmnElementRef="InformationRequirement_1gvfute">
+        <di:waypoint x="220" y="349" />
+        <di:waypoint x="320" y="310" />
+        <di:waypoint x="320" y="290" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0o9uqkd" dmnElementRef="InformationRequirement_0nhz47l">
+        <di:waypoint x="470" y="349" />
+        <di:waypoint x="380" y="310" />
+        <di:waypoint x="380" y="290" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1xpdi0w" dmnElementRef="InformationRequirement_1oh64xz">
+        <di:waypoint x="350" y="210" />
+        <di:waypoint x="280" y="180" />
+        <di:waypoint x="280" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1hw46hx" dmnElementRef="InformationRequirement_1ol8x9m">
+        <di:waypoint x="220" y="349" />
+        <di:waypoint x="220" y="180" />
+        <di:waypoint x="220" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0e3lskq" dmnElementRef="Decision_1f0pfz5">
+        <dc:Bounds height="80" width="180" x="160" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0rj9ndo" dmnElementRef="KnowledgeSource_05x0lb6">
+        <dc:Bounds height="63" width="100" x="540" y="218" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0xz5rjq" dmnElementRef="AuthorityRequirement_04mjmvy">
+        <di:waypoint x="540" y="250" />
+        <di:waypoint x="440" y="250" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

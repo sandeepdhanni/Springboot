@@ -1,0 +1,1902 @@
+[
+    {
+        "customerId": "bdd640fb-0667-4ad1-9c80-317fa3b1799d",
+        "fullName": "Daniel Doyle",
+        "dateOfBirth": "2005-04-14",
+        "email": "fjohnson@hall.com",
+        "phoneNumber": "+1-386-379-4026",
+        "address": {
+            "street": "2351 Noah Knolls Suite 940",
+            "city": "Herrerafurt",
+            "state": "OH",
+            "zipCode": "38928",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": "Jones, Stanley and Mejia",
+            "annualIncome": 149134,
+            "jobTitle": "Cartographer"
+        },
+        "loanDetails": {
+            "loanAmount": 35512,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 167640,
+                    "monthlyInstallment": 3038
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 98040,
+                    "monthlyInstallment": 2960
+                }
+            ],
+            "creditScore": 514
+        }
+    },
+    {
+        "customerId": "efc89849-b3aa-4efe-8458-a885ab9099a4",
+        "fullName": "Andrea Reid",
+        "dateOfBirth": "1995-08-02",
+        "email": "stevennelson@watts.com",
+        "phoneNumber": "056.413.9537",
+        "address": {
+            "street": "724 John Points Suite 969",
+            "city": "Coxberg",
+            "state": "NM",
+            "zipCode": "12416",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": "Burton Ltd",
+            "annualIncome": 75333,
+            "jobTitle": "Therapist, occupational"
+        },
+        "loanDetails": {
+            "loanAmount": 13326,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 146024,
+                    "monthlyInstallment": 144
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 179706,
+                    "monthlyInstallment": 4448
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 169024,
+                    "monthlyInstallment": 2836
+                }
+            ],
+            "creditScore": 414
+        }
+    },
+    {
+        "customerId": "74273ca3-287d-46ca-af4c-c69a4b22d308",
+        "fullName": "Nathan Cortez",
+        "dateOfBirth": "1993-04-20",
+        "email": "harrellkenneth@romero.com",
+        "phoneNumber": "+1-809-570-1543",
+        "address": {
+            "street": "91171 David Mountains",
+            "city": "West Allison",
+            "state": "NE",
+            "zipCode": "28261",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 72296,
+            "jobTitle": "Midwife"
+        },
+        "loanDetails": {
+            "loanAmount": 62422,
+            "loanPurpose": "Medical Expense",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 553
+        }
+    },
+    {
+        "customerId": "05628059-568c-469b-9064-005c3985c3cf",
+        "fullName": "Crystal Robinson",
+        "dateOfBirth": "1964-01-25",
+        "email": "carlosjohnson@jones-young.info",
+        "phoneNumber": "829.973.7631",
+        "address": {
+            "street": "656 Owens Stream",
+            "city": "Lake Deniseville",
+            "state": "MO",
+            "zipCode": "95949",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": "Lee PLC",
+            "annualIncome": 78800,
+            "jobTitle": "Counselling psychologist"
+        },
+        "loanDetails": {
+            "loanAmount": 60296,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 36
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 20761,
+                    "monthlyInstallment": 3680
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 14261,
+                    "monthlyInstallment": 4478
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 25448,
+                    "monthlyInstallment": 1986
+                }
+            ],
+            "creditScore": 470
+        }
+    },
+    {
+        "customerId": "36b82481-7b3a-4e3e-bc52-fa17680ac07a",
+        "fullName": "Stephanie Martin",
+        "dateOfBirth": "1959-05-20",
+        "email": "sara74@yahoo.com",
+        "phoneNumber": "001-872-343-0980x500",
+        "address": {
+            "street": "820 Melissa Cliff Apt. 361",
+            "city": "New Brooke",
+            "state": "CO",
+            "zipCode": "55449",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": null,
+            "annualIncome": 46772,
+            "jobTitle": "Interior and spatial designer"
+        },
+        "loanDetails": {
+            "loanAmount": 36285,
+            "loanPurpose": "Education",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 120858,
+                    "monthlyInstallment": 2640
+                }
+            ],
+            "creditScore": 374
+        }
+    },
+    {
+        "customerId": "ff9ab5c2-9f04-4aed-b552-332702627f73",
+        "fullName": "Ariel Medina",
+        "dateOfBirth": "1993-08-29",
+        "email": "sarahibarra@gmail.com",
+        "phoneNumber": "(427)849-8084x124",
+        "address": {
+            "street": "82449 Jennifer Ford",
+            "city": "Williamview",
+            "state": "AR",
+            "zipCode": "12598",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": null,
+            "annualIncome": 25778,
+            "jobTitle": "Accountant, chartered certified"
+        },
+        "loanDetails": {
+            "loanAmount": 48719,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 72
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 195309,
+                    "monthlyInstallment": 3669
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 148038,
+                    "monthlyInstallment": 129
+                }
+            ],
+            "creditScore": 414
+        }
+    },
+    {
+        "customerId": "b0e6a969-e213-42b0-b1ee-dba313432e61",
+        "fullName": "Kimberly Davenport",
+        "dateOfBirth": "1998-11-16",
+        "email": "tanderson@nolan-flynn.com",
+        "phoneNumber": "(331)586-9232x260",
+        "address": {
+            "street": "563 Moore Squares",
+            "city": "South Monicafort",
+            "state": "ID",
+            "zipCode": "60833",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": null,
+            "annualIncome": 127549,
+            "jobTitle": "Estate agent"
+        },
+        "loanDetails": {
+            "loanAmount": 34219,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 72
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 87051,
+                    "monthlyInstallment": 2332
+                }
+            ],
+            "creditScore": 371
+        }
+    },
+    {
+        "customerId": "59e4b671-4774-4c58-85f8-bc16f7860b50",
+        "fullName": "Jennifer Zavala",
+        "dateOfBirth": "1995-09-22",
+        "email": "wilsontara@gmail.com",
+        "phoneNumber": "001-401-965-5698",
+        "address": {
+            "street": "9340 Smith Valley",
+            "city": "West Ryan",
+            "state": "MA",
+            "zipCode": "82179",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": "Mccullough, Hunter and Estrada",
+            "annualIncome": 62753,
+            "jobTitle": "Operational researcher"
+        },
+        "loanDetails": {
+            "loanAmount": 96384,
+            "loanPurpose": "Education",
+            "loanTermMonths": 60
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 111217,
+                    "monthlyInstallment": 3155
+                }
+            ],
+            "creditScore": 478
+        }
+    },
+    {
+        "customerId": "67f48ad5-4d0b-4d1a-91b0-e1d99d9262af",
+        "fullName": "April Mitchell",
+        "dateOfBirth": "1988-06-27",
+        "email": "rramos@gmail.com",
+        "phoneNumber": "721.489.5134x33200",
+        "address": {
+            "street": "9176 Jennifer Lights",
+            "city": "Rossberg",
+            "state": "UT",
+            "zipCode": "01227",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 48683,
+            "jobTitle": "Editor, commissioning"
+        },
+        "loanDetails": {
+            "loanAmount": 96214,
+            "loanPurpose": "Medical Expense",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 555
+        }
+    },
+    {
+        "customerId": "74daaebf-1f11-4b76-992c-9227eadf5085",
+        "fullName": "John Schmidt",
+        "dateOfBirth": "1997-04-09",
+        "email": "usalazar@hotmail.com",
+        "phoneNumber": "(872)774-3487x34714",
+        "address": {
+            "street": "5581 Edward Lights",
+            "city": "Lake Jason",
+            "state": "MT",
+            "zipCode": "43870",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": null,
+            "annualIncome": 28161,
+            "jobTitle": "Engineer, maintenance"
+        },
+        "loanDetails": {
+            "loanAmount": 60069,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 689
+        }
+    },
+    {
+        "customerId": "5a0cdd7c-f157-4470-8182-67c47a1b5806",
+        "fullName": "James Snow",
+        "dateOfBirth": "1987-10-01",
+        "email": "brobinson@johnson-rogers.biz",
+        "phoneNumber": "001-272-980-6990x1627",
+        "address": {
+            "street": "46537 Rogers Light",
+            "city": "Karenchester",
+            "state": "CO",
+            "zipCode": "62145",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": "Walker-Jones",
+            "annualIncome": 145473,
+            "jobTitle": "Architect"
+        },
+        "loanDetails": {
+            "loanAmount": 9067,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 24
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 456
+        }
+    },
+    {
+        "customerId": "ab61a7b1-793b-4c32-a050-04943d114802",
+        "fullName": "Travis Marshall",
+        "dateOfBirth": "1976-09-02",
+        "email": "catherinestuart@hotmail.com",
+        "phoneNumber": "241-904-9663",
+        "address": {
+            "street": "314 Laura Port",
+            "city": "West Amandastad",
+            "state": "NY",
+            "zipCode": "85375",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": "Short-Garcia",
+            "annualIncome": 145932,
+            "jobTitle": "Medical illustrator"
+        },
+        "loanDetails": {
+            "loanAmount": 88307,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 72
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 47173,
+                    "monthlyInstallment": 4324
+                }
+            ],
+            "creditScore": 576
+        }
+    },
+    {
+        "customerId": "89c5b31a-eb6c-4016-8ee6-24d09dac6e83",
+        "fullName": "Julie Petersen",
+        "dateOfBirth": "1999-07-22",
+        "email": "melissa14@yahoo.com",
+        "phoneNumber": "799.650.7527",
+        "address": {
+            "street": "4549 Peters Path",
+            "city": "North John",
+            "state": "NM",
+            "zipCode": "73269",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 104659,
+            "jobTitle": "Recycling officer"
+        },
+        "loanDetails": {
+            "loanAmount": 63743,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 107011,
+                    "monthlyInstallment": 2043
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 175053,
+                    "monthlyInstallment": 4814
+                }
+            ],
+            "creditScore": 677
+        }
+    },
+    {
+        "customerId": "58007c02-87ea-4ff5-8db0-674679279973",
+        "fullName": "Patrick Rivera",
+        "dateOfBirth": "2007-01-24",
+        "email": "kristopher31@hotmail.com",
+        "phoneNumber": "518.233.7498",
+        "address": {
+            "street": "34352 Smith Place Apt. 400",
+            "city": "Heidiberg",
+            "state": "WV",
+            "zipCode": "64841",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": "Mitchell, Mendoza and Peterson",
+            "annualIncome": 146549,
+            "jobTitle": "Arts development officer"
+        },
+        "loanDetails": {
+            "loanAmount": 38092,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 710
+        }
+    },
+    {
+        "customerId": "a1235a8c-93b7-4886-92f7-0c977de31a51",
+        "fullName": "Brittany Shepherd",
+        "dateOfBirth": "1979-11-29",
+        "email": "davidduran@carlson.biz",
+        "phoneNumber": "749.649.9091x334",
+        "address": {
+            "street": "32812 Ricky Spurs",
+            "city": "Carterbury",
+            "state": "VT",
+            "zipCode": "37557",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": "Hall, Baker and Moody",
+            "annualIncome": 97304,
+            "jobTitle": "Engineer, civil (consulting)"
+        },
+        "loanDetails": {
+            "loanAmount": 60723,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 60
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 70633,
+                    "monthlyInstallment": 1215
+                }
+            ],
+            "creditScore": 373
+        }
+    },
+    {
+        "customerId": "4ebfa5c3-cae9-44a7-aa79-ea680f44704f",
+        "fullName": "Samantha Morse",
+        "dateOfBirth": "1989-02-13",
+        "email": "sbarker@bender-mason.info",
+        "phoneNumber": "190.659.4013x990",
+        "address": {
+            "street": "027 Moon Falls Suite 717",
+            "city": "Rickymouth",
+            "state": "CT",
+            "zipCode": "21580",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": null,
+            "annualIncome": 110921,
+            "jobTitle": "Research scientist (life sciences)"
+        },
+        "loanDetails": {
+            "loanAmount": 42777,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 765
+        }
+    },
+    {
+        "customerId": "52c21221-409d-4602-9084-3242168b1625",
+        "fullName": "Raymond Hancock",
+        "dateOfBirth": "1959-04-25",
+        "email": "hbrown@yahoo.com",
+        "phoneNumber": "+1-770-348-2477x109",
+        "address": {
+            "street": "248 Andrea Course",
+            "city": "Port Robin",
+            "state": "DE",
+            "zipCode": "85397",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 142244,
+            "jobTitle": "Horticulturist, amenity"
+        },
+        "loanDetails": {
+            "loanAmount": 71698,
+            "loanPurpose": "Education",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 64892,
+                    "monthlyInstallment": 3791
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 101554,
+                    "monthlyInstallment": 1611
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 19300,
+                    "monthlyInstallment": 2313
+                }
+            ],
+            "creditScore": 724
+        }
+    },
+    {
+        "customerId": "81fb18b3-c9a7-491f-af2a-e71357021049",
+        "fullName": "Aaron Barber",
+        "dateOfBirth": "1999-03-06",
+        "email": "seanwashington@yahoo.com",
+        "phoneNumber": "+1-867-533-9636",
+        "address": {
+            "street": "7662 Hanna Crossroad",
+            "city": "Mollymouth",
+            "state": "NC",
+            "zipCode": "60391",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": "Pitts-Booker",
+            "annualIncome": 29807,
+            "jobTitle": "Psychotherapist, child"
+        },
+        "loanDetails": {
+            "loanAmount": 39737,
+            "loanPurpose": "Education",
+            "loanTermMonths": 60
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 87131,
+                    "monthlyInstallment": 4421
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 84010,
+                    "monthlyInstallment": 4047
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 162863,
+                    "monthlyInstallment": 610
+                }
+            ],
+            "creditScore": 540
+        }
+    },
+    {
+        "customerId": "4991ab9b-ebc2-426f-af34-cf65a193c4b2",
+        "fullName": "Nicole Hamilton MD",
+        "dateOfBirth": "2002-05-12",
+        "email": "tjackson@williams.com",
+        "phoneNumber": "(562)386-9222x196",
+        "address": {
+            "street": "9237 Stevens Shores",
+            "city": "Port Stevenport",
+            "state": "ND",
+            "zipCode": "21207",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 143893,
+            "jobTitle": "Location manager"
+        },
+        "loanDetails": {
+            "loanAmount": 82014,
+            "loanPurpose": "Education",
+            "loanTermMonths": 72
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 120756,
+                    "monthlyInstallment": 2524
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 101845,
+                    "monthlyInstallment": 4008
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 63182,
+                    "monthlyInstallment": 3174
+                }
+            ],
+            "creditScore": 667
+        }
+    },
+    {
+        "customerId": "b303f438-fe21-40d0-8bbe-4aff9326dffd",
+        "fullName": "William Barrett",
+        "dateOfBirth": "1977-11-30",
+        "email": "lozanojulie@parsons-hall.com",
+        "phoneNumber": "394.210.4709",
+        "address": {
+            "street": "214 Burgess Extensions Apt. 285",
+            "city": "Mariaview",
+            "state": "NJ",
+            "zipCode": "39185",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": "Mccarty-Taylor",
+            "annualIncome": 146681,
+            "jobTitle": "Equities trader"
+        },
+        "loanDetails": {
+            "loanAmount": 93647,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 104435,
+                    "monthlyInstallment": 164
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 141659,
+                    "monthlyInstallment": 1062
+                }
+            ],
+            "creditScore": 765
+        }
+    },
+    {
+        "customerId": "ac1e86d8-bfbf-497b-ac3e-7b0d5e5ba13d",
+        "fullName": "James Little",
+        "dateOfBirth": "1984-07-07",
+        "email": "thomasharvey@murphy.info",
+        "phoneNumber": "001-461-200-4711x382",
+        "address": {
+            "street": "5869 Nicole Shoal Apt. 796",
+            "city": "Antoniostad",
+            "state": "NV",
+            "zipCode": "58788",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 33022,
+            "jobTitle": "Mental health nurse"
+        },
+        "loanDetails": {
+            "loanAmount": 76364,
+            "loanPurpose": "Education",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 50757,
+                    "monthlyInstallment": 1050
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 25031,
+                    "monthlyInstallment": 1787
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 14258,
+                    "monthlyInstallment": 2782
+                }
+            ],
+            "creditScore": 549
+        }
+    },
+    {
+        "customerId": "90882eaf-c977-4598-a03c-8c25fd235def",
+        "fullName": "Ronald Spencer",
+        "dateOfBirth": "1999-02-20",
+        "email": "markhernandez@smith.com",
+        "phoneNumber": "+1-421-020-5395",
+        "address": {
+            "street": "40268 Julie Mountains",
+            "city": "Stricklandhaven",
+            "state": "CT",
+            "zipCode": "59746",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": "Logan, Camacho and Boyd",
+            "annualIncome": 80036,
+            "jobTitle": "Airline pilot"
+        },
+        "loanDetails": {
+            "loanAmount": 12972,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 180856,
+                    "monthlyInstallment": 934
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 187751,
+                    "monthlyInstallment": 3683
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 22178,
+                    "monthlyInstallment": 2688
+                }
+            ],
+            "creditScore": 451
+        }
+    },
+    {
+        "customerId": "9fd34579-4667-42ce-a04e-178c10d08d11",
+        "fullName": "Kimberly Nguyen",
+        "dateOfBirth": "1999-11-21",
+        "email": "bwagner@gmail.com",
+        "phoneNumber": "001-183-673-6576x615",
+        "address": {
+            "street": "4527 Christopher Corner Apt. 615",
+            "city": "New Brian",
+            "state": "OH",
+            "zipCode": "43708",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 66346,
+            "jobTitle": "Pharmacologist"
+        },
+        "loanDetails": {
+            "loanAmount": 99510,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 36
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 28158,
+                    "monthlyInstallment": 4784
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 41561,
+                    "monthlyInstallment": 4000
+                }
+            ],
+            "creditScore": 529
+        }
+    },
+    {
+        "customerId": "d86a6460-59a1-420e-9bb4-3332d8e7012f",
+        "fullName": "Ashley Ramirez",
+        "dateOfBirth": "1974-08-17",
+        "email": "lynchdiane@hotmail.com",
+        "phoneNumber": "024-455-0229x612",
+        "address": {
+            "street": "83667 Moore Inlet",
+            "city": "Kimberlyshire",
+            "state": "CO",
+            "zipCode": "07396",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": "Williams, Miller and Ramos",
+            "annualIncome": 75576,
+            "jobTitle": "Radiographer, diagnostic"
+        },
+        "loanDetails": {
+            "loanAmount": 84570,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 198903,
+                    "monthlyInstallment": 4247
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 91484,
+                    "monthlyInstallment": 3571
+                }
+            ],
+            "creditScore": 413
+        }
+    },
+    {
+        "customerId": "97d7a560-adb1-4670-ad9f-b00d4882d73c",
+        "fullName": "Mr. Andrew Foster",
+        "dateOfBirth": "2000-01-08",
+        "email": "harrissierra@duran.com",
+        "phoneNumber": "076-226-8388",
+        "address": {
+            "street": "60607 Michelle Ports Suite 966",
+            "city": "Dariustown",
+            "state": "GA",
+            "zipCode": "81519",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": null,
+            "annualIncome": 31551,
+            "jobTitle": "Press sub"
+        },
+        "loanDetails": {
+            "loanAmount": 18875,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 104747,
+                    "monthlyInstallment": 2591
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 59083,
+                    "monthlyInstallment": 2778
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 21022,
+                    "monthlyInstallment": 4231
+                }
+            ],
+            "creditScore": 416
+        }
+    },
+    {
+        "customerId": "e7ea8d5a-31a3-4c4d-828c-37e787d5b7be",
+        "fullName": "Heather Mullen",
+        "dateOfBirth": "2003-02-27",
+        "email": "curtisscott@morrison.com",
+        "phoneNumber": "(779)979-9552",
+        "address": {
+            "street": "77449 Michael Cliffs Suite 770",
+            "city": "West Marieland",
+            "state": "CO",
+            "zipCode": "81111",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": null,
+            "annualIncome": 96064,
+            "jobTitle": "Surveyor, building"
+        },
+        "loanDetails": {
+            "loanAmount": 10376,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 159598,
+                    "monthlyInstallment": 3946
+                }
+            ],
+            "creditScore": 813
+        }
+    },
+    {
+        "customerId": "73557b9d-0fd6-447e-b52d-4af2269ed4c9",
+        "fullName": "Steven Cooper",
+        "dateOfBirth": "1964-12-22",
+        "email": "wrightsamuel@warren-bishop.com",
+        "phoneNumber": "(466)590-5151x864",
+        "address": {
+            "street": "925 Brandi Divide Suite 462",
+            "city": "West Angelicamouth",
+            "state": "DC",
+            "zipCode": "88334",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 86648,
+            "jobTitle": "Medical illustrator"
+        },
+        "loanDetails": {
+            "loanAmount": 7389,
+            "loanPurpose": "Education",
+            "loanTermMonths": 36
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 90583,
+                    "monthlyInstallment": 4033
+                }
+            ],
+            "creditScore": 496
+        }
+    },
+    {
+        "customerId": "27aa7cbc-2337-4bbc-bffe-77c839feb99c",
+        "fullName": "Ryan Garcia",
+        "dateOfBirth": "1995-12-20",
+        "email": "nancy92@bennett.org",
+        "phoneNumber": "(706)537-9473",
+        "address": {
+            "street": "7359 Murray Haven",
+            "city": "Shawchester",
+            "state": "ID",
+            "zipCode": "79755",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 26839,
+            "jobTitle": "Quarry manager"
+        },
+        "loanDetails": {
+            "loanAmount": 53655,
+            "loanPurpose": "Medical Expense",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 591
+        }
+    },
+    {
+        "customerId": "45d5a68d-290a-4abb-835b-9fea1578d709",
+        "fullName": "Jose Guerra",
+        "dateOfBirth": "1965-06-23",
+        "email": "bwilkerson@brown-shaw.com",
+        "phoneNumber": "(153)051-5220x4727",
+        "address": {
+            "street": "010 Lewis Drive Suite 143",
+            "city": "Davidbury",
+            "state": "SC",
+            "zipCode": "82134",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": "Copeland Group",
+            "annualIncome": 98215,
+            "jobTitle": "Social worker"
+        },
+        "loanDetails": {
+            "loanAmount": 7154,
+            "loanPurpose": "Medical Expense",
+            "loanTermMonths": 60
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 77355,
+                    "monthlyInstallment": 3566
+                }
+            ],
+            "creditScore": 301
+        }
+    },
+    {
+        "customerId": "92170475-3d95-4e3f-9a52-26e69d642932",
+        "fullName": "Matthew Miller",
+        "dateOfBirth": "1983-10-10",
+        "email": "myerstheodore@hughes.com",
+        "phoneNumber": "531-952-0585",
+        "address": {
+            "street": "772 Bryan Trail",
+            "city": "Johnsonborough",
+            "state": "WY",
+            "zipCode": "26645",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 142338,
+            "jobTitle": "Insurance claims handler"
+        },
+        "loanDetails": {
+            "loanAmount": 72552,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 10599,
+                    "monthlyInstallment": 1615
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 94578,
+                    "monthlyInstallment": 441
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 72622,
+                    "monthlyInstallment": 1069
+                }
+            ],
+            "creditScore": 676
+        }
+    },
+    {
+        "customerId": "be4969ec-6667-43bb-a3b5-63606fdc0bad",
+        "fullName": "Tyler Morgan",
+        "dateOfBirth": "1971-12-13",
+        "email": "zrichardson@hotmail.com",
+        "phoneNumber": "161-692-8451x154",
+        "address": {
+            "street": "9627 West Stream Suite 964",
+            "city": "North Emilyfurt",
+            "state": "NY",
+            "zipCode": "98791",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": "Allison Ltd",
+            "annualIncome": 122408,
+            "jobTitle": "Primary school teacher"
+        },
+        "loanDetails": {
+            "loanAmount": 9561,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 95935,
+                    "monthlyInstallment": 3186
+                }
+            ],
+            "creditScore": 333
+        }
+    },
+    {
+        "customerId": "732e2016-add7-42c9-a747-b93c9ae77eab",
+        "fullName": "Jacqueline Hines",
+        "dateOfBirth": "1998-04-16",
+        "email": "raymond43@johnson.info",
+        "phoneNumber": "681.447.3947x31217",
+        "address": {
+            "street": "715 Mckinney Plaza",
+            "city": "Patriciaburgh",
+            "state": "VT",
+            "zipCode": "92280",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 86683,
+            "jobTitle": "Environmental manager"
+        },
+        "loanDetails": {
+            "loanAmount": 20907,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 130504,
+                    "monthlyInstallment": 265
+                }
+            ],
+            "creditScore": 669
+        }
+    },
+    {
+        "customerId": "77a7e8b7-5e70-465f-9280-c5aa8dd4595b",
+        "fullName": "Kristen Salazar",
+        "dateOfBirth": "1965-02-06",
+        "email": "raymond78@hammond-morrow.com",
+        "phoneNumber": "(517)785-2892",
+        "address": {
+            "street": "8018 Kevin Estates",
+            "city": "Sarahbury",
+            "state": "NC",
+            "zipCode": "37731",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 45729,
+            "jobTitle": "Structural engineer"
+        },
+        "loanDetails": {
+            "loanAmount": 40972,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 72
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 132746,
+                    "monthlyInstallment": 1431
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 45879,
+                    "monthlyInstallment": 2815
+                }
+            ],
+            "creditScore": 342
+        }
+    },
+    {
+        "customerId": "14cb0564-0743-4c3b-9d20-c3bfd342af08",
+        "fullName": "Martin Ray",
+        "dateOfBirth": "2003-07-18",
+        "email": "bmontgomery@small-gardner.com",
+        "phoneNumber": "364.710.2767x7359",
+        "address": {
+            "street": "5562 Robertson Coves",
+            "city": "Johnville",
+            "state": "NV",
+            "zipCode": "32996",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": "Roberts Group",
+            "annualIncome": 133267,
+            "jobTitle": "Warden/ranger"
+        },
+        "loanDetails": {
+            "loanAmount": 59805,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 152437,
+                    "monthlyInstallment": 2611
+                }
+            ],
+            "creditScore": 494
+        }
+    },
+    {
+        "customerId": "fef7d9ea-7f8e-4483-a8ca-aa1dc35bec2c",
+        "fullName": "Kathleen Parker",
+        "dateOfBirth": "1960-10-24",
+        "email": "pwagner@aguilar.com",
+        "phoneNumber": "797-480-1624x5650",
+        "address": {
+            "street": "98358 Jones Parkways Suite 849",
+            "city": "East Theresafurt",
+            "state": "WY",
+            "zipCode": "44945",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": "Morrison Group",
+            "annualIncome": 85546,
+            "jobTitle": "Architect"
+        },
+        "loanDetails": {
+            "loanAmount": 10938,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 24
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 137139,
+                    "monthlyInstallment": 3793
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 159927,
+                    "monthlyInstallment": 4273
+                }
+            ],
+            "creditScore": 443
+        }
+    },
+    {
+        "customerId": "518b2f21-9cf2-4859-ae6e-2e7253f591dc",
+        "fullName": "William Stevenson",
+        "dateOfBirth": "1979-08-07",
+        "email": "terickson@yahoo.com",
+        "phoneNumber": "5516940974",
+        "address": {
+            "street": "097 Alexandria Stravenue",
+            "city": "Hernandezbury",
+            "state": "OK",
+            "zipCode": "92319",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": "Alexander Group",
+            "annualIncome": 39848,
+            "jobTitle": "Passenger transport manager"
+        },
+        "loanDetails": {
+            "loanAmount": 95505,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 186014,
+                    "monthlyInstallment": 1181
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 148033,
+                    "monthlyInstallment": 2712
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 138750,
+                    "monthlyInstallment": 3136
+                }
+            ],
+            "creditScore": 621
+        }
+    },
+    {
+        "customerId": "e980f808-75ac-424c-ac55-aef7f4e95734",
+        "fullName": "Kimberly Lowe",
+        "dateOfBirth": "2005-07-24",
+        "email": "plee@yahoo.com",
+        "phoneNumber": "+1-434-437-5758",
+        "address": {
+            "street": "1986 Cardenas Trail Apt. 404",
+            "city": "West Sandraview",
+            "state": "NJ",
+            "zipCode": "28548",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 142293,
+            "jobTitle": "Surveyor, planning and development"
+        },
+        "loanDetails": {
+            "loanAmount": 96248,
+            "loanPurpose": "Education",
+            "loanTermMonths": 24
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 545
+        }
+    },
+    {
+        "customerId": "e7ba26ac-ab7a-4d1c-8cfe-f6833e11bafe",
+        "fullName": "Margaret Williams",
+        "dateOfBirth": "1987-05-12",
+        "email": "xgarcia@gmail.com",
+        "phoneNumber": "8267734540",
+        "address": {
+            "street": "938 Robin Extensions",
+            "city": "Khanburgh",
+            "state": "AZ",
+            "zipCode": "52535",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": "Hayden, Howe and Mcdowell",
+            "annualIncome": 21214,
+            "jobTitle": "Hydrogeologist"
+        },
+        "loanDetails": {
+            "loanAmount": 79443,
+            "loanPurpose": "Medical Expense",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 120104,
+                    "monthlyInstallment": 4500
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 36179,
+                    "monthlyInstallment": 4180
+                }
+            ],
+            "creditScore": 779
+        }
+    },
+    {
+        "customerId": "1cd66b09-cf0e-4d2b-b15c-167a45d8a6ad",
+        "fullName": "Nicholas Wong",
+        "dateOfBirth": "1971-11-28",
+        "email": "krystal93@carr.biz",
+        "phoneNumber": "(851)612-2753x04637",
+        "address": {
+            "street": "4990 Valdez Square Apt. 017",
+            "city": "Erikhaven",
+            "state": "VT",
+            "zipCode": "41261",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 68174,
+            "jobTitle": "Volunteer coordinator"
+        },
+        "loanDetails": {
+            "loanAmount": 33947,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 24
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 120269,
+                    "monthlyInstallment": 3110
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 185009,
+                    "monthlyInstallment": 4549
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 199534,
+                    "monthlyInstallment": 4453
+                }
+            ],
+            "creditScore": 523
+        }
+    },
+    {
+        "customerId": "c1369c65-ae2a-4341-bf59-e4f2c3093b6e",
+        "fullName": "Rachel Fox",
+        "dateOfBirth": "1995-03-06",
+        "email": "starkdaniel@hotmail.com",
+        "phoneNumber": "398.225.8713x97187",
+        "address": {
+            "street": "2867 Angelica Spring",
+            "city": "Jenniferfurt",
+            "state": "AL",
+            "zipCode": "98255",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": "Henderson Ltd",
+            "annualIncome": 28357,
+            "jobTitle": "Special educational needs teacher"
+        },
+        "loanDetails": {
+            "loanAmount": 12897,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 48
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 593
+        }
+    },
+    {
+        "customerId": "22ab7752-c4db-4a62-ae13-418d68ab80ea",
+        "fullName": "Veronica Brewer",
+        "dateOfBirth": "1987-11-04",
+        "email": "ywest@yahoo.com",
+        "phoneNumber": "825-128-6823",
+        "address": {
+            "street": "47868 Morrow Gateway",
+            "city": "Reedview",
+            "state": "VA",
+            "zipCode": "15291",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": null,
+            "annualIncome": 100599,
+            "jobTitle": "Administrator, sports"
+        },
+        "loanDetails": {
+            "loanAmount": 36544,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [],
+            "creditScore": 334
+        }
+    },
+    {
+        "customerId": "b40a9181-ac09-4db7-9908-6e477249f62c",
+        "fullName": "Dana Williams",
+        "dateOfBirth": "1989-02-08",
+        "email": "karenparsons@gordon.com",
+        "phoneNumber": "001-959-953-4283x6440",
+        "address": {
+            "street": "687 Teresa Row",
+            "city": "Floydmouth",
+            "state": "MT",
+            "zipCode": "54012",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 69343,
+            "jobTitle": "Educational psychologist"
+        },
+        "loanDetails": {
+            "loanAmount": 75507,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 24
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 186487,
+                    "monthlyInstallment": 1232
+                }
+            ],
+            "creditScore": 774
+        }
+    },
+    {
+        "customerId": "69a53b4f-8ff8-469d-8ec0-713dea2c7a51",
+        "fullName": "Kristin Anderson",
+        "dateOfBirth": "1975-10-06",
+        "email": "markmiller@yahoo.com",
+        "phoneNumber": "(183)046-9901x398",
+        "address": {
+            "street": "3540 Sharon Streets",
+            "city": "Lake Yvonnefort",
+            "state": "IA",
+            "zipCode": "91678",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 139947,
+            "jobTitle": "Film/video editor"
+        },
+        "loanDetails": {
+            "loanAmount": 77362,
+            "loanPurpose": "Education",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 123224,
+                    "monthlyInstallment": 4421
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 81851,
+                    "monthlyInstallment": 2192
+                }
+            ],
+            "creditScore": 668
+        }
+    },
+    {
+        "customerId": "774c0afa-7f4d-408c-a1ff-f6c08347f1da",
+        "fullName": "William Harrison",
+        "dateOfBirth": "1981-01-10",
+        "email": "lawrence09@figueroa.com",
+        "phoneNumber": "+1-996-423-5369",
+        "address": {
+            "street": "8547 Murray Street",
+            "city": "Garyside",
+            "state": "HI",
+            "zipCode": "71559",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Employed",
+            "employer": "Landry Ltd",
+            "annualIncome": 26358,
+            "jobTitle": "Accounting technician"
+        },
+        "loanDetails": {
+            "loanAmount": 59053,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 186380,
+                    "monthlyInstallment": 1287
+                }
+            ],
+            "creditScore": 309
+        }
+    },
+    {
+        "customerId": "5f8a14bd-74bd-4c93-8177-b66137fe032c",
+        "fullName": "Mark Peck",
+        "dateOfBirth": "1992-02-13",
+        "email": "smithandrea@gmail.com",
+        "phoneNumber": "8484086211",
+        "address": {
+            "street": "39845 Norton Common",
+            "city": "Susanmouth",
+            "state": "IA",
+            "zipCode": "91889",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 109658,
+            "jobTitle": "Catering manager"
+        },
+        "loanDetails": {
+            "loanAmount": 90686,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 12
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 99872,
+                    "monthlyInstallment": 4577
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 15710,
+                    "monthlyInstallment": 127
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 22675,
+                    "monthlyInstallment": 4144
+                }
+            ],
+            "creditScore": 744
+        }
+    },
+    {
+        "customerId": "90dbfad6-54ce-46be-88cc-e2c2a518a418",
+        "fullName": "Valerie Jacobson",
+        "dateOfBirth": "1962-02-17",
+        "email": "rachelschwartz@alvarez.com",
+        "phoneNumber": "+1-902-503-9261",
+        "address": {
+            "street": "93968 Reyes Streets Apt. 185",
+            "city": "North Samuelland",
+            "state": "PA",
+            "zipCode": "80961",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": null,
+            "annualIncome": 23883,
+            "jobTitle": "Government social research officer"
+        },
+        "loanDetails": {
+            "loanAmount": 64054,
+            "loanPurpose": "Business Expansion",
+            "loanTermMonths": 24
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 114206,
+                    "monthlyInstallment": 1571
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 23464,
+                    "monthlyInstallment": 2469
+                }
+            ],
+            "creditScore": 552
+        }
+    },
+    {
+        "customerId": "4499d0a6-1500-4170-92d1-5585b68e47fa",
+        "fullName": "Michael Walters",
+        "dateOfBirth": "1985-10-01",
+        "email": "daniel04@yahoo.com",
+        "phoneNumber": "(412)126-7888x610",
+        "address": {
+            "street": "8199 Shields Bridge",
+            "city": "Robertland",
+            "state": "OH",
+            "zipCode": "32317",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 42216,
+            "jobTitle": "Corporate treasurer"
+        },
+        "loanDetails": {
+            "loanAmount": 40247,
+            "loanPurpose": "Education",
+            "loanTermMonths": 36
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 17585,
+                    "monthlyInstallment": 1419
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 73341,
+                    "monthlyInstallment": 3499
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 127938,
+                    "monthlyInstallment": 680
+                }
+            ],
+            "creditScore": 669
+        }
+    },
+    {
+        "customerId": "b88cddde-3f20-46c2-b1b8-8d65406f64d6",
+        "fullName": "Linda Gonzalez",
+        "dateOfBirth": "1966-07-07",
+        "email": "adam65@james.biz",
+        "phoneNumber": "+1-924-593-7526x5479",
+        "address": {
+            "street": "6465 Sarah Flats",
+            "city": "Lake Katrina",
+            "state": "VA",
+            "zipCode": "61006",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Unemployed",
+            "employer": null,
+            "annualIncome": 124554,
+            "jobTitle": "Horticulturist, amenity"
+        },
+        "loanDetails": {
+            "loanAmount": 95811,
+            "loanPurpose": "Home Renovation",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 37484,
+                    "monthlyInstallment": 2530
+                },
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 67238,
+                    "monthlyInstallment": 1312
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 99825,
+                    "monthlyInstallment": 655
+                }
+            ],
+            "creditScore": 759
+        }
+    },
+    {
+        "customerId": "950df1a0-7aaf-4001-9912-316afd9e8e20",
+        "fullName": "Jonathon Knapp",
+        "dateOfBirth": "2006-04-22",
+        "email": "gibbsmichael@hotmail.com",
+        "phoneNumber": "+1-113-529-0965x610",
+        "address": {
+            "street": "3888 Sean Lock",
+            "city": "Bartonshire",
+            "state": "NY",
+            "zipCode": "20259",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Self-Employed",
+            "employer": "Garcia-Perry",
+            "annualIncome": 146055,
+            "jobTitle": "Chartered certified accountant"
+        },
+        "loanDetails": {
+            "loanAmount": 20213,
+            "loanPurpose": "Car Loan",
+            "loanTermMonths": 36
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 120362,
+                    "monthlyInstallment": 1744
+                },
+                {
+                    "loanType": "Credit Card",
+                    "outstandingAmount": 92304,
+                    "monthlyInstallment": 3950
+                }
+            ],
+            "creditScore": 399
+        }
+    },
+    {
+        "customerId": "73d39457-b25f-43df-b8d4-9848702ba49f",
+        "fullName": "Eric Patrick",
+        "dateOfBirth": "1967-01-25",
+        "email": "deborah23@thompson.info",
+        "phoneNumber": "622.660.9379",
+        "address": {
+            "street": "0334 Barbara Union Apt. 553",
+            "city": "Wilsonfort",
+            "state": "SC",
+            "zipCode": "41579",
+            "country": "USA"
+        },
+        "employmentDetails": {
+            "employmentStatus": "Student",
+            "employer": null,
+            "annualIncome": 96939,
+            "jobTitle": "Clothing/textile technologist"
+        },
+        "loanDetails": {
+            "loanAmount": 50603,
+            "loanPurpose": "Education",
+            "loanTermMonths": 84
+        },
+        "financialHistory": {
+            "existingLoans": [
+                {
+                    "loanType": "Car Loan",
+                    "outstandingAmount": 177577,
+                    "monthlyInstallment": 2486
+                },
+                {
+                    "loanType": "Home Loan",
+                    "outstandingAmount": 177189,
+                    "monthlyInstallment": 1147
+                },
+                {
+                    "loanType": "Personal Loan",
+                    "outstandingAmount": 31896,
+                    "monthlyInstallment": 2004
+                }
+            ],
+            "creditScore": 612
+        }
+    }
+]

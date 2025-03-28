@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1qxiwr2" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="addcace" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <inputData id="InputData_0dyz74r" name="Production year" />
+  <inputData id="InputData_07rlmp1" name="Engine displacement" />
+  <inputData id="InputData_0vvdp66" name="Length" />
+  <inputData id="InputData_0r51w3k" name="Horsepower" />
+  <inputData id="InputData_0au9cl1" name="Width" />
+  <inputData id="InputData_0kjhi1t" name="Height" />
+  <inputData id="InputData_0ap7mxn" name="Wheelbase" />
+  <inputData id="InputData_1uy8a75" name="Driver Age" />
+  <inputData id="InputData_1tmqjun" name="Driver experience (years)" />
+  <inputData id="InputData_0728sh2" name="no-claims years" />
+  <inputData id="InputData_0l226es" name="Car value" />
+  <decision id="Decision_0535dan" name="Car Insurance Rate" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_1jntztn" dmnElementRef="InputData_0dyz74r">
+        <dc:Bounds height="45" width="125" x="417" y="258" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1y2thdi" dmnElementRef="InputData_07rlmp1">
+        <dc:Bounds height="45" width="125" x="548" y="259" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_03xmnk1" dmnElementRef="InputData_0vvdp66">
+        <dc:Bounds height="45" width="125" x="678" y="259" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0147ndk" dmnElementRef="InputData_0r51w3k">
+        <dc:Bounds height="45" width="125" x="288" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1q09fiy" dmnElementRef="InputData_0au9cl1">
+        <dc:Bounds height="45" width="125" x="808" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0od26r2" dmnElementRef="InputData_0kjhi1t">
+        <dc:Bounds height="45" width="125" x="938" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0nzochv" dmnElementRef="InputData_0ap7mxn">
+        <dc:Bounds height="45" width="125" x="1068" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1weav0i" dmnElementRef="InputData_1uy8a75">
+        <dc:Bounds height="45" width="125" x="1198" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_197ova9" dmnElementRef="InputData_1tmqjun">
+        <dc:Bounds height="45" width="125" x="1327" y="258" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0okr62r" dmnElementRef="InputData_0728sh2">
+        <dc:Bounds height="45" width="125" x="1457" y="258" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0pkwoi7" dmnElementRef="InputData_0l226es">
+        <dc:Bounds height="45" width="125" x="158" y="259" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_014qdwh" dmnElementRef="Decision_0535dan">
+        <dc:Bounds height="80" width="180" x="781" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
