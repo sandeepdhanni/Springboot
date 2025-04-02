@@ -1,0 +1,23 @@
+1. difference between encapsulation and abstraction
+2. can we achieve encapsulation without abstraction?if yes how?
+A) Yes, encapsulation can exist without abstraction by simply making class attributes private and providing controlled access via methods. Abstraction, on the other hand, focuses on hiding implementation details, which is not required for encapsulation.
+3. about string constant pool and where objects and literals are stored?
+A) String Constant Pool is a special memory area inside the heap where string literals are stored to optimize memory usage.
+4. can interface have private methods?
+A) Yes, since Java 9, interfaces can have private methods.To avoid code duplication in default and static methods.To enhance code readability and modularity by breaking logic into smaller, reusable methods.Private methods cannot be accessed outside the interface—they are meant for internal use within the interface.
+5. purpose of private methods inside the interface if they cannot be accessed outside the internet?
+A) Private methods in interfaces cannot be accessed outside the interface, but they are useful for code reusability, modularity, and maintainability within the interface itself. They help avoid duplication in default and static methods.
+6. if u don't use the terminal operations in a stream pipeline,will the intermediate operations be executed?why or why not ?
+A) No, if you don’t use a terminal operation in a Stream pipeline, the intermediate operations will not be executed.Streams in Java are lazy.Intermediate operations (map(), filter(), sorted(), etc.) are not executed immediately.They are only recorded and executed only when a terminal operation (collect(), forEach(), count(), etc.) is called.it is only executed when the final result is needed.
+Eg: in a tv remote when pressing buttons noting until u turn on the tv.
+7. explain internal working on hashmap in detail?
+8. if two keys have the same hashcode,how does hashmap store them internally?
+9. how many types of class loaders are there ?
+10. what happens when two different class loaders load the same class ?
+11. is rest always stateless ? can a rest api maintain a session?
+A) rest is designed to be stateless meaning the server does not store client session data however rest api can maintain a session using tokens,cookies and databases storages
+12. how will u configure your application if ur application databases for different environment?
+A) use spring profiles to configure different databases for different environment define seperate application.properties or yml files like application-dev.properties,application-prod.properties  
+
+
+
