@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_xojrqev" name="tech talk - dt first" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="17.0.2" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0" camunda:diagramRelationId="47c4fc1c-11e4-4cca-9193-e22eb2417c16">
+  <decision id="EvaluateProximityTab" name="Evaluate proximity">
+    <knowledgeRequirement id="KnowledgeRequirement_1vhrzvs">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0rznjcw" />
+    </knowledgeRequirement>
+    <decisionTable id="DecisionTable_07g94t1" hitPolicy="FIRST">
+      <input id="InputClause_0qnqj25" label="Proximity 15" biodi:width="192">
+        <inputExpression id="LiteralExpression_00lcyt5" typeRef="boolean">
+          <text>useless</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0hhe1yo" label="Risk" name="risk" typeRef="number" />
+      <rule id="DecisionRule_13zidc5">
+        <inputEntry id="UnaryTests_056skcq">
+          <text>proximityCheck(news, company, "apple", 10).isWithinDistance</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hclhw3">
+          <text>7</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06paffx">
+        <inputEntry id="UnaryTests_1baiid4">
+          <text>proximityCheck(news, company, "tesla", 5).isWithinDistance</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02oibi4">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00ew25e">
+        <inputEntry id="UnaryTests_07uxyug">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07i3sc8">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0rznjcw" name="proximityCheck">
+    <variable id="InformationItem_0bcz52d" name="proximityCheck" />
+    <encapsulatedLogic id="FunctionDefinition_1edkyy9">
+      <formalParameter name="news" typeRef="" />
+      <formalParameter name="company" typeRef="" />
+      <formalParameter name="keyword" typeRef="" />
+      <formalParameter name="distance" typeRef="" />
+      <literalExpression id="LiteralExpression_1xswiqf">
+        <text>{
+    words: split(news, "\s+"),
+    companyIndexes: for i in 1..count(words) return if contains(words[i], company) then i else null,
+    keywordIndexes: for i in 1..count(words) return if contains(words[i], keyword) then i else null,
+    companyFilteredIndexes: companyIndexes[item != null],
+    keywordFilteredIndexes: keywordIndexes[item != null],
+  
+    differences: for ci in companyFilteredIndexes return 
+                   for ki in keywordFilteredIndexes return abs(ci - ki),
+    flattenDifferences: flatten(differences),
+  
+    isWithinDistance: some diff in flattenDifferences satisfies diff &lt;= distance
+}</text>
+      </literalExpression>
+    </encapsulatedLogic>
+  </businessKnowledgeModel>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_1sb3tre" dmnElementRef="EvaluateProximityTab">
+        <dc:Bounds height="80" width="180" x="160" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1vyj5xn" dmnElementRef="KnowledgeRequirement_1vhrzvs">
+        <di:waypoint x="250" y="317" />
+        <di:waypoint x="250" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1q5lbts" dmnElementRef="BusinessKnowledgeModel_0rznjcw">
+        <dc:Bounds height="46" width="135" x="182" y="317" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
