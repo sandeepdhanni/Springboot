@@ -2361,6 +2361,20 @@ Colelct(Count) -the number of output values..it returns the total number of appl
 
 
 
+
+
+
+IMPORTANT CONFIGURATION :
+MAXJOBPERAQUISITION - sets the maximum number of jobs to be acquired at once.
+LOCKTIMEINMILLIS - specifies the time in milliseconds an acquired job is locked for execution..during that time,no other job executor can acquire the job..
+WAITTIMEINMILLIS - specifies the wait time of the job acquisition thread in milliseconds in case there are less jobs available for execution than requisted during acquisition.if this is repeatedly the case, the wait time is incresed exponentially by the factor waitincreasefactor.the wait time is capped by maxwait..
+BACKOFFTIMEINMILLIS - specifies the wait time of the job acquisition thread in milliseconds in case jobs were acquired but could not be locked.this condition that there are other job acquisition threads acquiring jobs in parallel.if this is repeatedly the case,the backoff time is increased exponentially by thye factor waitincreasefactor..
+
+
+
+
+
+
 reading an email and storing the email in the .msg file and saving the file in a particular path
 
 
