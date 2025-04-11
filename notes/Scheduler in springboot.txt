@@ -287,3 +287,19 @@ This approach works for simple cases where you want to configure the thread pool
 - **Task Execution**: Ensure that scheduled tasks are lightweight. Long-running tasks should be executed asynchronously or outside the scheduler to avoid blocking other scheduled tasks.
 
 By using a thread pool, you allow multiple scheduled tasks to execute concurrently, improving the efficiency and responsiveness of your Spring Boot application.
+
+
+
+
+
+
+SHREADLOCK IN SPRINGBOOT(PREVENT DUBLICATE SCHEDULED TASKS) :
+in a single instance application everything works fine,no duplicate execution..but when u deploy the application across multiple instance..how can u ensure that the scheduled task don't run simultaneously on different server...
+Eg: 
+   if it ran on instance 1 then it should not execute again on either instance 2 or instance 3....THAT IS WHERE SHREADLOCK COMES INTO THE PICTURE..
+     Instance 1                 Instance 2                   Instance 3
+ 	    ✓                            ❌                           ❌
+		❌                            ✓                           ❌
+		❌							 ❌                            ✓
+		
+Shreadlock is a lightweight library that ensure your scheduled-task run only once in a distributed system.. 
