@@ -21,3 +21,25 @@ A) use spring profiles to configure different databases for different environmen
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SPRING INTERVIEW QUESTIONS :
+what happens if a sring bean has a private constructor?
+A) if a class is annotated with @component then the ioc container will automatically create a object for that class but if a class has a private constructor then the ioc container cannot create a object for that class..in this scenario u mush have the static method that returns the object of the class.
+
+what is the difference between constructor injection and setter injection?
+
+
+
