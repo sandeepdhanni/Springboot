@@ -41,5 +41,63 @@ A) if a class is annotated with @component then the ioc container will automatic
 
 what is the difference between constructor injection and setter injection?
 
+can we create a spring bean without using @component ?
+
+can we have multiple @bean methods of same type in a spring configuration?
+
+what happens if more than one bean of same type is available?
+
+difference between @conponent,@service and @repository?
+
+difference ebetween utility classes and helper classes?
+A) Utility classes are classes that contain static methods and constants that perform general-purpose, reusable operations. 
+Characteristics:
+Methods are static
+Cannot (or should not) be instantiated
+Often declared with a private constructor to prevent object creation
+HELPER CLASSES :
+Helper classes are similar to utility classes but are usually more context-specific. They are created to assist a specific class or module and may not always use static methods.
+Characteristics:
+May or may not have static methods
+May contain instance methods, depending on the use case
+Generally more tightly coupled with business logic
 
 
+can we create the springboot appication without using @springbootapplication?
+A) using enableautoconfiguration,conponentcan and configuration.
+
+can we run a springboot application without an embedded server?
+A) yes, by the property spring.web.web-application-type=none in the properties files
+
+how to disable the autoconfiguration in springboot?
+A) @springbootapplication(exclude={DatasourceAutoConfiguration.class})
+
+can we change the port of a springboot application without modifying the application.properties file?
+A) yes, using command line args java -jar app.jar --server.port=2000
+
+what happens if we have multiple application.properties file in a springboot application?
+A) spring loads them in this order: /config folder inside the jar, classpath root(/src/resource), external config source(environment variables,command-line args)
+
+what happens if @springbootapplication is used as an interface?
+A) it fails because it cannot initiate an interace..
+
+
+difference between controller and restcontroller?
+
+what happens if we don't define an @Id field in a jpa entity?
+A) hibernate will throw an exception.
+
+
+what should we use if we do not want to save a property 
+A) use these annotations @transient
+
+how to store the list of string values in database using datajpa?
+A) us e the annotation @ElementCollection
+
+how to save the child entity automatically while saving the parent?
+use the annotaion @oneToOne(cascade=CascadeType.ALL)
+
+can we execute a native query in springdata jpa?
+A)yes using @query with nativequery
+
+can we execute stored procedures using springdatajpa?
