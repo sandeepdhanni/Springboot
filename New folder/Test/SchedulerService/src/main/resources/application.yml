@@ -1,0 +1,29 @@
+server:
+  port: 1993
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/practice
+    username: root
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+mail:
+  host: mail.eidiko-india.com
+  port: 993
+#  username:
+#  password: 
+  username: _______
+  password: _______
+  subjects:
+    - "DailySatus"
+    - "Test"
+    - "Exceldata"
