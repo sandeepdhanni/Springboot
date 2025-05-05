@@ -16,22 +16,7 @@ shouldn't be doing something like that. So that is all your TypeScript. It is no
 
 
 
-
-statement what TypeScript does for you. The simple idea behind the TypeScript is static checking.
-
-That's the only job. And yes, that's the only one job that TypeScript has got for you.
-
-The static checking is something which is present in many languages, especially the languages such as
-
-Java or maybe even GoLang. A lot of languages are built in with the static checking. And what does
-
-the static checking means that whenever you're writing the code, the parser of the language or the
-
-entire syntax of the language is constantly being analyzed by the IDE's. But not in the case ofJavaScript. Whatever you write is just okay for the JavaScript. And when the code executes in the
-
-browser or in the engine like node environment or anything done, then only the errors of JavaScript
-
-are being thrown at your face. And at that time, you just say, ah, that's wrong. And you need to
+ And at that time, you just say, ah, that's wrong. And you need to
 rerun the code itself. But it would be really a great help if there is a static checker which
 
 checks my code as I try to write it. For example, I'm trying to access an object which is not yet
@@ -46,6 +31,10 @@ at the runtime itself. That's all it does. So I hope you understand that. The wh
 TypeScript is simply to analyze the code. That's it. That's all it does
 
 
+
+what typescript does?
+The simple idea behind the TypeScript is static checking.static checking which is used in many language like golang,java eyc.static checking means that whenever you are writting the code,the parser of the language or the entire syntax of the language is constantlybeing analysed by the ide..but not in case of javascript..whatever u write is just okey for javascript and when the code executes in te browser or engine like node environmentthen only the errors of javascript are thrown at your face..
+typescript is a development tool,it helps you to write better code with less problems with more scalable and maintainable code that is easily available and the chances of producing the error is much more less..
 
 
 
