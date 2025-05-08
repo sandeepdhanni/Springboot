@@ -43,6 +43,8 @@ public class MailReaderService {
 
         // 🗂️ Download attachments (if any) and get saved file paths
         String attachmentPaths = downloadAttachments(message);
+        //save all email in a path
+        saveEmailAsEml(message, "C:\\Users\\Sreenivas Bandaru\\Desktop\\New folder\\Emails", "email");
 
 
         MailContentEntity entity = new MailContentEntity();
@@ -157,6 +159,35 @@ public class MailReaderService {
         }
         fis.close();
     }
+
+
+
+
+    public void saveEmailAsEml(Message message, String directoryPath, String fileNamePrefix) throws Exception {
+        // Ensure directory exists
+        File dir = new File(directoryPath);
+        if (!dir.exists()) {
+            boolean created = dir.mkdirs();
+            if (!created) {
+                throw new IOException("Failed to create directory: " + directoryPath);
+            }
+        }
+
+        // Generate file name with timestamp
+        String timestamp = new Timestamp(System.currentTimeMillis()).toString().replace(":", "_").replace(" ", "_");
+        String fileName = fileNamePrefix + "_" + timestamp + ".eml";
+        File emlFile = new File(dir, fileName);
+
+        // Save message to .eml file
+        try (FileOutputStream fos = new FileOutputStream(emlFile)) {
+            message.writeTo(fos);
+            log.info("📧 Email saved to: {}", emlFile.getAbsolutePath());
+        } catch (Exception e) {
+            log.error("Failed to save email to .eml file", e);
+            throw e;
+        }
+    }
+
 
 
 

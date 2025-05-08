@@ -2,6 +2,7 @@ package streams;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Programs {
 
@@ -108,7 +109,31 @@ public class Programs {
         //in how many ways can we create a object- using new or enum or using clone()
 
 
+        //Convert List of Strings to Uppercase
+        List<String> names = Arrays.asList("alice", "bob", "carol");
+        List<String> upper = names.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+        System.out.println(upper);
 
+
+
+
+        //Check if a String is a Palindrome Using Streams
+        String str = "madam";
+        boolean isPalindrome = IntStream.range(0, str.length() / 2)
+                .allMatch(i -> str.charAt(i) == str.charAt(str.length() - i - 1));
+        System.out.println("Is palindrome: " + isPalindrome);
+
+
+
+
+        //Sort a List of Strings by Length
+        List<String> listData = Arrays.asList("Java", "Spring", "C", "JavaScript");
+        List<String> sorted = listData.stream()
+                .sorted()
+                .collect(Collectors.toList());
+        System.out.println(sorted);
 
     }
 }

@@ -1,6 +1,9 @@
 package streams;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -43,6 +46,26 @@ public class StreamsPrograms {
 
         System.out.println(pairs1);
 
+
+
+
+        //Find Common Elements Between Two Lists Using Streams
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> list2 = Arrays.asList(3, 4, 5, 6, 7);
+
+        List<Integer> common = list1.stream()
+                .filter(list2::contains)
+                .collect(Collectors.toList());
+
+        System.out.println("Common: " + common);
+
+
+
+        // Convert a List of Integers to a Map of Squares
+        List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
+        Map<Integer, Integer> squares = nums.stream()
+                .collect(Collectors.toMap(n -> n, n -> n * n));
+        System.out.println(squares);
     }
 
 
