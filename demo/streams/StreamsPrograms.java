@@ -66,6 +66,65 @@ public class StreamsPrograms {
         Map<Integer, Integer> squares = nums.stream()
                 .collect(Collectors.toMap(n -> n, n -> n * n));
         System.out.println(squares);
+
+
+// extracting the substring after the 4th letter (i.e., starting from index 4)
+        List<String> value = Arrays.asList("sandeep", "dhanni", "morning");
+        value.stream()
+                .map(str -> str.length() > 4 ? str.substring(4) : "") // Safely handle short strings
+                .forEach(System.out::println);
+
+
+
+// Converting a list of strings to uppercase
+        List<String> words = Arrays.asList("apple", "banana", "cherry");
+        words.stream()
+                .map(String::toUpperCase)  // Converts each word to uppercase
+                .forEach(System.out::println);
+
+// Extracting first letters from a list of words
+        List<String> words1 = Arrays.asList("apple", "banana", "cherry");
+        words.stream()
+                .map(word -> word.charAt(0))  // Extracts the first letter of each word
+                .forEach(System.out::println);
+
+       // Filtering strings that start with a specific letter
+        List<String> words2 = Arrays.asList("apple", "banana", "cherry", "avocado");
+        words.stream()
+                .filter(word -> word.startsWith("a"))  // Filters words that start with "a"
+                .forEach(System.out::println);
+
+//Filtering even numbers and squaring them
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        numbers.stream()
+                .filter(num -> num % 2 == 0)  // Filters even numbers
+                .map(num -> num * num)        // Squares each even number
+                .forEach(System.out::println);
+
+//Capitalize each string
+        List<String> names = Arrays.asList("john", "doe", "alice");
+        names.stream()
+                .map(str -> str.substring(0, 1).toUpperCase() + str.substring(1))
+                .forEach(System.out::println);
+
+
+//Filter strings by length
+        List<String> items = Arrays.asList("pen", "notebook", "book", "pencil");
+        items.stream()
+                .filter(s -> s.length() > 4)
+                .forEach(System.out::println);
+
+
+//Count strings with specific character
+        long count = Arrays.asList("apple", "banana", "cherry", "avocado")
+                .stream()
+                .filter(str -> str.contains("a"))
+                .count();
+        System.out.println("Words containing 'a': " + count);
+
+
+
+
     }
 
 
