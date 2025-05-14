@@ -1,0 +1,105 @@
+Reactive programming :
+
+Reactive stream specification is nothing but the rule to design a reactive programming just like how we have oop's language similar way we need to follow...Reactive Streams is a standard for asynchronous stream processing with non-blocking backpressure.
+
+
+Why Reactive Streams?
+In traditional (imperative) programming:
+You fetch all data at once (blocking).
+System can be overloaded if too much data is fetched at once.
+In Reactive Streams:
+You react to data as it arrives.
+You request data only as you can handle it (this is called backpressure).
+
+
+
+Reactive Streams has 4 main interfaces (defined in the specification):
+
+Interface	            Responsibility
+Publisher<T>	Produces data and sends it to a subscriber
+Subscriber<T>	Consumes the data
+Subscription	Represents the link between Publisher & Subscriber (used for backpressure)
+Processor<T,R>	A processor acts as both Subscriber and Publisher
+
+
+
+it has four interface:
+* Publisher
+* Subscriber
+* Subscription 
+* Processor
+
+* Publisher - it is the datasource who will publish the event..
+  Method signature - 
+    public interface Publish<T>{
+	public void subscribe(Subscriber<? super T> s);
+	}
+	
+* subscriber - subscriber will subscribe/consume the events from publisher...
+  Method signature -
+  public interface Subscriber<T>{
+  public void onNext(T t);
+  public void onError(Throwable t);
+  public void onComplete();\
+  }
+  
+* Subscription - subscription represents the unique relationship between a subscriber adn publisher..
+  Method signature -
+  public interface subscription(long n){
+  public void request(long n);
+  public void cancel();  
+  }
+  
+* Processor - processor represents processing stage which is both publisher and subscriber and mush obey the contracts of both.
+  Method signature -
+  public interface Processor<T,R> extends Subscriber<T>,Publisher<R>{
+  }
+  
+  
+Reactive stream workflow -
+Flow of Reactive Streams
+Publisher → has data
+Subscriber → wants data
+Subscriber subscribes to Publisher
+Publisher sends data only as requested
+Subscriber controls flow via request(n)
+If needed, cancel() can stop the stream
+                                                 ----------
+                  |---------------------------- | Publisher|-------------------
+				  |                |           |  ---------   |               |
+				  |                |           |              |               |
+	  subscribe() 1  subscription()2 Request() 3 onNext(data) 4 onNext(data)  5 onComplete() or onError() 
+				  |                |           |              |               |
+				  |                |           |              |               |                        |-----------|
+                  |----------------------------------------------------------------------------------  | Subscriber|
+                                                                                                       |-----------|
+
+we have subscriber and publisher ...
+* first subscriber will invoke the subscribe method of publisher and pass the instance of subscribe instance as a input..
+* next publisher will send the subscription event to the subscriber confirming that subscription is successful
+* subscriber will call the request method from subscription interface to get the data from publisher.the method signature is Request(n) which means subscriber can request n number of request data from publisher
+* publisher will sent the data stream to subscriber by invoking onNext(data) method.
+  Eg: publisher is returning 10 records..publisher will fire 10 times onNext event.if publisher send n number of data then there will be n time onNext event process..
+* once all the record received by subscriber then publisher will invoke one onComeplete method of subscriber to confirm that the job is done..if there is any error then publisher will fire onError event..
+
+
+
+
+ What is Backpressure?
+Backpressure is a mechanism to avoid overwhelming consumers. It allows the Subscriber to say:
+"Hey Publisher, I can only handle 5 items at a time."
+This prevents memory overflows and keeps the system responsive.
+
+
+Mono vs Flux: Core Difference
+Feature 	           Mono	                                             Flux
+Purpose	      Represents 0 or 1 item	                      Represents 0 to N items
+Use Case	  For single result (e.g., findById)	          For multiple results (e.g., findAll)
+Completion	  Completes with success or error	              Completes after emitting N items or error
+Publisher	  Part of Reactive Streams specification	      Part of Reactive Streams specification
+
+Mono<T> → A container that will eventually hold one item (or none).
+Like: Optional<T> but async.
+
+Flux<T> → A container that will eventually emit many items over time.
+Like: List<T> but async.
