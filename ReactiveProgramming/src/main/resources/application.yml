@@ -1,0 +1,12 @@
+spring:
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/practice
+    username: root
+    password: root
+server:
+  port: 2000
+  sql:
+    init:
+      mode: always
+
+logging.level.org.springframework.r2dbc.core: DEBUG

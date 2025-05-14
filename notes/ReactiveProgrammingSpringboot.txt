@@ -1,6 +1,6 @@
 Reactive programming :
 
-Reactive stream specification is nothing but the rule to design a reactive programming just like how we have oop's language similar way we need to follow...Reactive Streams is a standard for asynchronous stream processing with non-blocking backpressure.
+Reactive stream specification is nothing but the rule to design a reactive programming just like how we have oop's language similar way we need to follow...Reactive Streams is a standard for asynchronous stream processing with non-blocking backpressure.it is a asynchronous and non-blocking 
 
 
 Why Reactive Streams?
@@ -100,6 +100,11 @@ Publisher	  Part of Reactive Streams specification	      Part of Reactive Stream
 
 Mono<T> → A container that will eventually hold one item (or none).
 Like: Optional<T> but async.
+Example :
+private Mono<String> testMono(){
+        return Mono.just(null);
+    }
+* Mono will not accept null values
 
 Flux<T> → A container that will eventually emit many items over time.
 Like: List<T> but async.
