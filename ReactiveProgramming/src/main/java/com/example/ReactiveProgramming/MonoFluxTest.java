@@ -1,8 +1,10 @@
 package com.example.ReactiveProgramming;
 
 
+import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.SignalType;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuple3;
 
@@ -161,6 +163,69 @@ public class MonoFluxTest {
         return flux.collectMap(integer -> integer * 2, integer -> integer * integer);
     }
 
+    //doeach will work based on signal
+    private Flux<Integer> doOnEach(){
+        Flux<Integer>  flux=Flux.range(1,10);
+        return flux.doOnEach(signal-> System.out.println(signal));
+    }
+
+
+    private Flux<Integer> testDoFunctions() {
+        Flux<Integer> flux = Flux.range(1, 10);
+        return flux.doOnEach(signal -> {
+            if (signal.getType() == SignalType.ON_COMPLETE) {
+                System.out.println("I am done!");
+            } else {
+                System.out.println(signal.get());
+            }
+        });
+    }
+
+
+    private Flux<Integer> doOnNext() {
+        Flux<Integer> flux = Flux.range(1, 10);
+        return flux.doOnNext((integer) -> System.out.println(integer));
+    }
+
+
+    private Flux<Integer> testDoFunctions2() {
+        Flux<Integer> flux = Flux.range(1, 10);
+        return flux.doOnComplete(() -> System.out.println("I am complete"));
+    }
+
+
+    private Flux<Integer> testDoFunctions3() {
+        Flux<Integer> flux = Flux.range(1, 10)
+                .delayElements(Duration.ofSeconds(1));
+        return flux.doOnCancel(() -> System.out.println("Cancelled!"));
+    }
+
+
+    private Flux<Integer> testErrorHandling() {
+        Flux<Integer> flux = Flux.range(1, 10)
+                .map(integer -> {
+                    if (integer == 5) {
+                        throw new RuntimeException("Unexpected number!");
+                    }
+                    return integer;
+                });
+        return flux
+                .onErrorContinue((throwable, o) -> System.out.println("Don't worry about " + o));
+    }
+
+
+    private Flux<Integer> testErrorHandling2() {
+        Flux<Integer> flux = Flux.range(1, 10)
+                .map(integer -> {
+                    if (integer == 5) {
+                        throw new RuntimeException("Unexpected number!");
+                    }
+                    return integer;
+                });
+        return flux
+                .onErrorResume(throwable -> Flux.range(100, 5));
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
         MonoFluxTest monoFluxTest=new MonoFluxTest();
@@ -204,7 +269,19 @@ public class MonoFluxTest {
 //        monoFluxTest.testBuffer().subscribe(System.out::println);
 //        Thread.sleep(30000);
 
-        monoFluxTest.testMapCollection().subscribe(System.out::println);
+//        monoFluxTest.testMapCollection().subscribe(System.out::println);
+//        monoFluxTest.doOnEach().subscribe(System.out::println);
+//        monoFluxTest.testDoFunctions().subscribe();
+//        monoFluxTest.doOnNext().subscribe(System.out::println);
+//        monoFluxTest.testDoFunctions2().subscribe(System.out::println);
+
+//        Disposable disposable=monoFluxTest.testDoFunctions3().subscribe(System.out::println);
+//        Thread.sleep(3500);
+//        disposable.dispose();
+
+
+//        monoFluxTest.testErrorHandling().subscribe(System.out::println);
+        monoFluxTest.testErrorHandling2().subscribe(System.out::println);
 
 
 

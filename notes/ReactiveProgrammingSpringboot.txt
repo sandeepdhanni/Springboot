@@ -108,3 +108,21 @@ private Mono<String> testMono(){
 
 Flux<T> → A container that will eventually emit many items over time.
 Like: List<T> but async.
+
+
+Note :
+* when we create a flux and subscriber fully uses it and everything goes well but when someone cancel the subscription..when u make a subscription it return a disposable...so using this disposable we can cancel the publisher connection to the subscriber..
+Eg: 
+public class ReactiveTutorial{
+ private Flux<Integer> testDoFunctions3() {
+        Flux<Integer> flux = Flux.range(1, 10)
+                .delayElements(Duration.ofSeconds(1));
+        return flux.doOnCancel(() -> System.out.println("Cancelled!"));
+    }
+	 public static void main(String[] args) throws InterruptedException {
+        ReactiveTutorial reactiveTutorial = new ReactiveTutorial();
+        Disposable disposable=reactiveTutorial.testDoFunctions3().subscribe(System.out:println);
+		disposable.dispose(); 
+      
+    }
+	}
