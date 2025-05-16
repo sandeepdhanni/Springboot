@@ -141,6 +141,7 @@ public class MonoFluxTest {
         return Flux.zip(flux, mono);
     }
 
+
     private Mono<List<Integer>> testCollect() {
         Flux<Integer> flux = Flux.range(1, 10)
                 .delayElements(Duration.ofMillis(1000));
@@ -226,6 +227,42 @@ public class MonoFluxTest {
                 .onErrorResume(throwable -> Flux.range(100, 5));
     }
 
+//onErrorMap() doesn't suppress the error — it just changes its type or message
+// retry(1) → restarts the entire stream once
+    private Flux<Integer> testErrorHandling3() {
+        Flux<Integer> flux = Flux.range(1, 10)
+                .map(integer -> {
+                    if (integer == 5) {
+                        throw new RuntimeException("Unexpected number!");
+                    }
+                    return integer;
+                });
+        return flux
+                .onErrorMap(throwable -> new UnsupportedOperationException(throwable.getMessage()));
+    }
+
+    private Flux<Integer> onErrorWithretry() {
+        Flux<Integer> numbers = Flux.just(1, 0, 2)
+                .map(i -> 10 / i)  // division by zero
+                .onErrorMap(e -> new IllegalStateException("Illegal operation"))  // change the exception
+                .retry(1); // retry once on error
+
+        return numbers;
+    }
+
+
+    private Flux<Integer> testErrorHandling4() {
+        Flux<Integer> flux = Flux.range(1, 10)
+                .map(integer -> {
+                    if (integer == 5) {
+                        throw new RuntimeException("Unexpected number!");
+                    }
+                    return integer;
+                });
+        return flux
+                .onErrorComplete();
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
         MonoFluxTest monoFluxTest=new MonoFluxTest();
@@ -281,8 +318,11 @@ public class MonoFluxTest {
 
 
 //        monoFluxTest.testErrorHandling().subscribe(System.out::println);
-        monoFluxTest.testErrorHandling2().subscribe(System.out::println);
-
+//        monoFluxTest.testErrorHandling2().subscribe(System.out::println);
+//        monoFluxTest.testErrorHandling3().subscribe(System.out::println);
+//        monoFluxTest.testErrorHandling4().subscribe(System.out::println);
+        monoFluxTest.onErrorWithretry().subscribe(System.out::println,
+                err -> System.out.println("Final error: " + err));
 
 
     }
