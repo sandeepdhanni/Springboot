@@ -1,4 +1,4 @@
-Reactive programming :
+Reactive programming or reactive streams:
 
 Reactive stream specification is nothing but the rule to design a reactive programming just like how we have oop's language similar way we need to follow...Reactive Streams is a standard for asynchronous stream processing with non-blocking backpressure.it is a asynchronous and non-blocking 
 
@@ -10,6 +10,60 @@ System can be overloaded if too much data is fetched at once.
 In Reactive Streams:
 You react to data as it arrives.
 You request data only as you can handle it (this is called backpressure).
+
+
+when to use reactive programming ?
+when there is a need to build app that supports very high load..
+Spring WebFlux (Reactive stack) uses Netty by default instead of traditional servlet containers like Tomcat or Jetty.
+🚀 Netty vs. Tomcat (Servlet-based)
+Feature	                   Netty (used by WebFlux)	                 Tomcat (used by Spring MVC)
+Architecture	     Event-loop based (non-blocking)	          Thread-per-request (blocking)
+Reactive Support	 Built for reactive, non-blocking I/O	    Not designed for non-blocking by default
+
+
+
+Why WebFlux Uses Netty
+Reactive programming is asynchronous and non-blocking, and Netty is designed for that.
+Netty operates using event-driven I/O and non-blocking sockets, which makes it efficient for high concurrency with fewer threads.
+Tomcat is designed for blocking servlet APIs, so it’s less efficient for reactive flows.
+
+
+
+
+
+
+What Are Non-Blocking Calls?
+🧵 Blocking I/O (Traditional / Servlet-based)
+In traditional Spring MVC (Tomcat-based):
+When a request comes in, a new thread is allocated to handle it.
+If that thread makes a network call (e.g., to a DB or external API), it waits (blocks) until the result comes back.
+That thread is occupied and cannot do anything else.
+Example:
+@GetMapping("/user")
+public String getUser() {
+    String user = restTemplate.getForObject(...);  // This blocks!
+    return user;
+}
+⚠️ Problem: As user traffic increases, the server must spin up more threads — leading to high memory use and thread contention.
+
+⚡ Non-Blocking I/O (Reactive / Netty-based)?
+In WebFlux, everything is non-blocking and asynchronous.
+When a request comes in, it's handled by a small pool of threads (event loops).
+If a network call is needed, the thread does not wait — the call is registered, and the thread is released to do other work.
+When the response arrives, the framework resumes processing using callbacks or reactive streams.
+Example with WebClient (non-blocking):
+@GetMapping("/user")
+public Mono<String> getUser() {
+    return webClient.get()
+                    .uri("https://some-api.com/user")
+                    .retrieve()
+                    .bodyToMono(String.class); // Non-blocking
+}
+🧠 Under the hood:
+The I/O operation runs asynchronously.
+The response is pushed into a reactive stream (Mono/Flux) once available.
+
+
 
 
 
@@ -50,7 +104,7 @@ it has four interface:
   public void cancel();  
   }
   
-* Processor - processor represents processing stage which is both publisher and subscriber and mush obey the contracts of both.
+* Processor - processor represents processing stage which is both publisher and subscriber and mush obey the contracts of both.it extends both publisher and subscriber..Processor can behave as subscribe and publisher...
   Method signature -
   public interface Processor<T,R> extends Subscriber<T>,Publisher<R>{
   }
@@ -89,6 +143,7 @@ we have subscriber and publisher ...
 Backpressure is a mechanism to avoid overwhelming consumers. It allows the Subscriber to say:
 "Hey Publisher, I can only handle 5 items at a time."
 This prevents memory overflows and keeps the system responsive.
+Eg: if an application is requesting for n number of data and in the database it is having huge number of data...but the application here is not able to handle that much load so that time we must tell the database that we are not able to handle the load...we will say we need this amouunt of data so send only that data...
 
 
 Mono vs Flux: Core Difference
@@ -126,3 +181,8 @@ public class ReactiveTutorial{
       
     }
 	}
+	
+	
+	
+	
+Flux methods -
