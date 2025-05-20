@@ -167,6 +167,16 @@ Like: List<T> but async.
 
 Note :
 * when we create a flux and subscriber fully uses it and everything goes well but when someone cancel the subscription..when u make a subscription it return a disposable...so using this disposable we can cancel the publisher connection to the subscriber..
+*When someone cancels a subscription to a Flux in Reactive Programming, the stream stops emitting data and the underlying resources (like network connections, database cursors, threads, etc.) can be released or cleaned up.
+*What Happens on Flux Subscription Cancel?
+Signal is sent upstream:
+The cancel() signal travels up the chain to the producer/operator that created the Flux.
+Data emission stops:
+The publisher stops pushing items to the subscriber.
+Resources may be cleaned up:
+If the Flux was reading a file, querying a DB, or streaming data, those operations can be terminated.
+No further signals sent downstream:
+After cancellation, no onNext, onError, or onComplete signals are sent.
 Eg: 
 public class ReactiveTutorial{
  private Flux<Integer> testDoFunctions3() {
