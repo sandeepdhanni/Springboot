@@ -16,23 +16,23 @@ public class CustomerController {
 
     @GetMapping
     public Flux<Customer> getAll() {
-        return customerService.getAll();
+        return customerService.getAll().log();
     }
 
     @GetMapping("/{id}")
     public Mono<ResponseEntity<Customer>> getById(@PathVariable Long id) {
         return customerService.getById(id)
                 .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+                .defaultIfEmpty(ResponseEntity.notFound().build()).log();
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public Mono<Customer> create(@RequestBody Customer customer) {
-        return customerService.save(customer);
+        return customerService.save(customer).log();
     }
 
     @DeleteMapping("/{id}")
     public Mono<Void> delete(@PathVariable Long id) {
-        return customerService.delete(id);
+        return customerService.delete(id).log();
     }
 }

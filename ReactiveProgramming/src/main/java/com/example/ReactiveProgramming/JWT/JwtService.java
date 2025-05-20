@@ -18,7 +18,7 @@ import java.util.Map;
 @Component
 public class JwtService {
 
-    public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
+    public static final String SECRET = "f3ef4f303d10f3dff46420489545aad6e5c3dc2435731b92be9ca975baa6b393";
     private static final long ACCESS_TOKEN_EXPIRATION = 1000L * 60 * 60 * 2;
     //    private static final long ACCESS_TOKEN_EXPIRATION = 1000L * 60 * 1;
     private static final long REFRESH_TOKEN_EXPIRATION = 1000L * 60 * 60 * 24 * 7;
