@@ -32,23 +32,23 @@ public class MonoFluxTest {
 
     private Flux<String> testFlux(){
         List<String> sam = List.of("sam", "dhanni", "rohit", "babu");
-       return  Flux.fromIterable(sam).log();
+       return  Flux.fromIterable(sam);
     }
 
     private Flux<String> testMap(){
         Flux<String> sam = Flux.just("sam", "dhanni", "rohit", "babu");
-        return  sam.map(s->s.toUpperCase(Locale.ROOT)).log();
+        return  sam.map(s->s.toUpperCase(Locale.ROOT));
     }
 
     private Flux<String> testFlatMap(){
         Flux<String> sam = Flux.just("sam", "dhanni", "rohit", "babu");
-        return  sam.flatMap(s->Mono.just(s.toUpperCase(Locale.ROOT))).log();
+        return  sam.flatMap(s->Mono.just(s.toUpperCase(Locale.ROOT)));
     }
 
     //if i want to skip the elements
     private Flux<String> testSkip(){
         Flux<String> sam = Flux.just("sam", "dhanni", "rohit", "babu");
-        return  sam.skip(2).log();
+        return  sam.skip(2);
     }
 
     //if i want to delay the elements like 1 second for every element
@@ -62,7 +62,7 @@ public class MonoFluxTest {
     private Flux<String> testSkip2(){
         Flux<String> sam = Flux.just("sam", "dhanni", "rohit", "babu")
                 .delayElements(Duration.ofSeconds(1));
-        return sam.skip(Duration.ofSeconds(2)).log();
+        return sam.skip(Duration.ofSeconds(2));
     }
 
 
@@ -70,24 +70,24 @@ public class MonoFluxTest {
     private Flux<String> testSkip3(){
         Flux<String> sam = Flux.just("sam", "dhanni", "rohit", "babu")
                 .delayElements(Duration.ofSeconds(1));
-        return sam.skipLast(2).log();
+        return sam.skipLast(2);
     }
 
     //it will display the count upto 20
     private Flux<Integer> testComplexSkip(){
         Flux<Integer> sam =Flux.range(1,20);
-        return sam.log();
+        return sam;
     }
 
     //it will skip until the condition is true
     private Flux<Integer> testComplexSkip1(){
         Flux<Integer> sam =Flux.range(1,20);
-        return sam.skipUntil(integer->integer==10).log();
+        return sam.skipUntil(integer->integer==10);
     }
 
     private Flux<Integer> testComplexSkip2(){
         Flux<Integer> sam =Flux.range(1,20);
-        return sam.skipWhile(integer->integer<10).log();
+        return sam.skipWhile(integer->integer<10);
     }
 
 
@@ -96,7 +96,7 @@ public class MonoFluxTest {
         Flux<Integer> flux1 = Flux.range(1, 20);
         Flux<Integer> flux2 = Flux.range(101, 20);
         Flux<Integer> flux3 = Flux.range(1001, 20);
-        return Flux.concat(flux3, flux2, flux1).log();
+        return Flux.concat(flux3, flux2, flux1);
     }
 
 
@@ -109,7 +109,7 @@ public class MonoFluxTest {
         Flux<Integer> flux2 = Flux.range(101, 20)
                 .delayElements(Duration.ofMillis(500));
 
-        return Flux.merge(flux1, flux2).log();
+        return Flux.merge(flux1, flux2);
     }
 
 
@@ -118,7 +118,7 @@ public class MonoFluxTest {
                 .delayElements(Duration.ofMillis(500));
         Flux<Integer> flux2 = Flux.range(101, 20)
                 .delayElements(Duration.ofMillis(500));
-        return Flux.zip(flux1, flux2).log();
+        return Flux.zip(flux1, flux2);
     }
 
 
@@ -130,7 +130,7 @@ public class MonoFluxTest {
                 .delayElements(Duration.ofMillis(500));
         Flux<Integer> flux3 = Flux.range(101, 40)
                 .delayElements(Duration.ofMillis(500));
-        return Flux.zip(flux3,flux1, flux2).log();
+        return Flux.zip(flux3,flux1, flux2);
     }
 
 
@@ -138,21 +138,21 @@ public class MonoFluxTest {
         Flux<Integer> flux = Flux.range(1, 10)
                 .delayElements(Duration.ofMillis(500));
         Mono<Integer> mono = Mono.just(1);
-        return Flux.zip(flux, mono).log();
+        return Flux.zip(flux, mono);
     }
 
 
     private Mono<List<Integer>> testCollect() {
         Flux<Integer> flux = Flux.range(1, 10)
                 .delayElements(Duration.ofMillis(1000));
-        return flux.collectList().log();
+        return flux.collectList();
     }
 
 
     private Flux<List<Integer>> testBuffer() {
         Flux<Integer> flux = Flux.range(1, 10)
                 .delayElements(Duration.ofMillis(1000));
-        return flux.buffer(Duration.ofMillis(3_100)).log();
+        return flux.buffer(Duration.ofMillis(3_100));
     }
 
 
@@ -161,13 +161,13 @@ public class MonoFluxTest {
         //5, 25
         //6, 36
         Flux<Integer> flux = Flux.range(1, 10);
-        return flux.collectMap(integer -> integer * 2, integer -> integer * integer).log();
+        return flux.collectMap(integer -> integer * 2, integer -> integer * integer);
     }
 
     //doeach will work based on signal
     private Flux<Integer> doOnEach(){
         Flux<Integer>  flux=Flux.range(1,10);
-        return flux.doOnEach(signal-> System.out.println(signal)).log();
+        return flux.doOnEach(signal-> System.out.println(signal));
     }
 
 
@@ -179,26 +179,26 @@ public class MonoFluxTest {
             } else {
                 System.out.println(signal.get());
             }
-        }).log();
+        });
     }
 
 
     private Flux<Integer> doOnNext() {
         Flux<Integer> flux = Flux.range(1, 10);
-        return flux.doOnNext((integer) -> System.out.println(integer)).log();
+        return flux.doOnNext((integer) -> System.out.println(integer));
     }
 
 
     private Flux<Integer> testDoFunctions2() {
         Flux<Integer> flux = Flux.range(1, 10);
-        return flux.doOnComplete(() -> System.out.println("I am complete")).log();
+        return flux.doOnComplete(() -> System.out.println("I am complete"));
     }
 
 
     private Flux<Integer> testDoFunctions3() {
         Flux<Integer> flux = Flux.range(1, 10)
                 .delayElements(Duration.ofSeconds(1));
-        return flux.doOnCancel(() -> System.out.println("Cancelled!")).log();
+        return flux.doOnCancel(() -> System.out.println("Cancelled!"));
     }
 
 
@@ -211,7 +211,7 @@ public class MonoFluxTest {
                     return integer;
                 });
         return flux
-                .onErrorContinue((throwable, o) -> System.out.println("Don't worry about " + o)).log();
+                .onErrorContinue((throwable, o) -> System.out.println("Don't worry about " + o));
     }
 
 
@@ -224,7 +224,7 @@ public class MonoFluxTest {
                     return integer;
                 });
         return flux
-                .onErrorResume(throwable -> Flux.range(100, 5)).log();
+                .onErrorResume(throwable -> Flux.range(100, 5));
     }
 
 //onErrorMap() doesn't suppress the error — it just changes its type or message
@@ -238,7 +238,7 @@ public class MonoFluxTest {
                     return integer;
                 });
         return flux
-                .onErrorMap(throwable -> new UnsupportedOperationException(throwable.getMessage())).log();
+                .onErrorMap(throwable -> new UnsupportedOperationException(throwable.getMessage()));
     }
 
     private Flux<Integer> onErrorWithretry() {
@@ -260,8 +260,18 @@ public class MonoFluxTest {
                     return integer;
                 });
         return flux
-                .onErrorComplete().log();
+                .onErrorComplete();
     }
+
+    private Flux<Integer> test12() {
+         Flux<Integer> flux = (Flux<Integer>) Flux.fromIterable(List.of(1, 2, 3, 4))
+                .filter(i -> i % 2 == 0)
+                .subscribe(System.out::println);
+         return flux;
+
+    }
+
+
 
 
     public static void main(String[] args) throws InterruptedException {

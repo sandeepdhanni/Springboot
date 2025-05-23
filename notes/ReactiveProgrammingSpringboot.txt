@@ -29,6 +29,69 @@ Tomcat is designed for blocking servlet APIs, so it’s less efficient for react
 
 
 
+What is Spring WebFlux?
+Spring WebFlux is the reactive, non-blocking web framework introduced in Spring 5. It is designed to handle asynchronous, event-driven, high-concurrency web applications using reactive programming principles.
+
+
+
+
+COLD PUBLISHER – 
+A Cold Publisher starts emitting data only when a subscriber subscribes. Each subscription creates a new, independent stream.
+Think of a Cold Publisher like a movie DVD. Every person who watches it starts from the beginning.
+HOW IT WORKS:
+You define the stream (e.g., from a list, database, or file).
+The stream does not emit any data until subscribe() is called.
+Each subscriber gets the full data stream from the beginning.
+Eg:
+Flux<Integer> coldFlux = Flux.range(1, 3); // Emits 1, 2, 3
+coldFlux.subscribe(data -> System.out.println("Subscriber A: " + data));
+coldFlux.subscribe(data -> System.out.println("Subscriber B: " + data));
+Output:
+Subscriber A: 1
+Subscriber A: 2
+Subscriber A: 3
+Subscriber B: 1
+Subscriber B: 2
+Subscriber B: 3
+
+
+HOT PUBLISHER -
+A Hot Publisher emits data regardless of subscribers. If a subscriber joins late, it misses past events. Subscribers only see data from the moment they join. They miss earlier data unless it's cached.
+Think of it like a live TV broadcast – if you tune in late, you miss what was already shown.
+HOW IT WORKS:
+Data begins flowing immediately, even if no subscribers exist.
+When a subscriber joins, it gets data from that point forward.
+All subscribers share the same data stream.
+Eg :
+Flux<Long> hotFlux = Flux.interval(Duration.ofSeconds(1)) // emits 0, 1, 2, ...
+                         .publish()
+                         .autoConnect(); // Makes it hot
+hotFlux.subscribe(data -> System.out.println("Subscriber A: " + data));
+Thread.sleep(3000); // Wait 3 seconds before second subscriber
+hotFlux.subscribe(data -> System.out.println("Subscriber B: " + data));
+Output:
+Subscriber A: 0
+Subscriber A: 1
+Subscriber A: 2
+Subscriber B: 2  <-- joined here
+Subscriber A: 3
+Subscriber B: 3
+Subscriber B missed 0 and 1.
+
+CONVERTING COLD TO HOT  -
+A Cold Publisher can be converted to Hot using the following methods:
+✅ In Project Reactor:
+ConnectableFlux<Integer> hot = Flux.range(1, 10)
+                                   .delayElements(Duration.ofMillis(500))
+                                   .publish();
+hot.connect(); // Now it's HOT
+hot.subscribe(data -> System.out.println("Sub A: " + data));
+Thread.sleep(1500); // Wait and then join with second subscriber
+hot.subscribe(data -> System.out.println("Sub B: " + data));
+✅ Operators to know:
+.publish(): Turns cold → hot (creates ConnectableFlux)
+.autoConnect(): Automatically connects when N subscribers join
+.refCount(): Connects when N subscribers join and disconnects when they leave
 
 
 
@@ -167,16 +230,6 @@ Like: List<T> but async.
 
 Note :
 * when we create a flux and subscriber fully uses it and everything goes well but when someone cancel the subscription..when u make a subscription it return a disposable...so using this disposable we can cancel the publisher connection to the subscriber..
-*When someone cancels a subscription to a Flux in Reactive Programming, the stream stops emitting data and the underlying resources (like network connections, database cursors, threads, etc.) can be released or cleaned up.
-*What Happens on Flux Subscription Cancel?
-Signal is sent upstream:
-The cancel() signal travels up the chain to the producer/operator that created the Flux.
-Data emission stops:
-The publisher stops pushing items to the subscriber.
-Resources may be cleaned up:
-If the Flux was reading a file, querying a DB, or streaming data, those operations can be terminated.
-No further signals sent downstream:
-After cancellation, no onNext, onError, or onComplete signals are sent.
 Eg: 
 public class ReactiveTutorial{
  private Flux<Integer> testDoFunctions3() {
