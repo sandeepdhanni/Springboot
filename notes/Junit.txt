@@ -1,0 +1,4 @@
+JUNIT TESTING -
+	
+unit test -
+a unit test is a way to test the smallest parts of your code such as individual methods to ensure they work as expected...

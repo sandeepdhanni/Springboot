@@ -28,6 +28,9 @@ Netty operates using event-driven I/O and non-blocking sockets, which makes it e
 Tomcat is designed for blocking servlet APIs, so it’s less efficient for reactive flows.
 
 
+Project reactor -
+Project Reactor is a fully reactive library for building non-blocking, asynchronous applications on the JVM.
+
 
 What is Spring WebFlux?
 Spring WebFlux is the reactive, non-blocking web framework introduced in Spring 5. It is designed to handle asynchronous, event-driven, high-concurrency web applications using reactive programming principles.
@@ -207,6 +210,12 @@ Backpressure is a mechanism to avoid overwhelming consumers. It allows the Subsc
 "Hey Publisher, I can only handle 5 items at a time."
 This prevents memory overflows and keeps the system responsive.
 Eg: if an application is requesting for n number of data and in the database it is having huge number of data...but the application here is not able to handle that much load so that time we must tell the database that we are not able to handle the load...we will say we need this amouunt of data so send only that data...
+
+Methods -
+limitRate(n)	Requests n items at a time from upstream
+onBackpressureBuffer()	Buffers items if downstream is slow
+onBackpressureDrop()	Drops excess items silently
+onBackpressureLatest()	Keeps only the latest item, drops older ones
 
 
 Mono vs Flux: Core Difference

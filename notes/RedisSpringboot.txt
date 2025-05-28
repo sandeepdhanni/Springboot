@@ -1,0 +1,7 @@
+REDIS -
+it is an open source in-memory data store used by millions if developers as a cache,document database,streaming engine and message broker.
+
+*  in-memory - means that the data is stored directly in the main memory (RAM) of a computer rather than on a disk..It allows very fast access to data because accessing RAM is much faster than reading from a disk.The data stored in RAM will take nano seconds to access and in disks(HHD OR SSD) will take millis seconds..
+
+
+
