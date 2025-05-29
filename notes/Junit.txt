@@ -2,3 +2,172 @@ JUNIT TESTING -
 	
 unit test -
 a unit test is a way to test the smallest parts of your code such as individual methods to ensure they work as expected...
+
+
+What is Junit?
+A) JUnit is a testing framework for Java programming language, primarily used to write and run unit tests.Unit testing is a software testing method where individual units or components of the software are tested in isolation to ensure they work as expected.
+
+
+
+Key Features of JUnit:
+* Annotations to identify test methods (@Test, @BeforeEach, @AfterEach, etc.)
+* Assertions to check expected vs actual results (assertEquals, assertTrue, etc.)
+* Test Runners to execute tests and report results
+Example :
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+class CalculatorTest {
+
+    @Test
+    void testAddition() {
+        Calculator calculator = new Calculator();
+        assertEquals(5, calculator.add(2, 3)); // Passes if 2 + 3 == 5
+    }
+}
+
+
+
+between JUnit 4 and JUnit 5:
+
+Feature	                                    JUnit 4	                                         JUnit 5 (a.k.a. JUnit Jupiter)
+Release Year	                              2006	                                              2017
+Architecture	               Single monolithic jar	                              Modular: junit-jupiter-api, junit-platform-engine, etc.
+Annotations	                @Before, @After, @BeforeClass, @AfterClass, @Test	           @BeforeEach, @AfterEach, @BeforeAll, @AfterAll, @Test
+Parameter Injection             	Not supported	                                        Supported (e.g., @ParameterizedTest, @ValueSource)
+Dynamic Tests	                     Not supported	                                          Supported via @TestFactory
+Extension Model	               Uses @RunWith and custom Runners	Uses                         @ExtendWith, more flexible and powerful
+Assertions and Assumptions	               Basic	                                          More expressive assertions and assumptions
+Tagging Tests                       	Not supported	                                            Supported via @Tag
+Compatibility	                     Not compatible with JUnit 5	                         Can run JUnit 4 tests using junit-vintage-engine
+
+
+
+
+Parameterized injection -
+Parameterized injection (in the context of JUnit testing) means passing different sets of input values into the same test method so that it runs multiple times with different data.
+This is useful when you want to test a method with a variety of inputs without writing separate test methods for each case.
+Example :
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+class EvenNumberTest {
+
+    @ParameterizedTest
+    @ValueSource(ints = {2, 4, 6, 8})
+    void testIsEven(int number) {
+        assertTrue(number % 2 == 0);
+    }
+}
+
+
+
+
+THE MOST COMMONLY USED ANNOTATIONS:
+* @Test: Marks a method as a test.
+Example :
+@Test
+void additionShouldWork() {
+    assertEquals(5, 2 + 3);
+}
+* @BeforeEach: Runs before each test method. Commonly used to set up test data. 
+Example :
+@BeforeEach
+void setup() {
+    calculator = new Calculator();
+}
+
+* @AfterEach: Runs after each test method. Used to clean up.
+Example :
+@AfterEach
+void tearDown() {
+    calculator = null;
+}
+
+* @BeforeAll: Runs once before all tests (static).
+Example :
+
+* @AfterAll: Runs once after all tests (static).
+Example :
+
+* @Disabled: Temporarily disables a test or temporarily skips a test method or class
+Example :
+@Disabled("Not implemented yet")
+@Test
+void testFutureFeature() {
+    // this test will be skipped
+}
+
+* @DisplayName: Adds a custom name to tests for better readability in reports.
+Example :
+@DisplayName("Test for addition method")
+@Test
+void testAddition() {
+    assertEquals(10, 5 + 5);
+}
+
+* @ParameterizedTest : Runs the same test multiple times with different inputs.
+Example :
+@ParameterizedTest
+@ValueSource(ints = {1, 2, 3})
+void testIsPositive(int number) {
+    assertTrue(number > 0);
+}
+
+* @ValueSource : ➤ Used to provide a single column of primitive or string values to a parameterized test.
+ Supported types: int, long, double, short, byte, char, boolean, String
+ Example :
+ @ParameterizedTest
+@ValueSource(ints = {1, 2, 3, 4})
+void testIsEven(int number) {
+    assertTrue(number > 0);
+}
+💡 The test method will run 4 times with inputs: 1, 2, 3, and 4.
+
+* @CsvSource : ➤ Used when you want to pass multiple arguments to your test method.
+Each CSV line is split into parameters.
+You can use quoteCharacters for strings with commas.
+🧪 Example:
+@ParameterizedTest
+@CsvSource({
+    "2, 3, 5",
+    "1, 4, 5",
+    "10, 15, 25"
+})
+void testAddition(int a, int b, int expected) {
+    assertEquals(expected, a + b);
+}
+💡 The test runs 3 times with the respective pairs of a and b.
+
+* @MethodSource : @MethodSource is a JUnit 5 annotation that allows you to provide test data from a separate method.
+Instead of hardcoding input values in the test (like @ValueSource or @CsvSource), you write a method that returns test data — and JUnit will use that data to run the test multiple times.
+WHY USE @METHODSOURCE?
+When test inputs are dynamic, complex, or reused
+When you need to test with multiple values or objects
+Example :
+@ParameterizedTest
+@MethodSource("numberProvider")
+void testIsPositive(int number) {
+    assertTrue(number > 0);
+}
+
+static Stream<Integer> numberProvider() {
+    return Stream.of(1, 2, 3, 4, 5);
+}
+EXPLANATION:
+The numberProvider() method returns a list of numbers.
+The test method runs once for each number.
+JUnit injects the value into number.
+Example2 :
+@ParameterizedTest
+@MethodSource("additionProvider")
+void testAddition(int a, int b, int result) {
+    assertEquals(result, a + b);
+}
+static Stream<Arguments> additionProvider() {
+    return Stream.of(
+        Arguments.of(2, 3, 5),
+        Arguments.of(4, 1, 5),
+        Arguments.of(7, 2, 9)
+    );
+}
+
