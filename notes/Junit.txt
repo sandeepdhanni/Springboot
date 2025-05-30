@@ -171,3 +171,144 @@ static Stream<Arguments> additionProvider() {
     );
 }
 
+* @CsvFileSource : ➤ Reads test data from a CSV file for @ParameterizedTest.
+🔹 Use When:
+You want to run tests using external CSV data (good for large datasets).
+🧪 Example:
+📄 data.csv (place in src/test/resources/):
+2,3,5
+1,4,5
+6,4,10
+🧪 Test Class:
+@ParameterizedTest
+@CsvFileSource(resources = "/data.csv")
+void testAdditionFromFile(int a, int b, int expected) {
+    assertEquals(expected, a + b);
+}
+
+
+* @EnumSource : ➤ Used to pass enum constants into a parameterized test.
+🧪 Example:
+enum Day { MONDAY, TUESDAY, WEDNESDAY }
+
+@ParameterizedTest
+@EnumSource(Day.class)
+void testEnumValues(Day day) {
+    assertNotNull(day);
+}
+
+
+* @RepeatedTest : ➤ Repeats a test method N times.
+🧪 Example:
+@RepeatedTest(3)
+void repeatedTestExample(RepetitionInfo repetitionInfo) {
+    System.out.println("Running repetition " + repetitionInfo.getCurrentRepetition());
+}
+
+* @Timeout : ➤ Fails the test if it takes longer than specified time.
+🧪 Example:
+@Test
+@Timeout(2) // seconds
+void timeoutTest() throws InterruptedException {
+    Thread.sleep(1000); // Passes
+}
+
+* @ExtendWith : ➤ Used to register JUnit 5 extensions, like Spring, Mockito, or custom ones.
+🧪 Example:
+@ExtendWith(MockitoExtension.class)
+class MyServiceTest {
+
+    @Mock
+    private MyRepository repository;
+
+    @InjectMocks
+    private MyService service;
+    
+    @Test
+    void testSomething() {
+        // test with mock
+    }
+}
+
+* @Tag – Label your tests 
+@Tag lets you group or label your tests with names like "unit", "integration", "slow", etc.
+You can run specific groups of tests using tools like Maven, Gradle, or IntelliJ.
+ WHY USE IT?
+To separate fast and slow tests
+To run only critical tests in CI/CD
+To organize large test suites
+Example : 
+@Tag("unit")
+@Test
+void testAddition() {
+    assertEquals(5, 2 + 3);
+}
+
+@Tag("integration")
+@Test
+void testDatabaseConnection() {
+    // Simulate DB connection test
+}
+HOW TO RUN ONLY @TAG("UNIT") TESTS?
+▶ In Maven (in pom.xml):
+<properties>
+    <groups>unit</groups>
+</properties>
+▶ In IntelliJ:
+Right-click > Run tests with tag: unit
+
+* Nested – Group related tests inside classes
+🧠 WHAT IT IS:
+@Nested lets you write sub-groups of test cases inside an outer test class. It helps organize tests logically.
+Example :
+class CalculatorTest {
+
+    @Nested
+    class AddTests {
+        @Test
+        void testAddPositiveNumbers() {
+            assertEquals(5, 2 + 3);
+        }
+
+        @Test
+        void testAddNegativeNumbers() {
+            assertEquals(-5, -2 + -3);
+        }
+    }
+
+    @Nested
+    class SubtractTests {
+        @Test
+        void testSubtractPositiveNumbers() {
+            assertEquals(1, 3 - 2);
+        }
+
+        @Test
+        void testSubtractNegativeNumbers() {
+            assertEquals(-1, -3 - -2);
+        }
+    }
+}
+
+
+WHAT ARE ASSERTIONS?
+Assertions are methods used in tests to check if a condition is true or false. If an assertion fails, the test fails.
+They help you verify the expected behavior of your code.
+Most Common Assertions in JUnit 5
+Method                                                      	Description
+assertEquals(expected, actual)                      Checks if two values are equal
+assertNotEquals(expected, actual)	               Checks if two values are NOT equal
+assertTrue(condition)	                           Checks if the condition is true
+assertFalse(condition)	                           Checks if the condition is false
+assertNull(object)	                               Passes if object is null
+assertNotNull(object)	                           Passes if object is NOT null
+assertThrows()	                                   Expects an exception to be thrown
+assertAll()	                                    Groups multiple assertions and runs all
+assertArrayEquals()                             	Compares arrays
+assertIterableEquals()                          	Compares iterables like Lists
+assertSame(a, b)	                              Passes if a == b (same reference)
+assertNotSame(a, b)                             	Passes if a != b
+fail()	                                          Forces a test failure
+
+
+
