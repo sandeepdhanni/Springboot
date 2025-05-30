@@ -1,15 +1,15 @@
 JUNIT TESTING -
 	
-unit test -
+UNIT TEST -
 a unit test is a way to test the smallest parts of your code such as individual methods to ensure they work as expected...
 
 
-What is Junit?
+WHAT IS JUNIT?
 A) JUnit is a testing framework for Java programming language, primarily used to write and run unit tests.Unit testing is a software testing method where individual units or components of the software are tested in isolation to ensure they work as expected.
 
 
 
-Key Features of JUnit:
+KEY FEATURES OF JUNIT:
 * Annotations to identify test methods (@Test, @BeforeEach, @AfterEach, etc.)
 * Assertions to check expected vs actual results (assertEquals, assertTrue, etc.)
 * Test Runners to execute tests and report results
@@ -27,7 +27,7 @@ class CalculatorTest {
 
 
 
-between JUnit 4 and JUnit 5:
+BETWEEN JUNIT 4 AND JUNIT 5:
 
 Feature	                                    JUnit 4	                                         JUnit 5 (a.k.a. JUnit Jupiter)
 Release Year	                              2006	                                              2017
@@ -43,7 +43,7 @@ Compatibility	                     Not compatible with JUnit 5	                 
 
 
 
-Parameterized injection -
+PARAMETERIZED INJECTION -
 Parameterized injection (in the context of JUnit testing) means passing different sets of input values into the same test method so that it runs multiple times with different data.
 This is useful when you want to test a method with a variety of inputs without writing separate test methods for each case.
 Example :
@@ -309,6 +309,156 @@ assertIterableEquals()                          	Compares iterables like Lists
 assertSame(a, b)	                              Passes if a == b (same reference)
 assertNotSame(a, b)                             	Passes if a != b
 fail()	                                          Forces a test failure
+
+
+
+STRUCTURE OF JUNIT TESTING :
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class) // ✅ Enables Mockito annotations
+public class UserServiceTest {
+
+    @Mock                      // ✅ Create a mock object of UserRepository
+    private UserRepository repository;
+
+    @InjectMocks               // ✅ Inject the mock into UserService
+    private UserService service;
+
+    @Test
+    void testGetUserName() {
+        // Arrange
+        when(repository.findById(1)).thenReturn(new User("John"));
+
+        // Act
+        String name = service.getUserName(1);
+
+        // Assert
+        assertEquals("John", name);
+        verify(repository).findById(1); // ✅ Verifies that the method was called
+    }
+}
+
+
+WHY USE MOCKS?
+🧠 1. Isolate the unit being tested
+You want to test just one class or method, not its dependencies.
+Real dependencies may:
+Access a database
+Call APIs
+Depend on external services
+👉 These make tests slow, fragile, or hard to set up.
+⚡ 2. Make tests fast and reliable
+Mocked dependencies don't hit the real DB/API.
+They return controlled, predefined results.
+👉 This makes tests fast, predictable, and easy to debug.
+
+SIMPLE EXAMPLE: 
+Without Mock vs With Mock
+❌ Without Mock:
+@Test
+void testService() {
+    UserRepository repo = new RealDbRepo(); // Hits actual DB 😱
+    UserService service = new UserService(repo);
+    ...
+}
+✅ With Mock:
+@Mock
+UserRepository repo;
+@InjectMocks
+UserService service;
+@Test
+void testServiceWithMock() {
+    when(repo.findById(1)).thenReturn(new User("Alex")); // Simulate DB
+
+    String name = service.getUserName(1);
+
+    assertEquals("Alex", name);
+    verify(repo).findById(1); // Check interaction
+}
+
+
+
+
+MOKITO ANNOTATION :
+
+1. @Mock
+👉 What it does:
+Creates a mock object of a class or interface. It replaces the real object with a fake version for testing.
+✅ Use When:
+You want to isolate your test from real dependencies like DB, APIs, services.
+🧪 Example:
+@Mock
+UserRepository userRepository;
+@Test
+void testMocking() {
+    when(userRepository.findById(1)).thenReturn(new User("John"));
+    assertEquals("John", userRepository.findById(1).getName());
+}
+
+✅ 2. @InjectMocks
+👉 What it does:
+Creates an instance of the class under test, and injects the mocks into it.
+✅ Use When:
+You want to test a class with dependencies and want those dependencies to be mocked automatically.
+🧪 Example:
+@Mock
+UserRepository userRepository;
+@InjectMocks
+UserService userService;
+@Test
+void testGetUserName() {
+    when(userRepository.findById(1)).thenReturn(new User("Alice"));
+    assertEquals("Alice", userService.getUserName(1));
+}
+🔁 Equivalent to manually doing:
+UserService userService = new UserService(userRepository);
+
+✅ 3. @Spy
+👉 What it does:
+Creates a partial mock – real object is used, but you can override specific methods.
+✅ Use When:
+You want to test a real object but still mock or verify some of its behavior.
+🧪 Example:
+@Spy
+List<String> spyList = new ArrayList<>();
+@Test
+void testSpy() {
+    spyList.add("Java");
+    spyList.add("Mockito");
+
+    verify(spyList).add("Java");
+    assertEquals(2, spyList.size()); // real method is called
+}
+🔸 Spies are best used with caution — for complex or legacy objects.
+
+✅ 4. @Captor
+👉 What it does:
+Creates an ArgumentCaptor — used to capture arguments passed to mock methods.
+✅ Use When:
+You want to verify what exact values were passed to a method on the mock.
+🧪 Example:
+@Mock
+UserRepository userRepository;
+@InjectMocks
+UserService userService;
+@Captor
+ArgumentCaptor<Integer> idCaptor;
+@Test
+void testCaptor() {
+    when(userRepository.findById(anyInt())).thenReturn(new User("Bob"));
+
+    userService.getUserName(42);
+
+    verify(userRepository).findById(idCaptor.capture());
+    assertEquals(42, idCaptor.getValue());
+}
 
 
 
