@@ -212,6 +212,28 @@ loa dtime...
 
 React hooks :
 
+
+
+Map of Hooks :
+            |----------------------|                  |---------------------|                 ---------------------              ---------------
+            | state management     |                  |  ref Hooks          |                | Effect Hooks        |            | context Hooks |
+			|----------------------|                  |---------------------|                |---------------------|            |---------------|
+			| useState             |                  |  useRef             |                | use Effect          |            | useContext    |
+			| useReducer           |                  | useImperativeHandle |                | useLayoutEffect     |             ---------------
+			| useSyncExternalStore |                  ----------------------                 | useInsertionEffect  |
+			 ----------------------                                                           ---------------------
+
+
+               -------------------             -------------------         -----------------                                     
+			  | Performance Hooks |           |  Transition Hooks |       |  React 19 Hooks |
+			  |-------------------|           |-------------------|       |-----------------|
+			  |   useMemo         |           |   useTransition   |       |  useFormStatus  |
+			  |    useCallback    |           |   useDeferredValue|       |  useFormState   |
+			   ------------------              -------------------        |  useOptimistic  |
+																		  |    use          |
+																		   -----------------
+																		  
+																		  
 React Hooks are functions that allow you to "hook into" React's state and lifecycle features directly from functional components.
 
 useState: Manage State
