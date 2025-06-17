@@ -140,6 +140,23 @@ componentdidupdate(prevprops,prepsstate,snapshot) - it is called after the rende
 
 
 
+FRAGMENTS :
+A Fragment is a special type of component that lets you group multiple elements without adding extra nodes (like <div>) to the DOM.you can use syntax <Fragment></Fragment> or <></ >
+Eg :
+import React from 'react';
+
+function MyComponent() {
+  return (
+    <React.Fragment>
+      <h1>Hello</h1>
+      <p>This is a paragraph</p>
+    </React.Fragment>
+  );
+}
+
+NOTE :    Yes, you can use <div> instead of a fragment, but that introduces extra DOM elements.. Extra <div>s make the HTML heavier and more nested,Unwanted <div>s can mess up layout, spacing, or flex/grid structures.
+
+
 hooks:
 
 hooks allows u to use react features without having to write a class...

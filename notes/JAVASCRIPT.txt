@@ -276,6 +276,236 @@ Console:
 
 
 
+JavaScript Methods Overview
+JavaScript has methods categorized into:
+ * String Methods
+* Array Methods
+* Number Methods
+* Object Methods
+* Date Methods
+* Math Methods
+* Function Methods
+* Promise Methods
+* ES6+ Utility Methods (e.g., map(), filter())
+
+
+
+DOM (Document Object Model) Methods
+* DOM methods interact with HTML elements. Categories:
+* Selecting Elements
+* Changing/Reading Content
+* Changing Styles
+* Event Handling
+* Creating/Removing Elements
+* Class & Attribute Handling
+
+
+
+
+ 1. String Methods
+let str = "Hello JavaScript";
+Method	Description	Example
+length	Returns the length of string	str.length // 16
+toUpperCase()	Converts to uppercase	str.toUpperCase()
+toLowerCase()	Converts to lowercase	str.toLowerCase()
+includes()	Checks if substring exists	str.includes("Java") // true
+indexOf()	First index of a character	str.indexOf("J") // 6
+slice(start, end)	Extracts part of the string	str.slice(0, 5) // Hello
+substring()	Similar to slice()	str.substring(0, 5)
+replace()	Replaces a substring	str.replace("Hello", "Hi")
+split()	Splits into array	str.split(" ")
+trim()	Removes spaces from both ends	" hi ".trim()
+
+✅ 2. Array Methods
+let arr = [1, 2, 3, 4, 5];
+Method	Description	Example
+push()	Add item to end	arr.push(6)
+pop()	Remove last item	arr.pop()
+shift()	Remove first item	arr.shift()
+unshift()	Add item to start	arr.unshift(0)
+map()	Transform each item	arr.map(x => x * 2)
+filter()	Filter based on condition	arr.filter(x => x % 2 === 0)
+find()	Returns first match	arr.find(x => x > 3)
+includes()	Check if value exists	arr.includes(3)
+join()	Join to string	arr.join("-")
+slice()	Copy part of array	arr.slice(1, 3)
+splice()	Add/remove at specific index	arr.splice(2, 1)
+reduce()	Reduce to single value	arr.reduce((a,b)=>a+b)
+
+✅ 3. Number Methods
+let num = 123.456;
+Method	Description	Example
+toFixed()	Fixed decimal points	num.toFixed(2) // "123.46"
+parseInt()	Convert to integer	parseInt("123") // 123
+parseFloat()	Convert to float	parseFloat("123.45")
+isNaN()	Check if not a number	isNaN("abc") // true
+
+✅ 4. Object Methods
+let person = { name: "John", age: 30 };
+Method	Description	Example
+Object.keys()	Returns keys as array	Object.keys(person)
+Object.values()	Returns values as array	Object.values(person)
+Object.entries()	Returns key-value pairs	Object.entries(person)
+Object.assign()	Merge objects	Object.assign({}, person)
+hasOwnProperty()	Check if key exists	person.hasOwnProperty("age")
+
+
+
+✅ 5. Date Methods
+JavaScript’s Date object is used to work with dates and times.
+
+Common Methods:
+new Date() – creates a new date object.
+
+
+const now = new Date();
+console.log(now); // current date and time
+getFullYear() – gets the 4-digit year.
+
+
+console.log(now.getFullYear()); // e.g., 2025
+getMonth() – gets month (0–11).
+
+
+console.log(now.getMonth()); // 0 for January
+getDate() – gets day of month (1–31).
+
+getDay() – gets day of week (0–6, Sunday = 0).
+
+toISOString() – returns ISO format date string.
+
+Example:
+
+const birthday = new Date('2000-01-01');
+console.log(`Born in year: ${birthday.getFullYear()}`);
+✅ 6. Math Methods
+Built-in Math object provides math functions.
+
+Common Methods:
+Math.round() – rounds to nearest integer.
+
+console.log(Math.round(4.7)); // 5
+Math.floor() – rounds down.
+
+Math.ceil() – rounds up.
+
+Math.random() – random number (0 to 1).
+
+Math.max(...nums), Math.min(...nums) – max/min.
+
+Example:
+
+let dice = Math.floor(Math.random() * 6) + 1;
+console.log(`Dice roll: ${dice}`);
+✅ 7. Function Methods
+These are methods available on functions.
+
+Common:
+call(), apply(), bind()
+
+call() – Calls a function with a specific this value:
+
+function greet() {
+  console.log(`Hello ${this.name}`);
+}
+const user = { name: "Sandeep" };
+greet.call(user); // Hello Sandeep
+apply() – Like call() but takes arguments as array.
+
+function sum(a, b) {
+  return a + b;
+}
+console.log(sum.apply(null, [3, 4])); // 7
+bind() – Returns a new function with bound this:
+const boundGreet = greet.bind(user);
+boundGreet(); // Hello Sandeep
+✅ 8. Promise Methods
+Used to handle asynchronous code.
+
+Common:
+Promise.resolve(value)
+
+Promise.reject(error)
+
+Promise.all([...]) – waits for all to resolve.
+
+Promise.race([...]) – first to settle (resolve/reject).
+
+Example:
+
+const p1 = Promise.resolve("A");
+const p2 = Promise.resolve("B");
+
+Promise.all([p1, p2]).then(values => {
+  console.log(values); // ['A', 'B']
+});
+✅ 9. ES6+ Utility Methods
+Mainly for working with arrays or objects.
+
+map() – creates a new array by applying a function:
+
+let nums = [1, 2, 3];
+let doubled = nums.map(n => n * 2); // [2, 4, 6]
+filter() – filters array elements based on condition:
+
+let even = nums.filter(n => n % 2 === 0); // [2]
+reduce() – reduces array to single value:
+
+let sum = nums.reduce((total, n) => total + n, 0); // 6
+forEach() – executes a function for each item:
+
+nums.forEach(n => console.log(n));
+find() – finds first element that matches:
+
+let found = nums.find(n => n > 1); // 2
+includes() – checks if array contains a value:
+
+console.log(nums.includes(2)); // true
+
+
+
+
+📌 PART 2: DOM Methods
+DOM = Document Object Model (structure of HTML in JS).
+
+📄 Sample HTML:
+html
+Copy
+Edit
+<div id="box" class="container">Hello World</div>
+<button onclick="changeText()">Click Me</button>
+📜 JavaScript DOM Methods:
+function changeText() {
+  // Get element by ID
+  const box = document.getElementById("box");
+  
+  // Change text
+  box.innerText = "Text Changed!";
+
+  // Change style
+  box.style.color = "blue";
+
+  // Add class
+  box.classList.add("active");
+
+  // Remove class
+  box.classList.remove("container");
+}
+Method	Description
+getElementById()	Selects by ID
+getElementsByClassName()	Returns HTMLCollection by class name
+getElementsByTagName()	Returns elements by tag
+querySelector()	First element matching CSS selector
+querySelectorAll()	All elements matching selector
+innerText	Get/set text of element
+innerHTML	Get/set HTML inside element
+setAttribute()	Set an attribute
+getAttribute()	Get attribute
+classList.add/remove	Add or remove a class
+style.property	Change styles
+
+
+
 
 
 
