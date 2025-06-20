@@ -1,5 +1,98 @@
 JAVASCRIPT:
 
+   1. var
+✅ Characteristics:
+Function-scoped
+Hoisted to the top of its function (initialized as undefined)
+Can be redeclared and reassigned
+🔍 Example:
+function demoVar() {
+  console.log(a); // undefined (due to hoisting)
+  var a = 10;
+  console.log(a); // 10
+  var a = 20; // redeclaration allowed
+  console.log(a); // 20
+}
+demoVar();
+Even though a is logged before it's declared, it doesn't throw an error — it prints undefined due to hoisting.
+  🔸 2. let
+✅ Characteristics:
+Block-scoped
+Hoisted, but not initialized (temporal dead zone)
+Cannot be redeclared in the same scope
+Can be reassigned
+🔍 Example:
+function demoLet() {
+  // console.log(b); // ❌ ReferenceError (because it's in temporal dead zone)
+  let b = 10;
+  console.log(b); // 10
+  b = 20; // allowed
+  console.log(b); // 20
+  // let b = 30; // ❌ SyntaxError (cannot redeclare in same scope)
+}
+demoLet();
+   🔸 3. const
+✅ Characteristics:
+Block-scoped
+Hoisted, but not initialized
+Cannot be redeclared or reassigned
+Must be initialized at the time of declaration
+If the value is an object or array, the contents can be changed, but the reference cannot
+🔍 Example:
+function demoConst() {
+  const c = 10;
+  console.log(c); // 10
+  // c = 20; // ❌ TypeError: Assignment to constant variable
+  // const c = 30; // ❌ SyntaxError: Identifier 'c' has already been declared
+  const arr = [1, 2, 3];
+  arr.push(4); // ✅ Allowed (modifying contents)
+  console.log(arr); // [1, 2, 3, 4]
+  // arr = [5, 6]; // ❌ TypeError: Assignment to constant variable
+}
+demoConst();
+
+
+
+
+               HOISTING : 
+Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope (function or global) before the code is executed.This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+Eg :
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+
+
+
+                  DIFFERENCE BETWEEN “ == “ AND “ === “ OPERATORS.
+Both are comparison operators. The difference between both the operators is that “==” is used to compare values whereas, “ === “ is used to compare both values and types.
+
+
+               IMPLICIT TYPE COERCION :
+Implicit type coercion in javascript is the automatic conversion of value from one data type to another. 
+
+
+
+
+                HIGHER ORDER FUNCTIONS			   
+Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
+
+
+
+                CLOSURES :
+A closure is a function that remembers the variables from its outer scope, even after that outer function has finished executing.
+Eg :
+function outer() {
+  let name = "Sandeep";
+  function inner() {
+    console.log("Hello, " + name); // inner can use outer's variable!
+  }
+  return inner;
+}
+const greet = outer(); // outer() runs, but inner() is returned
+greet(); // prints "Hello, Sandeep"
+
+
+
 
 Comparision ooperators:
 >,<,=,<=,>=,
