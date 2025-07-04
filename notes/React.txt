@@ -37,14 +37,79 @@ can use this keyword to access props and state, making debugging easier.
 
 
 
+		WHY FUNCTIONAL COMPONENTS ARE STATELESS AND CLASS COMPONENTS ARE NOT STATELESS ?
+In React, a component is stateless if it does not manage its own data (state) internally. It just receives data (props) and displays UI.
+Conversely, a stateful component is one that manages its own internal state, meaning it can update itself over time (e.g., on user interactions, API responses).
+				WHY FUNCTIONAL COMPONENTS WERE ORIGINALLY STATELESS ?
+Before React v16.8, functional components were just plain JavaScript functions. They could:
+Accept props
+Return JSX
+But they could not:
+Hold local state (this.state)
+Access lifecycle methods like componentDidMount()
+So they were stateless by design.These were called "stateless functional components".
+			WHY CLASS COMPONENTS WERE ALWAYS STATEFUL?
+Class components extend React.Component which provides:
+Built-in support for this.state
+Lifecycle methods like componentDidMount(), componentDidUpdate()
+
+So, class components could store and update internal state, making them stateful by default.
+Functional components were stateless originally because they lacked state and lifecycle support.
+Class components were always stateful because React gave them this.state and lifecycle methods.
+Now, after Hooks, both can be stateful, but people still use the old term "stateless functional component" for simple functional components that don’t use state.
+
+
+
+
+
+
+
+				WHY MOST OF THE TIME USE FUNCTIONAL COMPONENTS AND WHY NOT CLASS COMPONENTS ?
+why functional components are preferred over class components today:
+ 1. Hooks Make Functional Components Powerful
+ 2. Less Boilerplate Code
+ 3. Easier to Read and Maintain
+ 4. Hooks Enable Code Reusability
+ 5. Better Performance in Some Cases
+ 
+
 stateless component:
 A stateless component, also known as a functional component, is a fundamental concept in React 
 that represents a UI element without any internal state management.
 
 
 virtual dom in react:
-it makes the copy of the dom and make changes which are made... It is a lightweight copy of the
- actual DOM, which allows React to perform efficient updates and rendering.
+it makes the copy of the dom and make changes which are made... It is a lightweight copy of the actual DOM, which allows React to perform efficient updates and rendering.React uses it to efficiently update the UI without reloading the whole page or making unnecessary changes.
+				HOW VIRTUAL DOM WORKS (STEP-BY-STEP) -
+Step 1: Initial Render
+React creates a Virtual DOM from your JSX code.
+React then converts this Virtual DOM into the real DOM and mounts it on the page.
+ Step 2: On State/Props Change
+Whenever state or props change:
+React creates a new Virtual DOM tree based on the updated component.
+React compares it with the previous Virtual DOM using a diffing algorithm.
+React finds what exactly changed (e.g., a text value or a style).
+React applies the minimum necessary changes to the real DOM.
+Step 3: Efficient Updates with "Diffing"
+React uses a diffing algorithm (called reconciliation) to compare:
+Old VDOM (before update)
+New VDOM (after update)
+Then:
+It finds which nodes changed
+Only updates those parts in the real DOM
+This avoids unnecessary DOM operations (which are expensive)
+VISUALIZATION:
+Your JSX Code
+    ↓
+React creates Virtual DOM (JS object)
+    ↓
+DOM changes? → Create New Virtual DOM
+    ↓
+React compares Old VDOM vs New VDOM (diffing)
+    ↓
+Only apply changes to Real DOM (patching)
+
+
 
 
 in the index.html u can see the react and react dom imports...react is the core fundational library.
@@ -217,7 +282,7 @@ it helps in rendering a single route exclusively by wrapping multiple route comp
 
 lazy loading : 
 it is a design pattern that allows us to load only specific components in the application to reduce the initial
-loa dtime...
+load time...
 
 
 
