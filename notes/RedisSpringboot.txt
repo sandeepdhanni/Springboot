@@ -8,3 +8,8 @@ it is an open source in-memory data store used by millions if developers as a ca
 NOTE :
 we mainly use cache to reduce the round-trip our application to database because it may lead to performance issues..for each request if i hit to database then it may lead to performance issue..to avoid that we use caching mechanism so that on my first request all the data from database will load to the redis cache so that when user trigger the second request...instead of going the request to database it will load the data from the cache itself..
 
+IN ORDER TO START THE REDIS SERVER JUST OPEN REDIS.SERVER.EXE FILE AND THE SERVER WILL BE ON.. AND ALSO OPEN THE REDIS.CLI WHICH IS REDIS CLIENT WHERE U CAN SEE THE DATA WHICH U HAVE STORED IN THE REDIS....
+COMMANDS IN REDIS CLI -
+KEYS * - WHICH WILL GIVE ALL THE DATA PRESENT IN THE REDIS
+GET "KEY_NAME" - WHICH WILL GIVE THE DATA OF A PARTICULAR KEY 
+Put(key, value) : this will be used to add new data into the cache.
