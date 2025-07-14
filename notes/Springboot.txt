@@ -91,3 +91,49 @@ single responsibility : whatever classes u create should have single responsibil
 Open-closed principles : any class or interface that you create should not be open fo rmodification.it should be closed for modification.whenever u need extra functionality to add then u can extend the class and then u can add any other functionality
 
 liskov substitution : whenever you are creating parent child relationship so that parent class and subtype class so both class should be interchangeble and should be substitutable so that means whenever i pass the object of the child or whenever i pass the object of parent it should work..
+
+
+
+VOLATILE :
+The volatile keyword in Java is used to ensure that updates to a variable are always visible to other threads.
+It tells the JVM and the compiler:
+* Don’t cache this variable.
+* Always read and write its value directly from main memory.
+🔍 Problem Without volatile
+❌ Without volatile, this may happen:
+* One thread updates the variable.
+
+Other threads don't see the updated value, because they read it from their cached copy in CPU register or thread-local memory.
+Using volatile is yet another way (like synchronized, atomic wrapper) of making class thread-safe. Thread-safe means that a method or class instance can be used by multiple threads at the same time without any problem.Suppose that two threads are working on SharedObj. If two threads run on different processors each thread may have its own local copy of sharedVariable. If one thread modifies its value the change might not reflect in the original one in the main memory instantly. Now the other thread is not aware of the modified value which leads to data inconsistency.  Volatile variables have the visibility features of synchronized but not the atomicity features. The values of the volatile variable will never be cached and all writes and reads will be done to and from the main memory. However, the use of volatile is limited to a very restricted set of cases as most of the times atomicity is desired.
+
+
+
+DEADLOCK :
+A deadlock is a situation where two or more threads are waiting for each other to release locks, and none of them ever proceeds.
+🔧 Real-World Analogy
+Imagine:
+Thread A locks Resource 1 and waits for Resource 2.
+Thread B locks Resource 2 and waits for Resource 1.
+Both are stuck forever = Deadlock
+
+
+
+REENTRANTLOCK :
+ReentrantLock in Java is a part of the java.util.concurrent package that helps to achieve synchronization more effectively and optimally compared to the traditional Synchronized keyword. A ReentrantLock allows a thread to acquire the same lock multiple times, which is particularly useful when a thread needs to access a shared resource repeatedly within its execution. It implements the Lock interface, providing greater control over locking compared to synchronized blocks.
+* ReentrantLock tracks a "hold count", which:
+* Starts at 1 when a thread first locks the resource.
+* Each time the thread re-enters the lock, the count is incremented.
+* The count is decremented when the lock is released.
+* Once the hold count reaches zero, the lock is fully released.
+
+
+
+THREADPOOLTASKEXECUTOR :
+🧠 What Does “Using Thread Pool” Mean?
+When you use threads in Java (like new Thread()), every task runs in a separate thread — unmanaged and potentially expensive in terms of memory.
+Instead, you use a thread pool — a group of pre-created reusable threads managed by Spring — to:
+Efficiently execute multiple tasks concurrently
+Avoid creating too many threads and crashing the app
+Control how many threads run in parallel
+
+
