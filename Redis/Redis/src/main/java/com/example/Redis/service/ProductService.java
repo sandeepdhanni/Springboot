@@ -16,19 +16,17 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    @Autowired
     private ProductRepository productRepository;
 
     public Product save(Product product) {
         log.info("saved product{}", product);
-        Product savedProduct = productRepository.save(product);
+        return productRepository.save(product);
 
-        return savedProduct;
     }
 
     @Cacheable(value = "product", key = "#id")
     public Optional<Product> findById(Integer id) {
-        System.out.println("Fetching from DB for id: " + id);
+        log.info("Fetching from DB for id: " + id);
         return productRepository.findById(id);
     }
 
