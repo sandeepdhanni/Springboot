@@ -1,6 +1,23 @@
 React:
 react is a javascript library.it is used for creating user interfaces or rich user interfaces.it is 
-a component based application
+a component based application.It react to the changes and keeps the UI async.
+
+* React itself does not render the output in the browser..for that u need reactDOM which is part of react.React does not know what the output will be used for.That's why u can take it and used it in mobile apps in react native.
+* React keeps the track of changes to data in your code and updates the output as soon as the data changes using state.
+
+
+
+How react knows when chopped at UI ?How process actually works?
+1. TRIGGER -  there are two cases that kick off the page. 1st when the component is rendered using createroot() and when one or more state component are updated in the code 
+2. RENDER -
+3. COMMIT - 
+
+
+
+
+
+
+
 
 in the package.json file u can see the react version,react-dom version,react-scripts and web-vitals 
 which are used for tracking the application or to check the performance of the application..
