@@ -12,6 +12,7 @@ How react knows when chopped at UI ?How process actually works?
 2. RENDER -
 3. COMMIT - 
 
+whenever state or props changes the react re-renders the 
 
 
 
