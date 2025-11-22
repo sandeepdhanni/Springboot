@@ -1,0 +1,5 @@
+Mutable and Immutable in Python
+
+When you create a variable and assign a value to it, Python stores that value in memory. If you later create another variable with the same name but a different value, Python creates a new object in memory and updates the variable name to reference this new object. The old object is removed automatically by Python’s garbage collector if it is no longer referenced.
+Immutable objects are those whose value cannot be changed once created. If you try to modify an immutable object, Python will create a new object in memory instead of updating the existing one.
+Mutable objects, on the other hand, can be changed in place without creating a new reference.
